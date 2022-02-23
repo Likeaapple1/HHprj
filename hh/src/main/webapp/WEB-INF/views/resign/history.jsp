@@ -27,6 +27,7 @@
 		<input type="text" id="saerchText">
 		 <input type="submit" value="검색">
 		</span>
+		<div></div>
 	</form>
 	
 <!--  사원 몰록 table -->
