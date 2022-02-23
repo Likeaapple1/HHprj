@@ -1,3 +1,4 @@
+/*
 package com.hh.hh.resign.dao;
 
 import java.util.List;
@@ -25,3 +26,5 @@ public class ResignDaoImpl implements ResignDao {
 	}
 
 }
+
+*/

@@ -1,4 +1,5 @@
-package com.hh.hh.resign.controller;
+/*
+ * package com.hh.hh.resign.controller;
 
 import lombok.Data;
 
@@ -18,7 +19,7 @@ public class ResignHistoryVo {
 		private int lastPage;//db의 row 기준으로 마지막 페이지는 몇인지
 		
 		public ResignHistoryVo(String currentPageStr, int cntPerPage, int pageBtnCnt, int totalRow) {
-			this.currentPage = Integer.parseInt(currentPageStr);
+			this.currentPage = Integer.parseInt(currentPageStr);<!>
 			this.cntPerPage = cntPerPage;
 			this.pageBtnCnt = pageBtnCnt;
 			this.totalRow = totalRow;
@@ -48,5 +49,6 @@ public class ResignHistoryVo {
 		}
 
 	}
+	*/
 
 
