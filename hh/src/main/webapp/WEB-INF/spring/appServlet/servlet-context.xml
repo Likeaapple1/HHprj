@@ -22,16 +22,13 @@
 	</beans:bean>
 	
 	<!-- 인터셉터 등록 -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
-			<mapping path="/notice/**"/>
-			<exclude-mapping path="/notice/list/**"/>
-			<beans:bean class="com.hh.app"></beans:bean>
+			<mapping path="/**"/>
+			<exclude-mapping path="/login/**"/>
+			<beans:bean class="com.hh.hh.interceptor.MemberInercrptor"></beans:bean>
 		</interceptor>
 	</interceptors>
-	 -->
-	
-	
 	<context:component-scan base-package="com.hh.hh" />
 	
 </beans:beans>
