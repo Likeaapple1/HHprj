@@ -1,4 +1,4 @@
-package com.hh.insa;
+package com.hh.hh.insa.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +15,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.hh.hh.insa.dao.DepartmentDao;
+import com.hh.hh.insa.dao.EmployeeDao;
+import com.hh.hh.insa.dao.PositionDao;
+import com.hh.hh.insa.dao.RegionDao;
+import com.hh.hh.insa.entity.DepartmentVo;
+import com.hh.hh.insa.entity.EmployeeVo;
+import com.hh.hh.insa.entity.PositionVo;
+import com.hh.hh.insa.entity.RegionVo;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
