@@ -1,4 +1,4 @@
-<%@page import="com.hh.salary.SalaryDto"%>
+<%@page import="com.hh.hh.salary.entity.SalaryDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

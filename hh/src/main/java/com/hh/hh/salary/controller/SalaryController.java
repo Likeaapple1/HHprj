@@ -1,4 +1,4 @@
-package com.hh.hh;
+package com.hh.hh.salary.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,27 +11,42 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hh.salary.SalaryDto;
+import com.hh.hh.salary.entity.PayrollDto;
+import com.hh.hh.salary.entity.SalaryDto;
 
 @Controller
 @RequestMapping("/salary")
 public class SalaryController {
-	
+
 	@Autowired
 	private SqlSession ss;
-	
-	// 급여 대장 조회
+
+	// 급여 조회
+	@GetMapping("/salary")
+	public String salary(Model model, String type, String value) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		// 검색
+		List<SalaryDto> salaryList = ss.selectList("salary.salary", map);
+
+		// 화면에 전달해주기
+		model.addAttribute("salaryList", salaryList);
+
+		return "salary/salary";
+	}
+
 	@GetMapping("/payroll")
 	public String payroll(Model model, String type, String value) {
-		
+
 		Map<String, Object> map = new HashMap<>();
-		
+
 		// 검색
-		List<SalaryDto> salaryList = ss.selectList("salary.search", map);
+		List<PayrollDto> payrollList = ss.selectList("salary.payroll", map);
+
+		// 화면에 전달해주기
+		model.addAttribute("payrollList", payrollList);
 		
-		//salaryList 화면에 전달해주기
-		model.addAttribute("salaryList", salaryList);
-		
-		return "salary/main";
+		return "salary/payroll";
 	}
 }

@@ -1,11 +1,11 @@
-package com.hh.salary;
+package com.hh.hh.salary.entity;
 
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class PayrollDto {
+public class SalaryDto {
 
 	private int empNo;
 	private String basicSalary;
@@ -24,7 +24,5 @@ public class PayrollDto {
 	private String fourMajorInsurances;
 	private String tax;
 	private String netSalary;
-	private String payrollAccount;
-	private Date payrollDate;
 
 }
