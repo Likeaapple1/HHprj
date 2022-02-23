@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/* 웹 폰트 */
+/* 제목 */
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 소제목 */
+@font-face {
+    font-family: 'SBAggroL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+	.header-font{
+			font-family: 'SBAggroB';
+			text-align: center;
+			font-size: 3rem;
+		}
+	.font{
+	font-family: 'SBAggroL';
+	}
+
+	body{
+		padding: 0;
+		margin: 0;
+	}
+	h1{
+		text-align: center;
+		padding: 5px 0;
+	}
+	img{
+		width: 25%;
+		display: block;
+		margin: 0 auto;
+		padding-top: 30px;
+		padding-bottom: 40px;
+	}
+	#w3hubs{
+		margin: 30px;
+	}
+	
+	.container-size{
+		width : 35%;
+		margin: 0 auto;
+		padding: 50px 0px;
+	}
+	
+	form{
+		width: 45%;
+		display: block;
+		margin: 0 auto;
+		box-sizing: border-box;
+
+	}
+	.bg-light{
+		padding: 15px;
+		-webkit-box-shadow: 0 8px 6px -6px #ddd;
+       -moz-box-shadow: 0 8px 6px -6px #ddd;
+            box-shadow: 0 8px 6px -6px #ddd;
+
+	}
+	.form-group{
+		margin: 0;
+
+	}
+	.form-control{
+		padding: 1.875rem 1rem;
+	}
+	.btn{
+		margin-top: 10px;
+		width: 100%;
+	}
+	.form-check{
+		margin-top: 15px;
+	}
+	.btn-link:hover{
+		text-decoration: none;
+	}
+	h2{
+		text-align: center;
+		padding: 30px 0;
+		font-size: 42px;
+	}
+@media(max-width: 768px){
+	form{
+		width: 90%
+	}
+	img{
+		width: 40%;
+		padding-top: 0px;
+		padding-bottom: 10px;
+	}
+}
+@media(max-width: 475px){
+	.form-control{
+		padding: 1.4em 
+	}
+	form{
+		width: 100%;
+	}
+	.bg-light{
+		padding: 30px;
+	}
+	h1{
+		padding: 10px 0;
+	}
+	.btn-link{
+		text-align: left !important;
+	}
+}
