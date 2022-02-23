@@ -1,4 +1,6 @@
-package com.hh.hh.resign.dao;
+/*
+ * package com.hh.hh.resign.dao;
+ 
 
 import java.util.List;
 
@@ -11,3 +13,5 @@ public interface ResignDao {
 	int getNoticeCnt() throws Exception;
 
 }
+
+*/

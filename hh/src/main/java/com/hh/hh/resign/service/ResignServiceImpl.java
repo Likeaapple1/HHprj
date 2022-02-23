@@ -1,4 +1,6 @@
-package com.hh.hh.resign.service;
+/*
+ * package com.hh.hh.resign.service;
+ 
 
 import java.util.List;
 
@@ -28,3 +30,5 @@ public class ResignServiceImpl implements ResignService {
 	
 
 }
+
+*/
