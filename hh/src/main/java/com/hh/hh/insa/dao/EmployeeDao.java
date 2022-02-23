@@ -1,6 +1,8 @@
-package com.hh.insa;
+package com.hh.hh.insa.dao;
 
 import java.util.*;
+
+import com.hh.hh.insa.entity.EmployeeVo;
 
 public interface EmployeeDao {
 	// 직원 명단 전체 및 검색 출력용 메소드

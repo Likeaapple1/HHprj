@@ -1,6 +1,8 @@
-package com.hh.insa;
+package com.hh.hh.insa.dao;
 
 import java.util.*;
+
+import com.hh.hh.insa.entity.PositionVo;
 
 public interface PositionDao {
 	//직위 리스트 출력
