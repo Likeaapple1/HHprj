@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
-	
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
 	<typeAliases>
-	
+		<typeAlias type="com.hh.hh.salary.entity.MemberDto" alias="memberDto"/>
+		<typeAlias type="com.hh.hh.salary.entity.SalaryDto" alias="salaryDto"/>
+		<typeAlias type="com.hh.hh.salary.entity.PayrollDto" alias="payrollDto"/>
 	</typeAliases>
-	
 </configuration>

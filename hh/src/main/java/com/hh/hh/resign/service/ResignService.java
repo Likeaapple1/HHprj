@@ -1,3 +1,4 @@
+/*
 package com.hh.hh.resign.service;
 
 
@@ -13,3 +14,4 @@ public interface ResignService {
 	int getNoticeCnt() throws Exception;
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.hh.hh.resign.entity;
 
 import lombok.Data;
@@ -11,3 +12,4 @@ public class ResignDto {
 	private String empDept;
 
 }
+*/

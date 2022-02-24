@@ -1,6 +1,8 @@
-package com.hh.insa;
+package com.hh.hh.insa.dao;
 
 import java.util.*;
+
+import com.hh.hh.insa.entity.RegionVo;
 
 public interface RegionDao {
 	// 지역 전체 출력

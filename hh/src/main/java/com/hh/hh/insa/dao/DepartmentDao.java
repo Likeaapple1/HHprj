@@ -1,6 +1,8 @@
-package com.hh.insa;
+package com.hh.hh.insa.dao;
 
 import java.util.*;
+
+import com.hh.hh.insa.entity.DepartmentVo;
 
 public interface DepartmentDao {
 	

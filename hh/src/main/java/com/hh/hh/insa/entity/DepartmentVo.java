@@ -1,4 +1,4 @@
-package com.hh.insa;
+package com.hh.hh.insa.entity;
 
 public class DepartmentVo {
 
