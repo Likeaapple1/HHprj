@@ -24,6 +24,7 @@ public class MemberController {
 	// 로그인 화면 보여주기
 	@GetMapping("login")
 	public String login() {
+		System.out.println("로그인 하ㅗㅕㅁㄴ 보여주기 ~~~");
 		return "login";
 	}
 	

@@ -9,7 +9,7 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.hh.hh.salary.entity.MemberDto" alias="memberDto"/>
+		<typeAlias type="com.hh.hh.member.entity.MemberDto" alias="memberDto"/>
 		<typeAlias type="com.hh.hh.salary.entity.SalaryDto" alias="salaryDto"/>
 		<typeAlias type="com.hh.hh.salary.entity.PayrollDto" alias="payrollDto"/>
 	</typeAliases>

@@ -17,8 +17,9 @@ public class MemberInercrptor extends HandlerInterceptorAdapter{
 			return true;
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-			return false;
+		return false;
 		}
+		
 	}
 
 }

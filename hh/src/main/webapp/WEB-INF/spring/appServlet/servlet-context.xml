@@ -29,7 +29,7 @@
             <beans:bean class="com.hh.hh.interceptor.MemberInercrptor"></beans:bean>
         </interceptor>
     </interceptors>
-    <context:component-scan base-package="com.hh.hh" />
+   
 	
 	
 	<context:component-scan base-package="com.hh.hh" />
