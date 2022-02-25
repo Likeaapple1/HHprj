@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>미리</h1>
+	<form action = "" method = "post">
+		<span>출근 등록을 해주세요</span>
+		<button type = "submit" >출근하기</button>
+	</form>
 </body>
 </html>

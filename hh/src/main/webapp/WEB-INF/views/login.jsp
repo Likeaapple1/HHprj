@@ -79,9 +79,6 @@
 			 </form>
 		 </c:otherwise>
 	</c:choose>
-</div>
-<a href="#" class="btn btn-link">Create an account</a>
-</div>
 </section>
 
 <!-- 아이디 저장 체크 박스 체크 안 했을 때, 쿠키 저장 안 되도록 -->
