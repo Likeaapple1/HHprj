@@ -24,7 +24,6 @@ public class MemberController {
 	// 로그인 화면 보여주기
 	@GetMapping("login")
 	public String login() {
-		System.out.println("로그인 하ㅗㅕㅁㄴ 보여주기 ~~~");
 		return "login";
 	}
 	
@@ -46,8 +45,9 @@ public class MemberController {
 				 }
 				
 				// 2. 자동로그인 저장만 체크했는지
-				
+				 
 				// 3. 둘 다 체크 하지 않았는지
+
 			}
 
 			return "/main";
