@@ -15,8 +15,24 @@ public class ResignController {
 	@GetMapping("history")
 	public String historyList()  {
 		
-		return "resign/history";
+		return "resign/resignhistory";
 	}
+	
+	@GetMapping("resignInput")
+	public String  resignInput() {
+		return "resign/resigninput";
+	}
+	
+	@GetMapping("resignReceipt")
+	public String  resignReceipt() {
+		return "resign/resignReceipt";
+	}
+
+	@GetMapping("totalResign")
+	public String  totalResign() {
+		return "resign/totalResign";
+	}
+
 	
 
 	
