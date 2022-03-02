@@ -13,7 +13,7 @@ import com.hh.hh.attendance.entity.AttendanceDto;
 
 @Service
 @Transactional
-public abstract class AttendanceServiceImpl implements AttendanceService {
+public class AttendanceServiceImpl implements AttendanceService {
 	
 	@Autowired
 	private AttendanceDao attendancedao;

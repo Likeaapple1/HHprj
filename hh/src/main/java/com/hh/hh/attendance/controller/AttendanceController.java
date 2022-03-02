@@ -44,7 +44,7 @@ public class AttendanceController {
 
          // 
          for(AttendanceDto wul : workUserList) {
-            // 문자열 형식으로 변환한다.
+            // 문자열 형식으로 변환한다
             String startdate = sdf.format(wul.getAttStrDate());
             String enddate = sdf.format(wul.getAttEndDate());
             // 데이터 타입으로 변환해서 넣어주기
@@ -71,7 +71,7 @@ public class AttendanceController {
       return "attendance/home";
    }
    
-   @PostMapping("home")
+   @PostMapping("working")
    // 출근하기 버튼 눌렀을 때 insert 진행
    public String home(AttendanceDto attendanceDto, HttpServletRequest req, HttpSession session) throws Exception {
       // loginUser세션에서 memberNo값 가져오기
@@ -93,14 +93,16 @@ public class AttendanceController {
    }
    
    @PostMapping("workout")
-   @ResponseBody
    public String workout(AttendanceDto attendanceDto, HttpServletRequest req, HttpSession session) throws Exception {
 	      MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
 	      long empNo = loginUser.getEmpNo();
 	      attendanceDto.setEmpNo(empNo);
-	      
+	      // 세션 가지고 오기
+	      session.getAttribute("attUser");
+	      // 세션 지우기
+	      session.removeAttribute("attUser");
 	      AttendanceDto adto = attendanceservice.workout(attendanceDto);
 	      
-	      return "";
+	      return "attendance/home";
    }
 }

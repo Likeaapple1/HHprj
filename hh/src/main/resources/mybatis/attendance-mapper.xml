@@ -40,8 +40,8 @@
   	</select>
   	
   	<update id="updateWork" parameterType="attendanceDto">
-  		UPDATE ATTENDANCE
+		UPDATE ATTENDANCE
 		SET ATT_END_DATE = SYSDATE
-		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo});
+		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})
   	</update>
 </mapper>
