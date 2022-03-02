@@ -10,42 +10,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="ko">
 <head>
   <style>
+    .center {
+      margin: auto;
+      text-align: center;
+    }
     .tb_salary1 {
       font-size: 10pt;
     }
-    .month {
-      width: 300px;
-    }
-    .th1 {
-      color: blue;
-    }
-    .th2 {
-      color: red;
-    }
-    .th3 {
-      color: green;
-    }
-    .center {
-      text-align: center;
-    }
-    .left {
-      text-align: left;
-    }
-    .mon {
-      height: 35px;
+    .div1 {
+      overflow-y: scroll;
+      min-height: 0px;
+      max-height: 330px;
     }
     td, th {
       height: 30px;
     }
-    .scroll {
-      min-height: 0px;
-      max-height: 400px;
-      overflow-y: scroll;
+    .mon {
+      height: 35px;
+    }
+    .right {
+      text-align: right;
     }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>급여지급현황</title>
+  <title>급여명세서 이메일 발송</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -287,7 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
 
-          <h1><b>급여지급현황</b></h1>
+          <h1><b>급여명세서 이메일 발송</b></h1>
           <br><br>
           <hr>
 
@@ -303,410 +292,288 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-<form action="">
-
-
-  
     <div class="content">
       <div class="container-fluid">
-        <div class="row center">
+
+
+        <div class="month left">
+          <input class="mon" type="month" value="2022-03">　
+          <select name="emp" class="mon">
+            <option value="emp1" label="사번" selected></option>
+            <option value="emp2" label="성명"></option>
+            <option value="emp3" label="직급"></option>
+            <option value="emp4" label="부서"></option>
+        </select>
+        <input type="text" class="mon">
+        <a href="#" class="btn btn-primary">조회</a>
+          <br><br>
+        </div>
+
+
+        <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
 
-            <div class="month left">
-              <input class="mon" type="month" value="2022-03">　<b>~</b>　<input class="mon" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br>
-            </div>
+            <table border="1" class="table table-bordered table-hover tb_salary1">
+                      <thead>
+                        <tr>
+                          <th><input type="checkbox"></th>
+                          <th>사번</th>
+                          <th>성명</th>
+                          <th>직급</th>
+                          <th>부서</th>
+                          <th>지급일자</th>
+                          <th>지급총액</th>
+                          <th>공제총액</th>
+                          <th>실지급액</th>
+                          <th>이메일</th>
+                          <th>은행</th>
+                          <th>계좌번호</th>
+        
+                        </tr>	
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td>101</td>
+                            <td>남민국</td>
+                            <td>대리</td>
+                            <td>마케팅</td>
+                            <td>22/03/25</td>
+                            <td>5,000,000</td>
+                            <td>700,000</td>
+                            <td>4,300,000</td>
+                            <td>101@gmail.com</td>
+                            <td>국민은행</td>
+                            <td>101101101</td>
+                          </tr>
 
-<div class="scroll">
-            <table border="1" class="table table-bordered table-hover table-striped tb_salary1">
-              <thead>
-                <tr>
-                  <th>기본급</th>
-                  <!-- <th class="th2">통상시급</th> -->
-                  <th>잔업수당</th>
-                  <th>특근수당</th>
-                  <th>근속수당</th>
-                  <th>직책수당</th>
-                  <th>연차수당</th>
-                  <th>자격수당</th>
-                  <th>중식비</th>
-                  <th>교통비(유류비)</th>
-                  <th>상여금</th>
-                  <th>특별수당</th>
-                  <th class="th1">급여총액</th>
-                  <th class="th2">4대보험</th>
-                  <th class="th2">소득세,지방소득세</th>
-                  <th class="th3">실지급액</th>
-                </tr>	
-              </thead>
-              <tbody>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td>3,000,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>0</td>
-                    <td>100,000</td>
-                    <td>200,000</td>
-                    <td>100,000</td>
-                    <td>50,000</td>
-                    <td>0</td>
-                    <td>4,650,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>4,050,000</td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                          <tr>
+                            <td><input type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                  <div class="right">
+                    <br>
+                    <a href="#" class="btn btn-primary">이메일 발송</a>
+                    <br><br>
+                  </div>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-              </tbody>
-            </table>
-</div>
-
-          </div>
           <!-- /.col-md-6 -->
+          <!-- <div class="col-lg-6">
 
+222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+
+              </div> -->
             <!-- </div>
           </div> -->
           <!-- /.col-md-6 -->
@@ -717,8 +584,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- 폼 -->
-</form>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

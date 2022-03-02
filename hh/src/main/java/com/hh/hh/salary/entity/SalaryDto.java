@@ -12,6 +12,7 @@ public class SalaryDto {
 	private String regularHourlyWage;
 	private String overtimeAllowance;
 	private String holidayAllowance;
+	private String longServiceDay;
 	private String longServiceAllowance;
 	private String positionAllowance;
 	private String annualLeaveAllowance;
@@ -24,5 +25,6 @@ public class SalaryDto {
 	private String fourMajorInsurances;
 	private String tax;
 	private String netSalary;
+	private String payrollBank;
 
 }

@@ -16,20 +16,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .month {
       width: 300px;
     }
-    .th1 {
-      color: blue;
-    }
-    .th2 {
-      color: red;
-    }
-    .th3 {
-      color: green;
-    }
     .center {
       text-align: center;
     }
     .left {
       text-align: left;
+    }
+    .right {
+      text-align: right;
     }
     .mon {
       height: 35px;
@@ -37,15 +31,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
     td, th {
       height: 30px;
     }
-    .scroll {
-      min-height: 0px;
-      max-height: 400px;
-      overflow-y: scroll;
+    table {
+      margin: auto;
+      width: 1000px !important;
+    }
+    .file {
+      width: 210px !important;
+    }
+    textarea {
+      font-size: 10pt !important;
+      text-align: center;
     }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>급여지급현황</title>
+  <title>공지사항</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -287,7 +287,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
 
-          <h1><b>급여지급현황</b></h1>
+          <h1><b>공지사항</b></h1>
           <br><br>
           <hr>
 
@@ -303,410 +303,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-<form action="">
-
-
-  
     <div class="content">
       <div class="container-fluid">
         <div class="row center">
           <!-- <div class="col-lg-6"> -->
 
-            <div class="month left">
-              <input class="mon" type="month" value="2022-03">　<b>~</b>　<input class="mon" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br>
-            </div>
+<form method="post">
 
-<div class="scroll">
-            <table border="1" class="table table-bordered table-hover table-striped tb_salary1">
-              <thead>
-                <tr>
-                  <th>기본급</th>
-                  <!-- <th class="th2">통상시급</th> -->
-                  <th>잔업수당</th>
-                  <th>특근수당</th>
-                  <th>근속수당</th>
-                  <th>직책수당</th>
-                  <th>연차수당</th>
-                  <th>자격수당</th>
-                  <th>중식비</th>
-                  <th>교통비(유류비)</th>
-                  <th>상여금</th>
-                  <th>특별수당</th>
-                  <th class="th1">급여총액</th>
-                  <th class="th2">4대보험</th>
-                  <th class="th2">소득세,지방소득세</th>
-                  <th class="th3">실지급액</th>
-                </tr>	
-              </thead>
-              <tbody>
+<table>
+  
+  <tr>
+    <td><input name="title" class="form-control" type="text" placeholder="제목"></td>
+  </tr>
 
-                  <tr>
-                    <td>3,000,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>0</td>
-                    <td>100,000</td>
-                    <td>200,000</td>
-                    <td>100,000</td>
-                    <td>50,000</td>
-                    <td>0</td>
-                    <td>4,650,000</td>
-                    <td>300,000</td>
-                    <td>300,000</td>
-                    <td>4,050,000</td>
-                  </tr>
+  <tr>
+    <td><textarea name="content" class="form-control" cols="50" rows="20" style="resize: none;"></textarea>
+    <!-- <input type="text" name="writer" placeholder="작성자"> -->
+    </td>
+  </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+  <tr>
+    <td>
+      <div class="mb-3">
+      <input class="form-control form-control-sm file" id="formFileSm" type="file">
+      </div>
+    </td>
+  </tr>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+</table>
 
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-
-              </tbody>
-            </table>
+<div class="center">
+  <br>
+  <input type="submit" class="btn btn-primary" value="등록">
+  　<a href="#" class="btn btn-secondary">취소</a><br><br>
 </div>
 
+</form>
           </div>
-          <!-- /.col-md-6 -->
 
+          <br>
+          <!-- /.col-md-6 -->
+          <!-- <div class="col-lg-6">
+
+              </div> -->
             <!-- </div>
           </div> -->
           <!-- /.col-md-6 -->
@@ -717,8 +356,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- 폼 -->
-</form>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

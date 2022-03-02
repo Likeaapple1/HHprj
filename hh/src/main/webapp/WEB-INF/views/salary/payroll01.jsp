@@ -1,4 +1,4 @@
-<%@page import="com.hh.hh.salary.entity.SalaryDto"%>
+<%-- <%@page import="com.hh.hh.salary.entity.PayrollDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,13 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>급여관리</title>
+<title>급여조회</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-	
-	<!--  -->
+
 	<table border="1" class="table table-striped">
 		<thead>
 			<tr>
@@ -32,36 +31,40 @@
 				<td>공제액(4대보험)</td>
 				<td>공제액(소득세, 지방 소득세)</td>
 				<td>실지급액</td>
+				<td>급여지급계좌</td>
+				<td>급여지급일</td>
 			</tr>	
 		</thead>
 		<tbody>
 			<%
-			List<SalaryDto> salaryList = (List)request.getAttribute("salaryList");
-			for(SalaryDto s : salaryList){
+			List<PayrollDto> payrollList = (List)request.getAttribute("payrollList");
+			for(PayrollDto p : payrollList){
 			%>
 				<tr>
-					<td><%= s.getBasicSalary()%></td>
-					<td><%= s.getRegularHourlyWage()%></td>
-					<td><%= s.getOvertimeAllowance()%></td>
-					<td><%= s.getHolidayAllowance()%></td>
-					<td><%= s.getLongServiceAllowance()%></td>
-					<td><%= s.getPositionAllowance()%></td>
-					<td><%= s.getAnnualLeaveAllowance()%></td>
-					<td><%= s.getQualificationAllowance()%></td>
-					<td><%= s.getMealExpenses()%></td>
-					<td><%= s.getTransportationExpenses()%></td>
-					<td><%= s.getBonus()%></td>
-					<td><%= s.getSpecialAllowance()%></td>
-					<td><%= s.getTotalSalary()%></td>
-					<td><%= s.getFourMajorInsurances()%></td>
-					<td><%= s.getTax()%></td>
-					<td><%= s.getNetSalary()%></td>
+					<td><%= p.getBasicSalary()%></td>
+					<td><%= p.getRegularHourlyWage()%></td>
+					<td><%= p.getOvertimeAllowance()%></td>
+					<td><%= p.getHolidayAllowance()%></td>
+					<td><%= p.getLongServiceAllowance()%></td>
+					<td><%= p.getPositionAllowance()%></td>
+					<td><%= p.getAnnualLeaveAllowance()%></td>
+					<td><%= p.getQualificationAllowance()%></td>
+					<td><%= p.getMealExpenses()%></td>
+					<td><%= p.getTransportationExpenses()%></td>
+					<td><%= p.getBonus()%></td>
+					<td><%= p.getSpecialAllowance()%></td>
+					<td><%= p.getTotalSalary()%></td>
+					<td><%= p.getFourMajorInsurances()%></td>
+					<td><%= p.getTax()%></td>
+					<td><%= p.getNetSalary()%></td>
+					<td><%= p.getPayrollAccount()%></td>
+					<td><%= p.getPayrollDate()%></td>
 				</tr>
 			<%
 			}
 			%>
 		</tbody>
 	</table>
-	
+
 </body>
-</html>
+</html> --%>
