@@ -1,6 +1,7 @@
 package com.hh.hh.member.contoller;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -53,6 +54,25 @@ public class MemberController {
 			return "/main";
 		}else {
 			return "fail";
+		}
+	}
+	
+	
+	//회원가입 화면 보여주기
+	@GetMapping("join")
+	public String join() {
+		return "join";
+	}
+	
+	//회원가입 기능 처리
+	@PostMapping("join")
+	public String join(MemberDto dto, HttpServletRequest req) throws Exception{
+		System.out.println(dto);
+		int result = service.join(dto,req);
+		if(result>0) {
+			return "redirect:/member/login";
+		}else {
+			return "redirect:/member/join";
 		}
 	}
 }

@@ -8,5 +8,33 @@
 		SELECT *
 		FROM EMP
 		WHERE EMP_NO = #{empNo}
-	</select>  
+	</select>
+	
+	<insert id="insertMember" parameterType="memberDto">
+		INSERT INTO EMP
+		(
+			 EMP_NO
+		    ,EMP_PASSWORD
+		    ,EMP_NAME
+		    ,EMP_BIRTH
+		    ,EMP_EMAIL
+		    ,EMP_ADDRESS
+		    ,EMP_PHONE
+		    ,EMP_DEPTNO
+		    ,EMP_JOBCODE 
+		)
+		VALUES
+		(
+			 #{empNo}
+			,#{empPassword}
+			,#{empName}
+			,#{empBirth}
+			,#{empEmail}
+			,#{empAddress}
+			,#{empPhone}
+			,#{empDeptno}
+			,#{empJobcode}
+		)
+	</insert>
+	  
 </mapper>
