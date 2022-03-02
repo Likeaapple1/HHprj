@@ -1,4 +1,4 @@
-package com.hh.hh.attendanceentity;
+package com.hh.hh.attendance.entity;
 
 import java.sql.Time;
 import java.util.Date;
@@ -9,8 +9,8 @@ import lombok.Data;
 public class AttendanceDto {
 	private long attNo;
 	private long empNo;
-	private Date attDate;
-	private Date attStrDatE;
+	private char attDate;
+	private Date attStrDate;
 	private Date attEndDate;
 	private char attLate;
 	private char attNsYn;
@@ -20,4 +20,7 @@ public class AttendanceDto {
 	private Time hwStrDate;
 	private Time hwEndDate;
 	private Time ovDate;
+	private String workForm;
+	private String startDate;
+	private String endDate;
 }

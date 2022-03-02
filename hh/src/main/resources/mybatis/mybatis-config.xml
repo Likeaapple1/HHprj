@@ -12,6 +12,7 @@
 		<typeAlias type="com.hh.hh.member.entity.MemberDto" alias="memberDto"/>
 		<typeAlias type="com.hh.hh.salary.entity.SalaryDto" alias="salaryDto"/>
 		<typeAlias type="com.hh.hh.salary.entity.PayrollDto" alias="payrollDto"/>
-		<typeAlias type="com.hh.hh.attendanceentity.AttendanceDto" alias="attendanceDto"/>
+		<typeAlias type="com.hh.hh.attendance.entity.AttendanceDto" alias="attendanceDto"/>
+		<typeAlias type="com.hh.hh.annual.entity.AnnualDto" alias="annualDto"/>
 	</typeAliases>
 </configuration>
