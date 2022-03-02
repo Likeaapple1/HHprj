@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<c:set var = "root" value = "${pageContext.request.contextPath}">
+</c:set>
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html>
 <head>
   <meta charset="utf-8">
@@ -10,9 +17,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="${root}/resource/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="${root}/resource/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -192,56 +199,41 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                퇴직업무
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="starter.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직금 산정</p>
+               <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    퇴직업무
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="resinghistory copy.html" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>퇴직금 산정</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="resigninput copy.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>퇴직급여 입력</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="resignresicp copy.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>퇴직소득원청징수</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="resigntotal copy.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>퇴직금추계액관리</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a href="starter copy.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직급여 입력</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="starter copy 2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직소득원청징수</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="starter copy 3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직금추계액관리</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="starter copy 4.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직소득자료제출</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -255,10 +247,8 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-12">
             <h1 class="m-0">퇴직급여입력</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">퇴직급여입력</li>
@@ -270,27 +260,30 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <session class="content">
+      <div class="card">
+        <div class="card-body">
+          <!-- <h5 class="card-title">Card title</h5> -->
+
+          <span> 귀속연열 : <input type="date" id="searchDate"> 
+            <select id="selectBox">
+                <option value="empName">성명</option>
+                <option value="empDept">부서</option>
+            </select>
+            <input type="text" id="saerchText">
+
+                 <input type="submit" value="검색">
+
+            </span>
+
+          <!-- <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a> -->
+        </div>
+      </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <!-- <h5 class="card-title">Card title</h5> -->
-
-                <span> 귀속연열 : <input type="date" id="searchDate"> 
-                  <select id="selectBox">
-                      <option value="empName">성명</option>
-                      <option value="empDept">부서</option>
-                  </select>
-                  <input type="text" id="saerchText">
-                   <input type="submit" value="검색">
-                  </span>
-
-                <!-- <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a> -->
-              </div>
-            </div>
+          <div class="col-md-6">
+            
 
             <div class="card card-primary card-outline">
               <div class="card-body">
@@ -355,26 +348,28 @@
             </div><!-- /.card -->
           </div>
           <!-- /.col-md-6 -->
-          <div class="col-lg-6">
+          <div class="col-md-6">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                  <button>퇴직소득계산</button>
-                  <button>저장</button>
-                  <button>초기화</button>
-                  <button>마감</button>
+                <div class="card-tools">
+                  <button class="btn btn-primary">퇴직소득계산</button>
+                  <button class="btn btn-primary">저장</button>
+                  <button class="btn btn-primary">초기화</button>
+                  <button class="btn btn-primary">마감</button>
+                </div>
               </div>
               <div class="card-body">
                 <h6 class="card-title">
-                  <table table id="example1" class="table table-bordered table-striped">
+                  <table table id="example1" class="table table-bordered">
                     <tr>
-                      <td> 구분</td>
+                      <td bgcolor="eeeee"> 구분</td>
                       <td> 
                         <select name="" id="">
                           <option value="">퇴직정산</option>
                           <option value="">중산정산</option>
                         </select>
                       </td>
-                      <td>퇴직사유</td>
+                      <td bgcolor="eeeee">퇴직사유</td>
                       <td>
                         <select name="" id="">
                           <option value="">정년퇴직</option>
@@ -387,25 +382,18 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>확정급여형 퇴직연금제도 가입일</td>
+                      <td bgcolor="eeeee">확정급여형 퇴직연금제도 가입일</td>
                       <td>
                         <input type="date">
                       </td>
-                      
-                      
-                      
-                      
                     </tr>
                   </table>
                 </h6>
-
-                <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-6">
+            
+          <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">퇴직급여 현황</h5>
@@ -414,9 +402,9 @@
 
                 <p class="card-text">
 
-                  <table border="1">
+                  <table id="example1" class="table table-bordered">
                     <thead>
-                    <tr>
+                    <tr bgcolor="eeeee">
                       <td>근무처구분</td>
                       <td>근무처명</td>
                       <td>사업자등록번호</td>
@@ -427,7 +415,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>최종</td>
+                      <td bgcolor="eeeee">최종</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -435,7 +423,7 @@
                       <td></td>
                     </tr>
                     <tr>
-                      <td>중간지급 등</td>
+                      <td bgcolor="eeeee">중간지급 등</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -443,7 +431,7 @@
                       <td></td>
                     </tr>
                     <tr>
-                      <td>정산</td>
+                      <td bgcolor="eeeee">정산</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -454,23 +442,23 @@
                     
                   </table>
                 </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+               
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">근속연수</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
+
 
                 <p class="card-text">
-                  <table border="1">
+                  <table id="example1" class="table table-bordered">
                     <thead>
-                    <tr>
+                    <tr bgcolor="eeeee">
                       <td>구분</td>
                       <td>입사일</td>
                       <td>퇴사일</td>
@@ -484,7 +472,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>중간지급 근속연수</td>
+                      <td bgcolor="eeeee">중간지급 근속연수</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -495,7 +483,7 @@
                       <td></td>
                     </tr>
                     <tr>
-                      <td>최종 근속연수</td>
+                      <td bgcolor="eeeee">최종 근속연수</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -506,7 +494,7 @@
                       <td></td>
                     </tr>
                     <tr>
-                      <td>정산 근속연수</td>
+                      <td bgcolor="eeeee">정산 근속연수</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -520,12 +508,12 @@
                     
                   </table>
                 </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+              
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">과새이연계좌</h5>
@@ -533,8 +521,8 @@
               <div class="card-body">
 
                 <p class="card-text">
-                  <table border="1">
-                    <tr>
+                  <table id="example1" class="table table-bordered">
+                    <tr bgcolor="eeeee">
                       <td>연급계좌취급자</td>
                       <td>사업자등록번호</td>
                       <td>계좌번호</td>
@@ -552,12 +540,12 @@
                     </tr>
                   </table>
                 </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+               
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col">
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">납부명세</h5>
@@ -566,9 +554,9 @@
                
 
                 <p class="card-text">
-                  <table border="1">
+                  <table id="example1" class="table table-bordered">
                     <thead>
-                    <tr>
+                    <tr bgcolor="eeeee">
                       <td>구분</td>
                       <td>소득세</td>
                       <td>지방소득세</td>
@@ -578,21 +566,21 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>신교대상세액</td>
+                      <td bgcolor="eeeee">신교대상세액</td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                     </tr>
                     <tr>
-                      <td>이연퇴직소득세</td>
+                      <td bgcolor="eeeee">이연퇴직소득세</td>
                       <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
                     </tr>
                     <tr>
-                      <td>차감원청징수세액</td>
+                      <td bgcolor="eeeee">차감원청징수세액</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -602,15 +590,17 @@
                     
                   </table>
                 </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+               
               </div>
             </div>
           </div>
+        </div>
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    
+  </session>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -640,10 +630,11 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="${root}/resource/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${root}/resource/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="${root}/resource/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+    
