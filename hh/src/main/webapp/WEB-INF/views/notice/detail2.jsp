@@ -35,18 +35,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       margin: auto;
       width: 1000px !important;
     }
-    .file {
-      width: 210px !important;
-    }
-    textarea {
-      font-size: 10pt !important;
-      text-align: center;
+    .ta {
+      /* font-size: 10pt; */
+      min-height: 300px !important;
+      /* border: 1px solid; */
     }
   </style>
-  
-  <!-- smarteditor2 -->
-<script type="text/javascript" src="${path}/resources/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>공지사항</title>
@@ -315,47 +309,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <form method="post">
 
 <table>
-  
   <tr>
-    <td><input name="title" class="form-control" type="text" placeholder="제목"></td>
+    <td colspan="2"><h3><input type="text" name="title" value="${data.title}"></h3><hr></td>
   </tr>
-
   <tr>
-    <td>
-                                  <!-- <div id="smarteditor">
-                                    <textarea name="content" id="editorTxt" 
-                                              rows="20" cols="50" 
-                                              placeholder="내용을 입력해주세요"
-                                              style="width: 100%"></textarea>
-                                  </div> -->
-
-    <textarea name="content" class="form-control" cols="50" rows="20" style="resize: none;"></textarea>
-    <!-- <input type="text" name="writer" placeholder="작성자"> -->
-    </td>
+    <!-- 작성자 -->
+    <td><div class="left"><b>${data.writer}</b></div></td>
+    <!-- 작성일 -->
+    <td><div class="right"><b>${data.enrollDate}</b></div></td>
   </tr>
-
   <tr>
-    <td>
-      <div class="mb-3">
-      <!-- <input class="form-control form-control-sm file" id="formFileSm" type="file"> -->
-      </div>
-    </td>
-  </tr>
+    <td colspan="2"><br><br><div class="ta">
 
+<pre>
+  <input type="text" name="content" value="${data.content}">
+</pre>
+
+    </div><br><br></td>
+  </tr>
+  <tr>
+    <td><div class="left">
+        <a href="<%=request.getContextPath()%>/notice/list" class="btn btn-primary">목록</a>
+    </div></td>
+    <td><div class="right">
+    	<input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/edit">
+		<input class="btn btn-secondary" type="submit" value="삭제" formaction="<%=request.getContextPath()%>/notice/delete">
+    </div></td>
+  </tr>
 </table>
 
-<div class="center">
-  <br>
-  <input type="submit" class="btn btn-primary" value="등록">
-  　<a href="#" class="btn btn-secondary">취소</a><br><br>
-</div>
-
 </form>
-          </div>
 
-          <br>
+
+
+
+
+          </div>
+          <br><br>
           <!-- /.col-md-6 -->
           <!-- <div class="col-lg-6">
+
+222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
 
               </div> -->
             <!-- </div>
@@ -399,32 +393,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="${path}/resources/css/salary/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${path}/resources/css/salary/dist/js/adminlte.min.js"></script>
-
-<!-- smarteditor2 -->
-<script>
-    let oEditors = []
-
-    smartEditor = function() {
-      console.log("Naver SmartEditor")
-      nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "editorTxt",
-        sSkinURI: "${path}/resources/static/smarteditor/SmartEditor2Skin.html",
-        fCreator: "createSEditor2"
-      })
-    }
-
-    $(document).ready(function() {
-      smartEditor()
-    })
-</script>
-
-<script>
-    $("#datepicker").datepicker({
-    language: 'ko',
-    timepicker: true,
-    timeFormat: "hh:ii AA"
-});
-</script>
 </body>
 </html>

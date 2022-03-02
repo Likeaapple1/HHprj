@@ -78,6 +78,14 @@ public class NoticeController {
 		return "notice/detail";
 	}
 	
+	// 수정페이지
+	@GetMapping("/detail2/{t}")
+	public String detail2(@PathVariable String t, Model model) {
+		
+
+		return "notice/detail2";
+	}
+	
 	//상세페이지 수정
 	@PostMapping("edit")
 	public String edit(NoticeDto dto) {

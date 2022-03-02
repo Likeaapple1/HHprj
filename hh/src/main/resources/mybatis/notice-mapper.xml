@@ -37,8 +37,8 @@
 		UPDATE NOTICE
 		SET 
 		  CONTENT = #{content}
-		, WRITER = #{writer}
-		, ENROLL_DATE = #{enrollDate}
+		, WRITER = '관리자'
+		, ENROLL_DATE = SYSDATE
 		WHERE TITLE = #{title}
 	</update>
 	
