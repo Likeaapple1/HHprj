@@ -6,7 +6,7 @@
 <mapper namespace="member">
 	<select id="getMember" parameterType="memberDto" resultType="memberDto">
 		SELECT *
-		FROM MEMBER
-		WHERE MEMBER_NO = #{memberNo}
+		FROM EMP
+		WHERE EMP_NO = #{empNo}
 	</select>  
 </mapper>

@@ -1,4 +1,4 @@
-package com.hh.hh.membercontoller;
+package com.hh.hh.member.contoller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +39,7 @@ public class MemberController {
 				
 				// 1. 아이디 저장만 체크 했는지
 				 if(checkInfo.equals("rememberId")) { // 아이디 저장 쿠키 준비 
-					 Cookie cookie = new Cookie("memberNo", String.valueOf(loginUser.getMemberNo()));
+					 Cookie cookie = new Cookie("empNo", String.valueOf(loginUser.getEmpNo()));
 					 cookie.setPath("/"); 
 					 resp.addCookie(cookie); 
 				 }

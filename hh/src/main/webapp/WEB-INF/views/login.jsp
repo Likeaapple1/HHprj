@@ -26,13 +26,13 @@
   	<img src="https://cdn3.iconfinder.com/data/icons/login-5/512/LOGIN_6-512.png" class="img-circle">
 	<c:choose>
 	<%-- 쿠키 없으면 그냥 로그인 화면 보이도록 --%>
-		<c:when test="${empty cookie.memberNo}">
+		<c:when test="${empty cookie.empNo}">
 			 <form action = "${root}/login" method = "post">
 			 	<div class="form-group">
-			 		<input type="text" name="memberNo" class="form-control" placeholder="Member No" required>
+			 		<input type="text" name="empNo" class="form-control" placeholder="Member No" required>
 			 	</div>
 			 	<div class="form-group">
-			 		<input type="password" name="memberPassword" class="form-control" placeholder="Password" required>
+			 		<input type="password" name="empPassword" class="form-control" placeholder="Password" required>
 			 	</div>
 			 	<button type="submit" class="btn btn-primary btn-lg"> Sign In</button>
 			 	<div class="row">
@@ -56,10 +56,10 @@
 		 <c:otherwise>
 		 		<form action = "" method = "post">
 			 	<div class="form-group">
-			 		<input type="text" name="memberNo" class="form-control" placeholder="Member No" value = "${cookie.memberNo.value}">
+			 		<input type="text" name="empNo" class="form-control" placeholder="Member No" value = "${cookie.empNo.value}">
 			 	</div>
 			 	<div class="form-group">
-			 		<input type="password" name="memberPassword" class="form-control" placeholder="Password" required>
+			 		<input type="password" name="empPassword" class="form-control" placeholder="Password" required>
 			 	</div>
 			 	<button type="submit" class="btn btn-primary btn-lg"> Sign In</button>
 			 	<div class="row">
@@ -85,12 +85,12 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
 <script type="text/javascript">
 
-let changeCookie = Cookies.get('memberNo');
+let changeCookie = Cookies.get('empNO');
 
 function deleteCookie(){
 	let checkChange = document.querySelector('input[type=checkbox]');
 	if(!this.checked){
-		Cookies.remove('memberNo');
+		Cookies.remove('empNo');
 		checkChange.checked = false;
 	}
 } 

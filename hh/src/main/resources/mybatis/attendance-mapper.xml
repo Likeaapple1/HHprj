@@ -13,6 +13,7 @@
   		(
   			ATT_NO,
   			EMP_NO,
+  			WORK_FORM,
   			ATT_DATE,
   			ATT_STR_DATE
   		)
@@ -20,8 +21,27 @@
   		(
   			#{attNo},
   			#{empNo},
+  			'정상근무',
   			'Y',
   			SYSDATE
   		)
   	</insert>
+  	
+  	<select id="selectInfoWork" parameterType="attendanceDto" resultType="attendanceDto">
+  		SELECT * FROM
+  		ATTENDANCE
+  		WHERE EMP_NO = #{empNo} and ATT_STR_DATE = SYSDATE
+  	</select>
+  	
+  	<select id="selectWorkList" parameterType="long" resultType="attendanceDto">
+  		SELECT * FROM
+  		ATTENDANCE
+  		WHERE EMP_NO = #{empNo} and ATT_END_DATE &lt; SYSDATE
+  	</select>
+  	
+  	<update id="updateWork" parameterType="attendanceDto">
+  		UPDATE ATTENDANCE
+		SET ATT_END_DATE = SYSDATE
+		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo});
+  	</update>
 </mapper>
