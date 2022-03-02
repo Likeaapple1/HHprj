@@ -34,7 +34,7 @@
 			<c:when	test="${attUser.attDate eq null}">
 				<form action = "" method="post">
 					<span>출근 등록을 해주세요</span>
-					<button type="submit">출&nbsp;근</button>
+					<input type="submit" formaction="${root}/attendance/working" value = "출&nbsp;근">
 				</form>
 			</c:when>
 			<c:when	test="${attUser.attDate != null}">
