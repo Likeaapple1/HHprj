@@ -33,7 +33,7 @@ public class SalaryController {
 		// 화면에 전달해주기
 		model.addAttribute("salaryList", salaryList);
 
-		return "salary/salary";
+		return "salary/payroll";
 	}
 
 	@GetMapping("/payroll")
@@ -47,6 +47,6 @@ public class SalaryController {
 		// 화면에 전달해주기
 		model.addAttribute("payrollList", payrollList);
 		
-		return "salary/payroll";
+		return "salary/payslip";
 	}
 }

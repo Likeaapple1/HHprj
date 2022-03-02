@@ -24,6 +24,7 @@ public class PayrollDto {
 	private String fourMajorInsurances;
 	private String tax;
 	private String netSalary;
+	private String payrollBank;
 	private String payrollAccount;
 	private Date payrollDate;
 
