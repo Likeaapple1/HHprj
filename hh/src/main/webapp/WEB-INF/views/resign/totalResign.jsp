@@ -134,6 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <div></div>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

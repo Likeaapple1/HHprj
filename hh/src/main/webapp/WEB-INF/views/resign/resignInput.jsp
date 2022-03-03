@@ -400,6 +400,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </session>
     <!-- /.content -->
   </div>
+  <div></div>
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
