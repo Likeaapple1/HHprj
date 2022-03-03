@@ -39,6 +39,21 @@ public class AttendanceDaoImpl implements AttendanceDao{
 		return sqlsession.update("attendance.updateWork",attendanceDto);
 	}
 
+	@Override
+	public int tardyWork(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.insert("attendance.tardyWork",attendanceDto);
+	}
+
+	@Override
+	public int getWorkOver(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.update("attendance.updateWorkOver",attendanceDto);
+	}
+
+	@Override
+	public int getWorkNight(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.update("attendance.updateWorkNight",attendanceDto);
+	}
+
 	
 	
 }

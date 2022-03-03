@@ -21,6 +21,9 @@ public class AttendanceDto {
 	private Time hwEndDate;
 	private Time ovDate;
 	private String workForm;
+	private Date attNsStart;
+	private Date attNsEnd;
 	private String startDate;
 	private String endDate;
+
 }

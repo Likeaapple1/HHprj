@@ -39,9 +39,51 @@
   		WHERE EMP_NO = #{empNo} and ATT_END_DATE &lt; SYSDATE
   	</select>
   	
+  	<!-- 근무 폼 업데이트 -->
   	<update id="updateWork" parameterType="attendanceDto">
 		UPDATE ATTENDANCE
-		SET ATT_END_DATE = SYSDATE
+				SET ATT_END_DATE = SYSDATE,
+		<choose>
+			<when test="attNsStart &lt; attNsEnd">
+				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y'
+			</when>
+			<otherwise>
+				 WORK_FORM ='정상근무', ATT_NS_YN = 'N'
+			</otherwise>
+		</choose>
+				WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})						
+  	</update>
+  	
+  	 <insert id="tardyWork" parameterType="attendanceDto">
+  		INSERT INTO ATTENDANCE
+  		(
+  			ATT_NO,
+  			EMP_NO,
+  			WORK_FORM,
+  			ATT_DATE,
+  			ATT_STR_DATE,
+  			ATT_LATE
+  		)
+  		VALUES
+  		(
+  			#{attNo},
+  			#{empNo},
+  			'지각',
+  			'Y',
+  			SYSDATE,
+  			'Y'
+  		)
+  	</insert>
+  	
+  	 <update id="updateWorkOver" parameterType="attendanceDto">
+		UPDATE ATTENDANCE
+		SET ATT_END_DATE = SYSDATE, WORK_FORM = '초과근무'
+		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})
+  	</update>
+  	
+  	 <update id="updateWorkNight" parameterType="attendanceDto">
+		UPDATE ATTENDANCE
+		SET ATT_END_DATE = SYSDATE, WORK_FORM = '야간근무', ATT_NS_YN = 'Y'
 		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})
   	</update>
 </mapper>

@@ -8,11 +8,14 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-	<typeAliases>
+  <typeAliases>
 		<typeAlias type="com.hh.hh.member.entity.MemberDto" alias="memberDto"/>
-		<typeAlias type="com.hh.hh.salary.entity.SalaryDto" alias="salaryDto"/>
-		<typeAlias type="com.hh.hh.salary.entity.PayrollDto" alias="payrollDto"/>
-		<typeAlias type="com.hh.hh.attendance.entity.AttendanceDto" alias="attendanceDto"/>
-		<typeAlias type="com.hh.hh.annual.entity.AnnualDto" alias="annualDto"/>
-	</typeAliases>
+        <typeAlias type="com.hh.hh.salary.entity.SalaryDto" alias="salaryDto"/>
+        <typeAlias type="com.hh.hh.salary.entity.PayrollDto" alias="payrollDto"/>
+        <typeAlias type="com.hh.hh.attendance.entity.AttendanceDto" alias="attendanceDto"/>
+        <typeAlias type="com.hh.hh.annual.entity.AnnualDto" alias="annualDto"/>
+        <typeAlias type="com.hh.hh.notice.entity.NoticeDto" alias="notice"/>
+        <!-- <typeAlias type="com.hh.hh.resign.entity.ResignDto" alias="resignDto"/>  -->
+        <!-- <typeAlias type="com.hh.hh.chat.entity.ChatDto" alias="chatDto"/>  -->
+    </typeAliases>
 </configuration>
