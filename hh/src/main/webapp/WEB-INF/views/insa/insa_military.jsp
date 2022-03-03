@@ -32,6 +32,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
       text-align: right;
     }
 
+    .injuk {
+      border: solid 1px silver;
+    }
+    
+    .family {
+      border: solid 1px silver;
+    }
+    
+    .school {
+      border: solid 1px silver;
+    }
+    
+    .language {
+      border: solid 1px silver;
+    }
+    
+    .license {
+      border: solid 1px silver;
+    }
+    
+    .career {
+      border: solid 1px silver;
+    }
+    
+    .appoint {
+      border: solid 1px silver;
+    }
+    
+    .reward {
+      border: solid 1px silver;
+    }
+    
+    .military {
+      background-color: lightsteelblue;
+      border: solid 1px silver;
+    }
+
+    .etc {
+      border: solid 1px silver;
+    }
 
   </style>
   <meta charset="utf-8">
@@ -41,9 +81,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="${path}/resources/css/insa/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="${path}/resources/css/insa/dist/css/adminlte.min.css">
 
   <!-- 부트스트랩 -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -51,7 +91,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -301,37 +342,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div id="h_menu" class="container">  
           <ul id="nav" class="nav nav-tabs nav-justified">
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/recipe">인적사항</a>
+              <div class="injuk"><a class="nav-link" href="/insa/injuk">인적사항</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/challenge">가족사항</a>
-            </li>
-          <!--<li class="nav-item">
-                    <a class="nav-link" href="#">식단코칭</a>
-                  </li> -->
-                  <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/magazine">학력정보</a>
+              <div class="family"><a class="nav-link" href="/insa/family">가족사항</a></div>
             </li>
             <li class="nav-item">
-                      <a class="nav-link" href="/Recipetory/mypage">어학정보</a>
+              <div class="school"><a class="nav-link" href="/insa/school">학력정보</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/support">자격증</a>
+              <div class="language"><a class="nav-link" href="/insa/language">어학정보</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/support">경력정보</a>
+              <div class="license"><a class="nav-link" href="/insa/license">자격증</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/support">발령정보</a>
+              <div class="career"><a class="nav-link" href="/insa/career">경력정보</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/support">상벌정보</a>
+              <div class="appoint"><a class="nav-link" href="/insa/appoint">발령정보</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/support">병역정보</a>
+              <div class="reward"><a class="nav-link" href="/insa/reward">상벌정보</a></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Recipetory/support">기타정보</a>
+              <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
             </li>
           </ul>
         </div>
@@ -423,10 +461,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="${path}/resources/css/insa/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${path}/resources/css/insa/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
