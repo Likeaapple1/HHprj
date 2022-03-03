@@ -3,8 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html lang="ko">
-<style>
+<head>
+  <style>
     .center {
       margin: auto;
       text-align: center;
@@ -34,18 +39,16 @@
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-0lax{text-align:left;vertical-align:top}
   </style>
-
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>인사정보 홈</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인사기본정보</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="${path}/resources/css/insa/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="${path}/resources/css/insa/dist/css/adminlte.min.css">
 
   <!-- 부트스트랩 -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -53,7 +56,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -534,7 +538,7 @@
   <!-- /.content-wrapper -->
 
 
-  <br><br>
+  <!-- <br><br>
   <hr>
   <div class="content">
     <div class="container-fluid">
@@ -555,7 +559,7 @@
     <!--<li class="nav-item">
               <a class="nav-link" href="#">식단코칭</a>
             </li> -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
         <a class="nav-link" href="/Recipetory/magazine">학력정보</a>
       </li>
       <li class="nav-item">
@@ -582,11 +586,11 @@
     </ul>
   </div>
 </div>
-</div>
-<div class="row div1 center">
+</div> -->
+<!-- <div class="row div1 center"> -->
   <!-- <div class="col-lg-6"> -->
 
-    <table border="1" class="table table-bordered table-hover tb_insa1">
+    <!-- <table border="1" class="table table-bordered table-hover tb_insa1">
               <tbody>
                   <tr>
                     <td rowspan="6" colspan="20"></td>
@@ -678,7 +682,7 @@
                         <td><input type="text" class="mon"></td>
                       </tr>
                     </tbody>
-                    </table>
+                    </table> -->
 
 
 
@@ -707,10 +711,11 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="${path}/resources/css/insa/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${path}/resources/css/insa/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+

@@ -17,21 +17,97 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .tb_salary1 {
       font-size: 10pt;
     }
-    .div1 {
+    /* .div1 {
       overflow-y: scroll;
       min-height: 0px;
-      max-height: 330px;
-    }
-    td, th {
+      max-height: 600px;
+    } */
+    td {
+      height: 30px;
+      width: 200px;
+    } 
+    th {
       height: 30px;
     }
-    .mon {
+    .blank1 {
       height: 35px;
+      width: 240px;
+    }
+
+    .blank2{
+      height: 35px;
+      width: 200px;
+    }
+
+    .blank3{
+      text-align: left;
+      height: 35px;
+      width: 1000px;
     }
     .right {
       text-align: right;
     }
 
+    .injuk {
+      background-color: lightsteelblue;
+      border: solid 1px silver;
+    }
+
+    .family {
+      border: solid 1px silver;
+    }
+
+    .school {
+      border: solid 1px silver;
+    }
+
+    .language {
+      border: solid 1px silver;
+    }
+
+    .license {
+      border: solid 1px silver;
+    }
+
+    .career {
+      border: solid 1px silver;
+    }
+
+    .appoint {
+      border: solid 1px silver;
+    }
+
+    .reward {
+      border: solid 1px silver;
+    }
+
+    .military {
+      border: solid 1px silver;
+    }
+
+    .etc {
+      border: solid 1px silver;
+    }
+
+    .a {
+      width: 200px;
+    }
+
+    .b{
+      width: 250px;
+    }
+
+    .c{
+      width: 150px;
+    }
+
+    .d{
+      width: 200px;
+    }
+
+    .e{
+      width: 300px;
+    }
     .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -46,9 +122,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="${path}/resources/css/insa/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="${path}/resources/css/insa/dist/css/adminlte.min.css">
 
   <!-- 부트스트랩 -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -56,7 +132,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -299,52 +376,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="month left">
-
-          <div class="content">
-            <div class="container-fluid">
-            
-              <div id="h_menu" class="container">  
-                <ul id="nav" class="nav nav-tabs nav-justified">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/recipe">인적사항</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/challenge">가족사항</a>
-                  </li>
-                <!--<li class="nav-item">
-                          <a class="nav-link" href="#">식단코칭</a>
-                        </li> -->
-                        <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/magazine">학력정보</a>
-                  </li>
-                  <li class="nav-item">
-                            <a class="nav-link" href="/Recipetory/mypage">어학정보</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/support">자격증</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/support">경력정보</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/support">발령정보</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/support">상벌정보</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/support">병역정보</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Recipetory/support">기타정보</a>
-                  </li>
-                </ul>
-              </div>
       
-              </div>
+        <div id="h_menu" class="container">  
+          <ul id="nav" class="nav nav-tabs nav-justified">
+            <li class="nav-item">
+              <div class="injuk"><a class="nav-link" href="/insa/injuk">인적사항</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="family"><a class="nav-link" href="/insa/family">가족사항</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="school"><a class="nav-link" href="/insa/school">학력정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="language"><a class="nav-link" href="/insa/language">어학정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="license"><a class="nav-link" href="/insa/license">자격증</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="career"><a class="nav-link" href="/insa/career">경력정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="appoint"><a class="nav-link" href="/insa/appoint">발령정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="reward"><a class="nav-link" href="/insa/reward">상벌정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
+            </li>
+            <li class="nav-item">
+              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
+            </li>
+          </ul>
         </div>
 
+        </div>
 
         <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
@@ -353,67 +421,127 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <thead>
                         <tr>
                           <td rowspan="6"></td>
-                          <td>사원번호</td>
-                          <td><input type="text" class="mon"></td>
-                          <td>성명</td>
-                          <td><input type="text" class="mon"></td>
+                          <td class="a">사원번호</td>
+                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="a">성명</td>
+                          <td class="b"><input type="text" class="blank1"></td>
                         </tr>
       
                         <tr>
-                          <td>영문성명</td>
-                          <td><input type="text" class="mon"></td>
-                          <td>한자성명</td>
-                          <td><input type="text" class="mon"></td>
+                          <td class="a">영문성명</td>
+                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="a">한자성명</td>
+                          <td class="b"><input type="text" class="blank1"></td>
                         </tr>
       
                         <tr>
-                          <td>주민등록번호</td>
-                          <td><input type="text" class="mon"></td>
-                          <td>성별</td>
-                          <td><input type="text" class="mon"></td>
+                          <td class="a">주민등록번호</td>
+                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="a">성별</td>
+                          <td class="b"><input type="text" class="blank1"></td>
                         </tr>
       
                         <tr>
-                          <td>생년월일</td>
-                          <td><input type="text" class="mon"></td>
-                          <td>양력 음력</td>
-                          <td><input type="text" class="mon"></td>
+                          <td class="a">생년월일</td>
+                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="a">양력 음력</td>
+                          <td class="b"><input type="text" class="blank1"></td>
                         </tr>
       
                         <tr>
-                          <td>결혼유무</td>
-                          <td><input type="text" class="mon"></td>
-                          <td>결혼기념일</td>
-                          <td><input type="text" class="mon"></td>
+                          <td class="a">결혼유무</td>
+                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="a">결혼기념일</td>
+                          <td class="b"><input type="text" class="blank1"></td>
                         </tr>
       
                         <tr>
-                          <td>내외국인</td>
-                          <td><input type="text" class="mon"></td>
-                          <td>국적</td>
-                          <td><input type="text" class="mon"></td>
+                          <td class="a">내외국인</td>
+                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="a">국적</td>
+                          <td class="b"><input type="text" class="blank1"></td>
                         </tr>
                     </table>
                     
                   
-                  <!-- <div class="right">
-                    <br>
+                  <div class="right">
                     <a href="#" class="btn btn-primary">새 인사정보 등록하기</a>
                     <br><br>
-                  </div> -->
+                  </div>
 
+                  <table border="1" class="table table-bordered table-hover tb_insa1">
+                    <tbody>
+                        <tr>
+                          <td class="c">회사전화</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">자택전화</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">핸드폰</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                        </tr>
+      
+                        <tr>
+                          <td>회사이메일</td>
+                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                        </tr>
+      
+                        <tr>
+                          <td>외부이메일</td>
+                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                        </tr>
+      
+                        <tr>
+                          <td rowspan="2">자택주소</td>
+                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                        </tr>
+  
+                        <tr>
+                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                        </tr>
+      
+                        <tr>
+                          <td>자택영문주소</td>
+                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                        </tr>
+                        
+                        <tr>
+                          <td>재직구분</td>
+                          <td><select name="emp" class="mon">
+                            <option value="emp1" label="재직" selected></option>
+                            <option value="emp2" label="퇴직"></option>
+                            <option value="emp3" label="휴직"></option>
+                          </select></td>
+                          <td>입사일자</td>
+                          <td><input type="text" class="homephone"></td>
+                          <td>퇴사일자</td>
+                          <td><input type="text" class="phone"></td>
+                        </tr>
+  
+                      </tbody>
+                      </table>
+  
+  
+                    </div>
+                    <div class="right">
+                      <br>
+                      <a href="#" class="btn btn-primary">삭제</a>
+                      <a href="#" class="btn btn-primary">저장</a>
+                      <br><br>
+                    </div>
+
+          <!-- /.col-md-6  -->
+          <!-- <div class="col-lg-6"> -->
+
+
+
+              </div>
+            </div>
+          </div>
           <!-- /.col-md-6 -->
-          <!-- <div class="col-lg-6">
-
-
-
-              </div> -->
-            <!-- </div>
-          </div> -->
-          <!-- /.col-md-6 -->
-        <!-- </div> -->
+        </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
@@ -423,71 +551,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
   <!-- <div class="col-lg-6"> -->
 
-    <table border="1" class="table table-bordered table-hover tb_insa1">
-              <tbody>
-                  
-                </tbody>
-                </table>
-
-                <table border="1" class="table table-bordered table-hover tb_insa1">
-                  <tbody>
-                      <tr>
-                        <td>회사전화</td>
-                        <td><input type="text" class="officephone"></td>
-                        <td>자택전화</td>
-                        <td><input type="text" class="homephone"></td>
-                        <td>핸드폰</td>
-                        <td><input type="text" class="phone"></td>
-                      </tr>
-    
-                      <tr>
-                        <td>회사이메일</td>
-                        <td colspan="5"><input type="text" class="officemail"></td>
-                      </tr>
-    
-                      <tr>
-                        <td>외부이메일</td>
-                        <td colspan="5"><input type="text" class="mail"></td>
-                      </tr>
-    
-                      <tr>
-                        <td rowspan="2">자택주소</td>
-                        <td colspan="5"><input type="text" class="address"></td>
-                      </tr>
-
-                      <tr>
-                        <td colspan="5"><input type="text" class="postnumber"></td>
-                      </tr>
-    
-                      <tr>
-                        <td>자택영문주소</td>
-                        <td colspan="5"><input type="text" class="englishaddress"></td>
-                      </tr>
-                      
-                      <tr>
-                        <td>재직구분</td>
-                        <td><select name="emp" class="mon">
-                          <option value="emp1" label="재직" selected></option>
-                          <option value="emp2" label="퇴직"></option>
-                          <option value="emp3" label="휴직"></option>
-                        </select></td>
-                        <td>입사일자</td>
-                        <td><input type="text" class="homephone"></td>
-                        <td>퇴사일자</td>
-                        <td><input type="text" class="phone"></td>
-                      </tr>
-
-                    </tbody>
-                    </table>
-
-
-                  </div>
-                  <div class="right">
-                    <br>
-                    <a href="#" class="btn btn-primary">삭제</a>
-                    <a href="#" class="btn btn-primary">저장</a>
-                    <br><br>
-                  </div>
+                
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -514,10 +578,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="${path}/resources/css/insa/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${path}/resources/css/insa/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
+

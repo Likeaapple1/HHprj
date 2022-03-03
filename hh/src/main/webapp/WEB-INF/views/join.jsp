@@ -10,8 +10,9 @@
 <title>HH_Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 	<!-- member.css include-->
-	<link rel="stylesheet" href="${root}/resources/css/member/member.css">
+	<link rel="stylesheet" href="${root}/resources/css/member/memberjoin.css">
 	<!-- common.jsp  -->
 	<%@ include file ="/WEB-INF/views/common/common.jsp" %>
 <body>
@@ -31,9 +32,6 @@
                         <div class="col-lg-6">
                                 <div style="margin-bottom: 1%;">
                                   <div>
-                                      <tr>
-                                       <td>
-                                  
                                           <!--테이블 시작 -->
                                           <table width="940" style="padding:5px 0 5px 0;">
                                           <tr>
@@ -49,17 +47,12 @@
                                   
                                        <tr>
                                           <th>사번(아이디)</th>
-                                          <td> <input type="text" name="mbid"><a href='#' style='cursor:pointer'></a> (영문/숫자 10~12자) </td>
+                                          <td> <input type="text" name="mbid"><a href='#' style='cursor:pointer'></a></td>
                                        </tr>
                                   
                                        <tr>
                                           <th>비밀번호</th>
-                                          <td><input type="password" name="mbpw"> 영문/숫자포함 6자 이상</td>
-                                       </tr>
-                                  
-                                       <tr>
-                                          <th>비밀번호 확인</th>
-                                          <td><input type="password" name="mbpw_re"></td>
+                                          <td><input type="password" name="mbpw"></td>
                                        </tr>
                                   
                                        <tr>
@@ -75,17 +68,6 @@
                                                    <option value="daum.net">msn.com</option>
                                                    <option value="nate.com">nate.com</option>
                                                 </select>
-                                             </td>
-                                          </tr>
-                                  
-                                          <tr>
-                                             <th>주소</th>
-                                             <td>
-                                                <input type="text" name="zip_h_1"> - 
-                                                <input type="text" name="zip_h_2">
-                                                <a href='#' style='cursor:hand;'></a>
-                                                <a href="#" class="btn btn-primary">검색</a><br>
-                                                <input type="text" name="addr_h1"><br>
                                              </td>
                                           </tr>
                                   
@@ -141,23 +123,12 @@
                                           </td>
                                        </tr>
                                   
-                                       <tr>
-                                          <th>메일/sws 정보수신</th>
-                                          <td class="s">
-                                             <input type="radio" name="chk_mail" checked> 수신
-                                             <input type="radio" name="chk_mail" value="4"> 수신거부
-                                          </td>
-                                       </tr>
-                                  
                                        
                                     </table>
 
                                     <button type="submit" class="btn btn-primary btn-lg"> 가입하기</button>
                                     <button type="submit" class="btn btn-primary btn-lg"> 취소</button>
 		</div>
-		</div>
-		<div class="col-md-6 col-xs-12">
-		<a href="#" class="text-right btn btn-link">Need help ?</a>
 		</div>
 		</div>
 		</form>
