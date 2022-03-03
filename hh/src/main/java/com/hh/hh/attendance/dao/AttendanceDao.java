@@ -16,4 +16,10 @@ public interface AttendanceDao {
 
 	int getWorkOut(AttendanceDto attendanceDto) throws Exception;
 
+	int tardyWork(AttendanceDto attendanceDto) throws Exception;
+
+	int getWorkOver(AttendanceDto attendanceDto) throws Exception;
+
+	int getWorkNight(AttendanceDto attendanceDto) throws Exception;
+
 }
