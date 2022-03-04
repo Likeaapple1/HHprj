@@ -5,8 +5,85 @@
 
 <mapper namespace="salary">
 
-	<select resultType="salaryDto" id="salary">SELECT EMP_NO,BASIC_SALARY,REGULAR_HOURLY_WAGE,OVERTIME_ALLOWANCE,HOLIDAY_ALLOWANCE,LONG_SERVICE_ALLOWANCE,POSITION_ALLOWANCE, ANNUAL_LEAVE_ALLOWANCE,QUALIFICATION_ALLOWANCE,MEAL_EXPENSES,TRANSPORTATION_EXPENSES,BONUS,SPECIAL_ALLOWANCE,TOTAL_SALARY,FOUR_MAJOR_INSURANCES, TAX,NET_SALARY FROM SALARY </select>
+		<insert id="input" parameterType="payrollDto">
+			INSERT INTO PAYROLL
+			(
+				  EMP_NO
+				, BASIC_SALARY
+				, OVERTIME_ALLOWANCE
+				, HOLIDAY_ALLOWANCE
+				, LONG_SERVICE_ALLOWANCE
+				, POSITION_ALLOWANCE
+				, ANNUAL_LEAVE_ALLOWANCE
+				, MEAL_EXPENSES
+				, TRANSPORTATION_EXPENSES
+				, BONUS
+				, SPECIAL_ALLOWANCE
+				, TOTAL_SALARY
+				, FOUR_MAJOR_INSURANCES
+				, TAX
+				, NET_SALARY
+				, PAYROLL_BANK
+				, PAYROLL_ACCOUNT
+				, PAYROLL_DATE
+			)
+			VALUES
+			(
+				  #{empNo}
+				, #{basicSalary}
+				, #{overtimeAllowance}
+				, #{holidayAllowance}
+				, #{longServiceAllowance}
+				, #{positionAllowance}
+				, #{annualLeaveAllowance}
+				, #{mealExpenses}
+				, #{transportationExpenses}
+				, #{bonus}
+				, #{specialAllowance}
+				, #{totalSalary}
+				, #{fourMajorInsurances}
+				, #{tax}
+				, #{netSalary}
+				, #{payrollBank}
+				, #{payrollAccount}
+				, #{payrollDate}
+			)
+		</insert>
+		
+		<select id="selectAll" resultType="payrollDto">
+			SELECT *
+			FROM PAYROLL
+		</select>
+		
+		<select id="selectOneBySalary" parameterType="string" resultType="payrollDto">
+			SELECT *
+			FROM PAYROLL
+			WHERE PAYROLL_DATE = #{payrollDate}
+		</select>
+		
+<!-- 		<select id="selectOneBySalarySetting" parameterType="string" resultType="payrollDto">
+			SELECT *
+			FROM SALARY
+			WHERE EMP_NO = 101
+		</select> -->
+		
+		<update id="setting" parameterType="salaryDto">
+			UPDATE SALARY
+			SET 
+			  REGULAR_HOURLY_WAGE = #{regularHourlyWage}
+			, LONG_SERVICE_DAY = #{longServiceDay}
+			, LONG_SERVICE_ALLOWANCE = #{longServiceAllowance}
+			, POSITION_ALLOWANCE = #{positionAllowance}
+			, MEAL_EXPENSES = #{mealExpenses}
+			, TRANSPORTATION_EXPENSES = #{transportationExpenses}
+<!-- 			, PAYROLL_BANK = #{payrollBank}
+			, PAYROLL_ACCOUNT = #{payrollAccount} -->
+			WHERE EMP_NO = 101
+		</update>
 
-	<select resultType="payrollDto" id="payroll">SELECT EMP_NO,BASIC_SALARY,REGULAR_HOURLY_WAGE,OVERTIME_ALLOWANCE,HOLIDAY_ALLOWANCE,LONG_SERVICE_ALLOWANCE,POSITION_ALLOWANCE, ANNUAL_LEAVE_ALLOWANCE,QUALIFICATION_ALLOWANCE,MEAL_EXPENSES,TRANSPORTATION_EXPENSES,BONUS,SPECIAL_ALLOWANCE,TOTAL_SALARY,FOUR_MAJOR_INSURANCES, TAX,NET_SALARY,PAYROLL_ACCOUNT,PAYROLL_DATE FROM PAYROLL </select>
-	
+		<!-- <delete id="delete" parameterType="payrollDto">
+			DELETE FROM PAYROLL
+			WHERE PAYROLL_DATE = #{payrollDate}
+		</delete> -->
+
 </mapper>

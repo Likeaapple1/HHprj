@@ -1,4 +1,4 @@
-<%-- <%@page import="com.hh.hh.salary.entity.SalaryDto"%>
+<%@page import="com.hh.hh.salary.entity.SalaryDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,7 +12,6 @@
 </head>
 <body>
 	
-	<!--  -->
 	<table border="1" class="table table-striped">
 		<thead>
 			<tr>
@@ -64,4 +63,4 @@
 	</table>
 	
 </body>
-</html> --%>
+</html>

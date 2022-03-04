@@ -436,7 +436,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <br><br>
           20　년 　월 　일
 <br><br>
-          <h5><b>㈜○○○ 대표이사 ○○○</b></h5>
+          <!-- <h5><b>㈜○○○ 대표이사 ○○○</b></h5> -->
 <br><br><br><br><br>
 
 

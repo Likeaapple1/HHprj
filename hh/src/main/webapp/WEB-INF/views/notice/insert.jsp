@@ -330,6 +330,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   </div> -->
 
     <textarea name="content" class="form-control" cols="50" rows="20" style="resize: none;"></textarea>
+    
     <!-- <input type="text" name="writer" placeholder="작성자"> -->
     </td>
   </tr>
@@ -347,7 +348,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="center">
   <br>
   <input type="submit" class="btn btn-primary" value="등록">
-  　<a href="#" class="btn btn-secondary">취소</a><br><br>
+  　<a href="<%=request.getContextPath()%>/notice/list" class="btn btn-secondary">취소</a><br><br>
 </div>
 
 </form>
