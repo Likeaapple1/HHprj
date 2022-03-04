@@ -38,10 +38,27 @@
     height: 75px;
     margin-top: 10px;
 }
-
+.appr_often_div {
+	width: 9%;
+    height: 100%;
+    border-right: 2px solid #BDBDBD;
+    float: left;
+    text-align: center;
+    font-size: 13px;
+    color: #848484;
+    font-weight: bold;
+}
+.appr_often_div img {
+    padding-top: 13px;
+    padding-bottom: 7px;
+    width: 26px;
+}
+.appr_often .appr_often_div:hover {
+    background-color: #CEECF5;
+}
 /* 자주쓰는결재 추가하기 버튼 */
 .appr_often_add {
-    width: 10%;
+    width: 9%;
     height: 100%;
     border-left: 2px solid #BDBDBD;
     float: right;
@@ -68,6 +85,11 @@
 
 .appr_content1 {
     height: 25%;
+    padding: 15px;
+}
+.appr_content1_div {
+	height: 100%;
+	border: 1px solid blue;;
 }
 
 .appr_content2 {

@@ -363,6 +363,12 @@
             <sub class="appr_form_text4">회사에서 자주 사용되는 결재양식입니다.</sub>
             <hr>
             <div class="appr_often_cp">
+            	<div>
+                    <a href="./appr_gian.html">
+                        <img src="${path}/resources/css/appr/dist/img/file_img1.png">
+                        <p style="padding-top: 5px;">기안문</p>
+                    </a>
+                </div>
                 <div>
                     <a href="#">
                         <img src="${path}/resources/css/appr/dist/img/file_img1.png">

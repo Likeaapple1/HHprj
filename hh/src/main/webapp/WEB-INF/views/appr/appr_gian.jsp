@@ -457,15 +457,130 @@
                         <p class="appr_form_text1">조직도</p>
                     </div>
                     <div class="group_bottom">
-                        
+                        <div class="group_bottom_tree">
+                            <ul id="main_menu" class="group_bottom_tree_ul1">
+                                <li title="HH그룹" rel="company" id="company" class="tree_company">
+                                    <ins class="jstree-icon">&nbsp;</ins>
+                                    <a title rel="company" id="company" href="#" class="ui-draggable">
+                                        HH그룹
+                                    </a>
+                                    <ul class="first_menu">
+                                        <li title="신짱구 대표이사" rel="MASTER" id="MASTER_1" class="jstree_leaf">
+                                            <ins class="jstree-icon_1">&nbsp;</ins>
+                                            <a title rel="MASTER" id="MASTER_1" href="#" class="ui-draggable1">
+                                                <ins class="jstree-icon_2"></ins>
+                                                신짱구 대표이사
+                                            </a>
+                                        </li>
+                                        <li title="봉미선 사장" rel="MEMBER" id="MEMBER_1" class="jstree_leaf">
+                                            <ins class="jstree-icon_1">&nbsp;</ins>
+                                            <a title rel="MEMBER" id="MEMBER_1" href="#" class="ui-draggable1">
+                                                <ins class="jstree-icon_3"></ins>
+                                                봉미선 사장
+                                            </a>
+                                        </li>
+                                        <li title="신형만 전무" rel="MEMBER" id="MEMBER_2" class="jstree_leaf">
+                                            <ins class="jstree-icon_1">&nbsp;</ins>
+                                            <a title rel="MEMBER" id="MEMBER_2" href="#" class="ui-draggable1">
+                                                <ins class="jstree-icon_3"></ins>
+                                                신형만 전무
+                                            </a>
+                                        </li>
+                                        <li title="영업부">
+                                            <ins id="jstree-icon" class="jstree-icon_4">&nbsp;</ins>
+                                            <a href="#" class="ui-draggable1 jstree-open">
+                                                영업부
+                                            </a>
+                                            <ul class="second_menu sub_menu">
+                                                <li>
+                                                    <ins class="jstree-icon_1">&nbsp;</ins>
+                                                    <a title rel="MASTER" id="MASTER_1" href="#" class="ui-draggable1">
+                                                        <ins class="jstree-icon_2"></ins>
+                                                        이훈이 상무
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li title="인사팀">
+                                            <ins id="jstree-icon" class="jstree-icon_4">&nbsp;</ins>
+                                            <a href="#" class="ui-draggable1 jstree-open">
+                                                인사팀
+                                            </a>
+                                            <ul class="second_menu sub_menu">
+                                                <li>
+                                                    <ins class="jstree-icon_1">&nbsp;</ins>
+                                                    <a title rel="MEMBER" id="MEMBER_1" href="#" class="ui-draggable1">
+                                                        <ins class="jstree-icon_2"></ins>
+                                                        신짱아 상무
+                                                    </a>
+                                                </li>
+                                                <c:forEach items="${list}" var="n">
+	                                                <li>
+		                                            	<ins class="jstree-icon_1">&nbsp;</ins>
+			                                            <a title rel="MEMBER" id="MEMBER_2" href="#" class="ui-draggable1">
+			                                                <ins class="jstree-icon_3"></ins>
+			                                                ${n.empName} ${n.empjobCode}
+			                                            </a>
+	                                                </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </li>
+                                        <li title="총무팀">
+                                            <ins id="jstree-icon" class="jstree-icon_4">&nbsp;</ins>
+                                            <a href="#" class="ui-draggable1 jstree-open">
+                                                총무팀
+                                            </a>
+                                            <ul class="second_menu sub_menu">
+                                                <li>
+                                                    <ins class="jstree-icon_1">&nbsp;</ins>
+                                                    <a title rel="MEMBER" id="MEMBER_1" href="#" class="ui-draggable1">
+                                                        <ins class="jstree-icon_2"></ins>
+                                                        김철수 상무
+                                                    </a>
+                                                </li>
+                                                <li>
+	                                            	<ins class="jstree-icon_1">&nbsp;</ins>
+		                                            <a title rel="MEMBER" id="MEMBER_2" href="#" class="ui-draggable1">
+		                                                <ins class="jstree-icon_3"></ins>
+		                                                한유리 부장
+		                                            </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li title="디자인팀">
+                                            <ins id="jstree-icon" class="jstree-icon_4">&nbsp;</ins>
+                                            <a href="#" class="ui-draggable1 jstree-open">
+                                                디자인팀
+                                            </a>
+                                            <ul class="second_menu sub_menu">
+                                                <li>
+                                                    <ins class="jstree-icon_1">&nbsp;</ins>
+                                                    <a title rel="MEMBER" id="MEMBER_1" href="#" class="ui-draggable1">
+                                                        <ins class="jstree-icon_2"></ins>
+                                                        맹구 상무
+                                                    </a>
+                                                </li>
+                                                <li>
+	                                            	<ins class="jstree-icon_1">&nbsp;</ins>
+		                                            <a title rel="MEMBER" id="MEMBER_2" href="#" class="ui-draggable1">
+		                                                <ins class="jstree-icon_3"></ins>
+		                                                한수지 부장
+		                                            </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li> 
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="appr_add">
                     <div class="appr_add_top">
-                        <button class="appr_add_btn">추가</button>
+                        <button class="appr_add_btn add_action1">추가</button>
                     </div>
                     <div class="appr_add_bottom">
-                        <button class="appr_add_btn">추가</button>
+                        <button class="appr_add_btn add_action2">추가</button>
                     </div>
                 </div>
                 <div class="appruser">
@@ -487,22 +602,24 @@
                                     </td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <c:forEach items="${list}" var="n">
+                        </table>
+                        <div>
+                            <table border="1" style="margin:auto;">
+                                <tbody>
                                     <tr>
-                                        <td>${n.dept}</td>
-                                        <td>${n.job}</td>
-                                        <td>${n.userName}</td>
-                                        <td>${n.enroll}</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
                                         <td>
                                             <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
                                                 <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                             </span>
                                         </td>
                                     </tr>
-                                </c:forEach>
-                            </tbody>	
-                        </table>	
+                                </tbody>
+                            </table>	
+                        </div>
                     </div>
                 </div>
                 <div class="apprviewer">
@@ -524,22 +641,24 @@
                                     </td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <c:forEach items="${list}" var="n">
+                        </table>
+                        <div>
+                            <table border="1" style="margin:auto;">
+                                <tbody>
                                     <tr>
-                                        <td>${n.dept}</td>
-                                        <td>${n.job}</td>
-                                        <td>${n.userName}</td>
-                                        <td>${n.enroll}</td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
                                         <td>
                                             <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
                                                 <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                             </span>
                                         </td>
                                     </tr>
-                                </c:forEach>
-                            </tbody>	
-                        </table>	
+                                </tbody>
+                            </table>	
+                        </div>
                     </div>
                 </div>
                 <div class="my_apprline">
@@ -557,7 +676,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${list}" var="n">
+                                <%-- <c:forEach items="${list}" var="n">
                                     <tr>
                                         <td>${n.no}</td>
                                         <td>${n.apprLineTitle}</td>
@@ -568,7 +687,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                </c:forEach>
+                                </c:forEach> --%>
                             </tbody>	
                         </table>	
                     </div>
@@ -621,25 +740,27 @@
 <!-- Air datepicker css -->
 <script src="${path}/resources/css/appr/dist/js/datepicker.js"></script> <!-- Air datepicker js -->
 <script src="${path}/resources/css/appr/dist/js/i18n/datepicker.ko.js"></script> <!-- 달력 한글 추가를 위해 커스텀 -->
+
 <!-- smarteditor2 -->
 <script>
     let oEditors = []
 
     smartEditor = function() {
-      console.log("Naver SmartEditor")
-      nhn.husky.EZCreator.createInIFrame({
+        console.log("Naver SmartEditor")
+        nhn.husky.EZCreator.createInIFrame({
         oAppRef: oEditors,
         elPlaceHolder: "editorTxt",
         sSkinURI: "${path}/resources/static/smarteditor/SmartEditor2Skin.html",
         fCreator: "createSEditor2"
-      })
+        })
     }
 
     $(document).ready(function() {
-      smartEditor()
+        smartEditor()
     })
 </script>
 
+<!-- datepicker -->
 <script>
     $("#datepicker").datepicker({
     language: 'ko',
@@ -647,7 +768,6 @@
     timeFormat: "hh:ii AA"
 });
 </script>
-
 
 <!-- Page specific script -->
 <script>
@@ -664,5 +784,40 @@ document.querySelector("#close").addEventListener('click', close);
 document.querySelector(".apprline_btn3").addEventListener('click', close);
 
 </script>
+
+<!-- 조직도 토글 이벤트 -->
+<script>
+    $('#main_menu > li > ins').click(function(){
+        $(this).next().next($('.first_menu')).slideToggle('fast');
+    })
+
+    $('.jstree-open').click(function(){
+        if ($(this).hasClass('on')) {
+            slideUp();
+        } else {
+            slideUp();
+            $(this).addClass('on').next().slideDown();
+            $(this).prev().attr('class','jstree-icon_5') ;
+        }
+        function slideUp() {
+            $('.jstree-open').removeClass('on').next().slideUp();
+            $('.jstree-open').prev().attr('class','jstree-icon_4') ;
+        };
+    })
+
+    $('li > a').focus(function(){
+    	$(this).addClass('selec');
+    })
+    $("li > a").blur(function(){
+    	$(this).removeClass('selec');
+    })
+</script>
+<script>
+	/* const addButton = document.querySelector('.add_action1');
+	addButton.addEventListener('click', () => {
+		const select = document.querySelector('');
+	}) */
+</script>
+
 </body>
 </html>

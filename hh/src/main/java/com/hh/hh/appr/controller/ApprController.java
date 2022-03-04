@@ -1,12 +1,22 @@
 package com.hh.hh.appr.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.hh.hh.appr.entity.ApprDto;
+import com.hh.hh.appr.service.ApprService;
 
 @Controller
 @RequestMapping("appr")
 public class ApprController {
+	
+	@Autowired
+	private ApprService service;
 	
     // 전자결재 홈 보여주기
 	@GetMapping("home")
@@ -46,7 +56,12 @@ public class ApprController {
 	
 	// 전자결재작성 (기안서) 보여주기
 	@GetMapping("appr_gian")
-	public String appr_gian() {
+	public String appr_gian(Model model) throws Exception{
+		
+		//조직도 리스트 조회
+		List<ApprDto> list = service.getOrgList();
+		model.addAttribute("list", list);
+		
 		return "appr/appr_gian";
 	}
 
