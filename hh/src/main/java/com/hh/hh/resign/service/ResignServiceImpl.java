@@ -1,5 +1,5 @@
-/*
- * package com.hh.hh.resign.service;
+
+package com.hh.hh.resign.service;
  
 
 import java.util.List;
@@ -7,8 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hh.hh.resign.controller.ResignHistoryVo;
+
 import com.hh.hh.resign.dao.ResignDao;
+import com.hh.hh.resign.entity.ResignDto;
 
 @Service
 public class ResignServiceImpl implements ResignService {
@@ -17,18 +18,24 @@ public class ResignServiceImpl implements ResignService {
 	private ResignDao dao;
 
 	@Override
-	public List<ResignHistoryVo> getHistoryMeber(ResignHistoryVo vo) throws Exception {
+	public int getNoticeCnt() throws Exception  {
+		return dao.getNoticeCnt();
+	}
+
+	@Override
+	public List<ResignDto> getHistoryMeber(ResignDto vo) throws Exception {
 		return dao.getHistoryMeber(vo);
 	}
 
 	@Override
-	public int getNoticeCnt() throws Exception  {
-		return dao.getNoticeCnt();
+	public List<ResignDto> getMemberVo() {
+		return null;
 	}
+
 
 	
 	
 
 }
 
-*/
+
