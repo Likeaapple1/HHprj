@@ -319,6 +319,12 @@
           <span class="text_1">사용자가 가장 많이 사용한 결재양식입니다. 양식 선택 시 결재 작성화면으로 이동됩니다.</span>
         </h5>
         <div class="appr_often">
+        	<a href="./appr_gian.html">
+	            <div class="appr_often_div">
+	              <img src="${path}/resources/css/appr/dist/img/file_img1.png">
+	              <p>기안서</p>
+	            </div>
+          	</a>
           <!-- 추가하기 버튼 -->
           <a href="#">
             <div class="appr_often_add">
@@ -330,7 +336,9 @@
         <!-- appr_often -->
         <div class="appr_content">
           <div class="appr_content1">
-
+				<div class="appr_content1_div">
+					
+				</div>
           </div>
           <div class="appr_content2">
             <div class="row">
