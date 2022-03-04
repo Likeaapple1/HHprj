@@ -53,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
     
     .career {
-      background-color: beige;
+      background-color: lightsteelblue;
       border: solid 1px silver;
     }
 
@@ -402,8 +402,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <tr>
                                 <td><input type="checkbox"></td>
                                 <td></td>
-                                <td><input class="mon" type="month" value="2022-03"></td>
-                                <td><input class="mon" type="month" value="2022-03"></td>
+                                <td><input class="mon" type="date" value="2022-03"></td>
+                                <td><input class="mon" type="date" value="2022-03"></td>
                                 <td><input tyle='hidden' name='job_attri_val_key'>
                                   <select name="job" size="1">
                                   <option value=''>선택 </option>

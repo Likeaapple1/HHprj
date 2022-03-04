@@ -400,7 +400,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <tbody>
                               <tr>
                                 <td><input type="checkbox"></td>
-                                <td><input class="mon" type="month" value="2022-03"></td>
+                                <td><input class="mon" type="date" value="2022-03"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

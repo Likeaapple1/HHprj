@@ -10,7 +10,6 @@
 <title>HH_Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 	<!-- member.css include-->
 	<link rel="stylesheet" href="${root}/resources/css/member/memberjoin.css">
 	<!-- common.jsp  -->
@@ -25,87 +24,45 @@
 	<br>
   <div class="bg-light">
   	<img src="https://cdn3.iconfinder.com/data/icons/login-5/512/LOGIN_6-512.png" class="img-circle">
-		<form action = "" method = "post">
-                <div class="content">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <div class="col-lg-6">
-                                <div style="margin-bottom: 1%;">
-                                  <div>
-                                          <!--테이블 시작 -->
-                                          <table width="940" style="padding:5px 0 5px 0;">
-                                          <tr>
-                                            <th>이름</th>
-                                           <td><input type="text" name="mbname"></td>
-                                          </tr>
-              
-                                         <tr>
-                                          <th>주민등록번호</th>
-                                          <td><input type="text" name="jumin_1"> -
-                                          <input type="password" name="jumin_2"></td>
-                                       </tr>
-                                  
-                                       <tr>
-                                          <th>사번(아이디)</th>
-                                          <td> <input type="text" name="mbid"><a href='#' style='cursor:pointer'></a></td>
-                                       </tr>
-                                  
-                                       <tr>
-                                          <th>비밀번호</th>
-                                          <td><input type="password" name="mbpw"></td>
-                                       </tr>
-                                  
-                                       <tr>
-                                          <th>이메일</th>
-                                          <td>
-                                             <input type="text" name="email"> @
-                                             <input type="text" name="email_dns">
-                                                <select name="emailaddr">
-                                                   <option value="">직접입력</option>
-                                                   <option value="naver.com">naver.com</option>
-                                                   <option value="gmail.com">gmail.com</option>
-                                                   <option value="hanmail.net">hanmail.net</option>
-                                                   <option value="daum.net">msn.com</option>
-                                                   <option value="nate.com">nate.com</option>
-                                                </select>
-                                             </td>
-                                          </tr>
-                                  
-                                       <tr>
-                                          <th>핸드폰 번호</th>
-                                          <td><input type="text" name="tel_h1"> - 
-                                             <input type="text" name="tel_h2_1"> -
-                                             <input type="text" name="tel_h2_2">
-                                          </td>
-                                       </tr>
-                                  
-                                       <tr>
-                                        <th>부서</th>
-                                        <td>
-                                        <input tyle='hidden' name='job_attri_val_key'>
-                                              <select name="job" size="1">
+  	
+  	    
+                <div class="form-group">
+			 		이름 <input type="text" name="empName" class="form-control"  value = "${empName}">
+			 	</div>
+			 	<div class="form-group">
+			 		주민등록번호 <input type="text" name="empBirth" class="form-control"  value = "${empBirth}">
+			 	</div>
+			 	<div class="form-group">
+			 		비밀번호 <input type="password" name="empPassword" class="form-control"  required value = "${empPassword}">
+			 	</div>
+			 	<div class="form-group">
+			 		이메일 <input type="text" name="empEmail" class="form-control"  value = "${empEmail}">
+			 	</div>
+                
+                <div class="form-group">
+			 		핸드폰 번호 <input type="text" name="empPhone" class="form-control"  value = "${empPhone}">
+			 	</div>
+			 	
+			 	<div class="form-group">
+			 		부서 <select name="job" size="1" class="form-control" value = "${empdeptNo}">
                                               <option value=''>선택하세요 </option>
-                                              <option value='39'>경영지원팀</option>
-                                              <option value='40'>재무팀</option>
-                                              <option value='41'>영업관리팀</option>
-                                              <option value='42'>생산기술팀</option>
-                                              <option value='43'>마케팅팀</option>
-                                              <option value='44'>인사관리팀</option>
-                                              <option value='45'>개발팀</option>
-                                              <option value='46'>총무팀</option>
-                                              <option value='47'>회계팀</option>
-                                              <option value='48'>생산관리팀</option>
-                                              <option value='49'>행정팀</option>
-                                              <option value='50'>품질보증팀</option>
+                                              <option value='1'>경영지원팀</option>
+                                              <option value='2'>재무팀</option>
+                                              <option value='3'>영업관리팀</option>
+                                              <option value='4'>생산기술팀</option>
+                                              <option value='5'>마케팅팀</option>
+                                              <option value='6'>인사관리팀</option>
+                                              <option value='7'>개발팀</option>
+                                              <option value='8'>총무팀</option>
+                                              <option value='9'>회계팀</option>
+                                              <option value='10'>생산관리팀</option>
+                                              <option value='11'>행정팀</option>
+                                              <option value='12'>품질보증팀</option>
                                            </select>
-                                        </td>
-                                     </tr>
-              
-                                       <tr>
-                                          <th>직급</th>
-                                          <td>
-                                          <input tyle='hidden' name='job_attri_val_key'>
-                                                <select name="job" size="1">
+			 	</div>
+                
+                <div class="form-group">
+			 		직급 <select name="job" size="1" class="form-control"  value = "${empjobCode}">
                                                 <option value=''>선택하세요 </option>
                                                 <option value='39'>회장</option>
                                                 <option value='40'>부회장</option>
@@ -120,18 +77,9 @@
                                                 <option value='49'>사원</option>
                                                 <option value='50'>인턴</option>
                                              </select>
-                                          </td>
-                                       </tr>
-                                  
-                                       
-                                    </table>
-
-                                    <button type="submit" class="btn btn-primary btn-lg"> 가입하기</button>
-                                    <button type="submit" class="btn btn-primary btn-lg"> 취소</button>
+			 	</div>
+			 	<button type="submit" class="btn btn-primary btn-lg"> 가입하기</button>
 		</div>
-		</div>
-		</div>
-		</form>
 </section>
 </script>
 </body>

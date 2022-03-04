@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,25 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
+	
+	//회원가입 화면 보여주기
+		@GetMapping("join")
+		public String join() {
+			return "join";
+		}
+		
+		//회원가입 기능 처리
+		@PostMapping("join")
+		public String join(MemberDto dto, HttpServletRequest req) throws Exception{
+			System.out.println(dto);
+			int result = service.join(dto,req);
+			if(result>0) {
+				return "/login";
+			}else {
+				return "/join";
+			}
+		}
+	
 	
 	// 로그인 화면 보여주기
 	@GetMapping("login")
@@ -58,22 +78,6 @@ public class MemberController {
 	}
 	
 	
-	//회원가입 화면 보여주기
-	@GetMapping("join")
-	public String join() {
-		return "join";
-	}
 	
-	//회원가입 기능 처리
-	@PostMapping("join")
-	public String join(MemberDto dto, HttpServletRequest req) throws Exception{
-		System.out.println(dto);
-		int result = service.join(dto,req);
-		if(result>0) {
-			return "redirect:/member/login";
-		}else {
-			return "redirect:/member/join";
-		}
-	}
 }
 

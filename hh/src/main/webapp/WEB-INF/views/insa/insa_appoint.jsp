@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
     
     .appoint {
-      background-color: beige;
+      background-color: lightsteelblue;
       border: solid 1px silver;
     }
 

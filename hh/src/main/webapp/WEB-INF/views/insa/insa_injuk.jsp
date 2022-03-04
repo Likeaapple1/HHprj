@@ -512,9 +512,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <option value="emp3" label="휴직"></option>
                           </select></td>
                           <td>입사일자</td>
-                          <td><input type="text" class="homephone"></td>
+                          <td><input class="mon" type="date" value="2022-03"></td>
                           <td>퇴사일자</td>
-                          <td><input type="text" class="phone"></td>
+                          <td><input class="mon" type="date" value="2022-03"></td>
                         </tr>
   
                       </tbody>
