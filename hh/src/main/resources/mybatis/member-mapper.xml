@@ -22,6 +22,8 @@
 		    ,EMP_PHONE
 		    ,EMP_DEPTNO
 		    ,EMP_JOBCODE 
+		    ,MANAGER_YN
+		    ,MANAGER_DEPT
 		)
 		VALUES
 		(
@@ -34,6 +36,8 @@
 			,#{empPhone}
 			,#{empDeptno}
 			,#{empJobcode}
+			,#{managerYn}
+			,{managerDept}
 		)
 	</insert>
 	  

@@ -44,8 +44,11 @@
 		UPDATE ATTENDANCE
 				SET ATT_END_DATE = SYSDATE,
 		<choose>
-			<when test="attNsStart &lt; attNsEnd">
+			<when test="attNsStart &lt; attNsEnd or (attNsStartEnd &lt; attNsEnd and attNsStartEndfinal &gt; attNsEnd)">
 				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y'
+			</when>
+			<when test="ovDateStrat &lt; attNsEnd || attNsStart &lt; attNsEnd ">
+				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y'
 			</when>
 			<otherwise>
 				 WORK_FORM ='정상근무', ATT_NS_YN = 'N'
@@ -74,16 +77,4 @@
   			'Y'
   		)
   	</insert>
-  	
-  	 <update id="updateWorkOver" parameterType="attendanceDto">
-		UPDATE ATTENDANCE
-		SET ATT_END_DATE = SYSDATE, WORK_FORM = '초과근무'
-		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})
-  	</update>
-  	
-  	 <update id="updateWorkNight" parameterType="attendanceDto">
-		UPDATE ATTENDANCE
-		SET ATT_END_DATE = SYSDATE, WORK_FORM = '야간근무', ATT_NS_YN = 'Y'
-		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})
-  	</update>
 </mapper>

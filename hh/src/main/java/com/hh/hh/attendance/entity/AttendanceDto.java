@@ -22,6 +22,10 @@ public class AttendanceDto {
 	private Time ovDate;
 	private String workForm;
 	private Date attNsStart;
+	private Date attNsStartEnd;
+	private Date attNsStartEndfinal;
+	private Date ovDateStrat;
+	private char ovDateYn;
 	private Date attNsEnd;
 	private String startDate;
 	private String endDate;

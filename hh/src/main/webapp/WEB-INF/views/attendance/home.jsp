@@ -34,7 +34,7 @@
 			<c:when	test="${attUser.attDate eq null}">
 				<form action = "" method="post">
 					<span>출근 등록을 해주세요</span>
-					<input type="submit" formaction="${root}/attendance/working" value = "출&nbsp;근">
+					<input type="submit" formaction="${root}/attendance/home" value = "출&nbsp;근">
 				</form>
 			</c:when>
 			<c:when	test="${attUser.attDate != null}">
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	               <%if (workUserList != null || holiUserList != null) {%>
 	                    <%for (AttendanceDto dto : workUserList) {%>
 	                        {
-	                        title : '<%=dto.getWorkForm()%>',
+	                        title : '<%=dto.getWorkForm()%>',(),
 	                         start : '<%=dto.getStartDate()%>',
 	                           end : '<%=dto.getEndDate()%>',
 	                         color : '#2D82D7'
