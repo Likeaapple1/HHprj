@@ -45,7 +45,7 @@
 	}
 	
 	.container-size{
-		width : 35%;
+		width : 50%;
 		margin: 0 auto;
 		padding: 50px 0px;
 	}
@@ -58,7 +58,7 @@
 
 	}
 	.bg-light{
-		padding: 15px;
+		padding: 10px;
 		-webkit-box-shadow: 0 8px 6px -6px #ddd;
        -moz-box-shadow: 0 8px 6px -6px #ddd;
             box-shadow: 0 8px 6px -6px #ddd;
@@ -110,6 +110,14 @@
 		padding: 10px 0;
 	}
 	.btn-link{
-		text-align: left !important;
+		text-align: center !important;
 	}
 }
+	.joindata{
+		width: 50%
+	}
+	
+	.joinbutton{
+		width: 150px;
+		
+	}

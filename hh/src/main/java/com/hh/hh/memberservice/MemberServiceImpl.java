@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	//암호화
 	@Autowired
-	private PasswordEncoder passwordencoder;
+	private PasswordEncoder pe;
 	
 	@Override
 	public int join(MemberDto dto, HttpServletRequest req) throws Exception {
@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService{
 		int no = dao.getMemberSeq();
 		//insert 처리
 		dto.setEmpNo(no);
-		dto.setEmpPassword(passwordencoder.encode(dto.getEmpPassword()));
+		dto.setEmpPassword(pe.encode(dto.getEmpPassword()));
 		log.info(dto.toString());
 		int result = dao.insertMember(dto);
 		
