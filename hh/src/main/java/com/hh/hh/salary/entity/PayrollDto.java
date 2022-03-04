@@ -9,13 +9,11 @@ public class PayrollDto {
 
 	private int empNo;
 	private String basicSalary;
-	private String regularHourlyWage;
 	private String overtimeAllowance;
 	private String holidayAllowance;
 	private String longServiceAllowance;
 	private String positionAllowance;
 	private String annualLeaveAllowance;
-	private String qualificationAllowance;
 	private String mealExpenses;
 	private String transportationExpenses;
 	private String bonus;

@@ -324,54 +324,58 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="post">
             <table border="1" class="table table-bordered tb_salary1 tb_emp">
               <thead>
                 <tr>
                   <th class="th_g">통상시급</th>
                   <th class="th_g">근속수당</th>
-                  <th class="th_g" colspan="2">직책수당</th>
-                  <th class="th_g">자격수당</th>
+                  <th class="th_g">직책수당</th>
+                  <!-- <th class="th_g">자격수당</th> -->
                   <th class="th_g">중식비</th>
                   <th class="th_g">교통비(유류비)</th>
                 </tr>	
               </thead>
               <tbody>
                   <tr>
-                    <td><input type="number" class="text" placeholder="시급" min="9160"> 원</td>
-                    <td><input type="text" class="day" placeholder="근속일"> 일마다 <input type="text" class="text" placeholder="월급"> 원</td>
-                    <th>사원</th>
-                    <td><input type="text" class="text" placeholder="월급"> 원</td>
-                    <td><input type="text" class="text" placeholder="자격증 수당 월급"> 원</td>
-                    <td><input type="text" class="text" placeholder="일급"> 원</td>
-                    <td><input type="text" class="text" placeholder="일급"> 원</td>
+                    <td><input type="text" placeholder="시급" class="text" name="regularHourlyWage"> 원</td>
+                    <td><input type="text" placeholder="근속일" class="day" name="longServiceDay">  <input type="text" placeholder="월급" class="text" name="longServiceAllowance"> 원</td>
+                    <td><input type="text" placeholder="월급" class="text" name="positionAllowance"> 원</td>
+                    <!-- <td><input type="text" class="text" placeholder="자격증 수당 월급"> 원</td> -->
+                    <td><input type="text" placeholder="일급" class="text" name="mealExpenses"> 원</td>
+                    <td><input type="text" placeholder="일급" class="text" name="transportationExpenses"> 원</td>
                   </tr>
+                  
                   <tr>
-                    <td class="hid" colspan="2" rowspan="5"></td>
-                    <th>주임</th>
-                    <td><input type="text" class="text" placeholder="월급"> 원</td>
-                    <td class="hid2" colspan="3" rowspan="5"></td>
-                  </tr><tr>
-                    <th>대리</th>
-                    <td><input type="text" class="text" placeholder="월급"> 원</td>
-                  </tr><tr>
-                    <th>과장</th>
-                    <td><input type="text" class="text" placeholder="월급"> 원</td>
-                  </tr><tr>
-                    <th>차장</th>
-                    <td><input type="text" class="text" placeholder="월급"> 원</td>
-                  </tr><tr>
-                    <th>부장</th>
-                    <td><input type="text" class="text" placeholder="월급"> 원</td>
+                  	<td>${data.regularHourlyWage}</td>
+                  	<td>${data.longServiceDay} ${data.longServiceAllowance}</td>
+                  	<td>${data.positionAllowance}</td>
+                  	<td>${data.mealExpenses}</td>
+                  	<td>${data.transportationExpenses}</td>
                   </tr>
+
               </tbody>
             </table>
 
             <div class="right">
               <br><br>
-              <a href="#" class="btn btn-primary">저장</a>　<a href="#" class="btn btn-secondary">취소</a>
+              <input type="submit" value="저장" class="btn btn-primary" formaction="<%=request.getContextPath()%>/salary/setting">　
+              <a href="#" class="btn btn-secondary">취소</a>
               <br><br><br>
             </div>
-
+</form>
 
           </div>
           <!-- /.col-md-6 -->
