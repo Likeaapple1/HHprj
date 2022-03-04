@@ -1,17 +1,18 @@
-/*
- * package com.hh.hh.resign.dao;
+
+package com.hh.hh.resign.dao;
  
 
 import java.util.List;
 
-import com.hh.hh.resign.controller.ResignHistoryVo;
+import com.hh.hh.resign.entity.ResignDto;
+
 
 public interface ResignDao {
 
-	List<ResignHistoryVo> getHistoryMeber(ResignHistoryVo vo) throws Exception;
+	List<ResignDto> getHistoryMeber(ResignDto vo) throws Exception;
 
 	int getNoticeCnt() throws Exception;
 
 }
 
-*/
+

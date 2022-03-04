@@ -1,4 +1,4 @@
-/*
+
 package com.hh.hh.resign.entity;
 
 import lombok.Data;
@@ -6,10 +6,11 @@ import lombok.Data;
 @Data
 public class ResignDto {
 	
-	private String empNo;
+	private long no;
 	private String empName;
-	private String empRank;
+	private String empRack;
 	private String empDept;
+	private String resignTpye;
 
 }
-*/
+
