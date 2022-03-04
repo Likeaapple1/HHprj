@@ -26,8 +26,18 @@
         <interceptor>
             <mapping path="/**"/>
             <exclude-mapping path="/login/**"/>
-            <beans:bean class="com.hh.hh.interceptor.MemberInercrptor"></beans:bean>
+            <beans:bean class="com.hh.hh.interceptor.MemberInterceptor"></beans:bean>
         </interceptor>
+        <interceptor>
+            <mapping path="/attendance/admin/**"/>
+            <beans:bean class="com.hh.hh.interceptor.AttendanceAdminInterceptor"></beans:bean>
+        </interceptor>
+<!--         <interceptor>
+            <mapping path="/resign/**"/>
+            <exclude-mapping path="/resign/resigninput"/>
+            <exclude-mapping path="/resign/resignreceipt"/>
+            <beans:bean class="com.hh.hh.resign.intercepter.ResignIntercepter"></beans:bean>
+        </interceptor> -->
     </interceptors>
    
 	

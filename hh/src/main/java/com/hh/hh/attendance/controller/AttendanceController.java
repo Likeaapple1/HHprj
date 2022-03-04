@@ -72,7 +72,7 @@ public class AttendanceController {
       return "attendance/home";
    }
    
-   @PostMapping("working")
+   @PostMapping("home")
    // 출근하기 버튼 눌렀을 때 insert 진행
    public String home(AttendanceDto attendanceDto, HttpServletRequest req, HttpSession session) throws Exception {
       // loginUser세션에서 memberNo값 가져오기
@@ -100,7 +100,7 @@ public class AttendanceController {
     		  // home에서 출근 / 퇴근 버튼 변경을 위한 쿼리문
     		  AttendanceDto attUser = attendanceservice.infoWork(attendanceDto); 
     		  session.setAttribute("attUser", attUser);
-    		  return "attendance/home";
+    		  return "redirect:/attendance/home";
     	  }else {
     		  return "insert fail";
     	  }
@@ -111,7 +111,7 @@ public class AttendanceController {
     		  // home에서 출근 / 퇴근 버튼 변경을 위한 쿼리문
     		  AttendanceDto attUser = attendanceservice.infoWork(attendanceDto); 
     		  session.setAttribute("attUser", attUser);
-    		  return "attendance/home";
+    		  return "redirect:/attendance/home";
     	  }else {
     		  return "insert fail";
     	  }
@@ -128,7 +128,7 @@ public class AttendanceController {
 	      
 	      // 순서대로 정시퇴근시간, 야간근무 시작 시간, 퇴근 버튼, 버튼 누른 현재시간
 	      Date workEnd = null;
-	      Date workOver = null;
+	      //Date workOver = null;
 	      Date currentTime = new Date();
 
 	      // format 설정하기
@@ -138,10 +138,18 @@ public class AttendanceController {
 	       Date workBtnEnd = sdf.parse(sdf.format(currentTime));
 	      
 	      // 변수에 시간 넣기
-	      Date stworkEnd =  sdf.parse("18:00:00");
-	      attendanceDto.setAttNsStart(stworkEnd);
+	      // 야근처리 22:00하고 00:00 
+	      // 초과근무를 위한 컬럼
+	      Date stworkEnd1 =  sdf.parse("22:00:00");
+	      Date stworkEnd2 =  sdf.parse("00:00:00");
+	      Date stworkEnd3 = sdf.parse("06:00:00");
+	      Date workOver = sdf.parse("18:00:00");
+	      attendanceDto.setAttNsStart(stworkEnd1);
+	      attendanceDto.setAttNsStartEnd(stworkEnd2);
+	      attendanceDto.setAttNsStartEndfinal(stworkEnd3);
+	      attendanceDto.setOvDateStrat(workOver);
 	      attendanceDto.setAttNsEnd(workBtnEnd);
-	      workOver = sdf.parse("22:00:00");
+	     // workOver = sdf.parse("22:00:00");
 	      
 	      AttendanceDto adto = attendanceservice.workout(attendanceDto);  
 	      // 정상근무처리
@@ -157,6 +165,11 @@ public class AttendanceController {
 //	    	  AttendanceDto adto = attendanceservice.worknight(attendanceDto);
 //	      }
 	      session.removeAttribute("attUser");
-	      return "attendance/home";
+	      return "redirect:/attendance/home";
+   }
+   
+   @GetMapping("admin/list")
+   public String list() {
+	   return "attendance/admin/list";
    }
 }

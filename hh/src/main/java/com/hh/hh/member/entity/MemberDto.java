@@ -13,4 +13,6 @@ public class MemberDto {
 	private String empphone;
 	private String empdeptNo;
 	private String empjobCode;
+	private char managerYn;
+	private String managerDept;
 }

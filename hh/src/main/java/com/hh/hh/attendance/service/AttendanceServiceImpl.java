@@ -42,11 +42,8 @@ public class AttendanceServiceImpl implements AttendanceService {
 	public AttendanceDto workout(AttendanceDto attendanceDto) throws Exception {
 		// 퇴근 시간 처리
 		int result = attendancedao.getWorkOut(attendanceDto);
-		System.out.println(result);
 		AttendanceDto attendancedto = null;
 		if(result > 0) {
-			System.out.println(result);
-			attendancedto = attendancedao.infoWork(attendanceDto);
 		}
 		return attendancedto;
 	}
