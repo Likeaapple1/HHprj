@@ -337,6 +337,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <form method="post">
+<!-- 현재 로그인된 empNo의 값 -> mapper -->
+<input hidden type="text" value="${loginUser.empNo}" name="empNo">
+
             <table border="1" class="table table-bordered tb_salary1 tb_emp">
               <thead>
                 <tr>

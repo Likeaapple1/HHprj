@@ -319,6 +319,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
 
 <div class="scroll">
+
             <table border="1" class="table table-bordered table-hover table-striped tb_salary1">
               <thead>
                 <tr>

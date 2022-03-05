@@ -82,7 +82,7 @@ public class SalaryController {
 	@GetMapping("/payslip/{m}")
 	public String payslip(@PathVariable String m, Model model) {
 
-		PayrollDto dto = ss.selectOne("salary.selectOneBySalary", m);
+		PayrollDto dto = ss.selectOne("salary.selectOneByPayroll", m);
 		
 		model.addAttribute("data", dto);
 		return "salary/payslip";

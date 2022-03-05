@@ -50,16 +50,27 @@
 			)
 		</insert>
 		
-		<select id="selectAll" resultType="payrollDto">
+		<select id="selectAllPayroll" resultType="payrollDto">
 			SELECT *
-			FROM PAYROLL
+            FROM PAYROLL, EMP
+            WHERE PAYROLL.EMP_NO = EMP.EMP_NO
 		</select>
 		
-		<select id="selectOneBySalary" parameterType="string" resultType="payrollDto">
+		<select id="selectOneByPayroll" parameterType="string" resultType="payrollDto">
 			SELECT *
 			FROM PAYROLL
 			WHERE PAYROLL_DATE = #{payrollDate}
 		</select>
+		
+		
+		
+		<select id="selectOneBySalary" resultType="salaryDto">
+			SELECT *
+			FROM SALARY, EMP
+            WHERE SALARY.EMP_NO = EMP.EMP_NO
+		</select>
+		
+
 		
 <!-- 		<select id="selectOneBySalarySetting" parameterType="string" resultType="payrollDto">
 			SELECT *
@@ -78,12 +89,14 @@
 			, TRANSPORTATION_EXPENSES = #{transportationExpenses}
 <!-- 			, PAYROLL_BANK = #{payrollBank}
 			, PAYROLL_ACCOUNT = #{payrollAccount} -->
-			WHERE EMP_NO = 101
+			WHERE EMP_NO = #{empNo}
 		</update>
 
 		<!-- <delete id="delete" parameterType="payrollDto">
 			DELETE FROM PAYROLL
 			WHERE PAYROLL_DATE = #{payrollDate}
 		</delete> -->
+		
+		
 
 </mapper>

@@ -317,7 +317,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <thead>
                 <tr>
                   <th width="30px"><input type="checkbox"></th>
-                  <!-- <th width="50px">번호</th> -->
+                  <th width="50px">번호</th>
                   <th>제목</th>
                   <th width="100px">작성자</th>
                   <th width="100px">작성일</th>
@@ -328,6 +328,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <c:forEach items="${list}" var="b">
 					<tr>
 						<td><input type="checkbox"></td>
+						<td>${b.noticeNo}</td>
 						<td><a href="detail/${b.title}">${b.title}</a></td>
 						<td>${b.writer}</td>
 						<td>${b.enrollDate}</td>

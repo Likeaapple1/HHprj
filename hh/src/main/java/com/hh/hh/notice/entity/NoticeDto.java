@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class NoticeDto {
 
+	private int noticeNo;
 	private String title;
 	private String content;
 	private String writer;
