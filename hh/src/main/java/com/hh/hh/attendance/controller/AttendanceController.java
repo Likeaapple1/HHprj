@@ -36,13 +36,13 @@ public class AttendanceController {
       // 세션에서 로그인 정보 가져오기
       MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
       long empNo = loginUser.getEmpNo();
+      
       // 시간 포맷 맞춰주기
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss+SSSS");
       
       // 로그인한 사용자의 근태내역조회 
       List<AttendanceDto> workUserList = attendanceservice.getWorkList(empNo);
       if(workUserList != null) {
-
          // 
          for(AttendanceDto wul : workUserList) {
             // 문자열 형식으로 변환한다
@@ -125,7 +125,7 @@ public class AttendanceController {
 	      attendanceDto.setEmpNo(empNo);
 	      
 	      session.getAttribute("attUser");
-	      
+	      System.out.println(session.getAttribute("attUser"));
 	      // 순서대로 정시퇴근시간, 야간근무 시작 시간, 퇴근 버튼, 버튼 누른 현재시간
 	      Date workEnd = null;
 	      //Date workOver = null;
@@ -168,6 +168,21 @@ public class AttendanceController {
 	      return "redirect:/attendance/home";
    }
    
+   // 근태 현황 조회
+	   @GetMapping("attstatus")
+	   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model) throws Exception {
+		   	// 세션 가져오기
+		   MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
+		   long empNo = loginUser.getEmpNo();
+		   System.out.println(session.getAttribute("loginUser"));
+		   
+		   // 근태 현황 조회하는 쿼리 날리기
+		   List<AttendanceDto>list = attendanceservice.getAttList(empNo);
+		   model.addAttribute("list",list);
+		   return "attendance/attstatus";
+	   }
+   
+   // 관리자만 들어갈 수 있는 메뉴
    @GetMapping("admin/list")
    public String list() {
 	   return "attendance/admin/list";

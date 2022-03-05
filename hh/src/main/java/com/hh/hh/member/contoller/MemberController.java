@@ -41,7 +41,6 @@ public class MemberController {
 			}
 		}
 	
-	
 	// 로그인 화면 보여주기
 	@GetMapping("login")
 	public String login() {
@@ -71,7 +70,7 @@ public class MemberController {
 
 			}
 
-			return "/main";
+			return "redirect:/main";
 		}else {
 			return "fail";
 		}

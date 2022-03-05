@@ -76,4 +76,9 @@ public class AttendanceServiceImpl implements AttendanceService {
 		}
 		return attendancedto;
 	}
+
+	@Override
+	public List<AttendanceDto> getAttList(long empNo) throws Exception {
+		return attendancedao.getAttList(empNo);
+	}
 }

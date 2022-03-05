@@ -24,8 +24,8 @@
 	<!-- 인터셉터 등록 -->
     <interceptors>
         <interceptor>
-            <mapping path="/**"/>
-            <exclude-mapping path="/login/**"/>
+            <mapping path="/**/*"/>
+            <exclude-mapping path="/login"/>  
             <beans:bean class="com.hh.hh.interceptor.MemberInterceptor"></beans:bean>
         </interceptor>
         <interceptor>

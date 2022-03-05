@@ -51,7 +51,7 @@
 				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y'
 			</when>
 			<otherwise>
-				 WORK_FORM ='정상근무', ATT_NS_YN = 'N'
+				 WORK_FORM ='정상근무', ATT_NS_YN = 'N', 
 			</otherwise>
 		</choose>
 				WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})						
@@ -77,4 +77,9 @@
   			'Y'
   		)
   	</insert>
+  	
+  	<select id="selectAttList" resultType="attendanceDto">
+  		SELECT * FROM ATTENDANCE
+  		WHERE EMP_NO = #{empNO}
+  	</select>
 </mapper>

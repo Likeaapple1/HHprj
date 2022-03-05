@@ -21,4 +21,6 @@ public interface AttendanceService {
 	AttendanceDto workover(AttendanceDto attendanceDto) throws Exception;
 
 	AttendanceDto worknight(AttendanceDto attendanceDto) throws Exception;
+
+	List<AttendanceDto> getAttList(long empNo) throws Exception;
 }
