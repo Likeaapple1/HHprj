@@ -5,8 +5,5 @@
   
   <mapper namespace="resign">
   
-  	<select id="getResignList" resultType="resignDto">
-  		SELECT * FROM RESING
-  	</select>
-  
+
   </mapper>
