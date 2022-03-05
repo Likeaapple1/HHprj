@@ -771,18 +771,15 @@
 
 <!-- Page specific script -->
 <script>
-    function show () {
-document.querySelector(".background").className = "background show";
-}
-
-function close () { 
-document.querySelector(".background").className = "background";
-}
-
-document.querySelector("#show").addEventListener('click', show);
-document.querySelector("#close").addEventListener('click', close);
-document.querySelector(".apprline_btn3").addEventListener('click', close);
-
+	function show() {
+		document.querySelector(".background").className = "background show";
+	}
+	function close() {
+		document.querySelector(".background").className = "background";
+	}
+	document.querySelector("#show").addEventListener('click', show);
+	document.querySelector("#close").addEventListener('click', close);
+	document.querySelector(".apprline_btn3").addEventListener('click', close);
 </script>
 
 <!-- 조직도 토글 이벤트 -->

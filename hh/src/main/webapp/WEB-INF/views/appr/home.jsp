@@ -337,7 +337,76 @@
         <div class="appr_content">
           <div class="appr_content1">
 				<div class="appr_content1_div">
-					
+					<div>
+						<div class="appr_content1_header">
+							<span class="state read">진행중</span>
+							<p class="appr_form_text3 mb0">휴가 가고싶어요</p>
+							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
+							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
+							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;기안서</p>
+						</div>
+						<a href="#">
+							<div class="appr_content1_footer">
+								<p class="appr_form_text5">결재하기</p>
+							</div>							
+						</a>
+					</div>
+					<div>
+						<div class="appr_content1_header">
+							<span class="state read">진행중</span>
+							<p class="appr_form_text3 mb0">관두겠습니다!</p>
+							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
+							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
+							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;퇴직신청서</p>
+						</div>
+						<a href="#">
+							<div class="appr_content1_footer">
+								<p class="appr_form_text5">결재하기</p>
+							</div>							
+						</a>
+					</div>
+					<div>
+						<div class="appr_content1_header">
+							<span class="state read">진행중</span>
+							<p class="appr_form_text3 mb0">출장다녀오겠습니다.</p>
+							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
+							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
+							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출장신청서</p>
+						</div>
+						<a href="#">
+							<div class="appr_content1_footer">
+								<p class="appr_form_text5">결재하기</p>
+							</div>							
+						</a>
+					</div>
+					<div>
+						<div class="appr_content1_header">
+							<span class="state read">진행중</span>
+							<p class="appr_form_text3 mb0">과자샀습니다</p>
+							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
+							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
+							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지출결의서(기본)</p>
+						</div>
+						<a href="#">
+							<div class="appr_content1_footer">
+								<p class="appr_form_text5">결재하기</p>
+							</div>							
+						</a>
+					</div>
+					<div>
+						<div class="appr_content1_header">
+							<span class="state read">진행중</span>
+							<p class="appr_form_text3 mb0">죄송합니다</p>
+							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
+							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
+							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시말서</p>
+						</div>
+						<a href="#">
+							<div class="appr_content1_footer">
+								<p class="appr_form_text5">결재하기</p>
+							</div>							
+						</a>
+					</div>
 				</div>
           </div>
           <div class="appr_content2">
@@ -356,34 +425,25 @@
                         <tr>
                           <th>기안일</th>
                           <th>결재양식</th>
-                          <th >제목</th>
+                          <th>제목</th>
                           <th>첨부</th>
                           <th style="width: 10%;">결재상태</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach items="${list}" var="n">
-                          <tr>
-                              <td>${n.no}</td>
-                              <td>${n.apprLineTitle}</td>
-                              <td>${n.apprLine}</td>
-                              <td>${n.apprLine}</td>
-                              <td>${n.apprLine}</td>
-                          </tr>
-                        </c:forEach>
                         <tr>
-                          <td>219</td>
-                          <td>Alexander Pierce</td>
-                          <td>11-7-2014</td>
-                          <td><span class="tag tag-warning">Pending</span></td>
-                          <td>venison chicken flank fatback doner.</td>
+                          <td>2022-03-04</td>
+                          <td>기안서</td>
+                          <td>휴가 가고싶어요</td>
+                          <td><span class="tag tag-warning"></span></td>
+                          <td><span class="state read">진행중</span></td>
                         </tr>
                         <tr>
-                          <td>657</td>
-                          <td>Bob Doe</td>
-                          <td>11-7-2014</td>
-                          <td><span class="tag tag-primary">Approved</span></td>
-                          <td>venison chicken flank fatback doner.</td>
+                          <td>2022-03-04</td>
+                          <td>퇴직신청서</td>
+                          <td>관두겠습니다!</td>
+                          <td><span class="tag tag-primary"></span></td>
+                          <td><span class="state read">진행중</span></td>
                         </tr>
                       </tbody>
                     </table>
@@ -411,34 +471,28 @@
                         <tr>
                           <th>기안일</th>
                           <th>결재양식</th>
-                          <th >제목</th>
+                          <th>제목</th>
                           <th>첨부</th>
+                          <th>문서번호</th>
                           <th style="width: 10%;">결재상태</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach items="${list}" var="n">
-                          <tr>
-                              <td>${n.no}</td>
-                              <td>${n.apprLineTitle}</td>
-                              <td>${n.apprLine}</td>
-                              <td>${n.apprLine}</td>
-                              <td>${n.apprLine}</td>
-                          </tr>
-                        </c:forEach>
                         <tr>
-                          <td>219</td>
-                          <td>Alexander Pierce</td>
-                          <td>11-7-2014</td>
-                          <td><span class="tag tag-warning">Pending</span></td>
-                          <td>venison chicken flank fatback doner.</td>
+                          <td>2022-03-04</td>
+                          <td>기안서</td>
+                          <td>결재승인해주세요</td>
+                          <td><span class="tag tag-warning"></span></td>
+                          <td>HH그룹-2022-00001</td>
+                          <td><span class="state finish">완료</span></td>
                         </tr>
                         <tr>
-                          <td>657</td>
-                          <td>Bob Doe</td>
-                          <td>11-7-2014</td>
-                          <td><span class="tag tag-primary">Approved</span></td>
-                          <td>venison chicken flank fatback doner.</td>
+                          <td>2022-03-04</td>
+                          <td>기안서</td>
+                          <td>노트북 구매</td>
+                          <td><span class="tag tag-primary"></span></td>
+                          <td>HH그룹-2022-00002</td>
+                          <td><span class="state finish">완료</span></td>
                         </tr>
                       </tbody>
                     </table>
