@@ -371,10 +371,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <li class="nav-item">
               <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
-            </li>
+            
           </ul>
         </div>
 
@@ -398,23 +395,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <th>졸업년월</th>
                               <th>학교명</th>
                               <th>전공학과</th>
-                              <th>학위</th>
                               <th>졸업구분</th>
                               <th>소재지</th>
 
                             </tr>	
                           </thead>
                           <tbody>
+                          	<tr>
                               <tr>
                                 <td><input type="checkbox"></td>
-                                <td><input class="mon" type="date"></td>
-                                <td><input class="mon" type="date"></td>
+                                <td><input class="mon" type="month"></td>
+                                <td><input class="mon" type="month"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-
                               </tr>
     
     

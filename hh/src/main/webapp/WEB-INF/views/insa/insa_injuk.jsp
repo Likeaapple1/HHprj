@@ -405,10 +405,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <li class="nav-item">
               <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
-            </li>
+            
           </ul>
         </div>
 
@@ -420,7 +417,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <table border="1" class="table table-bordered table-hover tb_insa1">
                       <thead>
                         <tr>
-                          <td rowspan="6"></td>
+                          <td rowspan="6">
+                            <img src="../../../../../../../../../Desktop/KH정보교육원/11250B434F1B8ACC02.jpeg" class="youbujangpic">
+                          </td>
                           <td class="a">사원번호</td>
                           <td class="b"><input type="text" class="blank1"></td>
                           <td class="a">성명</td>

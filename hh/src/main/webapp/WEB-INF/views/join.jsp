@@ -78,7 +78,7 @@
                                                 <option value='50'>인턴</option>
                                              </select>
 			 	</div>
-			 	<button type="submit" class="btn btn-primary btn-lg"> 가입하기</button>
+			 	<button type="submit" class="btn btn-primary btn-lg"> 사원등록</button>
 		</div>
 </section>
 </script>
