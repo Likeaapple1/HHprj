@@ -96,8 +96,18 @@
 .appr_form_text1 {font-weight: bold; font-size: 13px; margin-bottom: 8px;}
 .appr_form_text2 {font-size: 11px;}
 .appr_form_text3 {font-weight: bold;}
-.appr_form_text4 {font-size: 13px; font-weight: lighter; color: gray; white-space: nowrap;}
+.appr_form_text4 {font-size:13px; font-weight: lighter; color: gray; white-space: nowrap;}
 .appr_form_text5 {font-size:13px; font-weight: bold;}
+.appr_form_text6 {font-size:12px; font-weight: bold;}
+.appr_form_text7 {font-size:11px; font-weight: lighter;}
+
+.mt0 {margin-top: 0;}
+.mb0 {margin-bottom: 0;}
+.mb5 {margin-bottom: 5px;}
+.pt0 {padding-top: 0;}
+.pm0 {padding-bottom: 0;}
+
+.dib {display: inline-block;}
 
 .appr_often_cp{
     border: 2px solid #BDBDBD;
@@ -153,6 +163,14 @@
 	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
 	background-color:#1e62d0;
     color: #ffffff;
+}
+.popup_often_top {
+    border: 1px solid #BDBDBD;
+    height: 15%;
+}
+.popup_often_bottom {
+    border: 1px solid #BDBDBD;
+    height: 40%;
 }
 .often_btn:active {
 	position:relative;

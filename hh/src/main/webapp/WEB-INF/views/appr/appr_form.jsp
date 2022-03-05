@@ -415,7 +415,8 @@
             <!-- appr_often_cp -->
             <h5 class="appr_form_text3" style="padding-top: 10px;">
                 자주 쓰는 결재
-                <a href="#" class="often_btn">자주쓰는 결재 설정</a>
+                <a href="#" id="show" class="often_btn">자주쓰는 결재 설정</a>
+                <!-- appr_select_btn -->
             </h5>
             <sub class="appr_form_text4">사용자가 가장 많이 사용한 결재양식입니다. 설정을 통해 수정하여 사용 가능합니다.</sub>
             <hr>
@@ -483,6 +484,30 @@
 </div>
 <!-- /.content-wrapper -->
 
+<!-- 자주쓰는 결재 팝업창 -->
+    <div class="background">
+        <div class="window">
+            <div class="popup">
+                <p class="appr_form_text3" style="border-bottom: 3px solid #dcdcdc; padding-bottom: 5px; font-weight: bold;">자주쓰는 결재를 설정합니다.</p>
+                <a id="go_popup_close_icon" class="btn_layer_x" style data-bypass title="닫기">
+                    <span id="close"></span>
+                </a>
+                <p class="appr_form_text6 mb5">결재양식을 추가하여 순서를 변경하거나 새로운 양식을 추가합니다</p>
+                <span class="appr_form_text5 dib">&bull;&nbsp;자주 쓰는 결재&nbsp;&nbsp;&nbsp;<p class="appr_form_text7 dib">자주쓰는 결재는 최대 10개까지 지정가능하며, 기본은 사용자가 가장 많이 사용하는 결재양식순으로 반영됩니다.</p></span>
+                <div class="popup_often_top mb5">
+
+                </div>
+                <span class="appr_form_text5 dib">&bull;&nbsp;결재양식&nbsp;&nbsp;&nbsp;<p class="appr_form_text7 dib">결재양식을 선택하여 추가하세요.</p></span>
+                <div class="popup_often_bottom">
+
+                </div>
+                <button>취소</button>
+                <button>저장</button>
+            </div>
+        <div>
+    <div>
+<!-- 자주쓰는 결재 팝업창 -->
+
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
 <!-- Control sidebar content goes here -->
@@ -512,6 +537,20 @@
 
 
 <!-- Page specific script -->
+<script>
+    function show () {
+document.querySelector(".background").className = "background show";
+}
+
+function close () { 
+document.querySelector(".background").className = "background";
+}
+
+document.querySelector("#show").addEventListener('click', show);
+document.querySelector("#close").addEventListener('click', close);
+document.querySelector(".apprline_btn3").addEventListener('click', close);
+
+</script>>
 <script>
 
 </script>
