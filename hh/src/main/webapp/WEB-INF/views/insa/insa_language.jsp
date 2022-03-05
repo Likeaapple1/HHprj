@@ -72,6 +72,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .etc {
       border: solid 1px silver;
     }
+    
+    .hang{
+      text-align: right;
+    }
+    
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -367,15 +372,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
               <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
             </li>
-            <li class="nav-item">
-              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
-            </li>
           </ul>
         </div>
 
         </div>
-
-        <a href="#" class="btn btn-primary">행추가</a> <a href="#" class="btn btn-primary">행삭제</a>
+        
+        <br>
+        <div class="hang"><a href="#" class="btn btn-primary">행추가</a> <a href="#" class="btn btn-primary">행삭제</a></div>
+        <br>
 
         <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
@@ -399,6 +403,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </tr>	
                           </thead>
                           <tbody>
+                              
                               <tr>
                                 <td><input type="checkbox"></td>
                                 <td></td>

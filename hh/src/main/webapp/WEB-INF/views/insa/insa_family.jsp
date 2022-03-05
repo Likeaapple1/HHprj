@@ -72,6 +72,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .etc {
       border: solid 1px silver;
     }
+    
+    .hang{
+      text-align: center;
+    }
+    
 
 
   </style>
@@ -369,15 +374,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
               <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
             </li>
-            <li class="nav-item">
-              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
-            </li>
           </ul>
         </div>
 
         </div>
+        
+        <br>
+        <div class="hang">전체 공제대상 가족수(본인포함)  <input type="text" class="mon">   전체 공제대상 가족 중 20세이하 자녀수 <input type="text" class="mon"> <a href="#" class="btn btn-primary">주민등록번호 확인</a> <a href="#" class="btn btn-primary">행추가</a> <a href="#" class="btn btn-primary">행삭제</a></div>
+        <br>
 
-        전체 공제대상 가족수(본인포함)  <input type="text" class="mon">   전체 공제대상 가족 중 20세이하 자녀수 <input type="text" class="mon"> <a href="#" class="btn btn-primary">주민등록번호 확인</a> <a href="#" class="btn btn-primary">행추가</a> <a href="#" class="btn btn-primary">행삭제</a>
+        
 
         <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
@@ -404,10 +410,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <tbody>
                               <tr>
                                 <td><input type="checkbox"></td>
-                                <td>나경은</td>
-                                <td>배우자</td>
-                                <td>810604-2******</td>
-                                <td>학사</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><input type="checkbox"></td>

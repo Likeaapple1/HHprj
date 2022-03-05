@@ -72,7 +72,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .etc {
       border: solid 1px silver;
     }
-
+	.hang{
+      text-align: right;
+    }
+    .jobcode{
+    width: 200px;
+    }
 
   </style>
   <meta charset="utf-8">
@@ -369,15 +374,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
               <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
             </li>
-            <li class="nav-item">
-              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
-            </li>
           </ul>
         </div>
 
         </div>
 
-        <a href="#" class="btn btn-primary">행추가</a> <a href="#" class="btn btn-primary">행삭제</a>
+        <br>
+        <div class="hang"><a href="#" class="btn btn-primary">행추가</a> <a href="#" class="btn btn-primary">행삭제</a></div>
+        <br>
+
 
         <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
@@ -399,27 +404,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </tr>	
                           </thead>
                           <tbody>
-                              <tr>
+                          		<tr>
                                 <td><input type="checkbox"></td>
                                 <td></td>
                                 <td><input class="mon" type="date" value="2022-03"></td>
                                 <td><input class="mon" type="date" value="2022-03"></td>
-                                <td><input tyle='hidden' name='job_attri_val_key'>
-                                  <select name="job" size="1">
-                                  <option value=''>선택 </option>
-                                  <option value='39'>회장</option>
-                                  <option value='40'>부회장</option>
-                                  <option value='41'>사장</option>
-                                  <option value='42'>부사장</option>
-                                  <option value='43'>전무</option>
-                                  <option value='44'>상무</option>
-                                  <option value='45'>부장</option>
-                                  <option value='46'>차장</option>
-                                  <option value='47'>과장</option>
-                                  <option value='48'>대리</option>
-                                  <option value='49'>사원</option>
-                                  <option value='50'>인턴</option>
-                               </select></td>
+                                <td><div class="jobcode"><select name="job" size="1" class="form-control"  value = "${empjobCode}">
+                                                <option value=''>선택하세요 </option>
+                                                <option value='39'>회장</option>
+                                                <option value='40'>부회장</option>
+                                                <option value='41'>사장</option>
+                                                <option value='42'>부사장</option>
+                                                <option value='43'>전무</option>
+                                                <option value='44'>상무</option>
+                                                <option value='45'>부장</option>
+                                                <option value='46'>차장</option>
+                                                <option value='47'>과장</option>
+                                                <option value='48'>대리</option>
+                                                <option value='49'>사원</option>
+                                                <option value='50'>인턴</option>
+                                             </select>
+			 	</div></td>
                                 <td></td>
                                 <td></td>
                               

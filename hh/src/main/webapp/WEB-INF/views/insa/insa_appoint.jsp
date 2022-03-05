@@ -72,6 +72,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .etc {
       border: solid 1px silver;
     }
+    .hang{
+      text-align: center;
+    }
     
   </style>
   <meta charset="utf-8">
@@ -368,24 +371,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
               <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
             </li>
-            <li class="nav-item">
-              <div class="etc"><a class="nav-link" href="/insa/etc">기타정보</a></div>
-            </li>
+            
           </ul>
         </div>
 
         </div>
 
-        <table>
-          <tr>
-            <td>현직책</td>
-            <td><input type="text" class="officephone"></td>
-            <td>현직급</td>
-            <td><input type="text" class="homephone"></td>
-            <td>호봉</td>
-            <td><input type="text" class="phone"></td>
-          </tr>
-        </table>
+		
+        <br>
+        <div class="hang">현부서  <input type="text" class="mon">   현직급 <input type="text" class="mon"> 호봉 <input type="text" class="mon"></div>
+        <br>
+
+        
 
         <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
@@ -407,13 +404,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           </thead>
                           <tbody>
                               <tr>
-                                <td>1</td>
-                                <td>부서이동</td>
-                                <td><input class="mon" type="month" value="2022-03"></td>
                                 <td></td>
                                 <td></td>
-                              
-
+                                <td><input class="mon" type="date" value="2022-03"></td>
+                                <td></td>
+                                <td></td>
                               </tr>
     
     
