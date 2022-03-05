@@ -8,14 +8,16 @@
 	<insert id="insert" parameterType="notice">
 		INSERT INTO NOTICE
 		(
-			  TITLE
+			  NOTICE_NO
+			, TITLE
 			, CONTENT
 			, WRITER
 			, ENROLL_DATE
 		)
 		VALUES
 		(
-			  #{title}
+			  NOTICE_NO_SEQ.NEXTVAL
+			, #{title}
 			, #{content}
 			, '관리자'
 			, SYSDATE

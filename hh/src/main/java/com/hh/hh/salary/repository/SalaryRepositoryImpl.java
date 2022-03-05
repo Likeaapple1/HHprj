@@ -23,7 +23,7 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 
 	@Override
 	public List<PayrollDto> selectList() {
-		return ss.selectList("salary.selectAll");
+		return ss.selectList("salary.selectAllPayroll");
 	}
 
 	@Override
