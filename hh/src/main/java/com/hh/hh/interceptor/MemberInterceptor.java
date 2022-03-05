@@ -11,13 +11,13 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		MemberDto login = (MemberDto) request.getSession().getAttribute("loginUser");
+		MemberDto loginUser = (MemberDto) request.getSession().getAttribute("loginUser");
 		
-		if(login != null) {
+		if(loginUser != null) {
 			return true;
 		}else {
-			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-		return false;
+			response.sendRedirect("/hh/login");
+			return false;
 		}
 		
 	}

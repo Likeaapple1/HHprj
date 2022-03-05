@@ -22,4 +22,6 @@ public interface AttendanceDao {
 
 	int getWorkNight(AttendanceDto attendanceDto) throws Exception;
 
+	List<AttendanceDto> getAttList(long empNo) throws Exception;
+
 }

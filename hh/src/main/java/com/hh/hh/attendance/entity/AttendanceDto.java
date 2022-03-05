@@ -12,6 +12,7 @@ public class AttendanceDto {
 	private char attDate;
 	private Date attStrDate;
 	private Date attEndDate;
+	private Date attWorkDate;
 	private char attLate;
 	private char attNsYn;
 	private Time attNsDate;

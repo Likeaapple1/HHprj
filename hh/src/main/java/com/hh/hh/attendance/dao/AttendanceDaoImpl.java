@@ -54,6 +54,11 @@ public class AttendanceDaoImpl implements AttendanceDao{
 		return sqlsession.update("attendance.updateWorkNight",attendanceDto);
 	}
 
+	@Override
+	public List<AttendanceDto> getAttList(long empNo) throws Exception {
+		return sqlsession.selectList("attendance.selectAttList",empNo);
+	}
+
 	
 	
 }
