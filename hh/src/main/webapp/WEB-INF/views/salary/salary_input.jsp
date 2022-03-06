@@ -1,3 +1,5 @@
+<%@page import="com.hh.hh.member.entity.MemberDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -38,9 +40,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .th_g {
       background-color: rgb(230, 230, 230) !important;
     }
-    .tb_emp {
+    /* .tb_emp {
       height: 400px;
-    }
+    } */
     .tb_sal {
       width: 700px !important;
     }
@@ -362,137 +364,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <div class="scr">
 
-  <table border="1" class="table table-hover table-bordered tb_salary1 tb_emp">
+  <table border="1" class="table table-hover table-bordered tb_salary1">
     <thead>
       <tr>
         <th>사번</th>
         <th>성명</th>
-        <th>직급</th>
+        <!-- <th>직급</th> -->
         <th>부서</th>
       </tr>	
     </thead>
     <tbody>
-
-        <tr>
-          <td>101</td>
-          <td>남민국</td>
-          <td>대리</td>
-          <td>마케팅</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        
+        	<c:forEach items="${list}" var="e">
+				<tr>
+					<td>${e.empNo}</td>
+					<td>${e.empName}</td>
+					<%-- <td>${e.empjobCode}</td> --%>
+					<td>${e.managerDept}</td>
+				</tr>
+			</c:forEach>
 
     </tbody>
   </table>

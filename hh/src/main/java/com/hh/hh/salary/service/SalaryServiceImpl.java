@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
 import com.hh.hh.salary.repository.SalaryRepository;
@@ -34,5 +35,10 @@ public class SalaryServiceImpl implements SalaryService {
 //	public int delete(PayrollDto dto) {
 //		return dao.delete(dto);
 //	}
+	
+	@Override
+	public List<MemberDto> selectListE() {
+		return dao.selectListE();
+	}
 
 }

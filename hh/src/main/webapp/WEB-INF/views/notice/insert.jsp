@@ -317,7 +317,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <table>
   
   <tr>
-    <td><input name="title" class="form-control" type="text" placeholder="제목"></td>
+    <td><input name="title" class="form-control" type="text" placeholder="제목">
+    <!-- 현재 로그인된 empName의 값 -> mapper -->
+	<input hidden type="text" value="${loginUser.empName}" name="writer">
+    </td>
   </tr>
 
   <tr>
