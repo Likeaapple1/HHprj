@@ -2,6 +2,7 @@ package com.hh.hh.salary.service;
 
 import java.util.List;
 
+import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
 
@@ -14,5 +15,7 @@ public interface SalaryService {
 	int setting(SalaryDto dto);
 
 //	int delete(PayrollDto dto);
+	
+	List<MemberDto> selectListE();
 
 }

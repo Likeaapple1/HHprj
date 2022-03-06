@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
 import com.hh.hh.salary.service.SalaryService;
@@ -138,6 +139,20 @@ public class SalaryController {
 //			//fail
 //			return "salary/error";
 //		}
+//	}
+	
+//	@GetMapping("/input")
+//	public ModelAndView input(ModelAndView mv) {
+//		
+//		List<MemberDto> list = service.selectListE();
+//		
+//		// model
+//		mv.addObject("list", list);
+//		// view
+//		mv.setViewName("salary/input");
+//		
+//		// view 선택
+//		return mv;
 //	}
 	
 

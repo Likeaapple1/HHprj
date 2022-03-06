@@ -19,7 +19,7 @@
 			  NOTICE_NO_SEQ.NEXTVAL
 			, #{title}
 			, #{content}
-			, '관리자'
+			, #{writer}
 			, SYSDATE
 		)
 	</insert>

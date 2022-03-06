@@ -89,13 +89,17 @@
 			, TRANSPORTATION_EXPENSES = #{transportationExpenses}
 <!-- 			, PAYROLL_BANK = #{payrollBank}
 			, PAYROLL_ACCOUNT = #{payrollAccount} -->
-			WHERE EMP_NO = #{empNo}
 		</update>
 
 		<!-- <delete id="delete" parameterType="payrollDto">
 			DELETE FROM PAYROLL
 			WHERE PAYROLL_DATE = #{payrollDate}
 		</delete> -->
+		
+		<select id="selectAllEmp" resultType="memberDto">
+			SELECT *
+            FROM EMP
+		</select>
 		
 		
 
