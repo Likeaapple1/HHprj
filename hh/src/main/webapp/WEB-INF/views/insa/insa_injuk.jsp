@@ -462,11 +462,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </tr>
                     </table>
                     
-                  
-                  <div class="right">
-                    <a href="#" class="btn btn-primary">새 인사정보 등록하기</a>
-                    <br><br>
-                  </div>
 
                   <table border="1" class="table table-bordered table-hover tb_insa1">
                     <tbody>
