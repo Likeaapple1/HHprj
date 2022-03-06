@@ -3,7 +3,9 @@ package com.hh.hh.attendance.controller;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -170,21 +172,48 @@ public class AttendanceController {
    
    // 근태 현황 조회
 	   @GetMapping("attstatus")
-	   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model) throws Exception {
-		   	// 세션 가져오기
+	   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
+		   // 세션 가져오기
 		   MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
-		   long empNo = loginUser.getEmpNo();
-		   System.out.println(session.getAttribute("loginUser"));
+		   
+		   // 근태 검색
+		   Map<String, Object> map = new HashMap<>();
+		   map.put("type", type);
+		   // System.out.println(type);
+		   map.put("empNo", loginUser.getEmpNo());
 		   
 		   // 근태 현황 조회하는 쿼리 날리기
-		   List<AttendanceDto>list = attendanceservice.getAttList(empNo);
+		   List<AttendanceDto> list = attendanceservice.getAttList(map);
 		   model.addAttribute("list",list);
+		   System.out.println(list);
+		   return "attendance/attstatus";
+	   }
+	   
+	   // 근태현황 전체 조회
+	   @GetMapping("All")
+	   public String All(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
+		   // 세션 가져오기
+		   MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
+		   
+		   // 전체 데이터 검색
+		   Map<String, Object> map = new HashMap<>();
+		   map.put("type", type);
+		   map.put("empNo", loginUser.getEmpNo());
+		   
+		   // 전체 근태 조회하는 쿼리 날리기
+		   List<AttendanceDto> list = attendanceservice.getAttAllList(map);
+		   model.addAttribute("list", list);
 		   return "attendance/attstatus";
 	   }
    
-   // 관리자만 들어갈 수 있는 메뉴
-   @GetMapping("admin/list")
-   public String list() {
-	   return "attendance/admin/list";
-   }
+	   // 관리자만 들어갈 수 있는 메뉴
+	   @GetMapping("admin/list")
+	   public String list() {
+		   return "attendance/admin/list";
+	   }
+	   
+	   @GetMapping("admin/setatt")
+	   public String setatt() {
+		   return "attendance/admin/setatt";
+	   }
 }

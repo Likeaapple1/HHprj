@@ -25,7 +25,19 @@
 <!-- 	<a href="javsscript:doDisplay">1주차</a>
 	<table></table>
  -->
-<form action = "" method="post">
+    <form action="attstatus" method="get">
+        <select name="type">
+        	<option value="근무상태">-- 근 무 --</option>
+            <option value="정상근무">정상근무</option>
+            <option value="지각">지각</option>
+            <option value="초과근무">초과근무</option>
+            <option value="야간근무">야간근무</option>
+        </select>
+        <input type="submit" value="검색">
+        <input type="submit" formaction="${root}/attendance/All" value ="전체조회">
+    </form>
+ 
+    
 	<table class="table">
 	 <thead>
 	   <tr>
@@ -52,6 +64,5 @@
 	   </c:forEach>
 	 </tbody> 
 	</table>
-</form>
 </body>
 </html>

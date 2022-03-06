@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file ="/WEB-INF/views/common/header.jsp" %>
 
 	<h1>에러 페이지</h1>
 	<h2 id = "msg">${msg}</h2>
