@@ -30,5 +30,16 @@ public class AttendanceDto {
 	private Date attNsEnd;
 	private String startDate;
 	private String endDate;
+	
+	@Override
+	public String toString() {
+		return "AttendanceDto [attNo=" + attNo + ", empNo=" + empNo + ", attDate=" + attDate + ", attStrDate="
+				+ attStrDate + ", attEndDate=" + attEndDate + ", attWorkDate=" + attWorkDate + ", attLate=" + attLate
+				+ ", attNsYn=" + attNsYn + ", attNsDate=" + attNsDate + ", holiCode=" + holiCode + ", hwYn=" + hwYn
+				+ ", hwStrDate=" + hwStrDate + ", hwEndDate=" + hwEndDate + ", ovDate=" + ovDate + ", workForm="
+				+ workForm + ", attNsStart=" + attNsStart + ", attNsStartEnd=" + attNsStartEnd + ", attNsStartEndfinal="
+				+ attNsStartEndfinal + ", ovDateStrat=" + ovDateStrat + ", ovDateYn=" + ovDateYn + ", attNsEnd="
+				+ attNsEnd + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	}
 
 }

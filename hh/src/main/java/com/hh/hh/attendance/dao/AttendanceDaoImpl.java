@@ -1,12 +1,14 @@
 package com.hh.hh.attendance.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hh.hh.attendance.entity.AttendanceDto;
+import com.hh.hh.member.entity.MemberDto;
 
 @Repository
 public class AttendanceDaoImpl implements AttendanceDao{
@@ -30,8 +32,8 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	}
 	// 사원의 출근내역 조회
 	@Override
-	public List<AttendanceDto> getWorkList(long emoNo) throws Exception {
-		return sqlsession.selectList("attendance.selectWorkList", emoNo);
+	public List<AttendanceDto> getWorkList(Map<String, Object> map) throws Exception {
+		return sqlsession.selectList("attendance.selectWorkList", map);
 	}
 
 	@Override
@@ -55,9 +57,16 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	}
 
 	@Override
-	public List<AttendanceDto> getAttList(long empNo) throws Exception {
-		return sqlsession.selectList("attendance.selectAttList",empNo);
+	public List<AttendanceDto> getAttList(Map<String, Object> map) throws Exception {
+		return sqlsession.selectList("attendance.selectAttList",map);
 	}
+
+	@Override
+	public List<AttendanceDto> getAttAllList(Map<String, Object> map) throws Exception {
+		return sqlsession.selectList("attendance.selectAttAllList",map);
+	}
+	
+
 
 	
 	

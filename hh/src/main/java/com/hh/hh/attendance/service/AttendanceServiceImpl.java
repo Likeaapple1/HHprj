@@ -1,6 +1,7 @@
 package com.hh.hh.attendance.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hh.hh.attendance.dao.AttendanceDao;
 import com.hh.hh.attendance.entity.AttendanceDto;
+import com.hh.hh.member.entity.MemberDto;
 
 @Service
 @Transactional
@@ -34,8 +36,8 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public List<AttendanceDto> getWorkList(long empNo) throws Exception {
-		return attendancedao.getWorkList(empNo);
+	public List<AttendanceDto> getWorkList(Map<String, Object> map) throws Exception {
+		return attendancedao.getWorkList(map);
 	}
 	
 	@Override
@@ -78,7 +80,16 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public List<AttendanceDto> getAttList(long empNo) throws Exception {
-		return attendancedao.getAttList(empNo);
+	public List<AttendanceDto> getAttList(Map<String, Object> map) throws Exception {
+		return attendancedao.getAttList(map);
 	}
+
+	@Override
+	public List<AttendanceDto> getAttAllList(Map<String, Object> map) throws Exception {
+		return attendancedao.getAttAllList(map);
+	}
+
+
+
+
 }

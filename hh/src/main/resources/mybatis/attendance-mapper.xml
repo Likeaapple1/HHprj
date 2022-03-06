@@ -77,9 +77,19 @@
   			'Y'
   		)
   	</insert>
-  	
+
   	<select id="selectAttList" resultType="attendanceDto">
   		SELECT * FROM ATTENDANCE
-  		WHERE EMP_NO = #{empNO}
+  		<if test=" type != null">  		
+			WHERE EMP_NO = #{empNo} and WORK_FORM LIKE #{type}  				
+  		</if>
+  		
+  	</select>
+  	
+  	<select id="selectAttAllList" resultType="attendanceDto">
+  		SELECT * FROM ATTENDANCE
+  		<if test=" type != null">  		
+			WHERE EMP_NO = #{empNo}  				
+  		</if> 
   	</select>
 </mapper>
