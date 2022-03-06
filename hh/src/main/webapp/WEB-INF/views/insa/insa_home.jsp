@@ -314,7 +314,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <input type="text" class="mon">
         <a href="#" class="btn btn-primary">조회</a>
         <input type="checkbox"> 퇴직자 포함
-          <br><br>
+        
+        <div class="right">
+                    <a href="#" class="btn btn-primary">새 인사정보 등록하기</a>
+                  </div>
+         
 
           <hr>
           <h3>기본정보</h3>
@@ -526,15 +530,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <!-- <footer class="main-footer"> -->
     <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
+    <!-- <div class="float-right d-none d-sm-inline">
       Anything you want
-    </div>
+    </div> -->
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
-</div>
+</div> -->
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
