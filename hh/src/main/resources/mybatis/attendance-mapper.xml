@@ -78,18 +78,28 @@
   		)
   	</insert>
 
-  	<select id="selectAttList" resultType="attendanceDto">
-  		SELECT * FROM ATTENDANCE
-  		<if test=" type != null">  		
-			WHERE EMP_NO = #{empNo} and WORK_FORM LIKE #{type}  				
-  		</if>
-  		
-  	</select>
   	
-  	<select id="selectAttAllList" resultType="attendanceDto">
-  		SELECT * FROM ATTENDANCE
-  		<if test=" type != null">  		
-			WHERE EMP_NO = #{empNo}  				
-  		</if> 
-  	</select>
+  	
+  	<resultMap id="attMap" type="attendanceDto"> 
+  		<result column="today" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
+  		<result column="day" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
+  		<result column="start" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
+  		<result column="end" property="attEndDate" jdbcType="NVARCHAR" javaType="String"/> 
+   		<result column="total " property="attEndDate" jdbcType="NVARCHAR" javaType="String"/>  
+  	</resultMap>
+
+      <select id="selectAttList" resultType="attendanceDto">
+          SELECT * FROM ATTENDANCE
+          WHERE EMP_NO = #{empNo}
+          <if test=" type != null">          
+            WHERE EMP_NO = #{empNo} and WORK_FORM LIKE #{type}                  
+          </if>
+      </select>
+  	
+    <select id="selectAttAllList" resultType="attendanceDto">
+        SELECT * FROM ATTENDANCE
+         <if test=" type != null">          
+            WHERE EMP_NO = #{empNo}                  
+          </if> 
+     </select>
 </mapper>

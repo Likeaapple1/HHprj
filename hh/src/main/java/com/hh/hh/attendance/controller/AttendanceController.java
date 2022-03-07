@@ -181,15 +181,22 @@ public class AttendanceController {
 		   map.put("type", type);
 		   // System.out.println(type);
 		   map.put("empNo", loginUser.getEmpNo());
-		   
+
+		   //날짜 가져오기
+		   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM월 dd일");
+		   String today = simpleDateFormat.format(attendanceDto.getAttStrDate());
+		   attendanceDto.setToday(today);
+
 		   // 근태 현황 조회하는 쿼리 날리기
 		   List<AttendanceDto> list = attendanceservice.getAttList(map);
+		   
 		   model.addAttribute("list",list);
 		   System.out.println(list);
 		   return "attendance/attstatus";
 	   }
 	   
-	   // 근태현황 전체 조회
+
+	// 근태현황 전체 조회
 	   @GetMapping("All")
 	   public String All(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
 		   // 세션 가져오기
