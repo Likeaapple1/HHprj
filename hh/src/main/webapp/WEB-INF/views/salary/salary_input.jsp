@@ -369,20 +369,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <tr>
         <th>사번</th>
         <th>성명</th>
-        <!-- <th>직급</th> -->
+        <th>직급</th>
         <th>부서</th>
       </tr>	
     </thead>
     <tbody>
         
-        	<c:forEach items="${list}" var="e">
+        	<%
+			List<MemberDto> memberList = (List)request.getAttribute("memberList");
+			for(MemberDto m : memberList){
+			%>
 				<tr>
-					<td>${e.empNo}</td>
-					<td>${e.empName}</td>
-					<%-- <td>${e.empjobCode}</td> --%>
-					<td>${e.managerDept}</td>
+					<td><%= m.getEmpNo()%></td>
+					<td><%= m.getEmpName()%></td>
+					<td><%= m.getEmpjobCode()%></td>
+					<td><%= m.getManagerDept()%></td>
 				</tr>
-			</c:forEach>
+			<%
+			}
+			%>
 
     </tbody>
   </table>

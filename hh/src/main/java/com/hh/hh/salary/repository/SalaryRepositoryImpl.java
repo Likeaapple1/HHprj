@@ -38,8 +38,13 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 //	}
 	
 	@Override
-	public List<MemberDto> selectListE() {
-		return ss.selectList("salary.selectAllEmp");
+	public List<SalaryDto> selectListS() {
+		return ss.selectList("salary.selectOneBySalary");
+	}
+	
+	@Override
+	public List<PayrollDto> selectListOne(long empNo) {
+		return ss.selectList("salary.selectAllPayrollByEmpNo", empNo);
 	}
 
 }

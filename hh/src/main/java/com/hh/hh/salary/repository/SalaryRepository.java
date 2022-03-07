@@ -11,11 +11,12 @@ public interface SalaryRepository {
 	int input(PayrollDto dto) throws Exception;
 
 	List<PayrollDto> selectList();
-
+	
 	int setting(SalaryDto dto);
 
 //	int delete(PayrollDto dto);
-	
-	List<MemberDto> selectListE();
 
+	List<SalaryDto> selectListS();
+	
+	List<PayrollDto> selectListOne(long empNo);
 }

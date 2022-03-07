@@ -50,10 +50,17 @@
 			)
 		</insert>
 		
-		<select id="selectAllPayroll" resultType="payrollDto">
+		<select id="selectAllPayroll" parameterType="int" resultType="payrollDto">
 			SELECT *
             FROM PAYROLL, EMP
             WHERE PAYROLL.EMP_NO = EMP.EMP_NO
+		</select>
+		
+		<select id="selectAllPayrollByEmpNo" parameterType="long" resultType="payrollDto">
+			SELECT *
+            FROM PAYROLL, EMP
+            WHERE PAYROLL.EMP_NO = EMP.EMP_NO
+            AND PAYROLL.EMP_NO = #{empNo}
 		</select>
 		
 		<select id="selectOneByPayroll" parameterType="string" resultType="payrollDto">
@@ -64,10 +71,12 @@
 		
 		
 		
+		
+		
 		<select id="selectOneBySalary" resultType="salaryDto">
 			SELECT *
-			FROM SALARY, EMP
-            WHERE SALARY.EMP_NO = EMP.EMP_NO
+			FROM SALARY
+            WHERE EMP_NO = 101
 		</select>
 		
 

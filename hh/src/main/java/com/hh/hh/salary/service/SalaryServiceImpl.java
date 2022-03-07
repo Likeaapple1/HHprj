@@ -37,8 +37,13 @@ public class SalaryServiceImpl implements SalaryService {
 //	}
 	
 	@Override
-	public List<MemberDto> selectListE() {
-		return dao.selectListE();
+	public List<SalaryDto> selectListS() {
+		return dao.selectListS();
+	}
+	
+	@Override
+	public List<PayrollDto> selectListOne(long empNo) {
+		return dao.selectListOne(empNo);
 	}
 
 }
