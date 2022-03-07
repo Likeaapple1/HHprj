@@ -17,97 +17,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .tb_salary1 {
       font-size: 10pt;
     }
-    /* .div1 {
+    .div1 {
       overflow-y: scroll;
       min-height: 0px;
-      max-height: 600px;
-    } */
-    td {
-      height: 30px;
-      width: 200px;
-    } 
-    th {
+      max-height: 330px;
+    }
+    td, th {
       height: 30px;
     }
-    .blank1 {
+    .mon {
       height: 35px;
-      width: 240px;
-    }
-
-    .blank2{
-      height: 35px;
-      width: 200px;
-    }
-
-    .blank3{
-      text-align: left;
-      height: 35px;
-      width: 1000px;
     }
     .right {
       text-align: right;
     }
 
-    .injuk {
-      background-color: lightsteelblue;
-      border: solid 1px silver;
+    .managebtn{
+      text-align: right;
     }
 
-    .family {
-      border: solid 1px silver;
-    }
+    
 
-    .school {
-      border: solid 1px silver;
-    }
-
-    .language {
-      border: solid 1px silver;
-    }
-
-    .license {
-      border: solid 1px silver;
-    }
-
-    .career {
-      border: solid 1px silver;
-    }
-
-    .appoint {
-      border: solid 1px silver;
-    }
-
-    .reward {
-      border: solid 1px silver;
-    }
-
-    .military {
-      border: solid 1px silver;
-    }
-
-    .etc {
-      border: solid 1px silver;
-    }
-
-    .a {
-      width: 200px;
-    }
-
-    .b{
-      width: 250px;
-    }
-
-    .c{
-      width: 150px;
-    }
-
-    .d{
-      width: 200px;
-    }
-
-    .e{
-      width: 300px;
-    }
     .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -117,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>인사기본정보_인적사항상세</title>
+  <title>인사기본정보</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -360,10 +290,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
 
-          <h1><b>상세정보</b></h1>
+          <h1><b>조직도</b></h1>
           <br><br>
           <hr>
+
           <div class="col-sm-6">
+
           </div><!-- /.col -->
           <div class="col-sm-6">
 
@@ -376,177 +308,88 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-      
-        <div id="h_menu" class="container">  
-          <ul id="nav" class="nav nav-tabs nav-justified">
-            <li class="nav-item">
-              <div class="injuk"><a class="nav-link" href="/insa/injuk">인적사항</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="family"><a class="nav-link" href="/insa/family">가족사항</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="school"><a class="nav-link" href="/insa/school">학력정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="language"><a class="nav-link" href="/insa/language">어학정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="license"><a class="nav-link" href="/insa/license">자격증</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="career"><a class="nav-link" href="/insa/career">경력정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="appoint"><a class="nav-link" href="/insa/appoint">발령정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="reward"><a class="nav-link" href="/insa/reward">상벌정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
-            
-          </ul>
-        </div>
-
-        </div>
-
-        <div class="row div1 center">
-          <!-- <div class="col-lg-6"> -->
-
-            <table border="1" class="table table-bordered table-hover tb_insa1">
-                      <thead>
-                        <tr>
-                          <td rowspan="6">
-                            <img src="../../../../../../../../../Desktop/KH정보교육원/11250B434F1B8ACC02.jpeg" class="youbujangpic">
-                          </td>
-                          <td class="a">사원번호</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">영문성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">한자성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">주민등록번호</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">성별</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">결혼유무</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">결혼기념일</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">내외국인</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">국적</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-                    </table>
-                    
-
-                  <table border="1" class="table table-bordered table-hover tb_insa1">
-                    <tbody>
-                        <tr>
-                          <td class="c">회사전화</td>
-                          <td class="d"><input type="text" class="blank2"></td>
-                          <td class="c">자택전화</td>
-                          <td class="d"><input type="text" class="blank2"></td>
-                          <td class="c">핸드폰</td>
-                          <td class="d"><input type="text" class="blank2"></td>
-                        </tr>
-      
-                        <tr>
-                          <td>회사이메일</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-      
-                        <tr>
-                          <td>외부이메일</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-      
-                        <tr>
-                          <td rowspan="2">자택주소</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-  
-                        <tr>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-      
-                        <tr>
-                          <td>자택영문주소</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-                        
-                        <tr>
-                          <td>재직구분</td>
-                          <td><select name="emp" class="mon">
-                            <option value="emp1" label="재직" selected></option>
-                            <option value="emp2" label="퇴직"></option>
-                            <option value="emp3" label="휴직"></option>
-                          </select></td>
-                          <td>입사일자</td>
-                          <td><input class="mon" type="date" value="2022-03"></td>
-                          <td>퇴사일자</td>
-                          <td><input class="mon" type="date" value="2022-03"></td>
-                        </tr>
-  
-                      </tbody>
-                      </table>
-  
-  
-                    </div>
-                    <div class="right">
-                      <br>
-                      <a href="#" class="btn btn-primary">삭제</a>
-                      <a href="#" class="btn btn-primary">저장</a>
-                      <br><br>
-                    </div>
-
-          <!-- /.col-md-6  -->
-          <!-- <div class="col-lg-6"> -->
 
 
 
-              </div>
-            </div>
+          <!-- Department Modal -->
+<div class="modal fade" id="departmentModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+          <div class="modal-header">
+          	  <h4 class="modal-title">조직 관리</h4>
+              <button type="button" id="deptClose" class="close" data-dismiss="modal">&times;</button>             
           </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
+          <div class="modal-body">
+              <div id="dpt_sq_dept" class="form-group well">
+                  <c:forEach items="${selectDpt_Div_Tb}" var="map">
+                      <div class="has-feedback">ㄹ
+                          <div class="deptDiv" data-value="${map.DPT_SQ}">${map.DPT_NM}</div>
+                          <span class="glyphicon glyphicon-remove form-control-feedback small-icon"></span>
+                      </div>
+                  </c:forEach>
+              </div>
+              <div class="form-group overError">
+                  <div class="col-xs-10 col-md-10 leftNoPadding">
+                      <input type="text" id="addDept" class="form-control" placeholder="부서명">
+                  </div>
+
+                  <button type="button" id="deptInsert"
+                      class="btn btn-success col-xs-2 col-md-2 leftNoPadding rightNoPadding">추가</button>
+              </div>
+          </div>
       </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+</div>
+
+<!-- content 시작 -->
+<div id="content">
+  <!-- <div id="title">
+      <h3>구성원 관리</h3>
+      구성원, 조직을 추가하거나 정보를 수정할 수 있습니다.
+  </div> -->
+
+  <div>
+      <!-- 좌측매뉴 -->
+      <div id="leftMenu" class="col-sm-4 col-md-3">
+          <div id="leftTop">
+              <!-- <h4>
+                  <label>조직도</label>
+              </h4> -->
+              <div class="managebtn"><button type="button" class="btn btn-warning pull-right" data-toggle="modal"
+                data-backdrop="static" data-target="#departmentModal">관리</button></div>
+          </div>
+          <div>
+              <ul class="easyui-tree">
+                  <li><span>부서명</span>
+                      <ul>
+                          <c:forEach items="${selectDpt_Div_Tb}" var="dptmap">
+                              <li data-options="state:'closed'"><span>${dptmap.DPT_NM}</span>
+                                  <ul>
+                                      <c:forEach items="${officerList}" var="stfmap">
+                                          <c:if test="${dptmap.DPT_NM eq stfmap.DPT_NM}">
+                                              <li>[${stfmap.DPT_NM}/${stfmap.RNK_NM}]
+                                                  ${stfmap.STF_NM}</li>
+                                          </c:if>
+                                      </c:forEach>
+                                  </ul></li>
+                          </c:forEach>
+                      </ul></li>
+              </ul>
+          </div>
+      </div>
+
+          
+          
 
 
-  
-  <!-- <div class="col-lg-6"> -->
-
-                
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-    <div class="p-3">
+    <!-- <div class="p-3">
       <h5>Title</h5>
       <p>Sidebar content</p>
-    </div>
+    </div> -->
   </aside>
   <!-- /.control-sidebar -->
 
@@ -572,5 +415,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
 </body>
 </html>
-
 

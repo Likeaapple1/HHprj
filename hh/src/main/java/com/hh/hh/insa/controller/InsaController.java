@@ -75,5 +75,24 @@ public class InsaController {
 
 		return "insa/insa_military";
 	}
+	
+	@GetMapping("/certificate")
+	public String certificate() {
+
+		return "insa/insa_certificate";
+	}
+	
+	@GetMapping("/organization")
+	public String organization() {
+
+		return "insa/insa_organization";
+	}
+	
+	@GetMapping("/addemployee")
+	public String addemployee() {
+
+		return "insa/insa_addemployee";
+	}
+	
 }
 

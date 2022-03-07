@@ -31,6 +31,105 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .right {
       text-align: right;
     }
+    
+    .navbar {
+	margin-bottom: 50px;
+	border-radius: 0;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+	margin-bottom: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+#footer {
+	margin-top: 50px;
+	background-color: #f2f2f2;
+	padding: 25px;
+}
+
+#content {
+	margin-left: 50px;
+	margin-right: 50px;
+	overflow: hidden;
+}
+
+#title {
+	border-bottom: 2px solid #727377;
+}
+
+#title>*, #leftTop>* {
+	display: inline-block;
+}
+
+#leftMenu, #rightMenu {
+	margin-top: 10px;
+}
+
+#leftTop>button {
+	margin-left: 5px;
+}
+
+form {
+	margin-bottom: 10px;
+}
+
+.telNumMax, #phoneNum1, #telNum1, #phoneNum1_up, #telNum1_up {
+	text-align-last: center;
+}
+
+.leftNoPadding {
+	padding-left: 0px;
+}
+
+.rightNoPadding {
+	padding-right: 0px;
+}
+
+.profileImg {
+	height: 128px;
+	width: 96px;
+}
+
+.tableMiddle > thead > tr > th, .tableMiddle > thead > tr > td,
+.tableMiddle > tbody > tr > th, .tableMiddle > tbody > tr > td {
+	vertical-align: middle;
+}
+
+#dpt_sq_dept {
+    height: 300px;
+}
+
+#departmentModal > div {
+	top: 50%;
+	margin-top: -260px;
+}
+
+.overError {
+	overflow: hidden;
+}
+
+#dpt_sq_dept {
+	overflow: auto;
+}
+
+.small-icon {
+	line-height: 20px;
+	height: 20px;
+	width: 20px;
+	display: none;
+	pointer-events: auto
+}
+
+
+#deptNmUp {
+	width: 167px;
+}
+
+#officerList > thead > tr > th, #officerList > tbody > tr > td {
+	text-align: center;
+}
 
     .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -57,6 +156,784 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- 다음 주소 API -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+
+		
+		/* 사원 검색 */
+		$("#search").on("click", function() {
+			if ($("#keyword").val() == "") {
+				alert("검색어를 최소 1글자 이상 입력해주세요.");
+				return;
+			} else if ($("#keyword").val() != "")
+				var params = {
+					cate : $("#cate").val(),
+					keyword : $("#keyword").val()
+				};
+			
+				officerListSearch(params);
+		});
+		
+		// Ajax 페이징 처리
+		$(document).on("click", "#pageIndexListAjax > li > a", function() {
+			var params = {
+					cate : $("#cate").val(),
+					keyword : $("#keyword").val(),
+					page : $(this).attr("data-page")
+				};
+			
+			officerListSearch(params);
+		});
+		
+		/* 입사일 자동 입력 */
+		$("#officerInsertModal").on("click", function() {
+			var date = new Date();
+	
+			var yyyy = date.getFullYear();
+			var mm = (date.getMonth() + 1)
+			var dd = date.getDate();
+	
+			if (mm < 10) {
+				mm = "0" + mm;
+			}
+			if (dd < 10) {
+				dd = "0" + dd;
+			}
+	
+			date = yyyy + "-" + mm + "-" + dd;
+	
+			$("#stf_ent").val(date);
+		});
+
+		/* 한글 입력 방지 */
+		$("#stf_eml, #stf_sq1").on("keyup", function() {
+			$(this).val($(this).val().replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, ""));
+		});
+				
+		// Update 숫자만 입력
+		$(".telNumMax").on("keyup", function() {
+			$(this).val($(this).val().replace(/[^0-9]/gi, ""));
+		
+			// 전화번호 최대 입력 방지
+			if ($(this).val().length > 4) {
+				$(this).val($(this).val().substring(0, 4));
+			}
+			
+			if ($(this).attr("id") == "phoneNum2" || $(this).attr("id") == "phoneNum3") {
+				var phoneNum = $("#phoneNum1").val() + "-" + $("#phoneNum2").val() + "-" + $("#phoneNum3").val();
+				$("#stf_ph").val(phoneNum);
+			}
+			else if ($(this).attr("id") == "telNum2" || $(this).attr("id") == "telNum3") {
+				var telNum = $("#telNum1").val() + "-" + $("#telNum2").val() + "-" + $("#telNum3").val();
+				$("#stf_bs_ph").val(telNum);
+			}			
+			else if ($(this).attr("id") == "phoneNum2_up" || $(this).attr("id") == "phoneNum3_up") {
+				var phoneNum = $("#phoneNum1_up").val() + "-" + $("#phoneNum2_up").val() + "-" + $("#phoneNum3_up").val();
+				$("#stf_ph_up").val(phoneNum);
+			}
+			else if ($(this).attr("id") == "telNum2_up" || $(this).attr("id") == "telNum3_up") {
+				var telNum = $("#telNum1_up").val() + "-" + $("#telNum2_up").val() + "-" + $("#telNum3_up").val();
+				$("#stf_bs_ph_up").val(telNum);
+			}
+		});
+
+		// insert 비밀번호 자동 입력1
+		$("#stf_pw1").on("keyup", function() {
+			if ($("#stf_pw1").val() == "" && $("#stf_pw2").val() == "") {
+				$("#stf_pw1_Div").removeAttr("class");
+				$("#stf_pw1_Span").removeAttr("class");
+			} else if ($("#stf_pw1").val() == $("#stf_pw2").val()) {
+				$("#stf_pw").val($("#stf_pw1").val());
+				$("#stf_pw1_Div").attr("class",	"has-success has-feedback");
+				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			} else if ($("#stf_pw1").val() != $("#stf_pw2").val()) {
+				$("#stf_pw").val("");
+				$("#stf_pw1_Div").attr("class",	"has-error has-feedback");
+				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+			}
+		});
+
+		// insert 비밀번호 자동 입력2
+		$("#stf_pw2").on("keyup", function() {
+			if ($("#stf_pw2").val() == "" && $("#stf_pw1").val() == "") {
+				$("#stf_pw1_Div").removeAttr("class");
+				$("#stf_pw1_Span").removeAttr("class");
+			} else if ($("#stf_pw2").val() == $("#stf_pw1").val()) {
+				$("#stf_pw").val($("#stf_pw2").val());
+				$("#stf_pw1_Div").attr("class",	"has-success has-feedback");
+				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			} else if ($("#stf_pw2").val() != $("#stf_pw1").val()) {
+				$("#stf_pw").val("");
+				$("#stf_pw1_Div").attr("class",	"has-error has-feedback");
+				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+			}
+		});
+		
+		// update 비밀번호 자동 입력1
+		$("#stf_pw1_up").on("keyup", function() {
+			if ($("#stf_pw1_up").val() == "" && $("#stf_pw2_up").val() == "") {
+				$("#stf_pw1_Div_up").removeAttr("class");
+				$("#stf_pw1_Span_up").removeAttr("class");
+			} else if ($("#stf_pw1_up").val() == $("#stf_pw2_up").val()) {
+				$("#stf_pw_up").val($("#stf_pw1_up").val());
+				$("#stf_pw1_Div_up").attr("class",	"has-success has-feedback");
+				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			} else if ($("#stf_pw1_up").val() != $("#stf_pw2_up").val()) {
+				$("#stf_pw_up").val("");
+				$("#stf_pw1_Div_up").attr("class",	"has-error has-feedback");
+				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+			}
+		});
+
+		// update 비밀번호 자동 입력2
+		$("#stf_pw2_up").on("keyup", function() {
+			if ($("#stf_pw2_up").val() == "" && $("#stf_pw1_up").val() == "") {
+				$("#stf_pw1_Div_up").removeAttr("class");
+				$("#stf_pw1_Span_up").removeAttr("class");
+			} else if ($("#stf_pw2_up").val() == $("#stf_pw1_up").val()) {
+				$("#stf_pw_up").val($("#stf_pw2_up").val());
+				$("#stf_pw1_Div_up").attr("class",	"has-success has-feedback");
+				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			} else if ($("#stf_pw2_up").val() != $("#stf_pw1_up").val()) {
+				$("#stf_pw_up").val("");
+				$("#stf_pw1_Div_up").attr("class",	"has-error has-feedback");
+				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+			}
+		});
+		
+		// insert 사원번호 자동 입력
+		$("#stfNumSearchBtn").on("click", function() {
+			if ($("#stf_sq1").val() == "") {
+				alert("사원번호를 입력해주세요.");
+			} else if ($("#stf_sq1").val() != "") {
+				selectStf_sq($("#stf_sq1").val());
+			}
+		});
+
+		// insert 사원번호 다시 체크
+		$("#stf_sq1").on("keyup", function() {
+			if ($("#stf_sq1").val() != $("#stf_sq").val()) {
+				$("#stf_sq_Div").removeAttr("class");
+				$("#stf_sq_Span").removeAttr("class");
+				$("#stf_sq").val("");
+			}
+		});
+
+		// update 사원번호 자동 입력
+		$("#stfNumSearchBtn_up").on("click", function() {
+			if ($("#stf_sq1_up").val() == "") {
+				alert("사원번호를 입력해주세요.");
+			} else if ($("#stf_sq1_up").val() != "") {
+				selectStf_sq($("#stf_sq1_up").val());
+			}
+		});
+
+		// update 사원번호 다시 체크
+		$("#stf_sq1_up").on("keyup", function() {
+			if ($("#stf_sq1_up").val() != $("#stf_sq").val()) {
+				$("#stf_sq_Div_up").removeAttr("class");
+				$("#stf_sq_Span_up").removeAttr("class");
+				$("#stf_sq_up").val("");
+			}
+		});
+		
+		// 최대 입력 방지
+		$("#stf_sq1, #stf_sq1_up").on("keyup", function() {
+			if ($(this).val().length > 10) {
+				$(this).val($(this).val().substring(0, 10));
+			}
+		});
+
+
+		// 최대 입력 방지
+		$("#stf_dt_add").on("keyup", function() {
+			if ($(this).val().length > 33) {
+				$(this).val($(this).val().substring(0, 33));
+			}
+		});
+
+		/* 구성원 추가 */
+		$("#officerInsert").on("click",	function() {
+	
+			var emailCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+			if ($("#file").val() == "") {
+				alert("프로필 사진을 확인해주세요.");
+				return;
+			} else if ($("#stf_nm").val() == "") {
+				alert("이름을 확인해주세요.");
+				return;
+			} else if ($("#stf_pw").val() == "") {
+				alert("비밀번호를 확인해주세요.");
+				return;
+			} else if ($("#stf_sq").val() == "") {
+				alert("사원번호를 확인해주세요.");
+				return;
+			} else if ($("#stf_cm_add").val() == ""
+					|| $("#stf_dt_add").val() == "") {
+				alert("주소를 확인해주세요.");
+				return;
+			} else if (!emailCheck.test($(
+					"#stf_eml").val())) {
+				alert("이메일을 확인해주세요.");
+				return;
+			} else if ($("#stf_ph").val().length != 13) {
+				alert("휴대폰 번호를 확인해주세요.");
+				return;
+			} else if ($("#stf_bs_ph").val().length != 13) {
+				alert("내선번호를 확인해주세요.");
+				return;
+			}
+			else if ($("#stf_ent").val() == "") {
+				alert("입사일을 확인해주세요.");
+				return;
+			}
+
+			officerInsert();
+		});
+		
+		/* 구성원 추가 */
+		$("#officerUpdate").on("click",	function() {
+	
+			var emailCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+			if ($("#stf_nm_up").val() == "") {
+				alert("이름을 확인해주세요.");
+				return;
+			} else if ($("#stf_pw1_up").val() != $("#stf_pw2_up").val()) {
+				alert("비밀번호를 확인해주세요.");
+				return;
+			} else if ($("#stf_cm_add_up").val() == ""
+					|| $("#stf_dt_add_up").val() == "") {
+				alert("주소를 확인해주세요.");
+				return;
+			} else if (!emailCheck.test($(
+					"#stf_eml_up").val())) {
+				alert("이메일을 확인해주세요.");
+				return;
+			} else if ($("#stf_ph_up").val().length != 13) {
+				alert("휴대폰 번호를 확인해주세요.");
+				return;
+			} else if ($("#stf_bs_ph_up").val().length != 13) {
+				alert("내선번호를 확인해주세요.");
+				return;
+			} else if ($("#stf_ent_up").val() == "") {
+				alert("입사일을 확인해주세요.");
+				return;
+			}
+
+			officerUpdate();
+		});
+		
+		/* 파일(이미지) 미리보기 */
+		$("#file, #file_up").on("change", function(event) {
+			var input = this;
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#imgView').attr('src', e.target.result);
+					$('#imgView_up').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		});
+		
+		// 구성원 수정 모달 띄우기
+		$("#officerUpdateModal").on("click", function() {
+			
+			if ($(".radio").is(":checked") == false) {
+				alert("사원을 선택해주세요.");
+				return;
+			}
+			
+			$("#officerUpdateModal").attr("data-target", "#updateModal");
+			
+			selectUpdateOfficer();
+		});
+		
+		// 부서명 입력
+		$("#deptInsert").on("click", function() {
+			deptInsert();
+		});
+
+		// 부서 관리 input으로 변경
+		$(document).on("dblclick", ".deptDiv", function() {
+			var dtp_sq = $(this).attr("data-value");
+			var dtp_nm = $(this).text();
+			
+			deptList(dtp_sq, dtp_nm);
+		});
+			 	 
+		// 부서명 수정 진행
+		$(document).on("click", "#deptUpdate", function() {
+			selectDeptNm();
+		});
+		
+		// 최대 입력 방지
+		$(document).on("keyup", "#addDept, #deptNmUp", function() {
+			if ($(this).val().length > 8) {
+				$(this).val($(this).val().substring(0, 8));
+			}
+		});
+		
+		$(document).on("mouseenter", ".deptDiv", function() {
+			$(this).parent().children("span").css("display", "inline");
+			$(this).css({"background-color" : "#1E90FF", "color" : "white", "cursor" : "default"});
+		});
+		
+		$(document).on("mouseenter", ".small-icon", function() {
+			$(this).parent().children("div").css({"background-color" : "#1E90FF", "color" : "white", "cursor" : "default"});
+			$(this).css("display", "inline");
+		});
+				
+		$(document).on("mouseleave", ".deptDiv", function() {
+			$(".small-icon").css("display", "none");
+			$(this).removeAttr("style");
+		});
+		
+		$(document).on("mouseleave", ".small-icon", function() {
+			$(".small-icon").css("display", "none");
+			$(this).parent().children("div").removeAttr("style");
+		});
+		
+		// 부서명 삭제
+		$(document).on("click", ".small-icon", function() {
+			var dpt_sq = $(this).parent().children("div").attr("data-value");
+			deptDelete(dpt_sq);
+		});
+		
+		// 조직도 닫은 후 강제 리다이렉트
+		$("#deptClose").on("click", function() {
+			window.location = "/admin/officerList";
+		});
+		
+	});
+
+	/* 사원 검색 */
+	function officerListSearch(params) {
+		$.ajax({
+			url : "/admin/officerListSearch",
+			type : "POST",
+			dataType : "json",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				$("#userCount").empty();
+				$("#officerList > tbody").empty();
+				$("#pageIndexList").empty();
+			},
+			success : function(data) {
+	
+				var officerListCount = data.officerListCount;
+				var officerList = data.officerList;
+				var pageIndexListAjax = data.pageIndexListAjax;
+	
+				$("#userCount").html(officerListCount);
+	
+				var tbody = $("#officerList > tbody");
+
+				$.each(officerList,	function(idx, val) {
+					tbody.append($('<tr>').append($('<td>',	{html : "<input type='radio' class='radio' value='"+val.STF_SQ+"'>"}))
+										  .append($('<td>',	{html : "<img src='"+val.STF_PT_RT+"' class='profileImg'/>"}))
+										  .append($('<td>',	{text : val.STF_NM}))
+										  .append($('<td>',	{text : val.RNK_NM}))
+										  .append($('<td>',	{text : val.DPT_NM}))
+										  .append($('<td>',	{text : val.ADMN_PW}))
+										  .append($('<td>',	{text : val.STF_PH}))
+										  .append($('<td>',	{text : val.STF_BS_PH}))
+										  .append($('<td>',	{text : val.STF_EML})));
+				});
+				
+				$("#pageIndexList").html(pageIndexListAjax);
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+
+	// 사원번호 중복 검색
+	function selectStf_sq(data) {
+		var params = {
+			stf_sq : data
+		};
+
+		$.ajax({
+			url : "/admin/selectStf_Sq",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				$("#stf_sq").val("");
+				$("#stf_sq_up").val("");
+			},
+			success : function(data) {
+
+				var result = Number(data);
+
+				if (result > 0) {
+					alert("이미 존재하는 사원번호 입니다.");
+					$("#stf_sq_Div").attr("class", "has-error has-feedback");
+					$("#stf_sq_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+					$("#stf_sq_Div_up").attr("class", "has-error has-feedback");
+					$("#stf_sq_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+				} else if (result == 0) {
+					$("#stf_sq").val($("#stf_sq1").val());
+					$("#stf_sq_up").val($("#stf_sq1_up").val());
+					
+					$("#stf_sq_Div").attr("class", "has-success has-feedback");
+					$("#stf_sq_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+					$("#stf_sq_Div_up").attr("class", "has-success has-feedback");
+					$("#stf_sq_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+				}
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+
+	// 사원 등록 Ajax 파일 업로드
+	function officerInsert() {
+
+		var params = {
+			stf_sq : $("#stf_sq").val(),
+			admn_sq : $("#admn_sq").val(),
+			dpt_sq : $("#dpt_sq").val(),
+			rnk_sq : $("#rnk_sq").val(),
+			stf_nm : $("#stf_nm").val(),
+			stf_pw : $("#stf_pw").val(),
+			stf_ph : $("#stf_ph").val(),
+			stf_cm_add : $("#stf_cm_add").val(),
+			stf_dt_add : $("#stf_dt_add").val(),
+			stf_bs_ph : $("#stf_bs_ph").val(),
+			stf_eml : $("#stf_eml").val(),
+			stf_ent : $("#stf_ent").val(),
+		};
+
+		$("#officerInsertForm").ajaxForm({
+			url : "/admin/officerInsert",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			enctype : "multipart/form-data",
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				$("#officerInsert").attr("disabled", "disabled");
+			},
+			success : function(data) {
+				if (data == "SUCCESS") {
+					alert("정상적으로 입력되었습니다.");
+					window.location = "/admin/officerList";
+				} else if (data == "FAIL") {
+					alert("입력을 실패하였습니다.");
+				}
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		}).submit();
+
+		$("#officerInsert").attr("disabled");
+	}
+
+	// 사원 정보 불러오기
+	function selectUpdateOfficer() {
+		var stf_sq = $("input[type=radio]:checked").val();
+
+		var params = {
+				stf_sq : stf_sq
+			};
+		
+		$.ajax({
+			url : "/admin/selectUpdateOfficer",
+			type : "POST",
+			dataType : "json",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				
+			},
+			success : function(data) {
+				
+				$("#imgView_up").attr("src", data.STF_PT_RT);
+				$("#stf_nm_up").val(data.STF_NM);
+				$("#stf_sq1_up").val(data.STF_SQ);
+				$("#stf_sq_up").val(data.STF_SQ);
+				$("#stf_sq_old").val(data.STF_SQ);
+				$("#admn_sq_up").val(data.ADMN_SQ);
+				$("#dpt_sq_up").val(data.DPT_SQ);
+				$("#rnk_sq_up").val(data.RNK_SQ);
+				$("#stf_cm_add_up").val(data.STF_CM_ADD);
+				$("#stf_dt_add_up").val(data.STF_DT_ADD);
+				$("#stf_eml_up").val(data.STF_EML);
+				
+				var arrPhoneNum = data.STF_PH.split("-");
+				
+				$("#phoneNum1_up").val(arrPhoneNum[0]);
+				$("#phoneNum2_up").val(arrPhoneNum[1]);
+				$("#phoneNum3_up").val(arrPhoneNum[2]);
+				$("#stf_ph_up").val(data.STF_PH);
+				
+				var arrTelNum = data.STF_BS_PH.split("-");
+				
+				$("#telNum1_up").val(arrTelNum[0]);
+				$("#telNum2_up").val(arrTelNum[1]);
+				$("#telNum3_up").val(arrTelNum[2]);
+				$("#stf_bs_ph_up").val(data.STF_BS_PH);
+				
+				$("#stf_ent_up").val(data.STF_ENT);
+				
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+	
+	// 사원 등록 Ajax 파일 업로드
+	function officerUpdate() {
+
+		var params = {
+			stf_sq : $("#stf_sq_up").val(),
+			stf_sq_old : $("#stf_sq_old").val(),
+			admn_sq : $("#admn_sq_up").val(),
+			dpt_sq : $("#dpt_sq_up").val(),
+			rnk_sq : $("#rnk_sq_up").val(),
+			stf_nm : $("#stf_nm_up").val(),
+			stf_pw : $("#stf_pw_up").val(),
+			stf_ph : $("#stf_ph_up").val(),
+			stf_cm_add : $("#stf_cm_add_up").val(),
+			stf_dt_add : $("#stf_dt_add_up").val(),
+			stf_bs_ph : $("#stf_bs_ph_up").val(),
+			stf_eml : $("#stf_eml_up").val(),
+			stf_ent : $("#stf_ent_up").val(),
+		};
+
+		$("#officerUpdateForm").ajaxForm({
+			url : "/admin/officerUpdate",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			enctype : "multipart/form-data",
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				$("#officerUpdate").attr("disabled", "disabled");
+			},
+			success : function(data) {
+				if (data == "SUCCESS") {
+					alert("정상적으로 수정되었습니다.");
+					window.location = "/admin/officerList";
+				} else if (data == "FAIL") {
+					alert("입력을 실패하였습니다.");
+				}
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		}).submit();
+
+		$("#officerInsert").attr("disabled");
+	}
+	
+	// 부서명 등록
+	function deptInsert() {
+		var params = {
+				dpt_nm : $("#addDept").val()
+			};
+
+		$.ajax({
+			url : "/admin/deptInsert",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				$("#addDept").val("");
+			},
+			success : function(data) {
+				if (data > 0) {
+					alert("부서 추가를 성공하였습니다.");
+					deptList();
+				}
+				else if (data == 0) {
+					alert("부서 추가를 실패하였습니다.");
+				}
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+	
+	// 부서명 다시 가져오기
+	function deptList(dpt_sq, dpt_nm) {
+		$.ajax({
+			url : "/admin/selectDpt_Div_Tb",
+			type : "POST",
+			dataType : "json",
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				$("#dpt_sq_dept").empty();
+			},
+			success : function(data) {
+				
+				var div = $("#dpt_sq_dept");
+				
+				$.each(data, function(idx, val) {
+					if (val.DPT_SQ != dpt_sq) {
+						//div.append($('<div>', {class : "deptDiv", "data-value" : val.DPT_SQ, text : val.DPT_NM}))
+						div.append($('<div>', {"class" : "has-feedback"})
+						   .append($('<div>', {"class" : "deptDiv", "data-value" : val.DPT_SQ, text : val.DPT_NM}))
+						   .append($('<span>', {"class" : "glyphicon glyphicon-remove form-control-feedback small-icon"})))
+					}
+					else if (val.DPT_SQ == dpt_sq) {
+						div.append($('<input>', {type : "text", id : "deptNmUp", "data-value" : val.DPT_SQ, value : val.DPT_NM}))
+						div.append($('<button>', {id : "deptUpdate", text : "수정"}))
+					}
+				});
+				
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+	
+	// 동일한 부서명 체크
+	function selectDeptNm() {
+		var params = {
+				dpt_nm : $("#deptNmUp").val()
+			};
+
+		$.ajax({
+			url : "/admin/selectDeptNm",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				
+			},
+			success : function(data) {
+				if (data > 0) {
+					alert("같은 이름의 부서명이 존재합니다.");
+				}
+				else if (data == 0) {
+					deptUpdate();
+				}
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+	
+	// 부서명 수정
+	function deptUpdate() {
+		var params = {
+				dpt_sq : $("#deptNmUp").attr("data-value"),
+				dpt_nm : $("#deptNmUp").val()
+			};
+
+		$.ajax({
+			url : "/admin/deptUpdate",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				
+			},
+			success : function(data) {
+				if (data > 0) {
+					alert("부서명 수정을 성공하였습니다.");
+					deptList();
+				}
+				else if (data == 0) {
+					alert("부서명 수정을 실패하였습니다.");
+				}
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+	
+	// 부서명 삭제
+	function deptDelete(data) {
+		var params = {
+				dpt_sq : data
+			};
+		
+		$.ajax({
+			url : "/admin/deptDelete",
+			type : "POST",
+			dataType : "text",
+			data : JSON.stringify(params),
+			contentType : "application/json; charset=UTF-8",
+			beforeSend : function() {
+				
+			},
+			success : function(data) {
+				
+				if (data > 0) {
+					alert("부서 삭제를 성공하였습니다.");
+					deptList();
+				}
+				else if (data == 0) {
+					alert("부서 삭제를 실패하였습니다.");
+				}
+				else if (data == -1) {
+					alert("부서에 임직원이 존재하여 삭제할 수 없습니다.");
+				}
+				
+			},
+			error : function(request, status, error) {
+				alert("list search fail :: error code: "
+						+ request.status + "\n" + "error message: "
+						+ error + "\n");
+			}
+		});
+	}
+	
+	/* 다음 주소 API */
+	function addrSearch() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				var str = "[" + data.zonecode + "] " + data.address
+				$("#stf_cm_add").val(str);
+				$("#stf_cm_add_up").val(str);
+			}
+		}).open();
+	}
+</script>
 
 
 </head>
@@ -276,7 +1153,358 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- /.sidebar -->
   </aside>
+<!-- Insert Modal -->
+<div class="modal fade" id="insertModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">구성원 추가</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
 
+        <table class="tableMiddle table table-striped table-bordered ">
+          <colgroup>
+            <col width="30%" />
+            <col width="70%" />
+          </colgroup>
+          <thead>
+          </thead>
+          <form id="officerInsertForm" action="/admin/officerInsert"
+            method="post" enctype="multipart/form-data">
+            <tbody>
+              <tr>
+                <th class="text-center"><img id="imgView" class="profileImg"
+                  src="/resources/img/user.png"> <input type="file"
+                  id="file" name="file" class="form-control"></th>
+                <td>
+                  <h5>이미지는 가로 96px, 세로 128px를 준수 해주시기 바랍니다.</h5>
+                  <h5>(*)이 작성된 칸은 필수항목 입니다.</h5>
+                </td>
+              </tr>
+              
+              <tr>
+                <th>이름(*)</th>
+                <td><input type="text" id="stf_nm" name="stf_nm"
+                  class="form-control" placeholder="이름"></td>
+              </tr>
+              
+              <tr>
+                <th>비밀번호(*)</th>
+                <td>
+                  <div id="stf_pw1_Div">
+                    <input type="password" id="stf_pw1" class="form-control"
+                      placeholder="비밀번호"> <span id="stf_pw1_Span"></span>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <th>사원번호(*)</th>
+                <td>
+                  <div class="col-sm-9 col-md-10 leftNoPadding">
+                    <div id="stf_sq_Div">
+                      <input type="text" id="stf_sq1" class="form-control"
+                        placeholder="사원번호"> <span id="stf_sq_Span"></span>
+                    </div>
+                  </div>
+                  <button type="button" id="stfNumSearchBtn"
+                    class="btn btn-default col-sm-3 col-md-2">중복확인</button> <input
+                  type="hidden" id="stf_sq" name="stf_sq" class="form-control">
+                </td>
+              </tr>
+              
+              <tr>
+                <th>부서(*)</th>
+                <td><select id="dpt_sq" name="dpt_sq"
+                  class="form-control">
+                    <c:forEach items="${selectDpt_Div_Tb}" var="map">
+                      <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
+                    </c:forEach>
+                </select></td>
+              </tr>
+              <tr>
+                <th>직급(*)</th>
+                <td><select id="rnk_sq" name="rnk_sq"
+                  class="form-control">
+                    <c:forEach items="${selectRnk_Tb}" var="map">
+                      <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
+                    </c:forEach>
+                </select></td>
+              </tr>
+              <tr>
+                <th>주소(*)</th>
+                <td>
+
+                  <div class="col-sm-9 col-md-10 leftNoPadding">
+                    <input type="text" id="stf_cm_add" name="stf_cm_add"
+                      class="form-control" placeholder="주소" readonly="readonly">
+                  </div>
+                  <button type="button"
+                    class="btn btn-default col-sm-3 col-md-2"
+                    onclick="addrSearch();">주소검색</button>
+                </td>
+              </tr>
+              <tr>
+                <th>상세주소(*)</th>
+                <td><input type="text" id="stf_dt_add" name="stf_dt_add"
+                  class="form-control" placeholder="상세주소"></td>
+              </tr>
+              <tr>
+                <th>이메일(*)</th>
+                <td><input type="email" id="stf_eml" name="stf_eml"
+                  class="form-control" placeholder="이메일"></td>
+              </tr>
+
+              <tr>
+                <th>휴대폰(*)</th>
+                <td>
+
+                  <div class="col-sm-2 col-md-2 leftNoPadding rightNoPadding">
+                    <select id="phoneNum1" class="form-control">
+                      <option value="010">010</option>
+                      <option value="011">011</option>
+                      <option value="016">016</option>
+                      <option value="017">017</option>
+                      <option value="018">018</option>
+                      <option value="019">019</option>
+                    </select>
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="phoneNum2" class="form-control telNumMax" />
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="phoneNum3" class="form-control telNumMax" />
+                  </div> <input type="hidden" id="stf_ph" name="stf_ph"
+                  class="form-control">
+                </td>
+              </tr>
+              <tr>
+                <th>내선번호</th>
+                <td>
+                  <div class="col-sm-2 col-md-2 leftNoPadding rightNoPadding">
+                    <input type="text" id="telNum1" class="form-control"
+                      value="070" readonly="readonly" />
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="telNum2" class="form-control telNumMax" />
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="telNum3" class="form-control telNumMax" />
+                  </div> <input type="hidden" id="stf_bs_ph" name="stf_bs_ph"
+                  class="form-control">
+                </td>
+              </tr>
+              <tr>
+                <th>입사일(*)</th>
+                <td><input type="date" id="stf_ent" name="stf_ent"
+                  class="form-control" placeholder="입사일"></td>
+              </tr>
+            </tbody>
+          </form>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="officerInsert" class="btn btn-success">등록</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updateModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">구성원 수정</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <table class="tableMiddle table table-striped table-bordered">
+          <colgroup>
+            <col width="30%" />
+            <col width="70%" />
+          </colgroup>
+          <thead>
+          </thead>
+          <form id="officerUpdateForm" action="/admin/officerUpdate"
+            method="post" enctype="multipart/form-data">
+            <tbody>
+              <tr>
+                <th class="text-center"><img id="imgView_up" class="profileImg"
+                  src="/resources/img/user.png"> <input type="file"
+                  id="file_up" name="file" class="form-control"></th>
+                <td>
+                  <h5>이미지는 가로 96px, 세로 128px를 준수 해주시기 바랍니다.</h5>
+                  <h5>(*)이 작성된 칸은 필수항목 입니다.</h5>
+                  <h5><strong>프로필 사진</strong>, <strong>비밀번호</strong>, <strong>사원번호</strong>는
+                  공백일 경우 기존 데이터로 유지됩니다.</h5>
+                </td>
+              </tr>
+               <tr>
+                <th>이름(*)</th>
+                <td><input type="text" id="stf_nm" name="stf_nm"
+                  class="form-control" placeholder="이름"></td>
+              </tr>
+              
+              <tr>
+                <th>비밀번호(*)</th>
+                <td>
+                  <div id="stf_pw1_Div">
+                    <input type="password" id="stf_pw1" class="form-control"
+                      placeholder="비밀번호"> <span id="stf_pw1_Span"></span>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <th>사원번호(*)</th>
+                <td>
+                  <div class="col-sm-9 col-md-10 leftNoPadding">
+                    <div id="stf_sq_Div">
+                      <input type="text" id="stf_sq1" class="form-control"
+                        placeholder="사원번호"> <span id="stf_sq_Span"></span>
+                    </div>
+                  </div>
+                  <button type="button" id="stfNumSearchBtn"
+                    class="btn btn-default col-sm-3 col-md-2">중복확인</button> <input
+                  type="hidden" id="stf_sq" name="stf_sq" class="form-control">
+                </td>
+              </tr>
+              
+              <tr>
+                <th>부서(*)</th>
+                <td><select id="dpt_sq" name="dpt_sq"
+                  class="form-control">
+                    <c:forEach items="${selectDpt_Div_Tb}" var="map">
+                      <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
+                    </c:forEach>
+                </select></td>
+              </tr>
+              <tr>
+                <th>직급(*)</th>
+                <td><select id="rnk_sq" name="rnk_sq"
+                  class="form-control">
+                    <c:forEach items="${selectRnk_Tb}" var="map">
+                      <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
+                    </c:forEach>
+                </select></td>
+              </tr>
+              <tr>
+                <th>주소(*)</th>
+                <td>
+
+                  <div class="col-sm-9 col-md-10 leftNoPadding">
+                    <input type="text" id="stf_cm_add" name="stf_cm_add"
+                      class="form-control" placeholder="주소" readonly="readonly">
+                  </div>
+                  <button type="button"
+                    class="btn btn-default col-sm-3 col-md-2"
+                    onclick="addrSearch();">주소검색</button>
+                </td>
+              </tr>
+              <tr>
+                <th>상세주소(*)</th>
+                <td><input type="text" id="stf_dt_add" name="stf_dt_add"
+                  class="form-control" placeholder="상세주소"></td>
+              </tr>
+              <tr>
+                <th>이메일(*)</th>
+                <td><input type="email" id="stf_eml" name="stf_eml"
+                  class="form-control" placeholder="이메일"></td>
+              </tr>
+
+              <tr>
+                <th>휴대폰(*)</th>
+                <td>
+
+                  <div class="col-sm-2 col-md-2 leftNoPadding rightNoPadding">
+                    <select id="phoneNum1" class="form-control">
+                      <option value="010">010</option>
+                      <option value="011">011</option>
+                      <option value="016">016</option>
+                      <option value="017">017</option>
+                      <option value="018">018</option>
+                      <option value="019">019</option>
+                    </select>
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="phoneNum2" class="form-control telNumMax" />
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="phoneNum3" class="form-control telNumMax" />
+                  </div> <input type="hidden" id="stf_ph" name="stf_ph"
+                  class="form-control">
+                </td>
+              </tr>
+              <tr>
+                <th>내선번호</th>
+                <td>
+                  <div class="col-sm-2 col-md-2 leftNoPadding rightNoPadding">
+                    <input type="text" id="telNum1" class="form-control"
+                      value="070" readonly="readonly" />
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="telNum2" class="form-control telNumMax" />
+                  </div>
+                  <div
+                    class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
+                    <h5>-</h5>
+                  </div>
+                  <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
+                    <input type="text" id="telNum3" class="form-control telNumMax" />
+                  </div> <input type="hidden" id="stf_bs_ph" name="stf_bs_ph"
+                  class="form-control">
+                </td>
+              </tr>
+              <tr>
+                <th>입사일(*)</th>
+                <td><input type="date" id="stf_ent" name="stf_ent"
+                  class="form-control" placeholder="입사일"></td>
+              </tr>
+            </tbody>
+          </form>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="officerUpdate" class="btn btn-success">수정</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -315,6 +1543,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="btn btn-primary">조회</a>
         <input type="checkbox"> 퇴직자 포함
         
+        <button type="button" id="officerInsertModal"
+                  class="btn btn-success" data-toggle="modal" data-backdrop="static"
+                  data-target="#insertModal">구성원 추가</button>
+                <button type="button" id="officerUpdateModal" class="btn btn-warning"  
+                  data-backdrop="static" data-toggle="modal">구성원 수정</button>
+                  
         <div class="right">
                     <a href="#" class="btn btn-primary">새 인사정보 등록하기</a>
                   </div>
@@ -332,29 +1566,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <table border="1" class="table table-bordered table-hover tb_insa1">
                       <thead>
                         <tr>
+                          <th>선택</th>
                           <th>사원번호</th>
+                          <th>사진</th>
                           <th>성명</th>
                           <th>직급</th>
                           <th>부서</th>
                           <th>입사일자</th>
                           <th>핸드폰</th>
                           <th>회사이메일</th>
-                          <th>주소</th>
-                          <th>메모</th>
+                          <th>내선번호</th>
         
                         </tr>	
                       </thead>
                       <tbody>
                           <tr>
+                            <td><input type="radio" class="radio"
+                              value="${map.STF_SQ}"></td>
                             <td>101</td>
+                            <td><img src="${map.STF_PT_RT}" class="profileImg"/></td>
                             <td>유재석</td>
                             <td>부장</td>
                             <td>마케팅</td>
                             <td>91년 05월 05일</td>
                             <td>010-1972-0814</td>
                             <td>youbujang@muhan.com</td>
-                            <td>서울 </td>
-                            <td>ISFP</td>
+                            <td>0814</td>
                           </tr>
 
                           <tr>
