@@ -16,6 +16,7 @@
         <typeAlias type="com.hh.hh.annual.entity.AnnualDto" alias="annualDto"/>
         <typeAlias type="com.hh.hh.notice.entity.NoticeDto" alias="notice"/>
         <typeAlias type="com.hh.hh.appr.entity.ApprDto" alias="apprVo"/>
+        <typeAlias type="com.hh.hh.attendance.entity.AttendanceDto" alias="attMap"/>
    	 <!--<typeAlias type="com.hh.hh.resign.entity.ResignDto" alias="resignDto"/>  -->    
      <!-- <typeAlias type="com.hh.hh.chat.entity.ChatDto" alias="chatDto"/>  -->
     </typeAliases>

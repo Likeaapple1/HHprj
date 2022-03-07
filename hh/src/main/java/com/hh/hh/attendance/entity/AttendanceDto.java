@@ -4,7 +4,6 @@ import java.sql.Time;
 import java.util.Date;
 
 import lombok.Data;
-
 @Data
 public class AttendanceDto {
 	private long attNo;
@@ -30,6 +29,11 @@ public class AttendanceDto {
 	private Date attNsEnd;
 	private String startDate;
 	private String endDate;
+	private String today;
+	private String day;
+	private String start;
+	private String end;
+	private String total;
 	
 	@Override
 	public String toString() {
@@ -41,5 +45,6 @@ public class AttendanceDto {
 				+ attNsStartEndfinal + ", ovDateStrat=" + ovDateStrat + ", ovDateYn=" + ovDateYn + ", attNsEnd="
 				+ attNsEnd + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
+
 
 }
