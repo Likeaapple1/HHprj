@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ResignController {
 
 	//사원조회1조회
-	@GetMapping("history")
+	@GetMapping("resignhistory")
 	public String historyList()  {
 		
 		return "resign/resignhistory";
 	}
 	
-	@GetMapping("resignInput")
+	@GetMapping("resigninput")
 	public String  resignInput() {
 		return "resign/resigninput";
 	}
 	
-	@GetMapping("resignReceipt")
+	@GetMapping("resignreceipt")
 	public String  resignReceipt() {
-		return "resign/resignReceipt";
+		return "resign/resignreceipt";
 	}
 
-	@GetMapping("totalResign")
+	@GetMapping("totalresign")
 	public String  totalResign() {
-		return "resign/totalResign";
+		return "resign/totalresign";
 	}
 	
 
