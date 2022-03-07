@@ -16,6 +16,8 @@ public interface SalaryService {
 
 //	int delete(PayrollDto dto);
 	
-	List<MemberDto> selectListE();
+	List<SalaryDto> selectListS();
+
+	List<PayrollDto> selectListOne(long empNo);
 
 }

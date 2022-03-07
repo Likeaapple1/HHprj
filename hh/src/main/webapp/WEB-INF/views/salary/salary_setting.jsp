@@ -352,22 +352,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </tr>	
               </thead>
               <tbody>
+              <c:forEach items="${list}" var="s">
                   <tr>
-                    <td><input type="text" placeholder="시급" class="text" name="regularHourlyWage"> 원</td>
-                    <td><input type="text" placeholder="근속일" class="day" name="longServiceDay">  <input type="text" placeholder="월급" class="text" name="longServiceAllowance"> 원</td>
-                    <td><input type="text" placeholder="월급" class="text" name="positionAllowance"> 원</td>
+                    <td><input type="text" value="${s.regularHourlyWage}" placeholder="시급" class="text" name="regularHourlyWage"> 원</td>
+                    <td><input type="text" value="${s.longServiceDay}" placeholder="근속일" class="day" name="longServiceDay"> 일마다 <input type="text" value="${s.longServiceAllowance}" placeholder="월급" class="text" name="longServiceAllowance"> 원</td>
+                    <td><input type="text" value="${s.positionAllowance}" placeholder="월급" class="text" name="positionAllowance"> 원</td>
                     <!-- <td><input type="text" class="text" placeholder="자격증 수당 월급"> 원</td> -->
-                    <td><input type="text" placeholder="일급" class="text" name="mealExpenses"> 원</td>
-                    <td><input type="text" placeholder="일급" class="text" name="transportationExpenses"> 원</td>
+                    <td><input type="text" value="${s.mealExpenses}" placeholder="일급" class="text" name="mealExpenses"> 원</td>
+                    <td><input type="text" value="${s.transportationExpenses}" placeholder="일급" class="text" name="transportationExpenses"> 원</td>
                   </tr>
-                  
-                  <tr>
-                  	<td>${data.regularHourlyWage}</td>
-                  	<td>${data.longServiceDay} ${data.longServiceAllowance}</td>
-                  	<td>${data.positionAllowance}</td>
-                  	<td>${data.mealExpenses}</td>
-                  	<td>${data.transportationExpenses}</td>
-                  </tr>
+				</c:forEach>
 
               </tbody>
             </table>

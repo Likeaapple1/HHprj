@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -332,231 +333,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </tr>	
                       </thead>
                       <tbody>
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td>101</td>
-                            <td>남민국</td>
-                            <td>대리</td>
-                            <td>마케팅</td>
-                            <td>22/03/25</td>
-                            <td>5,000,000</td>
-                            <td>700,000</td>
-                            <td>4,300,000</td>
-                            <td>101@gmail.com</td>
-                            <td>국민은행</td>
-                            <td>101101101</td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td><input type="checkbox"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
+                          
+                        <c:forEach items="${list}" var="p">
+						<tr>
+							<td><input type="checkbox"></td>
+							<td>${p.empNo}</td>
+							<td>성명</td>
+							<td>직급</td>
+							<td>부서</td>
+							<td>${p.payrollDate}</td>
+							<td>${p.totalSalary}</td>
+							<td>공제총액</td>
+							<td>${p.netSalary}</td>
+							<td>이메일</td>
+							<td>${p.payrollBank}</td>
+							<td>${p.payrollAccount}</td>
+						</tr>
+					</c:forEach>
 
                       </tbody>
                     </table>
