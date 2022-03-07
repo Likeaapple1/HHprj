@@ -17,97 +17,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .tb_salary1 {
       font-size: 10pt;
     }
-    /* .div1 {
+    .div1 {
       overflow-y: scroll;
       min-height: 0px;
-      max-height: 600px;
-    } */
-    td {
-      height: 30px;
-      width: 200px;
-    } 
-    th {
+      max-height: 330px;
+    }
+    td, th {
       height: 30px;
     }
-    .blank1 {
+    .mon {
       height: 35px;
-      width: 240px;
-    }
-
-    .blank2{
-      height: 35px;
-      width: 200px;
-    }
-
-    .blank3{
-      text-align: left;
-      height: 35px;
-      width: 1000px;
     }
     .right {
       text-align: right;
     }
 
-    .injuk {
-      background-color: lightsteelblue;
-      border: solid 1px silver;
+    .certificateapply{
+      text-align: left;
     }
 
-    .family {
-      border: solid 1px silver;
-    }
-
-    .school {
-      border: solid 1px silver;
-    }
-
-    .language {
-      border: solid 1px silver;
-    }
-
-    .license {
-      border: solid 1px silver;
-    }
-
-    .career {
-      border: solid 1px silver;
-    }
-
-    .appoint {
-      border: solid 1px silver;
-    }
-
-    .reward {
-      border: solid 1px silver;
-    }
-
-    .military {
-      border: solid 1px silver;
-    }
-
-    .etc {
-      border: solid 1px silver;
-    }
-
-    .a {
-      width: 200px;
-    }
-
-    .b{
-      width: 250px;
-    }
-
-    .c{
-      width: 150px;
-    }
-
-    .d{
-      width: 200px;
-    }
-
-    .e{
-      width: 300px;
-    }
     .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -117,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>인사기본정보_인적사항상세</title>
+  <title>증명서발급</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -360,10 +288,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
 
-          <h1><b>상세정보</b></h1>
+          <h1><b>인사정보</b></h1>
           <br><br>
           <hr>
+
           <div class="col-sm-6">
+
           </div><!-- /.col -->
           <div class="col-sm-6">
 
@@ -376,190 +306,142 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-      
-        <div id="h_menu" class="container">  
-          <ul id="nav" class="nav nav-tabs nav-justified">
-            <li class="nav-item">
-              <div class="injuk"><a class="nav-link" href="/insa/injuk">인적사항</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="family"><a class="nav-link" href="/insa/family">가족사항</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="school"><a class="nav-link" href="/insa/school">학력정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="language"><a class="nav-link" href="/insa/language">어학정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="license"><a class="nav-link" href="/insa/license">자격증</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="career"><a class="nav-link" href="/insa/career">경력정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="appoint"><a class="nav-link" href="/insa/appoint">발령정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="reward"><a class="nav-link" href="/insa/reward">상벌정보</a></div>
-            </li>
-            <li class="nav-item">
-              <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
-            
-          </ul>
-        </div>
 
-        </div>
 
-        <div class="row div1 center">
+        <div class="month left">
+          <br>
+        <div class="hang">현부서  <input type="text" class="mon">   현직급 <input type="text" class="mon"> 호봉 <input type="text" class="mon"></div>
+        <br>
+                  </div>
+         
+
+          <hr>
+          <h3>증명서신청내역</h3>
+          <hr>
+
+          <div class="row div1 center">
           <!-- <div class="col-lg-6"> -->
 
             <table border="1" class="table table-bordered table-hover tb_insa1">
                       <thead>
                         <tr>
-                          <td rowspan="6">
-                            <img src="../../../../../../../../../Desktop/KH정보교육원/11250B434F1B8ACC02.jpeg" class="youbujangpic">
-                          </td>
-                          <td class="a">사원번호</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">영문성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">한자성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">주민등록번호</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">성별</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">결혼유무</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">결혼기념일</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-      
-                        <tr>
-                          <td class="a">내외국인</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                          <td class="a">국적</td>
-                          <td class="b"><input type="text" class="blank1"></td>
-                        </tr>
-                    </table>
-                    
+                          <th>신청번호</th>
+                          <th>증명서구분</th>
+                          <th>신청일자</th>
+                          <th>사원번호</th>
+                          <th>성명</th>
+                          <th>발행상태</th>
+                          <th>발행일자</th>
+                          <th>전자결재상태</th>
+                          <th>용도</th>
+        
+                        </tr>	
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>2022-001</td>
+                            <td>재직증명서</td>
+                            <td>2022.02.18</td>
+                            <td>001</td>
+                            <td>유재석</td>
+                            <td>발행완료</td>
+                            <td>2022.03.02</td>
+                            <td>완료(승인) </td>
+                            <td>은행제출용</td>
+                          </tr>
 
-                  <table border="1" class="table table-bordered table-hover tb_insa1">
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          </tbody>
+                          </table>
+        </div>
+                          <br><br>
+                          <div class="certificateapply">
+                          <h3>증명서신청</h3>
+                        </div>
+                          <table border="1" class="table table-bordered table-hover tb_insa1">
                     <tbody>
                         <tr>
-                          <td class="c">회사전화</td>
+                          <td class="c">신청번호</td>
                           <td class="d"><input type="text" class="blank2"></td>
-                          <td class="c">자택전화</td>
+                          <td class="c">증명서구분</td>
                           <td class="d"><input type="text" class="blank2"></td>
-                          <td class="c">핸드폰</td>
+                          <td class="c">신청일자</td>
                           <td class="d"><input type="text" class="blank2"></td>
                         </tr>
-      
+
                         <tr>
-                          <td>회사이메일</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="c">사원번호</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">성명</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">발행일자</td>
+                          <td class="d"><input type="text" class="blank2"></td>
                         </tr>
-      
+
                         <tr>
-                          <td>외부이메일</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="c">사업장</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">부서</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">직급</td>
+                          <td class="d"><input type="text" class="blank2"></td>
                         </tr>
-      
+
                         <tr>
-                          <td rowspan="2">자택주소</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="c">호봉</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">전자결재상태</td>
+                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="c">용도</td>
+                          <td class="d"><input type="text" class="blank2"></td>
                         </tr>
-  
-                        <tr>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-      
-                        <tr>
-                          <td>자택영문주소</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
-                        </tr>
-                        
-                        <tr>
-                          <td>재직구분</td>
-                          <td><select name="emp" class="mon">
-                            <option value="emp1" label="재직" selected></option>
-                            <option value="emp2" label="퇴직"></option>
-                            <option value="emp3" label="휴직"></option>
-                          </select></td>
-                          <td>입사일자</td>
-                          <td><input class="mon" type="date" value="2022-03"></td>
-                          <td>퇴사일자</td>
-                          <td><input class="mon" type="date" value="2022-03"></td>
-                        </tr>
-  
                       </tbody>
-                      </table>
-  
-  
-                    </div>
-                    <div class="right">
-                      <br>
-                      <a href="#" class="btn btn-primary">삭제</a>
-                      <a href="#" class="btn btn-primary">저장</a>
-                      <br><br>
-                    </div>
-
-          <!-- /.col-md-6  -->
-          <!-- <div class="col-lg-6"> -->
+                    </table>
 
 
-
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-
-  
-  <!-- <div class="col-lg-6"> -->
-
-                
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-    <div class="p-3">
+    <!-- <div class="p-3">
       <h5>Title</h5>
       <p>Sidebar content</p>
-    </div>
+    </div> -->
   </aside>
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <!-- <footer class="main-footer"> -->
     <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
+    <!-- <div class="float-right d-none d-sm-inline">
       Anything you want
-    </div>
+    </div> -->
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
-</div>
+</div> -->
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -572,5 +454,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
 </body>
 </html>
-
 

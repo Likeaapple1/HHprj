@@ -379,7 +379,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 		
         <br>
-        <div class="hang">현부서  <input type="text" class="mon">   현직급 <input type="text" class="mon"> 호봉 <input type="text" class="mon"></div>
+        <div class="hang">사업장  <input type="text" class="mon">   증명서구분 <input type="text" class="mon"> 신청일자 <input type="text" class="mon"></div>
         <br>
 
         
