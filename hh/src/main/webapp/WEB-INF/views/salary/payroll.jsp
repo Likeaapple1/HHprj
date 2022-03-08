@@ -44,10 +44,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
       max-height: 400px;
       overflow-y: scroll;
     }
+    .radius {
+	  border-radius: 5px !important;
+	  border: 1px solid lightgray;
+    }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>급여지급현황</title>
+  <title>급여이체현황</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -289,7 +293,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
 
-          <h1><b>급여지급현황</b></h1>
+          <h1><b>급여이체현황</b></h1>
           <br><br>
           <hr>
 
@@ -315,7 +319,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- <div class="col-lg-6"> -->
 
             <div class="month left">
-              <input class="mon" type="month" value="2022-03">　<b>~</b>　<input class="mon" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br>
+              <input class="mon radius" type="month" value="2022-03">　<b>~</b>　<input class="mon radius" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br>
             </div>
 
 <div class="scroll">
@@ -328,7 +332,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <th>잔업수당</th>
                   <th>특근수당</th>
                   <th>근속수당</th>
-                  <th>직책수당</th>
+                  <!-- <th>직책수당</th> -->
                   <th>연차수당</th>
                   <th>중식비</th>
                   <th>교통비(유류비)</th>
@@ -348,12 +352,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			
 			<c:forEach items="${list}" var="p">
 				<tr>
-					<td><%-- <a href="payslip/${p.payrollDate}">${p.payrollDate}</a> --%></td>
+					<td><a style="color: black;" href="payslip/${p.payrollDate}">${p.payrollDate}</a></td>
 					<td>${p.basicSalary}</td>
 					<td>${p.overtimeAllowance}</td>
 					<td>${p.holidayAllowance}</td>
 					<td>${p.longServiceAllowance}</td>
-					<td>${p.positionAllowance}</td>
+					<%-- <td>${p.positionAllowance}</td> --%>
 					<td>${p.annualLeaveAllowance}</td>
 					<td>${p.mealExpenses}</td>
 					<td>${p.transportationExpenses}</td>

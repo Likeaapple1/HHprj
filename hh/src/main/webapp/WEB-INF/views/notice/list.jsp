@@ -30,6 +30,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       margin: auto;
       width: 1000px !important;
     }
+    
+	.tb_radius {
+	  border-collapse: collapse !important;
+	  border-radius: 5px !important;
+ 	  border-style: hidden !important;
+	  box-shadow: 0 0 0 1px lightgray !important;
+	}
+	
+	.radius {
+	  border-radius: 5px !important;
+	  border: 1px solid lightgray;
+    }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -298,8 +310,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <tr>
             <td>
               <div class="month left">
-                <input class="mon" type="date" value="2022-03-25">　<b>~</b>　<input class="mon" type="date" value="2022-03-25">　
-              <input type="text" class="mon">
+                <input class="mon radius" type="date" value="2022-03-25">　<b>~</b>　<input class="mon radius" type="date" value="2022-03-25">　
+              <input type="text" class="mon radius">
               <a href="#" class="btn btn-primary">검색</a>
                 <br><br>
               </div>
@@ -313,7 +325,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-            <table border="1" class="table table-bordered table-hover tb_salary1">
+            <table border="1" class="table table-bordered table-hover tb_salary1 tb_radius">
               <thead>
                 <tr>
                   <th width="30px"><input type="checkbox"></th>
@@ -327,9 +339,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
                 <c:forEach items="${list}" var="b">
 					<tr>
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" class="checkbox-del" value="${n.no}"></td>
 						<td>${b.noticeNo}</td>
-						<td><a href="detail/${b.title}">${b.title}</a></td>
+						<td><b><a style="font-size: 12pt; color: black; text-decoration: none;" href="detail/${b.noticeNo}">${b.title}</a></b></td>
 						<td>${b.writer}</td>
 						<td>${b.enrollDate}</td>
 					</tr>
@@ -348,7 +360,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <td>
                   <div class="right">
                     <br>
-                    <a href="<%=request.getContextPath()%>/notice/insert" class="btn btn-primary">글쓰기</a>　<a href="#" class="btn btn-secondary">삭제</a>
+                    <a href="<%=request.getContextPath()%>/notice/insert" class="btn btn-primary">글쓰기</a>　
+                    <button onclick="del();" class="btn btn-secondary">삭제</button>
                   </div>
                 </td>
               </tr>
@@ -359,6 +372,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
           
           <br><br>
 
+
+
+<script type="text/javascript">
+		
+		//상단 체크박스 클릭하면 , 전체 체크박스 클릭되게
+		let topCheckBox = document.querySelector('thead input[type=checkbox]');
+		let delArr = document.getElementsByClassName('checkbox-del');
+		
+		topCheckBox.onchange = function(e){
+			if(this.checked){
+				for(let i = 0 ; i < delArr.length; ++i){
+					delArr[i].checked = true;
+				}
+			}else{
+				for(let i = 0 ; i < delArr.length; ++i){
+					delArr[i].checked = false;
+				}
+			}
+		}
+
+		
+		
+		//삭제하기 버튼 눌렀을 때
+		function del(){
+			//삭제할 번호들 가져오기
+			//가져온 번호들을 ,,, 하나의 문자열로 합치기
+			let result = "";
+			let delArr = document.getElementsByClassName('checkbox-del');
+			
+			for(let i = 0 ; i < delArr.length; ++i){
+				let t = delArr[i];
+				if(t.checked){
+					//console.log(t.parentNode.parentNode.children[1].innerText);
+					console.log(t.value);
+					result += t.value +',';
+				}
+			}
+			
+			
+			// 삭제 요청 보내기 (삭제할 번호들 전달해주면서)
+			$.ajax({
+				url : "${root}/notice/delete",
+				data : {"str" : result},
+				type : 'post' ,
+				success : function(data){
+					console.log(data);
+				},
+				error : function(e){
+					console.log(e);
+				}
+			});
+			
+			window.location.reload();
+		}
+	</script>
 
 
           </div>

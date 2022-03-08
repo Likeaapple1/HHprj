@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
     .center {
       text-align: center;
+      margin: auto !important;
     }
     .left {
       text-align: left;
@@ -54,6 +55,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       border-bottom: hidden !important;
       border-right: hidden !important;
     } */
+    .radius {
+	  border-radius: 5px !important;
+	  border: 1px solid lightgray;
+    }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -319,7 +324,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row center">
+        <div style="width: 1000px;" class="row center">
           <!-- <div class="col-lg-6"> -->
 
 
@@ -344,8 +349,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <thead>
                 <tr>
                   <th class="th_g">통상시급</th>
-                  <th class="th_g">근속수당</th>
-                  <th class="th_g">직책수당</th>
+                  <th class="th_g" style="width: 260px;">근속수당</th>
+                  <!-- <th class="th_g">직책수당</th> -->
                   <!-- <th class="th_g">자격수당</th> -->
                   <th class="th_g">중식비</th>
                   <th class="th_g">교통비(유류비)</th>
@@ -354,12 +359,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <tbody>
               <c:forEach items="${list}" var="s">
                   <tr>
-                    <td><input type="text" value="${s.regularHourlyWage}" placeholder="시급" class="text" name="regularHourlyWage"> 원</td>
-                    <td><input type="text" value="${s.longServiceDay}" placeholder="근속일" class="day" name="longServiceDay"> 일마다 <input type="text" value="${s.longServiceAllowance}" placeholder="월급" class="text" name="longServiceAllowance"> 원</td>
-                    <td><input type="text" value="${s.positionAllowance}" placeholder="월급" class="text" name="positionAllowance"> 원</td>
+                    <td><input type="text" value="${s.regularHourlyWage}" placeholder="시급" class="text radius" name="regularHourlyWage"> 원</td>
+                    <td><input type="text" value="${s.longServiceDay}" placeholder="근속일" class="day radius" name="longServiceDay"> 일마다 <input type="text" value="${s.longServiceAllowance}" placeholder="월급" class="text radius" name="longServiceAllowance"> 원</td>
+                    <%-- <td><input type="text" value="${s.positionAllowance}" placeholder="월급" class="text radius" name="positionAllowance"> 원</td> --%>
                     <!-- <td><input type="text" class="text" placeholder="자격증 수당 월급"> 원</td> -->
-                    <td><input type="text" value="${s.mealExpenses}" placeholder="일급" class="text" name="mealExpenses"> 원</td>
-                    <td><input type="text" value="${s.transportationExpenses}" placeholder="일급" class="text" name="transportationExpenses"> 원</td>
+                    <td><input type="text" value="${s.mealExpenses}" placeholder="일급" class="text radius" name="mealExpenses"> 원</td>
+                    <td><input type="text" value="${s.transportationExpenses}" placeholder="일급" class="text radius" name="transportationExpenses"> 원</td>
                   </tr>
 				</c:forEach>
 

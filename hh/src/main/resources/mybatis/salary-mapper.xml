@@ -13,7 +13,7 @@
 				, OVERTIME_ALLOWANCE
 				, HOLIDAY_ALLOWANCE
 				, LONG_SERVICE_ALLOWANCE
-				, POSITION_ALLOWANCE
+				<!-- , POSITION_ALLOWANCE -->
 				, ANNUAL_LEAVE_ALLOWANCE
 				, MEAL_EXPENSES
 				, TRANSPORTATION_EXPENSES
@@ -30,11 +30,11 @@
 			VALUES
 			(
 				  #{empNo}
-				, #{basicSalary}
+				, #{basicSalary} * 20
 				, #{overtimeAllowance}
 				, #{holidayAllowance}
 				, #{longServiceAllowance}
-				, #{positionAllowance}
+				<!-- , #{positionAllowance} -->
 				, #{annualLeaveAllowance}
 				, #{mealExpenses}
 				, #{transportationExpenses}
@@ -65,8 +65,9 @@
 		
 		<select id="selectOneByPayroll" parameterType="string" resultType="payrollDto">
 			SELECT *
-			FROM PAYROLL
-			WHERE PAYROLL_DATE = #{payrollDate}
+			FROM PAYROLL, EMP
+			WHERE PAYROLL.EMP_NO = EMP.EMP_NO
+			AND PAYROLL.PAYROLL_DATE = #{payrollDate}
 		</select>
 		
 		
@@ -76,7 +77,7 @@
 		<select id="selectOneBySalary" resultType="salaryDto">
 			SELECT *
 			FROM SALARY
-            WHERE EMP_NO = 101
+            WHERE EMP_NO = 1
 		</select>
 		
 
@@ -90,12 +91,12 @@
 		<update id="setting" parameterType="salaryDto">
 			UPDATE SALARY
 			SET 
-			  REGULAR_HOURLY_WAGE = #{regularHourlyWage}
-			, LONG_SERVICE_DAY = #{longServiceDay}
-			, LONG_SERVICE_ALLOWANCE = #{longServiceAllowance}
-			, POSITION_ALLOWANCE = #{positionAllowance}
-			, MEAL_EXPENSES = #{mealExpenses}
-			, TRANSPORTATION_EXPENSES = #{transportationExpenses}
+			  REGULAR_HOURLY_WAGE = TO_CHAR(#{regularHourlyWage}, '999,999,999')
+			, LONG_SERVICE_DAY = TO_CHAR(#{longServiceDay}, '999,999,999')
+			, LONG_SERVICE_ALLOWANCE = TO_CHAR(#{longServiceAllowance}, '999,999,999')
+			<!-- , POSITION_ALLOWANCE = #{positionAllowance} -->
+			, MEAL_EXPENSES = TO_CHAR(#{mealExpenses}, '999,999,999')
+			, TRANSPORTATION_EXPENSES = TO_CHAR(#{transportationExpenses}, '999,999,999')
 <!-- 			, PAYROLL_BANK = #{payrollBank}
 			, PAYROLL_ACCOUNT = #{payrollAccount} -->
 		</update>
@@ -109,6 +110,12 @@
 			SELECT *
             FROM EMP
 		</select>
+		
+		<select id="selectOneByEmp" parameterType="string" resultType="payrollDto">
+		SELECT *
+		FROM PAYROLL
+		WHERE EMP_NO = #{empNo}
+	</select>
 		
 		
 

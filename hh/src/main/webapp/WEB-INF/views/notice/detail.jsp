@@ -336,8 +336,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="<%=request.getContextPath()%>/notice/list" class="btn btn-primary">목록</a>
     </div></td>
     <td><div class="right">
-    	<input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/edit">
-		<input class="btn btn-secondary" type="submit" value="삭제" formaction="<%=request.getContextPath()%>/notice/delete">
+    	<input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/detail2/${data.title}">
+	  　<input class="btn btn-secondary" type="submit" value="삭제" formaction="<%=request.getContextPath()%>/notice/delete">
     </div>
 
   </tr>

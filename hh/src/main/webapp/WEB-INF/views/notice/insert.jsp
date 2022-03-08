@@ -42,6 +42,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       font-size: 10pt !important;
       text-align: center;
     }
+    .radius {
+	  border-radius: 5px !important;
+    }
   </style>
   
   <!-- smarteditor2 -->
@@ -317,7 +320,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <table>
   
   <tr>
-    <td><input name="title" class="form-control" type="text" placeholder="제목">
+    <td><input name="title" class="form-control radius" type="text" placeholder="제목">
     <!-- 현재 로그인된 empName의 값 -> mapper -->
 	<input hidden type="text" value="${loginUser.empName}" name="writer">
     </td>
@@ -332,7 +335,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                               style="width: 100%"></textarea>
                                   </div> -->
 
-    <textarea name="content" class="form-control" cols="50" rows="20" style="resize: none;"></textarea>
+    <textarea name="content" class="form-control radius" cols="50" rows="20" style="resize: none;"></textarea>
     
     <!-- <input type="text" name="writer" placeholder="작성자"> -->
     </td>

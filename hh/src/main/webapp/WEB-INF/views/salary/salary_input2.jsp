@@ -1,3 +1,4 @@
+<%@page import="com.hh.hh.member.entity.MemberDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,26 +12,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="ko">
 <head>
   <style>
-    .center {
-      margin: auto;
-      text-align: center;
-    }
     .tb_salary1 {
       font-size: 10pt;
     }
-    .div1 {
-      overflow-y: scroll;
-      min-height: 0px;
-      max-height: 330px;
+    .month {
+      width: 300px;
     }
-    td, th {
-      height: 30px;
+    .center {
+      text-align: center;
+    }
+    .left {
+      text-align: left;
+    }
+    .right {
+      text-align: right;
     }
     .mon {
       height: 35px;
     }
-    .right {
-      text-align: right;
+    th, td {
+      height: 30px;
+    }
+    th {
+      background-color: rgb(241, 241, 241) !important;
+      width: 130px;
+    }
+    .th_g {
+      background-color: rgb(230, 230, 230) !important;
+    }
+    /* .tb_emp {
+      height: 400px;
+    } */
+    .tb_sal {
+      width: 700px !important;
+    }
+    .div1 {
+      /* border: 1px solid red; */
+      width: 500px !important;
+    }
+    .div2 {
+      /* border: 1px solid red; */
+      width: 750px !important;
+    }
+    .scr {
+      min-height: 0px;
+      max-height: 400px;
+      overflow-y: scroll;
     }
     .radius {
 	  border-radius: 5px !important;
@@ -39,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>급여명세서 이메일 발송</title>
+  <title>급상여입력</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -48,14 +75,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="${path}/resources/css/salary/dist/css/adminlte.min.css">
 
-  <!-- 부트스트랩 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -281,9 +302,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
 
-          <h1><b>급여명세서 이메일 발송</b></h1>
-          <br><br>
-          <hr>
+
+<h1><b>급상여입력</b></h1>
+<br><br>
+<hr>
+
 
           <div class="col-sm-6">
 
@@ -299,82 +322,198 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row center">
 
 
-        <div class="month left">
-          <input class="mon radius" type="month" value="2022-03">　
-          <select name="emp" class="mon radius">
-            <option value="emp1" label="사번" selected></option>
-            <option value="emp2" label="성명"></option>
-            <option value="emp3" label="직급"></option>
-            <option value="emp4" label="부서"></option>
-        </select>
-        <input type="text" class="mon radius">
-        <a href="#" class="btn btn-primary">조회</a>
-          <br><br>
+          <div class="month left">
+            <input class="mon radius" type="month" value="2022-03">　
+            <select name="emp" class="mon radius">
+              <option value="emp1" label="사번" selected></option>
+              <option value="emp2" label="성명"></option>
+              <option value="emp3" label="직급"></option>
+              <option value="emp4" label="부서"></option>
+          </select>
+          <input type="text" class="mon radius">
+          <a href="#" class="btn btn-primary">조회</a>
+            <br><br>
+          </div>
+
+          <div class="col-lg-6 div1">
+
+            <form action="">
+
+
+<!--
+                  <th>기본급</th>
+                  <th>통상시급</th>
+                  <th>잔업수당</th>
+                  <th>특근수당</th>
+                  <th>근속수당</th>
+                  <th>직책수당</th>
+                  <th>연차수당</th>
+                  <th>자격수당</th>
+                  <th>중식비</th>
+                  <th>교통비(유류비)</th>
+                  <th>상여금</th>
+                  <th>특별수당</th>
+                  <th>급여총액</th>
+                  <th>4대보험</th>
+                  <th>소득세,지방소득세</th>
+                  <th>실지급액</th>
+-->
+
+
+
+
+
+<div class="scr">
+
+  <table border="1" class="table table-hover table-bordered tb_salary1">
+    <thead>
+      <tr>
+        <th>사번</th>
+        <th>성명</th>
+        <th>직급</th>
+        <th>부서</th>
+      </tr>	
+    </thead>
+    <tbody>
+    
+        	<%
+			List<MemberDto> memberList = (List)request.getAttribute("memberList");
+			for(MemberDto m : memberList){
+			%>
+				<tr>
+					<td><%=m.getEmpNo()%></td>
+					<td><b><a href="input/<%=m.getEmpNo()%>" style="color: black; text-decoration: none;"><%=m.getEmpName()%></a></b></td>
+					<td><%=m.getEmpjobCode()%></td>
+					<td><%=m.getManagerDept()%></td>
+				</tr>
+			<%
+			}
+			%>
+
+    </tbody>
+  </table>
+
+</div>
+
+
+
+
+
+
+
+
+</form>
+
+          </div>
+          <!-- /.col-md-6 -->
+          <div class="col-lg-6 div2">
+
+            <form action="">
+
+
+
+
+
+
+
+
+
+
+
+            <table border="1" class="table table-bordered tb_salary1 tb_sal">
+              <tr>
+                <th colspan="2" class="th_g">지급항목</th>
+                <th colspan="2" class="th_g">공제항목</th>
+              </tr>
+              <tr>
+                <th>기본급</th>
+                <td><input class="radius" type="text" placeholder="(근무일수*통상시급)+주휴수당"></td> <!-- 직접설정 -->
+                <th>소득세</th>
+                <td><input class="radius" type="text"></td>
+              </tr>
+              <tr>
+                <th>잔업수당</th>
+                <td><input class="radius" type="text" placeholder="잔업일수*(통상시급*1.5)"></td>
+                <th>지방 소득세</th>
+                <td><input class="radius" type="text" placeholder="소득세의 10%"></td>
+              </tr>
+              <tr>
+                <th>특근수당</th>
+                <td><input class="radius" type="text" placeholder="휴일근무일수*(통상시급*1.5)"></td>
+                <th>고용보험</th>
+                <td><input class="radius" type="text"></td>
+              </tr>
+              <tr>
+                <th>근속수당</th>
+                <td><input class="radius" type="text"></td> <!-- 근속일수가 *일 이상이면 *원 지급 --> <!-- 직접설정 -->
+                <th>건강보험</th>
+                <td><input class="radius" type="text"></td>
+              </tr>
+              <tr>
+                <th>직책수당</th>
+                <td><input class="radius" type="text" placeholder="직급별수당"></td> <!-- 인턴/사원/대리/차장/과장/부장... --> <!-- 직접설정 -->
+                <th>국민연금</th>
+                <td><input class="radius" type="text"></td>
+              </tr>
+              <tr>
+                <th>연차수당</th>
+                <td><input class="radius" type="text"></td> <!-- 미사용연차를 통상시급으로 환산 -->
+                <th>기타</th>
+                <td><input class="radius" type="text"></td>
+              </tr>
+              <tr>
+                <th>자격수당</th>
+                <td><input class="radius" type="text" placeholder="자격증별수당"></td> <!-- 직접설정 -->
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>중식비</th>
+                <td><input class="radius" type="text" placeholder="근무일수*일일중식비"></td> <!-- 직접설정 -->
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>교통비(유류비)</th>
+                <td><input class="radius" type="text" placeholder="근무일수*일일교통비"></td> <!-- 직접설정 -->
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>상여금</th>
+                <td><input class="radius" type="text"></td>
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>특별수당</th>
+                <td><input class="radius" type="text"></td>
+                <th></th>
+                <td></td>
+              </tr>
+
+              </tbody>
+            </table>
+
+
+
+
+<div class="right">
+  <br><br>
+  <a href="#" class="btn btn-primary">저장</a>　<a href="#" class="btn btn-secondary">취소</a>
+  <br><br><br>
+</div>
+
+
+</form>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
         </div>
-
-
-        <div class="row div1 center">
-          <!-- <div class="col-lg-6"> -->
-
-            <table border="1" class="table table-bordered table-hover tb_salary1">
-                      <thead>
-                        <tr>
-                          <th><input type="checkbox"></th>
-                          <th>사번</th>
-                          <th>성명</th>
-                          <th>직급</th>
-                          <th>부서</th>
-                          <th>지급일자</th>
-                          <th>지급총액</th>
-                          <th>공제총액</th>
-                          <th>실지급액</th>
-                          <th>이메일</th>
-                          <th>은행</th>
-                          <th>계좌번호</th>
-        
-                        </tr>	
-                      </thead>
-                      <tbody>
-                          
-                    <c:forEach items="${list}" var="p">
-						<tr>
-							<td><input type="checkbox"></td>
-							<td>${p.empNo}</td>
-							<td>성명</td>
-							<td>직급</td>
-							<td>부서</td>
-							<td>${p.payrollDate}</td>
-							<td>${p.totalSalary}</td>
-							<td>공제총액</td>
-							<td>${p.netSalary}</td>
-							<td>이메일</td>
-							<td>${p.payrollBank}</td>
-							<td>${p.payrollAccount}</td>
-						</tr>
-					</c:forEach>
-
-                      </tbody>
-                    </table>
-                    
-                  </div>
-                  <div class="right">
-                    <br>
-                    <a href="#" class="btn btn-primary">이메일 발송</a>
-                    <br><br>
-                  </div>
-
-          <!-- /.col-md-6 -->
-          <!-- <div class="col-lg-6">
-
-222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
-
-              </div> -->
-            <!-- </div>
-          </div> -->
-          <!-- /.col-md-6 -->
-        <!-- </div> -->
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

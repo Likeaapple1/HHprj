@@ -53,7 +53,7 @@ public class NoticeController {
 	@GetMapping("/list")
 	public ModelAndView list(ModelAndView mv) {
 		
-		// 디비 가서 가져오고,
+		// DB에서 가져오기
 		List<NoticeDto> list = service.selectList();
 		
 		
@@ -82,6 +82,9 @@ public class NoticeController {
 	@GetMapping("/detail2/{t}")
 	public String detail2(@PathVariable String t, Model model) {
 		
+		NoticeDto dto = ss.selectOne("notice.selectOneByTitle", t);
+		
+		model.addAttribute("data", dto);
 
 		return "notice/detail2";
 	}
@@ -89,7 +92,7 @@ public class NoticeController {
 	//상세페이지 수정
 	@PostMapping("edit")
 	public String edit(NoticeDto dto) {
-		// dto 가지고 처리 ~~~
+		// dto로 처리
 		int result = service.edit(dto);
 		
 		if(result > 0) {
