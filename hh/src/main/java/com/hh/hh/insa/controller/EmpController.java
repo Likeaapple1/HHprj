@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/insa")
-public class InsaController {
+public class EmpController {
 	
 	@GetMapping("/home")
 	public String insa() {
 
 		return "insa/insa_home";
 	}
-	
+
 	@GetMapping("/injuk")
 	public String injuk() {
 

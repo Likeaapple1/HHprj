@@ -5,16 +5,17 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class InsaDto {
+public class InjukDto {
 	private long empNo;
 	private String empName;
-	private String empPassword;
 	private String empengName;
-	private String empchiName;
+	private String empchnName;
+	private String empphotoRoute;
+	private String empphotoName;
 	private String empbirth;
 	private String empGender;
 	private String empMarry;
-	private String empwedAnn;
+	private String empwedAnni;
 	private String empNative;
 	private String empNation;
 	private String empofficePhone;
@@ -22,14 +23,12 @@ public class InsaDto {
 	private String empPhone;
 	private String empofficeEmail;
 	private String empEmail;
-	private String empaddress;
-	private String empengAddress;
-	private String empdeptNo;
-	private String empjobCode;
-	private Date enrollDate;
-	private Date resignDate;
-	private String empworkdiv;
-	private String empMemo;
-	
+	private String empAdd;
+	private String empdtAdd;
+	private String empengAdd;
+	private String empworkClassify;
+	private Date empenrollDate;
+	private Date empresignDate;
+	private Date empMod;
 	
 }
