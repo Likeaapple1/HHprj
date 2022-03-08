@@ -519,8 +519,10 @@
 		                                            	<ins class="jstree-icon_1">&nbsp;</ins>
 			                                            <a title rel="MEMBER" id="MEMBER_2" href="#" class="ui-draggable1">
 			                                                <ins class="jstree-icon_3"></ins>
-			                                                <span class="temp">${n.empName} ${n.empjobCode}</span>
-                                                            <span>${n.empdeptNo}</span>
+			                                                <span class="userInfo">${n.empName} ${n.empjobCode}</span>
+                                                            <span style="display: none;">${n.managerDept}</span>
+                                                            <span style="display: none;">${n.empjobCode}</span>
+                                                            <span style="display: none;">${n.empName}</span>
 			                                            </a>
 	                                                </li>
                                                 </c:forEach>
@@ -597,7 +599,7 @@
                                     <th>이름</th>
                                     <th>타입</th>
                                     <td>
-                                        <span id="allActivityDelete" class="btn_bdr delete_activity" title="전체 삭제">
+                                        <span id="allActivityDelete" class="btn_bdr delete_activity" title="전체 삭제" name="Alldel1">
                                             <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                         </span>
                                     </td>
@@ -606,14 +608,14 @@
                         </table>
                         <div>
                             <table border="1" style="margin:auto;">
-                                <tbody>
+                                <tbody class="parent1">
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
                                         <td>4</td>
                                         <td>
-                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
+                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">
                                                 <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                             </span>
                                         </td>
@@ -636,7 +638,7 @@
                                     <th>이름</th>
                                     <th>타입</th>
                                     <td>
-                                        <span id="allActivityDelete" class="btn_bdr delete_activity" title="전체 삭제">
+                                        <span id="allActivityDelete" class="btn_bdr delete_activity" title="전체 삭제" name="Alldel2">
                                             <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                         </span>
                                     </td>
@@ -645,14 +647,14 @@
                         </table>
                         <div>
                             <table border="1" style="margin:auto;">
-                                <tbody>
+                                <tbody class="parent2">
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
                                         <td>4</td>
                                         <td>
-                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
+                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">
                                                 <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                             </span>
                                         </td>
@@ -747,7 +749,7 @@
     let oEditors = []
 
     smartEditor = function() {
-        console.log("Naver SmartEditor")
+        // console.log("Naver SmartEditor")
         nhn.husky.EZCreator.createInIFrame({
         oAppRef: oEditors,
         elPlaceHolder: "editorTxt",
@@ -810,28 +812,64 @@
     	$(this).removeClass('selec');
     })
 </script>
+
 <script>
-	const addButton = document.querySelector('.add_action1');
-	addButton.addEventListener('click', () => {
+
+let userInfoList = document.getElementsByClassName('userInfo');
+
+$(userInfoList).each(function(idx, element){
+    $(element).one('click' , function(event){
+        let t = event.currentTarget;
+        // console.log(t);
+        // console.log(t.nextSibling.nextSibling);
+        // console.log(t.nextSibling.nextSibling.nextSibling.innerText);
+        // console.log(t.nextSibling.nextSibling.nextSibling.nextSibling.innerText);
         
-	let tempList = document.getElementsByClassName('temp');
+        const addButton = document.querySelector('.add_action1');
+	    addButton.addEventListener('click', () => {
+            $(element).off('click');
+            
+            var innerHtml = "";
+            innerHtml += '<tr>';
+            innerHtml += '<td>' + t.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td>' + t.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td>' + t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td>4</td>';
+            innerHtml += '<td>';
+            innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
+            innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+            innerHtml += '</span>';
+            innerHtml += '</td>';
+            innerHtml += '</tr>';
+            $('.parent1:last').append(innerHtml);
 
-    $(tempList).each(function(idx, element){
-        $(element).on('click' , function(event){
-            let t = event.currentTarget;
-            console.log(t);
-            console.log(t.nextSibling.nextSibling);
-            console.log(t.nextSibling.nextSibling.innerText);
-        })
-    });
-	}) 
+            return false;
+	    })
+        
+    })
+});
+
 </script>
-
+<!-- 조직도 토글 - 삭제버튼 -->
 <script>
-
-    
-
+    //삭제 버튼
+    $(document).on("click","span[name=del]",function(){
+        var trHtml = $(this).parent().parent();
+        trHtml.remove(); //tr 태그 삭제
+    })
 </script>
-
+<!-- 조직도 토글 - 전체삭제버튼 -->
+<script>
+    //결재자 전체삭제 버튼
+    $(document).on("click","span[name=Alldel1]",function(){
+        var standard = document.getElementsByClassName('parent1');
+        $(".parent1").children().remove();
+    })
+    //열람자 전체삭제 버튼
+    $(document).on("click","span[name=Alldel2]",function(){
+        var standard = document.getElementsByClassName('parent2');
+        $(".parent2").children().remove();
+    })
+</script>
 </body>
 </html>
