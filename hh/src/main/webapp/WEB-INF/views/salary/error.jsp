@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>error</title>
 </head>
 <body>
-	<h1>salary error page</h1>
+	오류가 발생했습니다.<br><br>
+	<a href="<%=request.getContextPath()%>/main">메인 페이지로 돌아가기</a>
 </body>
 </html>

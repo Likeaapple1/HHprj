@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>error</title>
 </head>
 <body>
-	<h1>에러페이지</h1>
+	오류가 발생했습니다.<br><br>
+	<a href="<%=request.getContextPath()%>/notice/list">이전 페이지로 돌아가기</a>
 </body>
 </html>

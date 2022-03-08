@@ -33,6 +33,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .mon {
       height: 35px;
     }
+    .radius {
+	  border-radius: 5px !important;
+	  border: 1px solid lightgray;
+    }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -289,7 +293,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-<form action="">
+<form method="post">
 
 
 
@@ -301,7 +305,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="center">
 
           <div class="month left">
-            <input class="mon" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br><br>
+            <input class="mon radius" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br><br>
           </div>
           
           <h4>
@@ -348,7 +352,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </tr>
             <tr>
               <th class="th2">기본급</th>
-              <td>　</td>
+              <td>${data.basicSalary}</td>
               <th class="th2">소득세</th>
               <td>　</td>
             </tr>
@@ -370,28 +374,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th class="th2">건강보험</th>
               <td>　</td>
             </tr>
-            <tr>
+<!--             <tr>
               <th class="th2">직책수당</th>
               <td>　</td>
               <th class="th2">국민연금</th>
               <td>　</td>
-            </tr>
+            </tr> -->
             <tr>
               <th class="th2">연차수당</th>
               <td>　</td>
-              <th class="th2">기타</th>
+              <th class="th2">국민연금</th>
               <td>　</td>
             </tr>
-            <tr>
+<!--             <tr>
               <th class="th2">자격수당</th>
               <td>　</td>
               <th class="th2"></th>
               <td>　</td>
-            </tr>
+            </tr> -->
             <tr>
               <th class="th2">중식비</th>
               <td>　</td>
-              <th class="th2"></th>
+              <th class="th2">기타</th>
               <td>　</td>
             </tr>
             <tr>

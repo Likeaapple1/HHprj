@@ -1,6 +1,6 @@
 package com.hh.hh.salary.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class PayrollDto {
 	private String overtimeAllowance;
 	private String holidayAllowance;
 	private String longServiceAllowance;
-	private String positionAllowance;
+//	private String positionAllowance;
 	private String annualLeaveAllowance;
 	private String mealExpenses;
 	private String transportationExpenses;

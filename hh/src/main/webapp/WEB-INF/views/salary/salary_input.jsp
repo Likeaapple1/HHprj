@@ -59,6 +59,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       max-height: 400px;
       overflow-y: scroll;
     }
+    .radius {
+	  border-radius: 5px !important;
+	  border: 1px solid lightgray;
+    }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -322,14 +326,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <div class="month left">
-            <input class="mon" type="month" value="2022-03">　
-            <select name="emp" class="mon">
+            <input class="mon radius" type="month" value="2022-03">　
+            <select name="emp" class="mon radius">
               <option value="emp1" label="사번" selected></option>
               <option value="emp2" label="성명"></option>
               <option value="emp3" label="직급"></option>
               <option value="emp4" label="부서"></option>
           </select>
-          <input type="text" class="mon">
+          <input type="text" class="mon radius">
           <a href="#" class="btn btn-primary">조회</a>
             <br><br>
           </div>
@@ -374,16 +378,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </tr>	
     </thead>
     <tbody>
-        
+    
         	<%
 			List<MemberDto> memberList = (List)request.getAttribute("memberList");
 			for(MemberDto m : memberList){
 			%>
 				<tr>
-					<td><%= m.getEmpNo()%></td>
-					<td><%= m.getEmpName()%></td>
-					<td><%= m.getEmpjobCode()%></td>
-					<td><%= m.getManagerDept()%></td>
+					<td><%=m.getEmpNo()%></td>
+					<td><b><a href="input/<%=m.getEmpNo()%>" style="color: black; text-decoration: none;"><%=m.getEmpName()%></a></b></td>
+					<td><%=m.getEmpjobCode()%></td>
+					<td><%=m.getManagerDept()%></td>
 				</tr>
 			<%
 			}
@@ -425,68 +429,68 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <th colspan="2" class="th_g">공제항목</th>
               </tr>
               <tr>
-                <th>기본급</th>
-                <td><input type="text" placeholder="(근무일수*통상시급)+주휴수당"></td> <!-- 직접설정 -->
+                <th>기본급${data.empNo}</th>
+                <td><input class="radius" type="text" placeholder="(근무일수*통상시급)+주휴수당"></td> <!-- 직접설정 -->
                 <th>소득세</th>
-                <td><input type="text"></td>
+                <td><input class="radius" type="text"></td>
               </tr>
               <tr>
                 <th>잔업수당</th>
-                <td><input type="text" placeholder="잔업일수*(통상시급*1.5)"></td>
+                <td><input class="radius" type="text" placeholder="잔업일수*(통상시급*1.5)"></td>
                 <th>지방 소득세</th>
-                <td><input type="text" placeholder="소득세의 10%"></td>
+                <td><input class="radius" type="text" placeholder="소득세의 10%"></td>
               </tr>
               <tr>
                 <th>특근수당</th>
-                <td><input type="text" placeholder="휴일근무일수*(통상시급*1.5)"></td>
+                <td><input class="radius" type="text" placeholder="휴일근무일수*(통상시급*1.5)"></td>
                 <th>고용보험</th>
-                <td><input type="text"></td>
+                <td><input class="radius" type="text"></td>
               </tr>
               <tr>
                 <th>근속수당</th>
-                <td><input type="text"></td> <!-- 근속일수가 *일 이상이면 *원 지급 --> <!-- 직접설정 -->
+                <td><input class="radius" type="text"></td> <!-- 근속일수가 *일 이상이면 *원 지급 --> <!-- 직접설정 -->
                 <th>건강보험</th>
-                <td><input type="text"></td>
+                <td><input class="radius" type="text"></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th>직책수당</th>
-                <td><input type="text" placeholder="직급별수당"></td> <!-- 인턴/사원/대리/차장/과장/부장... --> <!-- 직접설정 -->
+                <td><input class="radius" type="text" placeholder="직급별수당"></td> 인턴/사원/대리/차장/과장/부장... 직접설정
                 <th>국민연금</th>
-                <td><input type="text"></td>
-              </tr>
+                <td><input class="radius" type="text"></td>
+              </tr> -->
               <tr>
                 <th>연차수당</th>
-                <td><input type="text"></td> <!-- 미사용연차를 통상시급으로 환산 -->
-                <th>기타</th>
-                <td><input type="text"></td>
+                <td><input class="radius" type="text"></td> <!-- 미사용연차를 통상시급으로 환산 -->
+                <th>국민연금</th>
+                <td><input class="radius" type="text"></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th>자격수당</th>
-                <td><input type="text" placeholder="자격증별수당"></td> <!-- 직접설정 -->
-                <th></th>
-                <td></td>
-              </tr>
+                <td><input class="radius" type="text" placeholder="자격증별수당"></td> 직접설정
+                <th>기타</th>
+                <td><input class="radius" type="text"></td>
+              </tr> -->
               <tr>
                 <th>중식비</th>
-                <td><input type="text" placeholder="근무일수*일일중식비"></td> <!-- 직접설정 -->
-                <th></th>
-                <td></td>
+                <td><input class="radius" type="text" placeholder="근무일수*일일중식비"></td> <!-- 직접설정 -->
+                <th>기타</th>
+                <td><input class="radius" type="text"></td>
               </tr>
               <tr>
                 <th>교통비(유류비)</th>
-                <td><input type="text" placeholder="근무일수*일일교통비"></td> <!-- 직접설정 -->
+                <td><input class="radius" type="text" placeholder="근무일수*일일교통비"></td> <!-- 직접설정 -->
                 <th></th>
                 <td></td>
               </tr>
               <tr>
                 <th>상여금</th>
-                <td><input type="text"></td>
+                <td><input class="radius" type="text"></td>
                 <th></th>
                 <td></td>
               </tr>
               <tr>
                 <th>특별수당</th>
-                <td><input type="text"></td>
+                <td><input class="radius" type="text"></td>
                 <th></th>
                 <td></td>
               </tr>

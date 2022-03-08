@@ -32,7 +32,7 @@
 	<select id="selectOneByTitle" parameterType="string" resultType="notice">
 		SELECT *
 		FROM NOTICE
-		WHERE TITLE = #{title}
+		WHERE NOTICE_NO = #{noticeNo}
 	</select>
 	
 	<update id="update" parameterType="notice">

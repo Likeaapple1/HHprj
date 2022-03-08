@@ -1,7 +1,5 @@
 package com.hh.hh.salary.entity;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
@@ -11,7 +9,7 @@ public class SalaryDto {
 	private String regularHourlyWage;
 	private String longServiceDay;
 	private String longServiceAllowance;
-	private String positionAllowance;
+//	private String positionAllowance;
 	private String mealExpenses;
 	private String transportationExpenses;
 	private String payrollBank;
