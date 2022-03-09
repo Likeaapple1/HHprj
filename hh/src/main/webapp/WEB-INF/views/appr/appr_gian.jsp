@@ -612,7 +612,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
-                                        <td>3</td>
+                                        <td class="listedName">3</td>
                                         <td>4</td>
                                         <td>
                                             <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">
@@ -818,15 +818,38 @@
 let userInfoList = document.getElementsByClassName('userInfo');
 
 $(userInfoList).each(function(idx, element){
-    $(element).one('click' , function(event){
+    $(element).on('click' , function(event){
         let t = event.currentTarget;
+        var name = t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText;
         // console.log(t);
         // console.log(t.nextSibling.nextSibling);
         // console.log(t.nextSibling.nextSibling.nextSibling.innerText);
         // console.log(t.nextSibling.nextSibling.nextSibling.nextSibling.innerText);
+        // on, one, unbind, off
+        const addButton1 = document.querySelector('.add_action1');
+        const addButton2 = document.querySelector('.add_action2');
         
-        const addButton = document.querySelector('.add_action1');
-	    addButton.addEventListener('click', () => {
+        console.log(document.getElementsByClassName('listedName').innerText);
+
+	    addButton1.addEventListener('click', () => {
+            $(element).off('click');
+            
+            var innerHtml = "";
+            innerHtml += '<tr>';
+            innerHtml += '<td>' + t.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td>' + t.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td class="listedName">' + t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td>4</td>';
+            innerHtml += '<td>';
+            innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
+            innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+            innerHtml += '</span>';
+            innerHtml += '</td>';
+            innerHtml += '</tr>';
+            $('.parent1:last').append(innerHtml);
+            // return false;
+	    })
+        addButton2.addEventListener('click', () => {
             $(element).off('click');
             
             var innerHtml = "";
@@ -841,11 +864,9 @@ $(userInfoList).each(function(idx, element){
             innerHtml += '</span>';
             innerHtml += '</td>';
             innerHtml += '</tr>';
-            $('.parent1:last').append(innerHtml);
-
-            return false;
+            $('.parent2:last').append(innerHtml);
+            // return false;
 	    })
-        
     })
 });
 
