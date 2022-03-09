@@ -65,6 +65,11 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	public List<AttendanceDto> getAttAllList(Map<String, Object> map) throws Exception {
 		return sqlsession.selectList("attendance.selectAttAllList",map);
 	}
+
+	@Override
+	public int updateContent(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.update("attendance.updateContent",attendanceDto);
+	}
 	
 
 

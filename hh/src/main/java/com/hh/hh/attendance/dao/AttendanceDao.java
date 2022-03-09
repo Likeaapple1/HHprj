@@ -27,4 +27,6 @@ public interface AttendanceDao {
 	List<AttendanceDto> getAttList(Map<String, Object> map) throws Exception;
 
 	List<AttendanceDto> getAttAllList(Map<String, Object> map) throws Exception;
+
+	int updateContent(AttendanceDto attendanceDto) throws Exception;
 }

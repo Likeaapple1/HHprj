@@ -29,11 +29,14 @@ public class AttendanceDto {
 	private Date attNsEnd;
 	private String startDate;
 	private String endDate;
-	private String today;
+	private String toDay;
 	private String day;
 	private String start;
 	private String end;
-	private String total;
+	private Date total;
+	private String attContent;
+	private String attContentYn;
+	private String attContentReason;
 	
 	@Override
 	public String toString() {

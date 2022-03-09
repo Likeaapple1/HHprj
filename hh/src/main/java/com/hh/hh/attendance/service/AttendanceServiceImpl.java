@@ -89,6 +89,17 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendancedao.getAttAllList(map);
 	}
 
+	@Override
+	public int updateContent(AttendanceDto attendanceDto) throws Exception {
+		int result = attendancedao.updateContent(attendanceDto);
+		if(result > 0) {
+			System.out.println("result 성공");
+			return result;
+		}
+		System.out.println("result 실패");
+		return result;
+	}
+
 
 
 
