@@ -16,9 +16,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="${root}/resources/resign/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="${root}/resources/css/resign/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="${root}/resources/resign/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="${root}/resources/css/resign/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -414,10 +414,10 @@
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="${root}/resources/resign/plugins/jquery/jquery.min.js"></script>
+  <script src="${root}/resources/css/resign/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="${root}/resources/resign/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${root}/resources/css/resign/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="${root}/resources/resign/dist/js/adminlte.min.js"></script>
+  <script src="${root}/resources/css/resign/dist/js/adminlte.min.js"></script>
 </body>
 </html>
