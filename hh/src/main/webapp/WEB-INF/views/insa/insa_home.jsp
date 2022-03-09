@@ -1170,6 +1170,7 @@ form {
           </colgroup>
           <thead>
           </thead>
+          
           <form id="officerInsertForm" action="/admin/officerInsert"
             method="post" enctype="multipart/form-data">
             <tbody>
@@ -1218,17 +1219,17 @@ form {
                 <th>부서(*)</th>
                 <td><select id="dpt_sq" name="dpt_sq"
                   class="form-control">
-                    <c:forEach items="${selectDpt_Div_Tb}" var="map">
-                      <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
+                    <c:forEach items="${selectDept_Div_Tb}" var="map">
+                      <option value="${map.DEPT_CODE}">${map.DEPT_NAME}</option>
                     </c:forEach>
                 </select></td>
               </tr>
               <tr>
                 <th>직급(*)</th>
-                <td><select id="rnk_sq" name="rnk_sq"
+                <td><select id="rnk_sq" name="job_code"
                   class="form-control">
-                    <c:forEach items="${selectRnk_Tb}" var="map">
-                      <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
+                    <c:forEach items="${selectJob_Code}" var="map">
+                      <option value="${map.JOB_CODE}">${map.JOB_NAME}</option>
                     </c:forEach>
                 </select></td>
               </tr>
@@ -1548,15 +1549,22 @@ form {
                   data-target="#insertModal">구성원 추가</button>
                 <button type="button" id="officerUpdateModal" class="btn btn-warning"  
                   data-backdrop="static" data-toggle="modal">구성원 수정</button>
-                  
-        <div class="right">
-                    <a href="#" class="btn btn-primary">새 인사정보 등록하기</a>
-                  </div>
+           
          
-
-          <hr>
+		
+          <br><br>
           <h3>기본정보</h3>
           <hr>
+          
+          <form class="form-inline" role="form" method="post">
+						<a href="employeeinsertform.it" class="btn btn-default">Add</a>
+						<button type="button" class="btn btn-default">
+							totalCount <span class="badge">${totalcount}</span>
+						</button>
+						<button type="button" class="btn btn-default">
+							Count <span class="badge">${count}</span>
+						</button>
+					</form>
         </div>
 
 
@@ -1568,10 +1576,11 @@ form {
                         <tr>
                           <th>선택</th>
                           <th>사원번호</th>
+                          <th>주민등록번호</th>
                           <th>사진</th>
                           <th>성명</th>
-                          <th>직급</th>
                           <th>부서</th>
+                          <th>직급</th>
                           <th>입사일자</th>
                           <th>핸드폰</th>
                           <th>회사이메일</th>
@@ -1582,12 +1591,13 @@ form {
                       <tbody>
                           <tr>
                             <td><input type="radio" class="radio"
-                              value="${map.STF_SQ}"></td>
+                              value="${map.EMP_NO}"></td>
                             <td>101</td>
-                            <td><img src="${map.STF_PT_RT}" class="profileImg"/></td>
+                            <td>720814-*******</td>
+                            <td><img src="${map.EMP_PHOTO_ROUTE}" class="profileImg"/></td>
                             <td>유재석</td>
-                            <td>부장</td>
                             <td>마케팅</td>
+                            <td>부장</td>
                             <td>91년 05월 05일</td>
                             <td>010-1972-0814</td>
                             <td>youbujang@muhan.com</td>
@@ -1596,14 +1606,16 @@ form {
 
                           <tr>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${emp.empNo}</td>
+                            <td>${emp.empBirth}</td>
+                            <td>${emp.empphotoRoute}</td>
+                            <td>${emp.empName}</td>
+                            <td>${emp.deptCode}</td>
+                            <td>${emp.jobCode}</td>
+                            <td>${emp.empenrollDate}</td>
+                            <td>${emp.empPhone}</td>
+                            <td>${emp.empofficeEmail}</td>
+                            <td>${emp.empofficePhone}</td>
                           </tr>
 
                           <tr>

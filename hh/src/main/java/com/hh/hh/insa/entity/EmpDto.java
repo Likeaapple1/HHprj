@@ -8,9 +8,10 @@ import lombok.Data;
 public class EmpDto {
 	private long empNo;
 	private String empName;
+	private String empBirth;
 	private String empPassword;
-	private String empdeptNo;
-	private String empjobNo;
+	private String deptCode;
+	private String jobCode;
 	private String empPhone;
 	private String empAdd;
 	private String empdtAdd;
