@@ -46,5 +46,10 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 	public List<PayrollDto> selectListOne(long empNo) {
 		return ss.selectList("salary.selectAllPayrollByEmpNo", empNo);
 	}
+	
+	@Override
+	public List<PayrollDto> selectListE() {
+		return ss.selectList("salary.selectEmail");
+	}
 
 }

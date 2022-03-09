@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hh.hh.notice.entity.NoticeDto;
 import com.hh.hh.notice.service.NoticeService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/notice")
+@Slf4j
 public class NoticeController {
 	
 	@Autowired
@@ -72,23 +76,23 @@ public class NoticeController {
 		
 		System.out.println(t);
 		
-		NoticeDto dto = ss.selectOne("notice.selectOneByTitle", t);
+		NoticeDto dto = ss.selectOne("notice.selectOneByNo", t);
 		
 		model.addAttribute("data", dto);
 		return "notice/detail";
 	}
 	
 	// 수정페이지
-	@GetMapping("/detail2/{t}")
+	@PostMapping("/detail2/{t}")
 	public String detail2(@PathVariable String t, Model model) {
-		
-		NoticeDto dto = ss.selectOne("notice.selectOneByTitle", t);
+
+		NoticeDto dto = ss.selectOne("notice.selectOneByNo", t);
 		
 		model.addAttribute("data", dto);
 
 		return "notice/detail2";
 	}
-	
+
 	//상세페이지 수정
 	@PostMapping("edit")
 	public String edit(NoticeDto dto) {
@@ -117,5 +121,18 @@ public class NoticeController {
 			return "notice/error";
 		}
 	}
+	
+//	@PostMapping("delete")
+//	@ResponseBody
+//	public String delete(String str) throws Exception {
+//		int result = service.deleteNotice(str);
+//		
+//		log.warn("건드린 row 갯수 : {}" , result);
+//		if(result == str.length()/2) {
+//			return "redirect:/notice/list";
+//		}else {
+//			return "notice/error";
+//		}
+//	}
 
 }

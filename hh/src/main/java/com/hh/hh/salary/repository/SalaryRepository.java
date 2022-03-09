@@ -19,4 +19,6 @@ public interface SalaryRepository {
 	List<SalaryDto> selectListS();
 	
 	List<PayrollDto> selectListOne(long empNo);
+	
+	List<PayrollDto> selectListE();
 }

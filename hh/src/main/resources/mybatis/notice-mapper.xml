@@ -29,7 +29,7 @@
 		FROM NOTICE
 	</select>
 	
-	<select id="selectOneByTitle" parameterType="string" resultType="notice">
+	<select id="selectOneByNo" parameterType="string" resultType="notice">
 		SELECT *
 		FROM NOTICE
 		WHERE NOTICE_NO = #{noticeNo}
@@ -39,9 +39,8 @@
 		UPDATE NOTICE
 		SET 
 		  CONTENT = #{content}
-		, WRITER = '관리자'
-		, ENROLL_DATE = SYSDATE
-		WHERE TITLE = #{title}
+		, TITLE = #{title}
+		WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	
 	<delete id="delete" parameterType="notice">

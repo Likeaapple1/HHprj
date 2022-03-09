@@ -19,5 +19,7 @@ public interface SalaryService {
 	List<SalaryDto> selectListS();
 
 	List<PayrollDto> selectListOne(long empNo);
+	
+	List<PayrollDto> selectListE();
 
 }

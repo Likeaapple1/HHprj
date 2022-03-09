@@ -12,4 +12,6 @@ public interface NoticeService {
 	int edit(NoticeDto dto);
 
 	int delete(NoticeDto dto);
+	
+	int deleteNotice(String str) throws Exception;
 }

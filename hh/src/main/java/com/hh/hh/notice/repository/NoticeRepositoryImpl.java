@@ -34,5 +34,10 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	public int delete(NoticeDto dto) {
 		return ss.delete("notice.delete", dto);
 	}
+	
+	@Override
+	public int deleteNotice(String[] delArr) throws Exception {
+		return ss.delete("notice.delete" , delArr);
+	}
 
 }

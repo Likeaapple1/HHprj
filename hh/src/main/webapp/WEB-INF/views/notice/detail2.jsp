@@ -40,6 +40,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       min-height: 300px !important;
       /* border: 1px solid; */
     }
+    .radius {
+	  border-radius: 5px !important;
+    }
+    textarea {
+      font-size: 10pt !important;
+      text-align: center;
+    }
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -309,40 +316,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <form method="post">
 
 <table>
+  
   <tr>
-    <td colspan="2"><h3><input type="text" name="title" value="${data.title}"></h3><hr></td>
+    <td><input class="form-control radius" type="text" name="title" value="${data.title}">
+    <!-- 현재 로그인된 empName의 값 -> mapper -->
+	<input hidden type="text" value="${loginUser.empName}" name="writer">
+    </td>
   </tr>
-  <tr>
-    <!-- 작성자 -->
-    <td><div class="left"><b>${data.writer}</b></div></td>
-    <!-- 작성일 -->
-    <td><div class="right"><b>${data.enrollDate}</b></div></td>
-  </tr>
-  <tr>
-    <td colspan="2"><br><br><div class="ta">
 
-<pre>
-  <input type="text" name="content" value="${data.content}">
-</pre>
-
-    </div><br><br></td>
-  </tr>
   <tr>
-    <td><div class="left">
-        <a href="<%=request.getContextPath()%>/notice/list" class="btn btn-primary">목록</a>
-    </div></td>
-    <td><div class="right">
-    	<input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/edit">
-		<input class="btn btn-secondary" type="submit" value="삭제" formaction="<%=request.getContextPath()%>/notice/delete">
-    </div></td>
+    <td>
+                                  <!-- <div id="smarteditor">
+                                    <textarea name="content" id="editorTxt" 
+                                              rows="20" cols="50" 
+                                              placeholder="내용을 입력해주세요"
+                                              style="width: 100%"></textarea>
+                                  </div> -->
+
+    <textarea name="content" class="form-control radius" cols="50" rows="20" style="resize: none;">${data.content}</textarea>
+    <input hidden type="text" name="noticeNo" value="${data.noticeNo}">
+    <!-- <input type="text" name="writer" placeholder="작성자"> -->
+    </td>
   </tr>
+
+  <tr>
+    <td>
+      <div class="mb-3">
+      <!-- <input class="form-control form-control-sm file" id="formFileSm" type="file"> -->
+      </div>
+    </td>
+  </tr>
+
 </table>
+
+<div class="center">
+  <br>
+  <input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/edit">
+  　<a href="<%=request.getContextPath()%>/notice/list" class="btn btn-secondary">취소</a><br><br>
+</div>
 
 </form>
 
 
 
 
+  
+  
+  
 
           </div>
           <br><br>
