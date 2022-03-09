@@ -3,6 +3,52 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="insa">
-  
-  </mapper>
+  <mapper namespace="emp">
+	<select id="getEmp" parameterType="empDto" resultType="empDto">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NO = #{empNo}
+	</select>
+	
+	<insert id="insertEmp" parameterType="empDto">
+		INSERT INTO EMP
+		(
+			 EMP_NO
+		    ,EMP_NAME
+		    ,EMP_BIRTH
+		    ,EMP_PASSWORD
+		    ,DEPT_CODE
+		    ,JOB_CODE
+		    ,EMP_PHONE
+		    ,EMP_ADD
+		    ,EMP_DT_ADD
+		    ,EMP_OFFICE_PHONE
+		    ,EMP_EMAIL
+		    ,EMP_ENROLLDATE
+		    ,EMP_RESIGNDATE
+		    ,EMP_MODDATE  
+		    ,EMP_PHOTO_ROUTE
+		    ,EMP_PHOTO_NAME
+		)
+		VALUES
+		(
+			 #{empNo}
+			,#{empName}
+			,#{empBirth}
+			,#{empPassword}
+			,#{deptCode}
+			,#{jobCode}
+			,#{empPhone}
+			,#{empAdd}
+			,#{empdtAdd}
+			,#{empofficePhone}
+			,#{empEmail}
+			,#{empenrollDate}
+			,#{empresignDate}
+			,#{empmodDate}
+			,#{empphotoRoute}
+			,#{empphotoName}
+		)
+	</insert>
+	  
+</mapper>
