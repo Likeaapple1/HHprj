@@ -340,18 +340,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           
                     <c:forEach items="${list}" var="p">
 						<tr>
-							<td><input type="checkbox"></td>
-							<td>${p.empNo}</td>
-							<td>성명</td>
-							<td>직급</td>
-							<td>부서</td>
-							<td>${p.payrollDate}</td>
-							<td>${p.totalSalary}</td>
+							<td><input type="checkbox" class="checkbox-del"></td>
+							<td>${p.pen}</td>
+							<td>${p.eename}</td>
+ 							<td>${p.eej}</td>
+							<td>${p.emd}</td>
+							<td>${p.ppd}</td>
+							<td>${p.pts}</td>
 							<td>공제총액</td>
-							<td>${p.netSalary}</td>
-							<td>이메일</td>
-							<td>${p.payrollBank}</td>
-							<td>${p.payrollAccount}</td>
+							<td>${p.pns}</td>
+							<td>${p.eee}</td>
+							<td>${p.ppb}</td>
+							<td>${p.ppa}</td>
 						</tr>
 					</c:forEach>
 
@@ -376,6 +376,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- /.col-md-6 -->
         <!-- </div> -->
         <!-- /.row -->
+        
+        
+        <script type="text/javascript">
+		
+		//상단 체크박스 클릭하면 , 전체 체크박스 클릭되게
+		let topCheckBox = document.querySelector('thead input[type=checkbox]');
+		let delArr = document.getElementsByClassName('checkbox-del');
+		
+		topCheckBox.onchange = function(e){
+			if(this.checked){
+				for(let i = 0 ; i < delArr.length; ++i){
+					delArr[i].checked = true;
+				}
+			}else{
+				for(let i = 0 ; i < delArr.length; ++i){
+					delArr[i].checked = false;
+				}
+			}
+		}
+		</script>
+		
+		
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

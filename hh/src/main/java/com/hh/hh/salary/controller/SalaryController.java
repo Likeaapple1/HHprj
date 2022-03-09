@@ -117,8 +117,7 @@ public class SalaryController {
 	@GetMapping("/email")
 	public ModelAndView email(ModelAndView mv) {
 
-		// 디비 가서 가져오고,
-		List<PayrollDto> list = service.selectList();
+		List<PayrollDto> list = service.selectListE();
 
 		// model
 		mv.addObject("list", list);

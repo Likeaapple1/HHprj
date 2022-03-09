@@ -33,5 +33,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public int delete(NoticeDto dto) {
 		return dao.delete(dto);
 	}
+	
+	@Override
+	public int deleteNotice(String str) throws Exception {
+		String[] delArr = str.split(",");
+		return dao.deleteNotice(delArr);
+	}
 
 }

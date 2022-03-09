@@ -19,6 +19,7 @@
         <typeAlias type="com.hh.hh.attendance.entity.AttendanceDto" alias="attMap"/>  
         <typeAlias type="com.hh.hh.insa.entity.EmpDto" alias="empDto"/>   
 	 	<typeAlias type="com.hh.hh.insa.entity.InjukDto" alias="injukDto"/>
+	 	<typeAlias type="com.hh.hh.salary.entity.EmailDto" alias="emailDto"/>
 	 	
    	 <!--<typeAlias type="com.hh.hh.resign.entity.ResignDto" alias="resignDto"/>  -->    
      <!-- <typeAlias type="com.hh.hh.chat.entity.ChatDto" alias="chatDto"/>  -->
