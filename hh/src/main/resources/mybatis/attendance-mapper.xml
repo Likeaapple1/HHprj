@@ -90,7 +90,6 @@
 
       <select id="selectAttList" resultType="attendanceDto">
           SELECT * FROM ATTENDANCE
-          WHERE EMP_NO = #{empNo}
           <if test=" type != null">          
             WHERE EMP_NO = #{empNo} and WORK_FORM LIKE #{type}                  
           </if>
@@ -102,4 +101,10 @@
             WHERE EMP_NO = #{empNo}                  
           </if> 
      </select>
+     
+    <update id="updateContent" parameterType="attendanceDto">
+		UPDATE ATTENDANCE
+			SET ATT_CONTENT = #{attContent}
+		WHERE ATT_NO = #{attNo}					
+  	</update>
 </mapper>
