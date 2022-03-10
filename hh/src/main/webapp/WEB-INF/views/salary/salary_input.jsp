@@ -473,8 +473,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <tr>
                 <th>중식비</th>
                 <td><input class="radius" type="text" placeholder="근무일수*일일중식비"></td> <!-- 직접설정 -->
-                <th>기타</th>
-                <td><input class="radius" type="text"></td>
+                <th><!-- 기타 --></th>
+                <td><!-- <input class="radius" type="text"> --></td>
               </tr>
               <tr>
                 <th>교통비(유류비)</th>

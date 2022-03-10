@@ -51,4 +51,9 @@ public class SalaryServiceImpl implements SalaryService {
 		return dao.selectListE();
 	}
 
+	@Override
+	public int searchPayslip(PayrollDto dto) {
+		return dao.searchPayslip(dto);
+	}
+
 }

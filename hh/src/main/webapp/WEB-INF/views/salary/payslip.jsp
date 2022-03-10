@@ -1,3 +1,5 @@
+<%@page import="com.hh.hh.salary.entity.PayrollDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -293,7 +295,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-<form method="post">
 
 
 
@@ -304,29 +305,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="center">
 
+<form method="post">
           <div class="month left">
-            <input class="mon radius" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br><br>
+            <input name="month" class="mon radius" type="month" value="2022-03">　<button type="submit" class="btn btn-primary" value="조회"><br><br><br>
           </div>
+          
+<c:forEach items="${list}" var="p">
+<input hidden type="text" value="${p.empNo}">
+</c:forEach>
           
           <h4>
           <b>
             급 여 지 급 명 세 서<br><br>
           </b>
         </h4>
-        <h5><b><u>20　년 　월</u></b></h5>
+        <h5><b><u>${data.payrollDate}</u></b></h5>
 <br><br>
           <table class="center" border="1">
             <tr>
               <th>소　속</th>
               <th>성　명</th>
               <th>입사일</th>
-              <th>직　위</th>
+              <th>직　급</th>
             </tr>
             <tr>
+              <td>${data.deptName}</td>
+              <td>${data.empName}</td>
               <td>　</td>
-              <td>　</td>
-              <td>　</td>
-              <td>　</td>
+              <td>${data.empJobcode}</td>
             </tr>
           </table>
 <br><br>
@@ -338,9 +344,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th>실 수령액</th>
             </tr>
             <tr>
+              <td>${data.totalSalary}</td>
               <td>　</td>
-              <td>　</td>
-              <td>　</td>
+              <td>${data.netSalary}</td>
             </tr>
           </table>
 <br><br>
@@ -354,65 +360,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th class="th2">기본급</th>
               <td>${data.basicSalary}</td>
               <th class="th2">소득세</th>
-              <td>　</td>
+              <td>${data.tax}</td>
             </tr>
             <tr>
               <th class="th2">잔업수당</th>
-              <td>　</td>
+              <td>${data.overtimeAllowance}</td>
               <th class="th2">지방 소득세</th>
               <td>　</td>
             </tr>
             <tr>
               <th class="th2">특근수당</th>
-              <td>　</td>
+              <td>${data.holidayAllowance}</td>
               <th class="th2">고용보험</th>
               <td>　</td>
             </tr>
             <tr>
               <th class="th2">근속수당</th>
-              <td>　</td>
+              <td>${data.longServiceAllowance}</td>
               <th class="th2">건강보험</th>
               <td>　</td>
             </tr>
-<!--             <tr>
-              <th class="th2">직책수당</th>
-              <td>　</td>
-              <th class="th2">국민연금</th>
-              <td>　</td>
-            </tr> -->
             <tr>
               <th class="th2">연차수당</th>
-              <td>　</td>
+              <td>${data.annualLeaveAllowance}</td>
               <th class="th2">국민연금</th>
               <td>　</td>
             </tr>
-<!--             <tr>
-              <th class="th2">자격수당</th>
-              <td>　</td>
-              <th class="th2"></th>
-              <td>　</td>
-            </tr> -->
             <tr>
               <th class="th2">중식비</th>
-              <td>　</td>
-              <th class="th2">기타</th>
+              <td>${data.mealExpenses}</td>
+              <th class="th2"></th>
               <td>　</td>
             </tr>
             <tr>
               <th class="th2">교통비(유류비)</th>
-              <td>　</td>
+              <td>${data.transportationExpenses}</td>
               <th class="th2"></th>
               <td>　</td>
             </tr>
             <tr>
               <th class="th2">상여금</th>
-              <td>　</td>
+              <td>${data.bonus}</td>
               <th class="th2"></th>
               <td>　</td>
             </tr>
             <tr>
               <th class="th2">특별수당</th>
-              <td>　</td>
+              <td>${data.specialAllowance}</td>
               <th class="th2"></th>
               <td>　</td>
             </tr>
@@ -438,7 +432,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </table>
 
 <br><br>
-          20　년 　월 　일
+          ${data.payrollDate}
 <br><br>
           <!-- <h5><b>㈜○○○ 대표이사 ○○○</b></h5> -->
 <br><br><br><br><br>

@@ -21,4 +21,6 @@ public interface SalaryRepository {
 	List<PayrollDto> selectListOne(long empNo);
 	
 	List<PayrollDto> selectListE();
+	
+	int searchPayslip(PayrollDto dto);
 }

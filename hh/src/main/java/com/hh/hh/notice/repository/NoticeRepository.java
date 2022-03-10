@@ -13,6 +13,6 @@ public interface NoticeRepository {
 
 	int delete(NoticeDto dto);
 	
-	int deleteNotice(String[] delArr) throws Exception;
+	int deleteCheckbox(String[] delArr) throws Exception;
 }
 

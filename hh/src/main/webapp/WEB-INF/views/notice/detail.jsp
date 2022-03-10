@@ -328,6 +328,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <input hidden type="text" name="title" value="${data.title}">
 <input hidden type="text" name="content" value="${data.content}">
 <input hidden type="text" name="writer" value="${data.writer}">
+<input hidden type="text" name="noticeNo" value="${data.noticeNo}">
 
     </div><br><br></td>
   </tr>

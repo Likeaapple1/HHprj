@@ -433,10 +433,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			
 			
 			// 삭제 요청 보내기 (삭제할 번호들 전달해주면서)
-			alert(result);
+
 			$.ajax({
-				url : "<%=request.getContextPath()%>/notice/delete" ,
-				data : { "dto" : result} ,
+				url : "<%=request.getContextPath()%>/notice/deleteCheckbox" ,
+				data : { "noList" : result} ,
 				type : 'post' ,
 				success : function(data){
 					console.log(data);
@@ -448,6 +448,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			
 			window.location.reload(); //새로고침
 		}
+		
+		
 		
 		<%-- //삭제하기 버튼 눌렀을 때
 		function del(){

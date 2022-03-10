@@ -45,7 +45,16 @@
 	
 	<delete id="delete" parameterType="notice">
 		DELETE FROM NOTICE
-		WHERE TITLE = #{title}
+		WHERE NOTICE_NO = #{noticeNo}
+	</delete>
+	
+	<delete id="deleteCheckbox" parameterType="map">
+		DELETE FROM NOTICE
+		WHERE NOTICE_NO IN
+		<foreach collection="array" item="x" separator="," open="(" close=")">
+		#{x}
+		</foreach>
+		
 	</delete>
 	
 </mapper>

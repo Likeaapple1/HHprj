@@ -56,8 +56,19 @@ public class SalaryController {
 
 	// 급여명세서 페이지 이동
 	@GetMapping("/payslip")
-	public String payslip() {
-		return "salary/payslip";
+	public ModelAndView payslip(ModelAndView mv, HttpSession session) {
+		
+		MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
+		long empNo = loginUser.getEmpNo();
+		List<PayrollDto> list = service.selectListOne(empNo);
+		
+		// model
+		mv.addObject("list", list);
+		// view
+		mv.setViewName("salary/payslip");
+
+		// view 선택
+		return mv;
 	}
 
 	// 급여명세서(상세) 조회
@@ -68,6 +79,24 @@ public class SalaryController {
 
 		model.addAttribute("data", dto);
 		return "salary/payslip";
+	}
+	
+	// 급여명세서 월별검색
+	@PostMapping("/payslip")
+	public String payslip(PayrollDto dto) {
+		
+		int result = service.searchPayslip(dto);
+		
+		System.out.println("=====================" + dto);
+
+		if (result > 0) {
+			// success
+			return "redirect:/salary/payslip";
+		} else {
+			// fail
+			return "salary/error";
+		}
+		
 	}
 
 	@GetMapping("/setting")
@@ -100,6 +129,7 @@ public class SalaryController {
 		}
 	}
 
+	// 급상여입력 조회
 	@GetMapping("/input")
 	public String input(Model model, String type, String value) {
 
@@ -113,6 +143,17 @@ public class SalaryController {
 
 		return "salary/salary_input";
 	}
+	
+	// 급상여입력 사원상세조회
+//	@GetMapping("/input/{m}")
+//	public String input(@PathVariable String m, Model model) {
+//
+//		PayrollDto dto = ss.selectOne("salary.selectOneByPayroll(사원상세조회)", m);
+//
+//		model.addAttribute("data", dto);
+//		return "salary/salary_input";
+//	}
+	
 
 	@GetMapping("/email")
 	public ModelAndView email(ModelAndView mv) {
