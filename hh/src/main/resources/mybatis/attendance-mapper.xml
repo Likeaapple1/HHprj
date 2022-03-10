@@ -27,6 +27,25 @@
   		)
   	</insert>
   	
+  	<insert id="insertWork" parameterType="attendanceDto">
+  		INSERT INTO ATTENDANCE
+  		(
+  			ATT_NO,
+  			EMP_NO,
+  			WORK_FORM,
+  			ATT_DATE,
+  			ATT_STR_DATE
+  		)
+  		VALUES
+  		(
+  			#{attNo},
+  			#{empNo},
+  			'휴일근무',
+  			'Y',
+  			SYSDATE
+  		)
+  	</insert>
+  	
   	<select id="selectInfoWork" parameterType="attendanceDto" resultType="attendanceDto">
   		SELECT * FROM
   		ATTENDANCE
@@ -48,7 +67,7 @@
 				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y'
 			</when>
 			<when test="ovDateStrat &lt; attNsEnd || attNsStart &lt; attNsEnd ">
-				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y'
+				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y', OV_DATE = ''
 			</when>
 			<otherwise>
 				 WORK_FORM ='정상근무', ATT_NS_YN = 'N', 
@@ -77,8 +96,6 @@
   			'Y'
   		)
   	</insert>
-
-  	
   	
   	<resultMap id="attMap" type="attendanceDto"> 
   		<result column="today" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
@@ -105,6 +122,12 @@
     <update id="updateContent" parameterType="attendanceDto">
 		UPDATE ATTENDANCE
 			SET ATT_CONTENT = #{attContent}
-		WHERE ATT_NO = #{attNo}					
+		WHERE ATT_NO = #{attNo}	AND ATT_CONTENT_YN = "N"
   	</update>
+  	
+  	<select id="getAttCnt" resultType="int">
+		SELECT COUNT(ATT_NO)
+		FROM ATTENDANCE
+		WHERE ATT_CONTENT_YN ='N'
+	</select>
 </mapper>

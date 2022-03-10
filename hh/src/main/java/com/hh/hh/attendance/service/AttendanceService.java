@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.hh.hh.attendance.entity.AttendanceDto;
+import com.hh.hh.common.PageVo;
 import com.hh.hh.member.entity.MemberDto;
 
 public interface AttendanceService {
@@ -14,7 +15,7 @@ public interface AttendanceService {
 
 	AttendanceDto infoWork(AttendanceDto attendanceDto) throws Exception;
 
-	List<AttendanceDto> getWorkList(Map<String, Object> map) throws Exception;
+	List<AttendanceDto> getWorkList(long empNo) throws Exception;
 
 	AttendanceDto workout(AttendanceDto attendanceDto) throws Exception;
 
@@ -29,4 +30,8 @@ public interface AttendanceService {
 	List<AttendanceDto> getAttAllList(Map<String, Object> map) throws Exception;
 
 	int updateContent(AttendanceDto attendanceDto) throws Exception;
+
+	int getAttCnt() throws Exception;
+
+	int weekendWork(AttendanceDto attendanceDto, HttpServletRequest req) throws Exception;
 }
