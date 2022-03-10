@@ -130,8 +130,49 @@
 	   </c:forEach>
 	 </tbody> 
 	</table>
+	<!-- 페이징 작업 -->
+        <!-- 페이지 start -->
+		<br><br>
+		<c:if test="${l.startPage != 1}"> <a href="${l.startPage - 1}">이전</a> </c:if>
+		<c:forEach var="i" begin="${l.startPage}" end="${l.endPage}">
+			<c:if test="${l.currentPage != i and i <= l.lastPage}"><a href="${i}">${i}</a> &nbsp;</c:if>
+			<c:if test="${l.currentPage == i and i <= l.lastPage}">${i} &nbsp;</c:if>
+		</c:forEach>
+		<c:if test="${l.endPage < l.lastPage }"> <a href="${l.endPage + 1}">다음</a> </c:if>
+        <!-- 페이지 end -->
 	<br>
+	<iframe src="${root}/attendance/attstatus/updatecontent" width="100%" height="50%">
 	<h1>변경 이력</h1>
+		<table class="table">
+		 <thead>
+		   <tr>
+		      <th>업무 일자</th>
+		      <th>근무상태</th>
+		      <th>업무시작</th>
+		      <th>업무종료</th>
+		      <th>총근무시간</th>
+		      <th>근무시간 상세</th>
+		      <th>수정사유</th>
+		      <th>결재여부</th>
+		   </tr>
+		 </thead>
+		 <tbody>
+		 <c:forEach items="${list}" var = "l">
+			   <tr onclick = "AttInfo(this)" data-toggle="modal" href="#myModal">
+			   	  <td style = "display:none">${l.attNo}</td>
+			      <td data-test=${l.toDay}>${l.toDay}</td>
+			      <td>${l.workForm}</td>
+				  <td>${l.start}</td>
+			      <td>${l.end}</td>
+			      <td>${l.total}</td>
+			      <td>${l.attContent}</td>
+			      <td>${l.attContent}</td>
+			      <td>${l.attContentYn}</td>
+			   </tr>
+		   </c:forEach>
+		 </tbody> 
+		</table>
+	</iframe>
 </body>
 <script type="text/javascript">
 /* 	모달창 띄우기 */

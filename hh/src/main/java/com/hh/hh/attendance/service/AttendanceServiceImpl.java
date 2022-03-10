@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hh.hh.attendance.dao.AttendanceDao;
 import com.hh.hh.attendance.entity.AttendanceDto;
+import com.hh.hh.common.PageVo;
 import com.hh.hh.member.entity.MemberDto;
 
 @Service
@@ -36,8 +37,8 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public List<AttendanceDto> getWorkList(Map<String, Object> map) throws Exception {
-		return attendancedao.getWorkList(map);
+	public List<AttendanceDto> getWorkList(long empNo) throws Exception {
+		return attendancedao.getWorkList(empNo);
 	}
 	
 	@Override
@@ -98,6 +99,16 @@ public class AttendanceServiceImpl implements AttendanceService {
 		}
 		System.out.println("result 실패");
 		return result;
+	}
+
+	@Override
+	public int getAttCnt() throws Exception {
+		return attendancedao.getAttCnt();
+	}
+
+	@Override
+	public int weekendWork(AttendanceDto attendanceDto, HttpServletRequest req) throws Exception {
+		return attendancedao.weekendWork(attendanceDto);
 	}
 
 

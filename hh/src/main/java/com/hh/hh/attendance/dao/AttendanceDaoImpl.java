@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hh.hh.attendance.entity.AttendanceDto;
+import com.hh.hh.common.PageVo;
 import com.hh.hh.member.entity.MemberDto;
 
 @Repository
@@ -25,6 +26,12 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	public int insertWork(AttendanceDto attendancedto) throws Exception {
 		return sqlsession.insert("attendance.insertWork",attendancedto);
 	}
+	
+	@Override
+	public int weekendWork(AttendanceDto attendancedto) throws Exception {
+		return sqlsession.insert("attendance.inserWeekentWork", attendancedto);
+	}
+	
 	// 출근 정보 가져오기
 	@Override
 	public AttendanceDto infoWork(AttendanceDto attendanceDto) throws Exception {
@@ -32,8 +39,8 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	}
 	// 사원의 출근내역 조회
 	@Override
-	public List<AttendanceDto> getWorkList(Map<String, Object> map) throws Exception {
-		return sqlsession.selectList("attendance.selectWorkList", map);
+	public List<AttendanceDto> getWorkList(long emoNo) throws Exception {
+		return sqlsession.selectList("attendance.selectWorkList", emoNo);
 	}
 
 	@Override
@@ -70,9 +77,11 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	public int updateContent(AttendanceDto attendanceDto) throws Exception {
 		return sqlsession.update("attendance.updateContent",attendanceDto);
 	}
-	
 
-
+	@Override
+	public int getAttCnt() throws Exception {
+		return sqlsession.selectOne("attendance.getAttCnt");
+	}
 	
 	
 }

@@ -37,6 +37,7 @@ public class AttendanceDto {
 	private String attContent;
 	private String attContentYn;
 	private String attContentReason;
+	private Date attWorkdate;
 	
 	@Override
 	public String toString() {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hh.hh.attendance.entity.AttendanceDto;
+import com.hh.hh.common.PageVo;
 import com.hh.hh.member.entity.MemberDto;
 
 public interface AttendanceDao {
@@ -14,7 +15,7 @@ public interface AttendanceDao {
 
 	AttendanceDto infoWork(AttendanceDto attendanceDto) throws Exception;
 
-	List<AttendanceDto> getWorkList(Map<String, Object> map) throws Exception;
+	List<AttendanceDto> getWorkList(long empNo) throws Exception;
 
 	int getWorkOut(AttendanceDto attendanceDto) throws Exception;
 
@@ -29,4 +30,8 @@ public interface AttendanceDao {
 	List<AttendanceDto> getAttAllList(Map<String, Object> map) throws Exception;
 
 	int updateContent(AttendanceDto attendanceDto) throws Exception;
+
+	int getAttCnt() throws Exception;
+
+	int weekendWork(AttendanceDto attendancedto) throws Exception;
 }

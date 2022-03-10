@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,6 +25,7 @@ import com.hh.hh.annual.entity.AnnualDto;
 import com.hh.hh.annual.service.AnnualService;
 import com.hh.hh.attendance.entity.AttendanceDto;
 import com.hh.hh.attendance.service.AttendanceService;
+import com.hh.hh.common.PageVo;
 import com.hh.hh.member.entity.MemberDto;
 
 @Controller
@@ -92,33 +95,45 @@ public class AttendanceController {
       workCheckStart = sdf.parse("09:00:00");
       workBtnStart = sdf.parse(sdf.format(currentTime));
       
-      // 인자보다 미래!
-      if(workCheckStart.compareTo(workBtnStart) >= 0) {
-    	  System.out.println("정상출근");
-    	  // workStart > 09:00 일경우
-    	  // insert 쿼리 날리기 위한 준비
-    	  int result = attendanceservice.work(attendanceDto, req);
-    	  // insert 쿼리 잘 날림!
-    	  if(result > 0) {
-    		  // home에서 출근 / 퇴근 버튼 변경을 위한 쿼리문
-    		  AttendanceDto attUser = attendanceservice.infoWork(attendanceDto); 
-    		  session.setAttribute("attUser", attUser);
-    		  return "redirect:/attendance/home";
-    	  }else {
-    		  return "insert fail";
-    	  }
+      // 주말 출근 처리
+      Date date = new Date();
+      SimpleDateFormat daysdf = new SimpleDateFormat("yyyy/MM/dd HH", Locale.KOREA);
+      String today = daysdf.format(date);
+      if(today.equals("토요일") || today.equals("일요일")) {
+    	  int result = attendanceservice.weekendWork(attendanceDto, req);
+    	  // 주말 출근이 아닐 경우
       }else {
-    	  System.out.println("지각");
-    	  int result = attendanceservice.tardy(attendanceDto, req);
-    	  if(result > 0) {
-    		  // home에서 출근 / 퇴근 버튼 변경을 위한 쿼리문
-    		  AttendanceDto attUser = attendanceservice.infoWork(attendanceDto); 
-    		  session.setAttribute("attUser", attUser);
-    		  return "redirect:/attendance/home";
+    	  // 인자보다 미래!
+    	  if(workCheckStart.compareTo(workBtnStart) >= 0) {
+    		  System.out.println("정상출근");
+    		  // workStart > 09:00 일경우
+    		  // insert 쿼리 날리기 위한 준비
+    		  int result = attendanceservice.work(attendanceDto, req);
+    		  // insert 쿼리 잘 날림!
+    		  if(result > 0) {
+    			  // home에서 출근 / 퇴근 버튼 변경을 위한 쿼리문
+    			  AttendanceDto attUser = attendanceservice.infoWork(attendanceDto); 
+    			  session.setAttribute("attUser", attUser);
+    			  return "redirect:/attendance/home";
+    		  }else {
+    			  return "insert fail";
+    		  }
     	  }else {
-    		  return "insert fail";
+    		  System.out.println("지각");
+    		  int result = attendanceservice.tardy(attendanceDto, req);
+    		  if(result > 0) {
+    			  // home에서 출근 / 퇴근 버튼 변경을 위한 쿼리문
+    			  AttendanceDto attUser = attendanceservice.infoWork(attendanceDto); 
+    			  session.setAttribute("attUser", attUser);
+    			  return "redirect:/attendance/home";
+    		  }else {
+    			  return "insert fail";
+    		  }
     	  }
       }
+	return "";
+
+      
    }
    
    @PostMapping("workout")
@@ -139,49 +154,76 @@ public class AttendanceController {
 	      
 	      // 퇴근버튼에 현재 시간 format 넣어주기
 	       Date workBtnEnd = sdf.parse(sdf.format(currentTime));
-	      
+	       GregorianCalendar gcal = new GregorianCalendar();
 	      // 변수에 시간 넣기
 	      // 야근처리 22:00하고 00:00 
 	      // 초과근무를 위한 컬럼
-	      Date stworkEnd1 =  sdf.parse("22:00:00");
-	      Date stworkEnd2 =  sdf.parse("00:00:00");
-	      Date stworkEnd3 = sdf.parse("06:00:00");
-	      Date workOver = sdf.parse("18:00:00");
+	      Date stworkEnd1 =  sdf.parse("22:00:00"); // 야근
+	      Date stworkEnd2 =  sdf.parse("00:00:00"); // 야근
+	      Date stworkEnd3 = sdf.parse("06:00:00"); // 야근
+	      Date workOver = sdf.parse("18:10:00"); //초과근무
 	      attendanceDto.setAttNsStart(stworkEnd1);
 	      attendanceDto.setAttNsStartEnd(stworkEnd2);
 	      attendanceDto.setAttNsStartEndfinal(stworkEnd3);
 	      attendanceDto.setOvDateStrat(workOver);
 	      attendanceDto.setAttNsEnd(workBtnEnd);
-	     // workOver = sdf.parse("22:00:00");
+	      // 출근 시간 가져오기
+	      Date start = attendanceDto.getAttStrDate();
+	      Calendar cStart = Calendar.getInstance();
+	      Calendar cEnd = Calendar.getInstance();
+	      cStart.setTime(start);
+	      cEnd.setTime(workBtnEnd);
 	      
-	      AttendanceDto adto = attendanceservice.workout(attendanceDto);  
-	      // 정상근무처리
-			/*
-			 * if(workEnd.compareTo(workBtnEnd) >= 0) { }
-			 */
-	      // 초과근무처리
-//	      else if(workEnd.compareTo(workBtnEnd) < 0){
-//	    	  AttendanceDto adto = attendanceservice.workover(attendanceDto);
-//	      }
-//	      // 야근 처리
-//	      else if(workOver.compareTo(workBtnEnd) <= 0){
-//	    	  AttendanceDto adto = attendanceservice.worknight(attendanceDto);
-//	      }
+	      // 정상출근, 초과근무, 야근 시간 넣어주기
+		  Calendar work = Calendar.getInstance();
+		  Calendar overWork = Calendar.getInstance();
+		  Calendar nightWork = Calendar.getInstance();
+	      
+		  // 정상퇴근 계산하기
+		  work.setTime(workOver);
+		  if(workBtnEnd.compareTo(workOver) >= 0) {
+			  cEnd.add(Calendar.HOUR_OF_DAY, -cStart.get(Calendar.HOUR_OF_DAY));
+	          System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+	          attendanceDto.setAttWorkDate(new Date(cEnd.getTimeInMillis()));
+	          AttendanceDto adto = attendanceservice.workout(attendanceDto);  
+		  } // 초과근무 처리하기
+		  else if(workBtnEnd.compareTo(stworkEnd1) >=0 ) {
+			  cEnd.add(Calendar.HOUR_OF_DAY, -cStart.get(Calendar.HOUR_OF_DAY));
+	          System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+	          attendanceDto.setAttWorkDate(new Date(cEnd.getTimeInMillis()));
+	          AttendanceDto adto = attendanceservice.workout(attendanceDto);  
+		  }else {
+			  cEnd.add(Calendar.HOUR_OF_DAY, -cStart.get(Calendar.HOUR_OF_DAY));
+	          System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+	          attendanceDto.setAttWorkDate(new Date(cEnd.getTimeInMillis()));
+	          AttendanceDto adto = attendanceservice.workout(attendanceDto); 
+		  }
 	      session.removeAttribute("attUser");
 	      return "redirect:/attendance/home";
    }
    
    // 근태 현황 조회
-	   @GetMapping("attstatus")
-	   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
+	   @GetMapping(value = { "/attstatus/{page}", "/attstatus"})
+	   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model, String type,  @PathVariable(required = false) String page) throws Exception {
 		   // 세션 가져오기
 		   MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
+		   
+		   // 페이징 처리
+		   if(page == null) {
+			   return "redirect:/attendance/attstatus/1";
+		   }
+		   // 사용자에게 몇 페이지씩 보여줄지 입력 받기
+		   int cntPerPage = 10;
+		   int pageBtnCnt = 10;
+		   int totalRow = attendanceservice.getAttCnt();
+		   PageVo pagevo = new PageVo(page, cntPerPage, pageBtnCnt, totalRow);
 		   
 		   // 근태 검색
 		   Map<String, Object> map = new HashMap<>();
 		   map.put("type", type);
 		   // System.out.println(type);
 		   map.put("empNo", loginUser.getEmpNo());
+		   map.put("PageVo", pagevo);
 
 		   // 근태 현황 조회하는 쿼리 날리기
 		   List<AttendanceDto> list = attendanceservice.getAttList(map);
@@ -296,6 +338,10 @@ public class AttendanceController {
 		   return "attendance/attstatus";
 	   }
    
+	   @GetMapping("attstatus/updatecontent")
+	   public String updatecontent() {
+		   return "";
+	   }
 	   // 관리자만 들어갈 수 있는 메뉴
 	   @GetMapping("admin/list")
 	   public String list() {
