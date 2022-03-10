@@ -36,8 +36,8 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	}
 	
 	@Override
-	public int deleteNotice(String[] delArr) throws Exception {
-		return ss.delete("notice.delete" , delArr);
+	public int deleteCheckbox(String[] delArr) throws Exception {
+		return ss.delete("notice.deleteCheckbox" , delArr);
 	}
 
 }

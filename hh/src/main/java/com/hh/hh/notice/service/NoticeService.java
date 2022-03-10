@@ -13,5 +13,5 @@ public interface NoticeService {
 
 	int delete(NoticeDto dto);
 	
-	int deleteNotice(String str) throws Exception;
+	int deleteCheckbox(String noList) throws Exception;
 }

@@ -9,6 +9,7 @@
 			INSERT INTO PAYROLL
 			(
 				  EMP_NO
+				, PAYROLL_NO
 				, BASIC_SALARY
 				, OVERTIME_ALLOWANCE
 				, HOLIDAY_ALLOWANCE
@@ -30,6 +31,7 @@
 			VALUES
 			(
 				  #{empNo}
+				, PAYROLL_NO_SEQ.NEXTVAL
 				, #{basicSalary} * 20
 				, #{overtimeAllowance}
 				, #{holidayAllowance}
@@ -65,9 +67,9 @@
 		
 		<select id="selectOneByPayroll" parameterType="string" resultType="payrollDto">
 			SELECT *
-			FROM PAYROLL, EMP
-			WHERE PAYROLL.EMP_NO = EMP.EMP_NO
-			AND PAYROLL.PAYROLL_DATE = #{payrollDate}
+			FROM PAYROLL, EMP, DEPT
+			WHERE PAYROLL.EMP_NO = EMP.EMP_NO AND EMP.EMP_NO = DEPT.EMP_NO
+			AND PAYROLL.PAYROLL_NO = #{payrollNo}
 		</select>
 		
 		
@@ -91,14 +93,11 @@
 		<update id="setting" parameterType="salaryDto">
 			UPDATE SALARY
 			SET 
-			  REGULAR_HOURLY_WAGE = TO_CHAR(#{regularHourlyWage}, '999,999,999')
-			, LONG_SERVICE_DAY = TO_CHAR(#{longServiceDay}, '999,999,999')
-			, LONG_SERVICE_ALLOWANCE = TO_CHAR(#{longServiceAllowance}, '999,999,999')
-			<!-- , POSITION_ALLOWANCE = #{positionAllowance} -->
-			, MEAL_EXPENSES = TO_CHAR(#{mealExpenses}, '999,999,999')
-			, TRANSPORTATION_EXPENSES = TO_CHAR(#{transportationExpenses}, '999,999,999')
-<!-- 			, PAYROLL_BANK = #{payrollBank}
-			, PAYROLL_ACCOUNT = #{payrollAccount} -->
+			  REGULAR_HOURLY_WAGE = #{regularHourlyWage}
+			, LONG_SERVICE_DAY = #{longServiceDay}
+			, LONG_SERVICE_ALLOWANCE = #{longServiceAllowance}
+			, MEAL_EXPENSES = #{mealExpenses}
+			, TRANSPORTATION_EXPENSES = #{transportationExpenses}
 		</update>
 
 		<!-- <delete id="delete" parameterType="payrollDto">
@@ -130,9 +129,15 @@
 			EMP.EMP_NAME AS EENAME,
 			EMP.EMP_EMAIL AS EEE,
 			EMP.EMP_JOBCODE AS EEJ,
-			EMP.MANAGER_DEPT AS EMD
-			FROM PAYROLL, EMP
-			WHERE PAYROLL.EMP_NO = EMP.EMP_NO
+			DEPT.DEPT_NAME AS EMD
+			FROM PAYROLL, EMP, DEPT
+			WHERE PAYROLL.EMP_NO = EMP.EMP_NO AND DEPT.EMP_NO = EMP.EMP_NO
+		</select>
+		
+		<select id="searchPayslip" resultType="payrollDto">
+			SELECT * FROM PAYROLL
+			WHERE EMP_NO = #{empNo}
+			AND PAYROLL_DATE LIKE #{month}
 		</select>
 	
 		

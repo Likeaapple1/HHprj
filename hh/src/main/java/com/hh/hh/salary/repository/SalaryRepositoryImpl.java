@@ -52,4 +52,9 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 		return ss.selectList("salary.selectEmail");
 	}
 
+	@Override
+	public int searchPayslip(PayrollDto dto) {
+		return ss.selectOne("salary.searchPayslip", dto);
+	}
+
 }

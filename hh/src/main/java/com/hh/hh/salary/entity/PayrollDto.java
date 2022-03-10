@@ -8,22 +8,26 @@ import lombok.Data;
 public class PayrollDto {
 
 	private int empNo;
-	private String basicSalary;
-	private String overtimeAllowance;
-	private String holidayAllowance;
-	private String longServiceAllowance;
-//	private String positionAllowance;
-	private String annualLeaveAllowance;
-	private String mealExpenses;
-	private String transportationExpenses;
-	private String bonus;
-	private String specialAllowance;
-	private String totalSalary;
-	private String fourMajorInsurances;
-	private String tax;
-	private String netSalary;
+	private int payrollNo;
+	private int basicSalary;
+	private int overtimeAllowance;
+	private int holidayAllowance;
+	private int longServiceAllowance;
+	private int annualLeaveAllowance;
+	private int mealExpenses;
+	private int transportationExpenses;
+	private int bonus;
+	private int specialAllowance;
+	private int totalSalary;
+	private int fourMajorInsurances;
+	private int tax;
+	private int netSalary;
 	private String payrollBank;
 	private String payrollAccount;
 	private Date payrollDate;
+	private String deptName;
+	private String empName;
+	private String empJobcode;
+	private Date month;
 
 }

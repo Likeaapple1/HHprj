@@ -111,6 +111,7 @@ public class NoticeController {
 	//상세페이지 에서 삭제
 	@PostMapping("/delete")
 	public String delete(NoticeDto dto) {
+
 		int result = service.delete(dto);
 		
 		if (result > 0) {
@@ -122,17 +123,21 @@ public class NoticeController {
 		}
 	}
 	
-//	@PostMapping("delete")
-//	@ResponseBody
-//	public String delete(String str) throws Exception {
-//		int result = service.deleteNotice(str);
-//		
-//		log.warn("건드린 row 갯수 : {}" , result);
-//		if(result == str.length()/2) {
-//			return "redirect:/notice/list";
-//		}else {
-//			return "notice/error";
-//		}
-//	}
+	@PostMapping("deleteCheckbox")
+	@ResponseBody
+	public String deleteCheckbox(String noList) throws Exception {
+		//noList == 13
+		System.out.println("test ~");
+		System.out.println(noList);
+		
+		int result = service.deleteCheckbox(noList);
+		
+		log.warn("건드린 row 갯수 : {}" , result);
+		if(result == noList.length()/2) {
+			return "redirect:/notice/list";
+		}else {
+			return "notice/error";
+		}
+	}
 
 }

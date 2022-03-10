@@ -35,9 +35,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 	
 	@Override
-	public int deleteNotice(String str) throws Exception {
-		String[] delArr = str.split(",");
-		return dao.deleteNotice(delArr);
+	public int deleteCheckbox(String noList) throws Exception {
+		String[] delArr = noList.split(",");
+		return dao.deleteCheckbox(delArr);
 	}
 
 }

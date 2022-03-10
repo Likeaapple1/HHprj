@@ -352,7 +352,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			
 			<c:forEach items="${list}" var="p">
 				<tr>
-					<td><a style="color: black;" href="payslip/${p.payrollDate}">${p.payrollDate}</a></td>
+					<td><a style="color: black;" href="payslip/${p.payrollNo}">${p.payrollDate}</a></td>
 					<td>${p.basicSalary}</td>
 					<td>${p.overtimeAllowance}</td>
 					<td>${p.holidayAllowance}</td>
