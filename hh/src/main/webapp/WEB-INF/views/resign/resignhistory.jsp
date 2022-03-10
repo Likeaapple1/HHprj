@@ -303,8 +303,8 @@
                 <p class="card-text">
 
 
-                  <form action="" method="post">
-                  연도 : <input type="date" name="searchDate"> &nbsp;&nbsp;&nbsp;
+                 <form action="" method="post">
+                  연월 : <input type="date" name="searchDate"> &nbsp;&nbsp;&nbsp;
                   <select name="searchValue" id="">
                       <option value="empNmae">성명</option>
                       <option value="empRank">직책</option>
