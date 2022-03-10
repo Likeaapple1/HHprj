@@ -380,31 +380,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div id="h_menu" class="container">  
           <ul id="nav" class="nav nav-tabs nav-justified">
             <li class="nav-item">
-              <div class="injuk"><a class="nav-link" href="/insa/injuk">인적사항</a></div>
+              <div class="injuk"><a class="nav-link" href="../insa/insa_injuk.jsp">인적사항</a></div>
             </li>
             <li class="nav-item">
-              <div class="family"><a class="nav-link" href="/insa/family">가족사항</a></div>
+              <div class="family"><a class="nav-link" href="../insa/insa_family.jsp">가족사항</a></div>
             </li>
             <li class="nav-item">
-              <div class="school"><a class="nav-link" href="/insa/school">학력정보</a></div>
+              <div class="school"><a class="nav-link" href="../insa/insa_school.jsp">학력정보</a></div>
             </li>
             <li class="nav-item">
-              <div class="language"><a class="nav-link" href="/insa/language">어학정보</a></div>
+              <div class="language"><a class="nav-link" href="../insa/insa_language.jsp">어학정보</a></div>
             </li>
             <li class="nav-item">
-              <div class="license"><a class="nav-link" href="/insa/license">자격증</a></div>
+              <div class="license"><a class="nav-link" href="../insa/insa_certificate.jsp">자격증</a></div>
             </li>
             <li class="nav-item">
-              <div class="career"><a class="nav-link" href="/insa/career">경력정보</a></div>
+              <div class="career"><a class="nav-link" href="../insa/insa_career.jsp">경력정보</a></div>
             </li>
             <li class="nav-item">
-              <div class="appoint"><a class="nav-link" href="/insa/appoint">발령정보</a></div>
+              <div class="appoint"><a class="nav-link" href="../insa/insa_appoint.jsp">발령정보</a></div>
             </li>
             <li class="nav-item">
-              <div class="reward"><a class="nav-link" href="/insa/reward">상벌정보</a></div>
+              <div class="reward"><a class="nav-link" href="../insa/insa_reward.jsp">상벌정보</a></div>
             </li>
             <li class="nav-item">
-              <div class="military"><a class="nav-link" href="/insa/military">병역정보</a></div>
+              <div class="military"><a class="nav-link" href="../insa/insa_military.jsp">병역정보</a></div>
             
           </ul>
         </div>

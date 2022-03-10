@@ -3,10 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
+
 <html lang="ko">
 <head>
   <style>
@@ -131,12 +128,12 @@ form {
 	text-align: center;
 }
 
-    .tg  {border-collapse:collapse;border-spacing:0;}
+/*     .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top} */
   </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -211,7 +208,7 @@ form {
 		});
 
 		/* 한글 입력 방지 */
-		$("#stf_eml, #stf_sq1").on("keyup", function() {
+		$("#emp_email, #emp_no1").on("keyup", function() {
 			$(this).val($(this).val().replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, ""));
 		});
 				
@@ -226,40 +223,40 @@ form {
 			
 			if ($(this).attr("id") == "phoneNum2" || $(this).attr("id") == "phoneNum3") {
 				var phoneNum = $("#phoneNum1").val() + "-" + $("#phoneNum2").val() + "-" + $("#phoneNum3").val();
-				$("#stf_ph").val(phoneNum);
+				$("#emp_phone").val(phoneNum);
 			}
 			else if ($(this).attr("id") == "telNum2" || $(this).attr("id") == "telNum3") {
 				var telNum = $("#telNum1").val() + "-" + $("#telNum2").val() + "-" + $("#telNum3").val();
-				$("#stf_bs_ph").val(telNum);
+				$("#emp_office_phone").val(telNum);
 			}			
 			else if ($(this).attr("id") == "phoneNum2_up" || $(this).attr("id") == "phoneNum3_up") {
 				var phoneNum = $("#phoneNum1_up").val() + "-" + $("#phoneNum2_up").val() + "-" + $("#phoneNum3_up").val();
-				$("#stf_ph_up").val(phoneNum);
+				$("#emp_phone_up").val(phoneNum);
 			}
 			else if ($(this).attr("id") == "telNum2_up" || $(this).attr("id") == "telNum3_up") {
 				var telNum = $("#telNum1_up").val() + "-" + $("#telNum2_up").val() + "-" + $("#telNum3_up").val();
-				$("#stf_bs_ph_up").val(telNum);
+				$("#emp_office_phone_up").val(telNum);
 			}
 		});
 
 		// insert 비밀번호 자동 입력1
-		$("#stf_pw1").on("keyup", function() {
-			if ($("#stf_pw1").val() == "" && $("#stf_pw2").val() == "") {
-				$("#stf_pw1_Div").removeAttr("class");
-				$("#stf_pw1_Span").removeAttr("class");
-			} else if ($("#stf_pw1").val() == $("#stf_pw2").val()) {
-				$("#stf_pw").val($("#stf_pw1").val());
-				$("#stf_pw1_Div").attr("class",	"has-success has-feedback");
-				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
-			} else if ($("#stf_pw1").val() != $("#stf_pw2").val()) {
-				$("#stf_pw").val("");
-				$("#stf_pw1_Div").attr("class",	"has-error has-feedback");
-				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+		$("#emp_password1").on("keyup", function() {
+			if ($("#emp_password1").val() == "" && $("#emp_password2").val() == "") {
+				$("#emp_password1_Div").removeAttr("class");
+				$("#emp_password1_Span").removeAttr("class");
+			} else if ($("#emp_password1").val() == $("#emp_password2").val()) {
+				$("#emp_password").val($("#emp_password1").val());
+				$("#emp_password1_Div").attr("class",	"has-success has-feedback");
+				$("#emp_password1_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			} else if ($("#emp_password1").val() != $("#emp_password2").val()) {
+				$("#emp_password").val("");
+				$("#emp_password1_Div").attr("class",	"has-error has-feedback");
+				$("#emp_password1_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
 			}
 		});
 
 		// insert 비밀번호 자동 입력2
-		$("#stf_pw2").on("keyup", function() {
+		/* $("#stf_pw2").on("keyup", function() {
 			if ($("#stf_pw2").val() == "" && $("#stf_pw1").val() == "") {
 				$("#stf_pw1_Div").removeAttr("class");
 				$("#stf_pw1_Span").removeAttr("class");
@@ -272,26 +269,26 @@ form {
 				$("#stf_pw1_Div").attr("class",	"has-error has-feedback");
 				$("#stf_pw1_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
 			}
-		});
+		}); */
 		
 		// update 비밀번호 자동 입력1
-		$("#stf_pw1_up").on("keyup", function() {
-			if ($("#stf_pw1_up").val() == "" && $("#stf_pw2_up").val() == "") {
-				$("#stf_pw1_Div_up").removeAttr("class");
-				$("#stf_pw1_Span_up").removeAttr("class");
-			} else if ($("#stf_pw1_up").val() == $("#stf_pw2_up").val()) {
-				$("#stf_pw_up").val($("#stf_pw1_up").val());
-				$("#stf_pw1_Div_up").attr("class",	"has-success has-feedback");
-				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
-			} else if ($("#stf_pw1_up").val() != $("#stf_pw2_up").val()) {
-				$("#stf_pw_up").val("");
-				$("#stf_pw1_Div_up").attr("class",	"has-error has-feedback");
-				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+		$("#emp_password1_up").on("keyup", function() {
+			if ($("#emp_password1_up").val() == "" && $("#emp_password2_up").val() == "") {
+				$("#emp_password1_Div_up").removeAttr("class");
+				$("#emp_password1_Span_up").removeAttr("class");
+			} else if ($("#emp_password1_up").val() == $("#emp_password2_up").val()) {
+				$("#emp_password_up").val($("#emp_password1_up").val());
+				$("#emp_password1_Div_up").attr("class",	"has-success has-feedback");
+				$("#emp_password1_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			} else if ($("#emp_password1_up").val() != $("#emp_password2_up").val()) {
+				$("#emp_password_up").val("");
+				$("#emp_password1_Div_up").attr("class",	"has-error has-feedback");
+				$("#emp_password1_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
 			}
 		});
 
 		// update 비밀번호 자동 입력2
-		$("#stf_pw2_up").on("keyup", function() {
+		/* $("#stf_pw2_up").on("keyup", function() {
 			if ($("#stf_pw2_up").val() == "" && $("#stf_pw1_up").val() == "") {
 				$("#stf_pw1_Div_up").removeAttr("class");
 				$("#stf_pw1_Span_up").removeAttr("class");
@@ -304,46 +301,46 @@ form {
 				$("#stf_pw1_Div_up").attr("class",	"has-error has-feedback");
 				$("#stf_pw1_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
 			}
-		});
+		}); */
 		
 		// insert 사원번호 자동 입력
-		$("#stfNumSearchBtn").on("click", function() {
-			if ($("#stf_sq1").val() == "") {
+		$("#empNumSearchBtn").on("click", function() {
+			if ($("#emp_no1").val() == "") {
 				alert("사원번호를 입력해주세요.");
-			} else if ($("#stf_sq1").val() != "") {
-				selectStf_sq($("#stf_sq1").val());
+			} else if ($("#emp_no1").val() != "") {
+				selectEmp_no($("#emp_no1").val());
 			}
 		});
 
 		// insert 사원번호 다시 체크
-		$("#stf_sq1").on("keyup", function() {
-			if ($("#stf_sq1").val() != $("#stf_sq").val()) {
-				$("#stf_sq_Div").removeAttr("class");
-				$("#stf_sq_Span").removeAttr("class");
-				$("#stf_sq").val("");
+		$("#emp_no1").on("keyup", function() {
+			if ($("#emp_no1").val() != $("#emp_no").val()) {
+				$("#emp_no_Div").removeAttr("class");
+				$("#emp_no_Span").removeAttr("class");
+				$("#emp_no").val("");
 			}
 		});
 
 		// update 사원번호 자동 입력
-		$("#stfNumSearchBtn_up").on("click", function() {
-			if ($("#stf_sq1_up").val() == "") {
+		$("#empNumSearchBtn_up").on("click", function() {
+			if ($("#emp_no1_up").val() == "") {
 				alert("사원번호를 입력해주세요.");
-			} else if ($("#stf_sq1_up").val() != "") {
-				selectStf_sq($("#stf_sq1_up").val());
+			} else if ($("#emp_no1_up").val() != "") {
+				selectEmp_no($("#emp_no1_up").val());
 			}
 		});
 
 		// update 사원번호 다시 체크
-		$("#stf_sq1_up").on("keyup", function() {
-			if ($("#stf_sq1_up").val() != $("#stf_sq").val()) {
-				$("#stf_sq_Div_up").removeAttr("class");
-				$("#stf_sq_Span_up").removeAttr("class");
-				$("#stf_sq_up").val("");
+		$("#emp_no1_up").on("keyup", function() {
+			if ($("#emp_no1_up").val() != $("#emp_no").val()) {
+				$("#emp_no_Div_up").removeAttr("class");
+				$("#emp_no_Span_up").removeAttr("class");
+				$("#emp_no_up").val("");
 			}
 		});
 		
 		// 최대 입력 방지
-		$("#stf_sq1, #stf_sq1_up").on("keyup", function() {
+		$("#emp_no1, #emp_no1_up").on("keyup", function() {
 			if ($(this).val().length > 10) {
 				$(this).val($(this).val().substring(0, 10));
 			}
@@ -351,7 +348,7 @@ form {
 
 
 		// 최대 입력 방지
-		$("#stf_dt_add").on("keyup", function() {
+		$("#emp_dt_add").on("keyup", function() {
 			if ($(this).val().length > 33) {
 				$(this).val($(this).val().substring(0, 33));
 			}
@@ -360,36 +357,36 @@ form {
 		/* 구성원 추가 */
 		$("#officerInsert").on("click",	function() {
 	
-			var emailCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+			let email = document.join_form.empEmail.value;
+			var emailCheck = /^[\w]+@[\w]+.[a-zA-Z.]{2,6}$/;
 
 			if ($("#file").val() == "") {
 				alert("프로필 사진을 확인해주세요.");
 				return;
-			} else if ($("#stf_nm").val() == "") {
+			} else if ($("#emp_name").val() == "") {
 				alert("이름을 확인해주세요.");
 				return;
-			} else if ($("#stf_pw").val() == "") {
+			} else if ($("#emp_password").val() == "") {
 				alert("비밀번호를 확인해주세요.");
 				return;
-			} else if ($("#stf_sq").val() == "") {
+			} else if ($("#emp_no").val() == "") {
 				alert("사원번호를 확인해주세요.");
 				return;
-			} else if ($("#stf_cm_add").val() == ""
-					|| $("#stf_dt_add").val() == "") {
+			} else if ($("#emp_add").val() == ""
+					|| $("#emp_dt_add").val() == "") {
 				alert("주소를 확인해주세요.");
 				return;
-			} else if (!emailCheck.test($(
-					"#stf_eml").val())) {
+			} else if (!(emailCheck.test(email))) {
 				alert("이메일을 확인해주세요.");
 				return;
-			} else if ($("#stf_ph").val().length != 13) {
+			} else if ($("#emp_phone").val().length != 13) {
 				alert("휴대폰 번호를 확인해주세요.");
 				return;
-			} else if ($("#stf_bs_ph").val().length != 13) {
+			} else if ($("#emp_office_phone").val().length != 13) {
 				alert("내선번호를 확인해주세요.");
 				return;
 			}
-			else if ($("#stf_ent").val() == "") {
+			else if ($("#emp_enrolldate").val() == "") {
 				alert("입사일을 확인해주세요.");
 				return;
 			}
@@ -402,27 +399,27 @@ form {
 	
 			var emailCheck = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
-			if ($("#stf_nm_up").val() == "") {
+			if ($("#emp_name_up").val() == "") {
 				alert("이름을 확인해주세요.");
 				return;
-			} else if ($("#stf_pw1_up").val() != $("#stf_pw2_up").val()) {
+			} else if ($("#emp_password_up").val() != $("#stf_pw2_up").val()) {
 				alert("비밀번호를 확인해주세요.");
 				return;
-			} else if ($("#stf_cm_add_up").val() == ""
-					|| $("#stf_dt_add_up").val() == "") {
+			} else if ($("#emp_add_up").val() == ""
+					|| $("#emp_dt_add_up").val() == "") {
 				alert("주소를 확인해주세요.");
 				return;
 			} else if (!emailCheck.test($(
-					"#stf_eml_up").val())) {
+					"#emp_email_up").val())) {
 				alert("이메일을 확인해주세요.");
 				return;
-			} else if ($("#stf_ph_up").val().length != 13) {
+			} else if ($("#emp_phone_up").val().length != 13) {
 				alert("휴대폰 번호를 확인해주세요.");
 				return;
-			} else if ($("#stf_bs_ph_up").val().length != 13) {
+			} else if ($("#emp_office_phone_up").val().length != 13) {
 				alert("내선번호를 확인해주세요.");
 				return;
-			} else if ($("#stf_ent_up").val() == "") {
+			} else if ($("#emp_enrolldate_up").val() == "") {
 				alert("입사일을 확인해주세요.");
 				return;
 			}
@@ -465,19 +462,19 @@ form {
 
 		// 부서 관리 input으로 변경
 		$(document).on("dblclick", ".deptDiv", function() {
-			var dtp_sq = $(this).attr("data-value");
-			var dtp_nm = $(this).text();
+			var dept_code = $(this).attr("data-value");
+			var dept_name = $(this).text();
 			
-			deptList(dtp_sq, dtp_nm);
+			deptList(dept_code, dept_name);
 		});
 			 	 
 		// 부서명 수정 진행
 		$(document).on("click", "#deptUpdate", function() {
-			selectDeptNm();
+			selectDeptName();
 		});
 		
 		// 최대 입력 방지
-		$(document).on("keyup", "#addDept, #deptNmUp", function() {
+		$(document).on("keyup", "#addDept, #deptNameUp", function() {
 			if ($(this).val().length > 8) {
 				$(this).val($(this).val().substring(0, 8));
 			}
@@ -505,8 +502,8 @@ form {
 		
 		// 부서명 삭제
 		$(document).on("click", ".small-icon", function() {
-			var dpt_sq = $(this).parent().children("div").attr("data-value");
-			deptDelete(dpt_sq);
+			var dept_code = $(this).parent().children("div").attr("data-value");
+			deptDelete(dept_code);
 		});
 		
 		// 조직도 닫은 후 강제 리다이렉트
@@ -540,15 +537,14 @@ form {
 				var tbody = $("#officerList > tbody");
 
 				$.each(officerList,	function(idx, val) {
-					tbody.append($('<tr>').append($('<td>',	{html : "<input type='radio' class='radio' value='"+val.STF_SQ+"'>"}))
-										  .append($('<td>',	{html : "<img src='"+val.STF_PT_RT+"' class='profileImg'/>"}))
-										  .append($('<td>',	{text : val.STF_NM}))
-										  .append($('<td>',	{text : val.RNK_NM}))
-										  .append($('<td>',	{text : val.DPT_NM}))
-										  .append($('<td>',	{text : val.ADMN_PW}))
-										  .append($('<td>',	{text : val.STF_PH}))
-										  .append($('<td>',	{text : val.STF_BS_PH}))
-										  .append($('<td>',	{text : val.STF_EML})));
+					tbody.append($('<tr>').append($('<td>',	{html : "<input type='radio' class='radio' value='"+val.EMP_NO+"'>"}))
+										  .append($('<td>',	{html : "<img src='"+val.EMP_PHOTO_ROUTE+"' class='profileImg'/>"}))
+										  .append($('<td>',	{text : val.EMP_NAME}))
+										  .append($('<td>',	{text : val.JOB_NAME}))
+										  .append($('<td>',	{text : val.DEPT_NAME}))
+										  .append($('<td>',	{text : val.EMP_PHONE}))
+										  .append($('<td>',	{text : val.EMP_OFFICE_PHONE}))
+										  .append($('<td>',	{text : val.EMP_EMAIL})));
 				});
 				
 				$("#pageIndexList").html(pageIndexListAjax);
@@ -562,20 +558,20 @@ form {
 	}
 
 	// 사원번호 중복 검색
-	function selectStf_sq(data) {
+	function selectEmp_no(data) {
 		var params = {
-			stf_sq : data
+			emp_no : data
 		};
 
 		$.ajax({
-			url : "/admin/selectStf_Sq",
+			url : "/admin/selectEmp_No",
 			type : "POST",
 			dataType : "text",
 			data : JSON.stringify(params),
 			contentType : "application/json; charset=UTF-8",
 			beforeSend : function() {
-				$("#stf_sq").val("");
-				$("#stf_sq_up").val("");
+				$("#emp_no").val("");
+				$("#emp_no_up").val("");
 			},
 			success : function(data) {
 
@@ -583,18 +579,18 @@ form {
 
 				if (result > 0) {
 					alert("이미 존재하는 사원번호 입니다.");
-					$("#stf_sq_Div").attr("class", "has-error has-feedback");
-					$("#stf_sq_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
-					$("#stf_sq_Div_up").attr("class", "has-error has-feedback");
-					$("#stf_sq_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+					$("#emp_no_Div").attr("class", "has-error has-feedback");
+					$("#emp_no_Span").attr("class", "glyphicon glyphicon-remove form-control-feedback");
+					$("#emp_no_Div_up").attr("class", "has-error has-feedback");
+					$("#emp_no_Span_up").attr("class", "glyphicon glyphicon-remove form-control-feedback");
 				} else if (result == 0) {
-					$("#stf_sq").val($("#stf_sq1").val());
-					$("#stf_sq_up").val($("#stf_sq1_up").val());
+					$("#emp_no").val($("#emp_no1").val());
+					$("#emp_no_up").val($("#emp_no1_up").val());
 					
-					$("#stf_sq_Div").attr("class", "has-success has-feedback");
-					$("#stf_sq_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
-					$("#stf_sq_Div_up").attr("class", "has-success has-feedback");
-					$("#stf_sq_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+					$("#emp_no_Div").attr("class", "has-success has-feedback");
+					$("#emp_no_Span").attr("class", "glyphicon glyphicon-ok form-control-feedback");
+					$("#emp_no_Div_up").attr("class", "has-success has-feedback");
+					$("#emp_no_Span_up").attr("class", "glyphicon glyphicon-ok form-control-feedback");
 				}
 			},
 			error : function(request, status, error) {
@@ -609,18 +605,17 @@ form {
 	function officerInsert() {
 
 		var params = {
-			stf_sq : $("#stf_sq").val(),
-			admn_sq : $("#admn_sq").val(),
-			dpt_sq : $("#dpt_sq").val(),
-			rnk_sq : $("#rnk_sq").val(),
-			stf_nm : $("#stf_nm").val(),
-			stf_pw : $("#stf_pw").val(),
-			stf_ph : $("#stf_ph").val(),
-			stf_cm_add : $("#stf_cm_add").val(),
-			stf_dt_add : $("#stf_dt_add").val(),
-			stf_bs_ph : $("#stf_bs_ph").val(),
-			stf_eml : $("#stf_eml").val(),
-			stf_ent : $("#stf_ent").val(),
+			emp_no : $("#emp_no").val(),
+			dept_code : $("#dept_code").val(),
+			job_code : $("#job_code").val(),
+			emp_name : $("#emp_name").val(),
+			emp_password : $("#emp_password").val(),
+			emp_phone : $("#emp_phone").val(),
+			emp_add : $("#emp_add").val(),
+			emp_dt_add : $("#emp_dt_add").val(),
+			emp_office_phone : $("#emp_office_phone").val(),
+			emp_email : $("#emp_email").val(),
+			emp_enrolldate : $("#emp_enrolldate").val(),
 		};
 
 		$("#officerInsertForm").ajaxForm({
@@ -653,10 +648,10 @@ form {
 
 	// 사원 정보 불러오기
 	function selectUpdateOfficer() {
-		var stf_sq = $("input[type=radio]:checked").val();
+		var emp_no = $("input[type=radio]:checked").val();
 
 		var params = {
-				stf_sq : stf_sq
+				emp_no : emp_no
 			};
 		
 		$.ajax({
@@ -670,33 +665,32 @@ form {
 			},
 			success : function(data) {
 				
-				$("#imgView_up").attr("src", data.STF_PT_RT);
-				$("#stf_nm_up").val(data.STF_NM);
-				$("#stf_sq1_up").val(data.STF_SQ);
-				$("#stf_sq_up").val(data.STF_SQ);
-				$("#stf_sq_old").val(data.STF_SQ);
-				$("#admn_sq_up").val(data.ADMN_SQ);
-				$("#dpt_sq_up").val(data.DPT_SQ);
-				$("#rnk_sq_up").val(data.RNK_SQ);
-				$("#stf_cm_add_up").val(data.STF_CM_ADD);
-				$("#stf_dt_add_up").val(data.STF_DT_ADD);
-				$("#stf_eml_up").val(data.STF_EML);
+				$("#emp_phote_route_up").attr("src", data.EMP_PHOTO_ROUTE);
+				$("#emp_name_up").val(data.EMP_NAME);
+				$("#emp_no1_up").val(data.EMP_NO);
+				$("#emp_no_up").val(data.EMP_NO);
+				$("#emp_no_old").val(data.EMP_NO);
+				$("#dept_code_up").val(data.DEPT_CODE);
+				$("#job_code_up").val(data.JOB_CODE);
+				$("#emp_add_up").val(data.EMP_ADD);
+				$("#emp_dt_add_up").val(data.EMP_DT_ADD);
+				$("#emp_email_up").val(data.EMP_EMAIL);
 				
-				var arrPhoneNum = data.STF_PH.split("-");
+				var arrPhoneNum = data.EMP_PHONE.split("-");
 				
 				$("#phoneNum1_up").val(arrPhoneNum[0]);
 				$("#phoneNum2_up").val(arrPhoneNum[1]);
 				$("#phoneNum3_up").val(arrPhoneNum[2]);
-				$("#stf_ph_up").val(data.STF_PH);
+				$("#emp_phone_up").val(data.EMP_PHONE);
 				
-				var arrTelNum = data.STF_BS_PH.split("-");
+				var arrTelNum = data.EMP_OFFICE_PHONE.split("-");
 				
 				$("#telNum1_up").val(arrTelNum[0]);
 				$("#telNum2_up").val(arrTelNum[1]);
 				$("#telNum3_up").val(arrTelNum[2]);
-				$("#stf_bs_ph_up").val(data.STF_BS_PH);
+				$("#emp_office_phone_up").val(data.EMP_OFFICE_PHONE);
 				
-				$("#stf_ent_up").val(data.STF_ENT);
+				$("#emp_enrolldate").val(data.EMP_ENROLLDATE);
 				
 			},
 			error : function(request, status, error) {
@@ -711,19 +705,18 @@ form {
 	function officerUpdate() {
 
 		var params = {
-			stf_sq : $("#stf_sq_up").val(),
-			stf_sq_old : $("#stf_sq_old").val(),
-			admn_sq : $("#admn_sq_up").val(),
-			dpt_sq : $("#dpt_sq_up").val(),
-			rnk_sq : $("#rnk_sq_up").val(),
-			stf_nm : $("#stf_nm_up").val(),
-			stf_pw : $("#stf_pw_up").val(),
-			stf_ph : $("#stf_ph_up").val(),
-			stf_cm_add : $("#stf_cm_add_up").val(),
-			stf_dt_add : $("#stf_dt_add_up").val(),
-			stf_bs_ph : $("#stf_bs_ph_up").val(),
-			stf_eml : $("#stf_eml_up").val(),
-			stf_ent : $("#stf_ent_up").val(),
+			emp_no : $("#emp_no_up").val(),
+			emp_no_old : $("#emp_no_old").val(),
+			dept_code : $("#dept_code_up").val(),
+			job_code : $("#job_code_up").val(),
+			emp_name : $("#emp_name_up").val(),
+			emp_password : $("#emp_password_up").val(),
+			emp_phone : $("#emp_phone_up").val(),
+			emp_add : $("#emp_add_up").val(),
+			emp_dt_add : $("#emp_dt_add_up").val(),
+			emp_office_phone : $("#emp_office_phone_up").val(),
+			emp_email : $("#emp_email_up").val(),
+			emp_enrolldate : $("#emp_enrolldate_up").val(),
 		};
 
 		$("#officerUpdateForm").ajaxForm({
@@ -754,7 +747,7 @@ form {
 		$("#officerInsert").attr("disabled");
 	}
 	
-	// 부서명 등록
+	/* // 부서명 등록
 	function deptInsert() {
 		var params = {
 				dpt_nm : $("#addDept").val()
@@ -921,7 +914,7 @@ form {
 						+ error + "\n");
 			}
 		});
-	}
+	} */
 	
 	/* 다음 주소 API */
 	function addrSearch() {
@@ -1171,7 +1164,7 @@ form {
           <thead>
           </thead>
           
-          <form id="officerInsertForm" action="/admin/officerInsert"
+          <form id="officerInsertForm" action="" name="join_form"
             method="post" enctype="multipart/form-data">
             <tbody>
               <tr>
@@ -1186,7 +1179,7 @@ form {
               
               <tr>
                 <th>이름(*)</th>
-                <td><input type="text" id="stf_nm" name="stf_nm"
+                <td><input type="text" name="empName"
                   class="form-control" placeholder="이름"></td>
               </tr>
               
@@ -1194,7 +1187,7 @@ form {
                 <th>비밀번호(*)</th>
                 <td>
                   <div id="stf_pw1_Div">
-                    <input type="password" id="stf_pw1" class="form-control"
+                    <input type="password" name="empPassword" class="form-control"
                       placeholder="비밀번호"> <span id="stf_pw1_Span"></span>
                   </div>
                 </td>
@@ -1205,40 +1198,47 @@ form {
                 <td>
                   <div class="col-sm-9 col-md-10 leftNoPadding">
                     <div id="stf_sq_Div">
-                      <input type="text" id="stf_sq1" class="form-control"
+                      <input type="text" name="empNo" class="form-control"
                         placeholder="사원번호"> <span id="stf_sq_Span"></span>
                     </div>
                   </div>
                   <button type="button" id="stfNumSearchBtn"
                     class="btn btn-default col-sm-3 col-md-2">중복확인</button> <input
-                  type="hidden" id="stf_sq" name="stf_sq" class="form-control">
+                  type="hidden" name="" class="form-control">
                 </td>
+              </tr>
+
+			 <tr>
+                <th>주민등록번호(*)</th>
+                <td><input type="date" id="stf_ent1" name="empBirth"
+                  class="form-control" placeholder="주민등록번호"></td>
               </tr>
               
               <tr>
                 <th>부서(*)</th>
-                <td><select id="dpt_sq" name="dpt_sq"
+                <td><select id="dpt_sq" name="empDeptno"
                   class="form-control">
-                    <c:forEach items="${selectDept_Div_Tb}" var="map">
+                   <%--  <c:forEach items="${selectDept_Div_Tb}" var="map">
                       <option value="${map.DEPT_CODE}">${map.DEPT_NAME}</option>
-                    </c:forEach>
+                    </c:forEach> --%>
                 </select></td>
               </tr>
+              
               <tr>
                 <th>직급(*)</th>
-                <td><select id="rnk_sq" name="job_code"
+                <td><select id="rnk_sq" name="empJobno"
                   class="form-control">
                     <c:forEach items="${selectJob_Code}" var="map">
                       <option value="${map.JOB_CODE}">${map.JOB_NAME}</option>
                     </c:forEach>
                 </select></td>
               </tr>
+              
               <tr>
                 <th>주소(*)</th>
                 <td>
-
                   <div class="col-sm-9 col-md-10 leftNoPadding">
-                    <input type="text" id="stf_cm_add" name="stf_cm_add"
+                    <input type="text" id="stf_cm_add" name="empAdd"
                       class="form-control" placeholder="주소" readonly="readonly">
                   </div>
                   <button type="button"
@@ -1246,21 +1246,22 @@ form {
                     onclick="addrSearch();">주소검색</button>
                 </td>
               </tr>
+              
               <tr>
                 <th>상세주소(*)</th>
-                <td><input type="text" id="stf_dt_add" name="stf_dt_add"
+                <td><input type="text" id="stf_dt_add" name="empdtAdd"
                   class="form-control" placeholder="상세주소"></td>
               </tr>
+              
               <tr>
                 <th>이메일(*)</th>
-                <td><input type="email" id="stf_eml" name="stf_eml"
+                <td><input type="email" id="stf_eml" name="empEmail"
                   class="form-control" placeholder="이메일"></td>
               </tr>
 
               <tr>
                 <th>휴대폰(*)</th>
                 <td>
-
                   <div class="col-sm-2 col-md-2 leftNoPadding rightNoPadding">
                     <select id="phoneNum1" class="form-control">
                       <option value="010">010</option>
@@ -1284,10 +1285,11 @@ form {
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
                     <input type="text" id="phoneNum3" class="form-control telNumMax" />
-                  </div> <input type="hidden" id="stf_ph" name="stf_ph"
+                  </div> <input type="hidden" id="stf_ph" name="empPhone"
                   class="form-control">
                 </td>
               </tr>
+              
               <tr>
                 <th>내선번호</th>
                 <td>
@@ -1308,23 +1310,24 @@ form {
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
                     <input type="text" id="telNum3" class="form-control telNumMax" />
-                  </div> <input type="hidden" id="stf_bs_ph" name="stf_bs_ph"
+                  </div> <input type="hidden" id="stf_bs_ph" name="empofficePhone"
                   class="form-control">
                 </td>
               </tr>
+              
               <tr>
                 <th>입사일(*)</th>
-                <td><input type="date" id="stf_ent" name="stf_ent"
+                <td><input type="date" id="stf_ent" name="empenrollDate"
                   class="form-control" placeholder="입사일"></td>
               </tr>
             </tbody>
-          </form>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" id="officerInsert" class="btn btn-success">등록</button>
+        <button type="submit" id="officerInsert" name="abc" class="btn btn-success">등록</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -1389,6 +1392,12 @@ form {
                     class="btn btn-default col-sm-3 col-md-2">중복확인</button> <input
                   type="hidden" id="stf_sq" name="stf_sq" class="form-control">
                 </td>
+              </tr>
+              
+              <tr>
+                <th>주민등록번호(*)</th>
+                <td><input type="text" id="stf_ent" name="emp_birth"
+                  class="form-control" placeholder="주민등록번호"></td>
               </tr>
               
               <tr>
@@ -1552,6 +1561,7 @@ form {
            
          
 		
+		
           <br><br>
           <h3>기본정보</h3>
           <hr>
@@ -1603,165 +1613,23 @@ form {
                             <td>youbujang@muhan.com</td>
                             <td>0814</td>
                           </tr>
-
+							<c:forEach items = "${list}" var = "emp">
                           <tr>
-                            <td></td>
+                            <td><input type="radio"></td>
                             <td>${emp.empNo}</td>
                             <td>${emp.empBirth}</td>
                             <td>${emp.empphotoRoute}</td>
                             <td>${emp.empName}</td>
-                            <td>${emp.deptCode}</td>
-                            <td>${emp.jobCode}</td>
+                            <td>${emp.empDeptno}</td>
+                            <td>${emp.empJobno}</td>
                             <td>${emp.empenrollDate}</td>
                             <td>${emp.empPhone}</td>
-                            <td>${emp.empofficeEmail}</td>
+                            <td>${emp.empEmail}</td>
                             <td>${emp.empofficePhone}</td>
                           </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
+							</c:forEach>
+                         
+                         
 
                       </tbody>
                     </table>
@@ -1791,13 +1659,18 @@ form {
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
+<script>
+$(document).on("click","button[name=abc]",function(){
+	alert("123");
+})
+</script>
 <!-- jQuery -->
 <script src="${path}/resources/css/insa/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="${path}/resources/css/insa/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
+
 </body>
 </html>
 
