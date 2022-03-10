@@ -272,16 +272,99 @@
     width: 75%;
 }
 .form_table1_tr1_td2 {
-    background-color: white;
+    /* background-color: white; */
     padding: 0px !important;
     border: currentColor;
     border-image: none;
-    text-align: left;
+    text-align: right;
     color: black;
     font-size: 12px;
     font-weight: normal;
     vertical-align: top;
     width: 60%;
+    height: 120px;
+}
+.sign_type1_inline .sign_member_wrap .sign_member .sign_rank {
+    height: 26px;
+}
+.sign_type1_inline .sign_member_wrap .sign_member .sign_rank, .sign_type1_inline .sign_member_wrap .sign_member .sign_wrap, .sign_type1_inline .sign_member_wrap .sign_member .sign_date {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 79px;
+}
+.sign_type1_inline .sign_rank, .sign_type1_inline .sign_name, .sign_type1_inline .sign_position, .sign_type1_inline .sign_type, .sign_type1_inline .sign_date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 79px;
+}
+.sign_type1_inline .sign_tit_wrap .sign_tit {
+    display: table;
+    padding: 0 2px;
+    text-align: center;
+    word-break: break-all;
+    white-space: normal;
+    height: 100%;
+}
+.sign_tit_wrap {
+    height: 122px;
+}
+.sign_tit strong {
+    height: 100%;
+    padding-top: 40px;
+    
+}
+
+.sign_member_wrap {
+    width: 80px;
+    padding-top: 4px;
+}
+.sign_rank {
+    border-bottom: 1px solid black;
+}
+.sign_name {
+    border-bottom: 1px solid black;
+    height: 65px;
+    padding-top: 23px;
+}
+.sign_date {
+    border-top: 0;
+    height: 25px;
+    padding-top: 4px;
+}
+.sign_type1_inline {
+    position: relative;
+    display: inline-table!important;
+    border-collapse: separate;
+    border-spacing: 0;
+    white-space: normal;
+    font-size: 12px;
+    margin: 1px -1px 0 0;
+    padding-left: 26px;
+}
+.sign_type1_inline .sign_member_wrap {
+    vertical-align: top;
+    background: #fff;
+    display: table-cell;
+    float: left;
+    border: 1px solid #000;
+    border-left: 0;
+    margin: -1px 0 0 0;
+}
+.sign_type1_inline .sign_tit_wrap {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    bottom: 0;
+    vertical-align: middle;
+    border: 1px solid #000;
+    width: 24px;
+    background: #eee;
+    display: table-cell;
+}
+.sign_type1_inline {
+    text-align: right;
 }
 .form_table2 {
     margin-top: 30px;

@@ -392,10 +392,9 @@
                                     </tbody>
                                 </table>
                             </td>
-                            <td>
-                                
-                            </td>
-                        </tr>
+							<td class="form_table1_tr1_td1">
+							</td>
+						</tr>
                     </tbody>
                 </table>
                 <table class="form_table2">
@@ -829,7 +828,7 @@ $(userInfoList).each(function(idx, element){
         const addButton1 = document.querySelector('.add_action1');
         const addButton2 = document.querySelector('.add_action2');
         
-        console.log(document.getElementsByClassName('listedName').innerText);
+        // console.log(document.getElementsByClassName('listedName').innerText);
 
 	    addButton1.addEventListener('click', () => {
             $(element).off('click');
