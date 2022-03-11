@@ -820,7 +820,6 @@ $(userInfoList).each(function(idx, element){
     $(element).on('click' , function(event){
         let t = event.currentTarget;
         var name = t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText;
-        // console.log(t);
         // console.log(t.nextSibling.nextSibling);
         // console.log(t.nextSibling.nextSibling.nextSibling.innerText);
         // console.log(t.nextSibling.nextSibling.nextSibling.nextSibling.innerText);
