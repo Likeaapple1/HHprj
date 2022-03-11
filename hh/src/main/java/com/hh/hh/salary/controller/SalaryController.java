@@ -83,11 +83,11 @@ public class SalaryController {
 	
 	// 급여명세서 월별검색
 	@PostMapping("/payslip")
-	public String payslip(PayrollDto dto) {
+	public String payslip(PayrollDto dto) throws NullPointerException{
+		System.out.println("=====================출력" + dto);
 		
 		int result = service.searchPayslip(dto);
 		
-		System.out.println("=====================" + dto);
 
 		if (result > 0) {
 			// success
@@ -122,9 +122,11 @@ public class SalaryController {
 
 		if (result > 0) {
 			// success
+			
 			return "redirect:/salary/setting";
 		} else {
 			// fail
+			
 			return "salary/error";
 		}
 	}

@@ -347,7 +347,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<td>${p.emd}</td>
 							<td>${p.ppd}</td>
 							<td>${p.pts}</td>
-							<td>공제총액</td>
+							<td>${p.ehntl}</td>
 							<td>${p.pns}</td>
 							<td>${p.eee}</td>
 							<td>${p.ppb}</td>

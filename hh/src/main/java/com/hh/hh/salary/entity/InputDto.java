@@ -5,8 +5,8 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class PayrollDto {
-
+public class InputDto {
+	
 	private int empNo;
 	private int payrollNo;
 	private int basicSalary;
@@ -19,9 +19,9 @@ public class PayrollDto {
 	private int bonus;
 	private int specialAllowance;
 	private int totalSalary;
-	private int employmentInsurance;
-	private int healthInsurance;
-	private int nationalPension;
+	private int employmentInsurance; //고용보험
+	private int healthInsurance; //건강보험
+	private int nationalPension; //국민연금
 	private int fourMajorInsurances;
 	private int tax;
 	private int localIncomeTax;
@@ -32,7 +32,6 @@ public class PayrollDto {
 	private String deptName;
 	private String empName;
 	private String empJobcode;
-	private Date month;
 	private int ehntl; //공제합계
 
 }

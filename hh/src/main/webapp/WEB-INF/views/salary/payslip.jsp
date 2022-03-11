@@ -307,7 +307,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <form method="post">
           <div class="month left">
-            <input name="month" class="mon radius" type="month" value="2022-03">　<button type="submit" class="btn btn-primary" value="조회"><br><br><br>
+            <input name="month" class="mon radius" type="month" value="2022-03">　<input type="submit" class="btn btn-primary" value="조회"><br><br><br>
           </div>
           
 <c:forEach items="${list}" var="p">
@@ -345,7 +345,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </tr>
             <tr>
               <td>${data.totalSalary}</td>
-              <td>　</td>
+              <td>${data.ehntl}</td>
               <td>${data.netSalary}</td>
             </tr>
           </table>
@@ -366,25 +366,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th class="th2">잔업수당</th>
               <td>${data.overtimeAllowance}</td>
               <th class="th2">지방 소득세</th>
-              <td>　</td>
+              <td>${data.localIncomeTax}</td>
             </tr>
             <tr>
               <th class="th2">특근수당</th>
               <td>${data.holidayAllowance}</td>
               <th class="th2">고용보험</th>
-              <td>　</td>
+              <td>${data.employmentInsurance}</td>
             </tr>
             <tr>
               <th class="th2">근속수당</th>
               <td>${data.longServiceAllowance}</td>
               <th class="th2">건강보험</th>
-              <td>　</td>
+              <td>${data.healthInsurance}</td>
             </tr>
             <tr>
               <th class="th2">연차수당</th>
               <td>${data.annualLeaveAllowance}</td>
               <th class="th2">국민연금</th>
-              <td>　</td>
+              <td>${data.nationalPension}</td>
             </tr>
             <tr>
               <th class="th2">중식비</th>

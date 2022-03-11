@@ -1,4 +1,4 @@
-<%@page import="com.hh.hh.member.entity.MemberDto"%>
+<%@page import="com.hh.hh.salary.entity.EmailDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -380,14 +380,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <tbody>
     
         	<%
-			List<MemberDto> memberList = (List)request.getAttribute("memberList");
-			for(MemberDto m : memberList){
+			List<EmailDto> memberList = (List)request.getAttribute("memberList");
+			for(EmailDto m : memberList){
 			%>
 				<tr>
-					<td><%=m.getEmpNo()%></td>
-					<td><b><a href="input/<%=m.getEmpNo()%>" style="color: black; text-decoration: none;"><%=m.getEmpName()%></a></b></td>
-					<td><%=m.getEmpjobCode()%></td>
-					<td><%=m.getManagerDept()%></td>
+					<td><%=m.getEen()%></td>
+					<td><b><a href="input/<%=m.getEen()%>" style="color: black; text-decoration: none;"><%=m.getEename()%></a></b></td>
+					<td><%=m.getEej()%></td>
+					<td><%=m.getEmd()%></td>
 				</tr>
 			<%
 			}
@@ -444,13 +444,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <th>특근수당</th>
                 <td><input class="radius" type="text" placeholder="휴일근무일수*(통상시급*1.5)"></td>
                 <th>고용보험</th>
-                <td><input class="radius" type="text"></td>
+                <td><input class="radius" type="text" placeholder="0.8%"></td>
               </tr>
               <tr>
                 <th>근속수당</th>
                 <td><input class="radius" type="text"></td> <!-- 근속일수가 *일 이상이면 *원 지급 --> <!-- 직접설정 -->
                 <th>건강보험</th>
-                <td><input class="radius" type="text"></td>
+                <td><input class="radius" type="text" placeholder="3.495%"></td>
               </tr>
               <!-- <tr>
                 <th>직책수당</th>
@@ -462,7 +462,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <th>연차수당</th>
                 <td><input class="radius" type="text"></td> <!-- 미사용연차를 통상시급으로 환산 -->
                 <th>국민연금</th>
-                <td><input class="radius" type="text"></td>
+                <td><input class="radius" type="text" placeholder="4.5%"></td>
               </tr>
               <!-- <tr>
                 <th>자격수당</th>
