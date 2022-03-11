@@ -165,7 +165,7 @@
 				  <td>${l.start}</td>
 			      <td>${l.end}</td>
 			      <td>${l.total}</td>
-			      <td>${l.attContent}</td>
+			      <td>${l.attWorkdate}</td>
 			      <td>${l.attContent}</td>
 			      <td>${l.attContentYn}</td>
 			   </tr>

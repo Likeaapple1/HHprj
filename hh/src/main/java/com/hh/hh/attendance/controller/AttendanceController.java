@@ -185,6 +185,7 @@ public class AttendanceController {
 			  cEnd.add(Calendar.HOUR_OF_DAY, -cStart.get(Calendar.HOUR_OF_DAY));
 	          System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
 	          attendanceDto.setAttWorkDate(new Date(cEnd.getTimeInMillis()));
+	          
 	          AttendanceDto adto = attendanceservice.workout(attendanceDto);  
 		  } // 초과근무 처리하기
 		  else if(workBtnEnd.compareTo(stworkEnd1) >=0 ) {
