@@ -47,15 +47,10 @@ public class EmpController {
 			return "redirect:/insa/home";
 		}else {
 			return "redirect:/insa/home";
-		}
-		
-		
+		}	
 	
 	}
-	
-	
 
-	
 	// 상세 인적사항 페이지 이동
 	@GetMapping("/injuk")
 	public String injuk() {

@@ -1146,6 +1146,11 @@ form {
     </div>
     <!-- /.sidebar -->
   </aside>
+  
+  
+  <!-- 사원등록 버튼 누르면 모달 뜨기  -->
+  
+  <!-- 사원 정보 등록  -->
 <!-- Insert Modal -->
 <div class="modal fade" id="insertModal" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -1210,9 +1215,11 @@ form {
 
 			 <tr>
                 <th>주민등록번호(*)</th>
-                <td><input type="date" id="stf_ent1" name="empBirth"
+                <td><input type="text" id="stf_ent1" name="empBirth"
                   class="form-control" placeholder="주민등록번호"></td>
               </tr>
+              
+              
               
               <tr>
                 <th>부서(*)</th>
@@ -1332,6 +1339,8 @@ form {
   </div>
 </div>
 
+<!-- 사원 정보 수 -->
+
 <!-- Update Modal -->
 <div class="modal fade" id="updateModal" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -1399,7 +1408,8 @@ form {
                 <td><input type="text" id="stf_ent" name="emp_birth"
                   class="form-control" placeholder="주민등록번호"></td>
               </tr>
-              
+
+              <!-- 부서, 직급은 DEPT, JOB 테이블에서 컬럼 추가 -->
               <tr>
                 <th>부서(*)</th>
                 <td><select id="dpt_sq" name="dpt_sq"
@@ -1595,6 +1605,7 @@ form {
                           <th>핸드폰</th>
                           <th>회사이메일</th>
                           <th>내선번호</th>
+                          <th>입사일</th>
         
                         </tr>	
                       </thead>
@@ -1611,7 +1622,9 @@ form {
                             <td>91년 05월 05일</td>
                             <td>010-1972-0814</td>
                             <td>youbujang@muhan.com</td>
-                            <td>0814</td>
+                            <td>070-1234-5678</td>
+                            <td>2018-03-04</td>
+                            
                           </tr>
 							<c:forEach items = "${list}" var = "emp">
                           <tr>
@@ -1626,6 +1639,7 @@ form {
                             <td>${emp.empPhone}</td>
                             <td>${emp.empEmail}</td>
                             <td>${emp.empofficePhone}</td>
+                            <td>${emp.empenrollDate}</td>
                           </tr>
 							</c:forEach>
                          
