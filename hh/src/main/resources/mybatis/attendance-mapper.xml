@@ -27,25 +27,6 @@
   		)
   	</insert>
   	
-  	<insert id="insertWork" parameterType="attendanceDto">
-  		INSERT INTO ATTENDANCE
-  		(
-  			ATT_NO,
-  			EMP_NO,
-  			WORK_FORM,
-  			ATT_DATE,
-  			ATT_STR_DATE
-  		)
-  		VALUES
-  		(
-  			#{attNo},
-  			#{empNo},
-  			'휴일근무',
-  			'Y',
-  			SYSDATE
-  		)
-  	</insert>
-  	
   	<select id="selectInfoWork" parameterType="attendanceDto" resultType="attendanceDto">
   		SELECT * FROM
   		ATTENDANCE
@@ -64,13 +45,13 @@
 				SET ATT_END_DATE = SYSDATE,
 		<choose>
 			<when test="attNsStart &lt; attNsEnd or (attNsStartEnd &lt; attNsEnd and attNsStartEndfinal &gt; attNsEnd)">
-				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y'
+				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y', ATT_WORKDATE = {attWorkdate}
 			</when>
 			<when test="ovDateStrat &lt; attNsEnd || attNsStart &lt; attNsEnd ">
-				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y', OV_DATE = ''
+				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y', ATT_WORKDATE = {attWorkdate}, OV_DATE = ''
 			</when>
 			<otherwise>
-				 WORK_FORM ='정상근무', ATT_NS_YN = 'N', 
+				 WORK_FORM ='정상근무', ATT_NS_YN = 'N', ATT_WORKDATE = {attWorkdate}
 			</otherwise>
 		</choose>
 				WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})						
