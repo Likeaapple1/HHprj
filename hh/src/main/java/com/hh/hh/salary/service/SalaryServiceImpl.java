@@ -52,7 +52,7 @@ public class SalaryServiceImpl implements SalaryService {
 	}
 
 	@Override
-	public int searchPayslip(PayrollDto dto) {
+	public int searchPayslip(PayrollDto dto) throws NullPointerException {
 		return dao.searchPayslip(dto);
 	}
 

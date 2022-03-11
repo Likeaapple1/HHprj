@@ -53,7 +53,7 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 	}
 
 	@Override
-	public int searchPayslip(PayrollDto dto) {
+	public int searchPayslip(PayrollDto dto) throws NullPointerException {
 		return ss.selectOne("salary.searchPayslip", dto);
 	}
 

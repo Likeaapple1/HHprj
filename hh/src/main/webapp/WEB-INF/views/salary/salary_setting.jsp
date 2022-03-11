@@ -349,7 +349,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <thead>
                 <tr>
                   <th class="th_g">통상시급</th>
-                  <th class="th_g" style="width: 260px;">근속수당</th>
+                  <th class="th_g" style="width: 240px;">근속수당</th>
                   <!-- <th class="th_g">직책수당</th> -->
                   <!-- <th class="th_g">자격수당</th> -->
                   <th class="th_g">중식비</th>
@@ -360,7 +360,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <c:forEach items="${list}" var="s">
                   <tr>
                     <td><input type="text" value="${s.regularHourlyWage}" placeholder="시급" class="text radius" name="regularHourlyWage"> 원</td>
-                    <td><input type="text" value="${s.longServiceDay}" placeholder="근속일" class="day radius" name="longServiceDay"> 일마다 <input type="text" value="${s.longServiceAllowance}" placeholder="월급" class="text radius" name="longServiceAllowance"> 원</td>
+                    <td><input type="text" value="${s.longServiceDay}" placeholder="근속일" class="day radius" name="longServiceDay" style="color: lightgray;" readonly> <input type="text" value="${s.longServiceAllowance}" placeholder="월급" class="text radius" name="longServiceAllowance" style="color: lightgray;" readonly> 원</td>
                     <%-- <td><input type="text" value="${s.positionAllowance}" placeholder="월급" class="text radius" name="positionAllowance"> 원</td> --%>
                     <!-- <td><input type="text" class="text" placeholder="자격증 수당 월급"> 원</td> -->
                     <td><input type="text" value="${s.mealExpenses}" placeholder="일급" class="text radius" name="mealExpenses"> 원</td>

@@ -22,5 +22,5 @@ public interface SalaryRepository {
 	
 	List<PayrollDto> selectListE();
 	
-	int searchPayslip(PayrollDto dto);
+	int searchPayslip(PayrollDto dto) throws NullPointerException;
 }

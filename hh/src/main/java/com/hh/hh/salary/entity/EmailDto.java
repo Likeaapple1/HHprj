@@ -19,5 +19,6 @@ public class EmailDto {
 	private String eee; //이메일
 	private String eej; //직급
 	private String emd; //부서
+	private String ehntl; //공제총액
 	
 }
