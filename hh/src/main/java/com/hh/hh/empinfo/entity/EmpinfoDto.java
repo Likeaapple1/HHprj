@@ -1,11 +1,11 @@
-package com.hh.hh.insa.entity;
+package com.hh.hh.empinfo.entity;
 
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class InjukDto {
+public class EmpinfoDto {
 	private long empNo;
 	private String empName;
 	private String empengName;
