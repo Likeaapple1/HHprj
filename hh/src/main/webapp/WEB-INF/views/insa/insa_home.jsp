@@ -1214,29 +1214,29 @@ form {
               </tr>
 
 			 <tr>
-                <th>주민등록번호(*)</th>
+                <th>생년월일(*)</th>
                 <td><input type="text" id="stf_ent1" name="empBirth"
-                  class="form-control" placeholder="주민등록번호"></td>
+                  class="form-control" placeholder="YYYYMMDD"></td>
               </tr>
               
               
               
               <tr>
                 <th>부서(*)</th>
-                <td><select id="dpt_sq" name="empDeptno"
+                <td><select id="dpt_sq" name="dpt_sq"
                   class="form-control">
-                   <%--  <c:forEach items="${selectDept_Div_Tb}" var="map">
-                      <option value="${map.DEPT_CODE}">${map.DEPT_NAME}</option>
-                    </c:forEach> --%>
+                    <c:forEach items="${selectDpt_Div_Tb}" var="map">
+                      <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
+                    </c:forEach>
                 </select></td>
               </tr>
               
               <tr>
                 <th>직급(*)</th>
-                <td><select id="rnk_sq" name="empJobno"
+                <td><select id="rnk_sq" name="rnk_sq"
                   class="form-control">
-                    <c:forEach items="${selectJob_Code}" var="map">
-                      <option value="${map.JOB_CODE}">${map.JOB_NAME}</option>
+                    <c:forEach items="${selectRnk_Tb}" var="map">
+                      <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
                     </c:forEach>
                 </select></td>
               </tr>
@@ -1339,7 +1339,7 @@ form {
   </div>
 </div>
 
-<!-- 사원 정보 수 -->
+<!-- 사원 정보 수정 -->
 
 <!-- Update Modal -->
 <div class="modal fade" id="updateModal" role="dialog">
@@ -1404,9 +1404,9 @@ form {
               </tr>
               
               <tr>
-                <th>주민등록번호(*)</th>
+                <th>생년월일(*)</th>
                 <td><input type="text" id="stf_ent" name="emp_birth"
-                  class="form-control" placeholder="주민등록번호"></td>
+                  class="form-control" placeholder="YYYYMMDD"></td>
               </tr>
 
               <!-- 부서, 직급은 DEPT, JOB 테이블에서 컬럼 추가 -->
@@ -1576,7 +1576,7 @@ form {
           <h3>기본정보</h3>
           <hr>
           
-          <form class="form-inline" role="form" method="post">
+          <%-- <form class="form-inline" role="form" method="post">
 						<a href="employeeinsertform.it" class="btn btn-default">Add</a>
 						<button type="button" class="btn btn-default">
 							totalCount <span class="badge">${totalcount}</span>
@@ -1584,7 +1584,7 @@ form {
 						<button type="button" class="btn btn-default">
 							Count <span class="badge">${count}</span>
 						</button>
-					</form>
+					</form> --%>
         </div>
 
 
@@ -1596,7 +1596,7 @@ form {
                         <tr>
                           <th>선택</th>
                           <th>사원번호</th>
-                          <th>주민등록번호</th>
+                          <th>생년월일</th>
                           <th>사진</th>
                           <th>성명</th>
                           <th>부서</th>
@@ -1605,7 +1605,7 @@ form {
                           <th>핸드폰</th>
                           <th>회사이메일</th>
                           <th>내선번호</th>
-                          <th>입사일</th>
+                        
         
                         </tr>	
                       </thead>
@@ -1614,7 +1614,7 @@ form {
                             <td><input type="radio" class="radio"
                               value="${map.EMP_NO}"></td>
                             <td>101</td>
-                            <td>720814-*******</td>
+                            <td>720814</td>
                             <td><img src="${map.EMP_PHOTO_ROUTE}" class="profileImg"/></td>
                             <td>유재석</td>
                             <td>마케팅</td>
@@ -1623,7 +1623,7 @@ form {
                             <td>010-1972-0814</td>
                             <td>youbujang@muhan.com</td>
                             <td>070-1234-5678</td>
-                            <td>2018-03-04</td>
+                   
                             
                           </tr>
 							<c:forEach items = "${list}" var = "emp">
@@ -1631,7 +1631,7 @@ form {
                             <td><input type="radio"></td>
                             <td>${emp.empNo}</td>
                             <td>${emp.empBirth}</td>
-                            <td>${emp.empphotoRoute}</td>
+                            <td><img alt="" th:src="@{|/upload${emp.empphotoName}|}"/></td>
                             <td>${emp.empName}</td>
                             <td>${emp.empDeptno}</td>
                             <td>${emp.empJobno}</td>
@@ -1639,7 +1639,7 @@ form {
                             <td>${emp.empPhone}</td>
                             <td>${emp.empEmail}</td>
                             <td>${emp.empofficePhone}</td>
-                            <td>${emp.empenrollDate}</td>
+                         
                           </tr>
 							</c:forEach>
                          
