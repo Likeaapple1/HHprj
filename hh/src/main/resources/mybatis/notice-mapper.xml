@@ -54,7 +54,24 @@
 		<foreach collection="array" item="x" separator="," open="(" close=")">
 		#{x}
 		</foreach>
-		
 	</delete>
+	
+	<select id="getNoticeList" resultType="notice">
+		SELECT * FROM
+		(
+			SELECT ROWNUM RN, T.* 
+			FROM
+			(
+				SELECT *
+				FROM NOTICE
+			) T
+		)
+		WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="getNoticeCnt" resultType="int">
+		SELECT COUNT(NOTICE_NO)
+		FROM NOTICE
+	</select>
 	
 </mapper>

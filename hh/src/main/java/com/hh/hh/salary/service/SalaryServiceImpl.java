@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hh.hh.member.entity.MemberDto;
+import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
 import com.hh.hh.salary.repository.SalaryRepository;
@@ -54,6 +55,21 @@ public class SalaryServiceImpl implements SalaryService {
 	@Override
 	public int searchPayslip(PayrollDto dto) throws NullPointerException {
 		return dao.searchPayslip(dto);
+	}
+	
+	@Override
+	public int enrollPayroll(InputDto dto) throws Exception {
+		return dao.input(dto);
+	}
+	
+	@Override
+	public List<InputDto> selectEmpList() {
+		return dao.selectEmpList();
+	}
+	
+	@Override
+	public List<InputDto> selectPayrollList() {
+		return dao.selectPayrollList();
 	}
 
 }

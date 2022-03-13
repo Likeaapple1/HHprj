@@ -1,5 +1,3 @@
-<%@page import="com.hh.hh.salary.entity.EmailDto"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -340,27 +338,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <div class="col-lg-6 div1">
 
-            <form action="">
+            
 
 
-<!--
-                  <th>기본급</th>
-                  <th>통상시급</th>
-                  <th>잔업수당</th>
-                  <th>특근수당</th>
-                  <th>근속수당</th>
-                  <th>직책수당</th>
-                  <th>연차수당</th>
-                  <th>자격수당</th>
-                  <th>중식비</th>
-                  <th>교통비(유류비)</th>
-                  <th>상여금</th>
-                  <th>특별수당</th>
-                  <th>급여총액</th>
-                  <th>4대보험</th>
-                  <th>소득세,지방소득세</th>
-                  <th>실지급액</th>
--->
+
 
 
 
@@ -378,20 +359,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </tr>	
     </thead>
     <tbody>
-    
-        	<%
-			List<EmailDto> memberList = (List)request.getAttribute("memberList");
-			for(EmailDto m : memberList){
-			%>
+
+        	<c:forEach items="${list}" var="e">
 				<tr>
-					<td><%=m.getEen()%></td>
-					<td><b><a href="input/<%=m.getEen()%>" style="color: black; text-decoration: none;"><%=m.getEename()%></a></b></td>
-					<td><%=m.getEej()%></td>
-					<td><%=m.getEmd()%></td>
+					<td>${e.empNo}</td>
+					<td><b><a href="http://localhost:9999/hh/salary/input/${e.payrollNo}" style="color: black; text-decoration: none;">${e.empName}</a></b></td>
+					<td>${e.empJobcode}</td>
+					<td>${e.deptName}</td>
 				</tr>
-			<%
-			}
-			%>
+			</c:forEach>
+			
+				<%-- <tr>
+					<td>${data.empNo}</td>
+					<td><b><a href="<%=request.getContextPath()%>/salary/input" style="color: black; text-decoration: none;">${data.empName}</a></b></td>
+					<td>${data.empJobcode}</td>
+					<td>${data.deptName}</td>
+				</tr> --%>
 
     </tbody>
   </table>
@@ -399,19 +382,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 
-
-
-
-
-
-
-</form>
-
           </div>
           <!-- /.col-md-6 -->
           <div class="col-lg-6 div2">
 
-            <form action="">
+            
 
 
 
@@ -421,94 +396,109 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+<form method="post">
+
+								<table border="1" class="table table-bordered tb_salary1 tb_sal">
+									<tr>
+										<th colspan="2" class="th_g">지급항목</th>
+										<th colspan="2" class="th_g">공제항목
+										
+										<!-- hidden -->
+										<input hidden name="empNo" value="${data.empNo}" type="text">
+										<input hidden name="payrollBank" value="${data.payrollBank}" type="text">
+										<input hidden name="payrollAccount" value="${data.payrollAccount}" type="text">
+										
+										</th>
+									</tr>
+									<tr>
+										<th>기본급</th>
+										<td><input name="basicSalary" value="${data.basicSalaryS}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+										<!-- 직접설정 -->
+										<th>소득세</th>
+										<td><input name="tax" value="${data.tax}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+									</tr>
+									<tr>
+										<th>잔업수당</th>
+										<td><input name="overtimeAllowance" value="${data.overtimeAllowanceS}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+										<th>지방 소득세</th>
+										<td><input name="localIncomeTax" value="${data.localIncomeTax}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+									</tr>
+									<tr>
+										<th>특근수당</th>
+										<td><input name="holidayAllowance" value="${data.holidayAllowanceS}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+										<th>고용보험</th>
+										<td><input name="employmentInsurance" value="${data.employmentInsurance}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+									</tr>
+									<tr>
+										<th>근속수당</th>
+										<td><input name="longServiceAllowance" value="${data.longServiceAllowance}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+										<th>건강보험</th>
+										<td><input name="healthInsurance" value="${data.healthInsurance}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+									</tr>
+									<tr>
+										<th>연차수당</th>
+										<td><input name="annualLeaveAllowance" value="${data.annualLeaveAllowance}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+										<th>국민연금</th>
+										<td><input name="nationalPension" value="${data.nationalPension}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+									</tr>
+									<tr>
+										<th>중식비</th>
+										<td><input name="mealExpenses" value="${data.mealExpenses}"
+											class="radius" type="text" style="color: gray;" readonly></td>
+										<th>
+											<!-- 기타 -->
+										</th>
+										<td>
+											<!-- <input class="radius" type="text"> -->
+										</td>
+									</tr>
+									<tr>
+										<th>교통비(유류비)</th>
+										<td><input name="transportationExpenses" value="${data.transportationExpenses}"
+										class="radius" type="text" style="color: gray;" readonly></td>
+										<th></th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>상여금</th>
+										<td><input name="bonus" value="${data.bonus}"
+											class="radius" type="text"></td>
+										<th></th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>특별수당</th>
+										<td><input name="specialAllowance" value="${data.specialAllowance}"
+										class="radius" type="text"></td>
+										<th></th>
+										<td></td>
+									</tr>
+
+									</tbody>
+								</table>
 
 
-            <table border="1" class="table table-bordered tb_salary1 tb_sal">
-              <tr>
-                <th colspan="2" class="th_g">지급항목</th>
-                <th colspan="2" class="th_g">공제항목</th>
-              </tr>
-              <tr>
-                <th>기본급${data.empNo}</th>
-                <td><input class="radius" type="text" placeholder="(근무일수*통상시급)+주휴수당"></td> <!-- 직접설정 -->
-                <th>소득세</th>
-                <td><input class="radius" type="text"></td>
-              </tr>
-              <tr>
-                <th>잔업수당</th>
-                <td><input class="radius" type="text" placeholder="잔업일수*(통상시급*1.5)"></td>
-                <th>지방 소득세</th>
-                <td><input class="radius" type="text" placeholder="소득세의 10%"></td>
-              </tr>
-              <tr>
-                <th>특근수당</th>
-                <td><input class="radius" type="text" placeholder="휴일근무일수*(통상시급*1.5)"></td>
-                <th>고용보험</th>
-                <td><input class="radius" type="text" placeholder="0.8%"></td>
-              </tr>
-              <tr>
-                <th>근속수당</th>
-                <td><input class="radius" type="text"></td> <!-- 근속일수가 *일 이상이면 *원 지급 --> <!-- 직접설정 -->
-                <th>건강보험</th>
-                <td><input class="radius" type="text" placeholder="3.495%"></td>
-              </tr>
-              <!-- <tr>
-                <th>직책수당</th>
-                <td><input class="radius" type="text" placeholder="직급별수당"></td> 인턴/사원/대리/차장/과장/부장... 직접설정
-                <th>국민연금</th>
-                <td><input class="radius" type="text"></td>
-              </tr> -->
-              <tr>
-                <th>연차수당</th>
-                <td><input class="radius" type="text"></td> <!-- 미사용연차를 통상시급으로 환산 -->
-                <th>국민연금</th>
-                <td><input class="radius" type="text" placeholder="4.5%"></td>
-              </tr>
-              <!-- <tr>
-                <th>자격수당</th>
-                <td><input class="radius" type="text" placeholder="자격증별수당"></td> 직접설정
-                <th>기타</th>
-                <td><input class="radius" type="text"></td>
-              </tr> -->
-              <tr>
-                <th>중식비</th>
-                <td><input class="radius" type="text" placeholder="근무일수*일일중식비"></td> <!-- 직접설정 -->
-                <th><!-- 기타 --></th>
-                <td><!-- <input class="radius" type="text"> --></td>
-              </tr>
-              <tr>
-                <th>교통비(유류비)</th>
-                <td><input class="radius" type="text" placeholder="근무일수*일일교통비"></td> <!-- 직접설정 -->
-                <th></th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>상여금</th>
-                <td><input class="radius" type="text"></td>
-                <th></th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>특별수당</th>
-                <td><input class="radius" type="text"></td>
-                <th></th>
-                <td></td>
-              </tr>
 
-              </tbody>
-            </table>
-
-
-
-
-<div class="right">
+								<div class="right">
   <br><br>
-  <a href="#" class="btn btn-primary">저장</a>　<a href="#" class="btn btn-secondary">취소</a>
+  <input type="submit" class="btn btn-primary" value="입력">
+  　<a href="<%=request.getContextPath()%>/salary/input" class="btn btn-secondary">취소</a>
   <br><br><br>
 </div>
 
 
 </form>
+
               </div>
             </div>
           </div>

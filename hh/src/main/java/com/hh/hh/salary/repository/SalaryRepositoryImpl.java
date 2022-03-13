@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hh.hh.member.entity.MemberDto;
+import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
 
@@ -55,6 +56,22 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 	@Override
 	public int searchPayslip(PayrollDto dto) throws NullPointerException {
 		return ss.selectOne("salary.searchPayslip", dto);
+	}
+	
+	@Override
+	public int input(InputDto dto) throws Exception {
+		int result = ss.insert("salary.insertPayroll", dto);
+		return result;
+	}
+	
+	@Override
+	public List<InputDto> selectEmpList() {
+		return ss.selectList("salary.selectAllEmpPayroll");
+	}
+	
+	@Override
+	public List<InputDto> selectPayrollList() {
+		return ss.selectList("salary.selectOneByEmpPayroll");
 	}
 
 }
