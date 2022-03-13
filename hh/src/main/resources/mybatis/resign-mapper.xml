@@ -2,8 +2,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="resign">
-  
 
-  </mapper>
+<mapper namespace="resign">
+	<select id="getResignList" resultType="resignDto">
+		SELECT E.EMP_NO AS RE_NO,
+		E.EMP_NAME AS RE_NAME,
+		E.EMP_DEPTNO AS RE_DEPT,
+		E.EMP_JOBCODE AS RE_RANK,
+		E.EMP_ADDRESS AS RE_ADDRESS,
+		R.HIRE_DATE AS RE_HIRE_DATE,
+		R.RESIGN_DATE AS RE_RESIGN_DATE,
+		R.TOTAL_WORK AS RE_TOTAL_WORK
+		FROM EMP E , RESIGN R
+		WHERE E.RESIGN_YN='Y' AND E.EMP_NO= R.RESIGN_NO;
+
+	</select>
+
+
+</mapper>
