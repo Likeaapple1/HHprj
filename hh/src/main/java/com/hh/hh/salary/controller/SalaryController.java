@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hh.hh.member.entity.MemberDto;
-import com.hh.hh.notice.entity.NoticeDto;
+import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
 import com.hh.hh.salary.service.SalaryService;
@@ -57,11 +57,11 @@ public class SalaryController {
 	// 급여명세서 페이지 이동
 	@GetMapping("/payslip")
 	public ModelAndView payslip(ModelAndView mv, HttpSession session) {
-		
+
 		MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
 		long empNo = loginUser.getEmpNo();
 		List<PayrollDto> list = service.selectListOne(empNo);
-		
+
 		// model
 		mv.addObject("list", list);
 		// view
@@ -80,14 +80,13 @@ public class SalaryController {
 		model.addAttribute("data", dto);
 		return "salary/payslip";
 	}
-	
+
 	// 급여명세서 월별검색
 	@PostMapping("/payslip")
-	public String payslip(PayrollDto dto) throws NullPointerException{
+	public String payslip(PayrollDto dto) throws NullPointerException {
 		System.out.println("=====================출력" + dto);
-		
+
 		int result = service.searchPayslip(dto);
-		
 
 		if (result > 0) {
 			// success
@@ -96,13 +95,12 @@ public class SalaryController {
 			// fail
 			return "salary/error";
 		}
-		
+
 	}
 
 	@GetMapping("/setting")
 	public ModelAndView setting(ModelAndView mv) {
 
-		// 디비 가서 가져오고,
 		List<SalaryDto> list = service.selectListS();
 
 		// model
@@ -116,46 +114,18 @@ public class SalaryController {
 
 	// 급여설정 수정
 	@PostMapping("setting")
-	public String setting(SalaryDto dto) {
-		// dto 가지고 처리 ~~~
+	public String setting(SalaryDto dto, HttpServletRequest req) throws Exception {
+		// dto 가지고 처리
 		int result = service.setting(dto);
 
 		if (result > 0) {
 			// success
-			
 			return "redirect:/salary/setting";
 		} else {
 			// fail
-			
 			return "salary/error";
 		}
 	}
-
-	// 급상여입력 조회
-	@GetMapping("/input")
-	public String input(Model model, String type, String value) {
-
-		Map<String, Object> map = new HashMap<>();
-
-		// 검색
-		List<MemberDto> memberList = ss.selectList("salary.selectAllEmp", map);
-
-		// 화면에 전달해주기
-		model.addAttribute("memberList", memberList);
-
-		return "salary/salary_input";
-	}
-	
-	// 급상여입력 사원상세조회
-//	@GetMapping("/input/{m}")
-//	public String input(@PathVariable String m, Model model) {
-//
-//		PayrollDto dto = ss.selectOne("salary.selectOneByPayroll(사원상세조회)", m);
-//
-//		model.addAttribute("data", dto);
-//		return "salary/salary_input";
-//	}
-	
 
 	@GetMapping("/email")
 	public ModelAndView email(ModelAndView mv) {
@@ -171,16 +141,72 @@ public class SalaryController {
 		return mv;
 	}
 
-	// 상세 페이지 조회
-//		@GetMapping("/input2/{e}")
-//		public String input2(@PathVariable String e, Model model) {
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+		//급상여입력 payroll 등록
+		@PostMapping("/input/{temp}")
+		public String input(InputDto dto, @PathVariable String temp) {
+			
+			System.out.println("=== 출력" + temp);
+			
+			int result = 0;
+			try {
+				result = service.enrollPayroll(dto);
+			}catch(Exception e) {
+				return "salary/error";
+			}
+			
+			if(result > 0) {
+				return "redirect:/salary/input"; 
+			}else {
+				return "salary/error";
+			}
+		}
+		
+		//급상여입력 전체사원조회 + 사원 한명 급여조회
+		@GetMapping(value = {"/input", "/input/{p}"})
+		public ModelAndView input(ModelAndView mv, @PathVariable(required = false) String p, Model model) {
+
+			List<InputDto> list = service.selectEmpList();
+
+			// model
+			mv.addObject("list", list);
+			// view
+			mv.setViewName("salary/salary_input");
+			
+			InputDto dto = ss.selectOne("salary.selectOneByEmpPayroll", p);
+			
+			model.addAttribute("data", dto);
+			
+			// view 선택
+			return mv;
+		}
+		
+		// 급상여입력 사원 급여조회
+//		@GetMapping("/input")
+//		public String input(@PathVariable String p, Model model) {
 //			
-//			System.out.println(e);
+//			System.out.println(p);
 //			
-//			PayrollDto dto = ss.selectOne("salary.selectOneByEmp", e);
+//			InputDto dto = ss.selectOne("salary.selectOneByEmpPayroll", p);
 //			
 //			model.addAttribute("data", dto);
-//			return "notice/salary_input2";
+//			
+//			return "salary/salary_input";
 //		}
+	
+		
+
 
 }

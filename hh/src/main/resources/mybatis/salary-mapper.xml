@@ -4,61 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="salary">
-
-		<insert id="input" parameterType="payrollDto">
-			INSERT INTO PAYROLL
-			(
-				EMP_NO,
-				PAYROLL_NO,
-				BASIC_SALARY,
-				OVERTIME_ALLOWANCE,
-				HOLIDAY_ALLOWANCE,
-				ANNUAL_LEAVE_ALLOWANCE,
-				MEAL_EXPENSES,
-				TRANSPORTATION_EXPENSES,
-				BONUS,
-				SPECIAL_ALLOWANCE,
-				EMPLOYMENT_INSURANCE,
-				HEALTH_INSURANCE,
-				NATIONAL_PENSION,
-				TAX,
-				LOCAL_INCOME_TAX,
-				PAYROLL_BANK,
-				PAYROLL_ACCOUNT,
-				PAYROLL_DATE
-			)
-			VALUES
-			(
-				  #{empNo}
-				, PAYROLL_NO_SEQ.NEXTVAL
-				<!--, SALARY.BASIC_SALARY * 20  -->
-				, #{overtimeAllowance}
-				, #{holidayAllowance}
-				, #{annualLeaveAllowance}
-				<!--, (SELECT MEAL_EXPENSES FROM SALARY WHERE EMP_NO = #{empNo}) * 20  -->
-				<!--, SALARY.TRANSPORTATION_EXPENSES * 20  -->
-				, #{bonus}
-				, #{specialAllowance}
-				, #{employmentInsurance}<!--  -->
-				, #{healthInsurance}<!--  -->
-				, #{nationalPension}<!--  -->
-				, #{tax}
-				, #{localIncomeTax}<!--  -->
-				<!--, SALARY.PAYROLL_BANK -->
-				<!--, SALARY.PAYROLL_ACCOUNT -->
-				, SYSDATE
-			)
-		</insert>
 		
 		<select id="selectAllPayroll" parameterType="int" resultType="payrollDto">
 			SELECT *
-            FROM PAYROLL, EMP
-            WHERE PAYROLL.EMP_NO = EMP.EMP_NO
+            FROM PAYROLL_PAYSLIP, EMP
+            WHERE PAYROLL_PAYSLIP.EMP_NO = EMP.EMP_NO
 		</select>
 		
 		<select id="selectAllPayrollByEmpNo" parameterType="long" resultType="payrollDto">
 			SELECT
-			PAYROLL.EMP_NO AS empNo,
+			PAYROLL_PAYSLIP.EMP_NO AS empNo,
 			PAYROLL_NO,
 			BASIC_SALARY,
 			OVERTIME_ALLOWANCE,
@@ -113,14 +68,14 @@
 			EMP_NAME,
 			EMP_JOBCODE
 			
-			FROM PAYROLL, EMP
-            WHERE PAYROLL.EMP_NO = EMP.EMP_NO
-            AND PAYROLL.EMP_NO = #{empNo}
+			FROM PAYROLL_PAYSLIP, EMP
+            WHERE PAYROLL_PAYSLIP.EMP_NO = EMP.EMP_NO
+            AND PAYROLL_PAYSLIP.EMP_NO = #{empNo}
 		</select>
 		
 		<select id="selectOneByPayroll" parameterType="string" resultType="payrollDto">
 			SELECT
-			PAYROLL.EMP_NO AS empNo,
+			PAYROLL_PAYSLIP.EMP_NO AS empNo,
 			PAYROLL_NO,
 			BASIC_SALARY,
 			OVERTIME_ALLOWANCE,
@@ -176,9 +131,9 @@
 			EMP_JOBCODE,
 			DEPT_NAME
 			
-			FROM PAYROLL, EMP, DEPT
-			WHERE PAYROLL.EMP_NO = EMP.EMP_NO AND EMP.EMP_NO = DEPT.EMP_NO
-			AND PAYROLL.PAYROLL_NO = #{payrollNo}
+			FROM PAYROLL_PAYSLIP, EMP, DEPT
+			WHERE PAYROLL_PAYSLIP.EMP_NO = EMP.EMP_NO AND EMP.EMP_NO = DEPT.EMP_NO
+			AND PAYROLL_PAYSLIP.PAYROLL_NO = #{payrollNo}
 		</select>
 		
 		
@@ -192,12 +147,7 @@
 		</select>
 		
 
-		
-<!-- 		<select id="selectOneBySalarySetting" parameterType="string" resultType="payrollDto">
-			SELECT *
-			FROM SALARY
-			WHERE EMP_NO = 101
-		</select> -->
+	
 		
 		<update id="setting" parameterType="salaryDto">
 			UPDATE SALARY
@@ -214,51 +164,7 @@
 			WHERE PAYROLL_DATE = #{payrollDate}
 		</delete> -->
 		
-		<select id="selectAllEmp" resultType="emailDto">
-			SELECT 
-			PAYROLL.EMP_NO AS PEN,
-			PAYROLL.BASIC_SALARY AS PBS,
-			
-			(BASIC_SALARY +
-			OVERTIME_ALLOWANCE +
-			HOLIDAY_ALLOWANCE +
-			ANNUAL_LEAVE_ALLOWANCE +
-			MEAL_EXPENSES +
-			TRANSPORTATION_EXPENSES +
-			BONUS +
-			SPECIAL_ALLOWANCE) AS PTS,
-			
-			((BASIC_SALARY +
-			OVERTIME_ALLOWANCE +
-			HOLIDAY_ALLOWANCE +
-			ANNUAL_LEAVE_ALLOWANCE +
-			MEAL_EXPENSES +
-			TRANSPORTATION_EXPENSES +
-			BONUS +
-			SPECIAL_ALLOWANCE) -
-			(EMPLOYMENT_INSURANCE +
-			HEALTH_INSURANCE +
-			NATIONAL_PENSION +
-			TAX +
-			LOCAL_INCOME_TAX)) AS PNS,
-			
-			(EMPLOYMENT_INSURANCE +
-			HEALTH_INSURANCE +
-			NATIONAL_PENSION +
-			TAX +
-			LOCAL_INCOME_TAX) AS ehntl,
-			
-			PAYROLL.PAYROLL_BANK AS PPB,
-			PAYROLL.PAYROLL_ACCOUNT AS PPA,
-			PAYROLL.PAYROLL_DATE AS PPD,
-			EMP.EMP_NO AS EEN,
-			EMP.EMP_NAME AS EENAME,
-			EMP.EMP_EMAIL AS EEE,
-			EMP.EMP_JOBCODE AS EEJ,
-			DEPT.DEPT_NAME AS EMD
-			FROM PAYROLL, EMP, DEPT
-			WHERE PAYROLL.EMP_NO = EMP.EMP_NO AND DEPT.EMP_NO = EMP.EMP_NO
-		</select>
+		
 		
 		<select id="selectOneByEmp" parameterType="string" resultType="payrollDto">
 		SELECT
@@ -314,14 +220,14 @@
 			HEALTH_INSURANCE +
 			NATIONAL_PENSION) AS fourMajorInsurances
 			
-			FROM PAYROLL
+			FROM PAYROLL_PAYSLIP
 			WHERE EMP_NO = #{empNo}
 		</select>
 
 		<select id="selectEmail" parameterType="string" resultType="emailDto">
 			SELECT 
-			PAYROLL.EMP_NO AS PEN,
-			PAYROLL.BASIC_SALARY AS PBS,
+			PAYROLL_PAYSLIP.EMP_NO AS PEN,
+			PAYROLL_PAYSLIP.BASIC_SALARY AS PBS,
 			
 			(BASIC_SALARY +
 			OVERTIME_ALLOWANCE +
@@ -352,16 +258,17 @@
 			TAX +
 			LOCAL_INCOME_TAX) AS ehntl,
 			
-			PAYROLL.PAYROLL_BANK AS PPB,
-			PAYROLL.PAYROLL_ACCOUNT AS PPA,
-			PAYROLL.PAYROLL_DATE AS PPD,
+			PAYROLL_PAYSLIP.PAYROLL_BANK AS PPB,
+			PAYROLL_PAYSLIP.PAYROLL_ACCOUNT AS PPA,
+			PAYROLL_PAYSLIP.PAYROLL_DATE AS PPD,
 			EMP.EMP_NO AS EEN,
 			EMP.EMP_NAME AS EENAME,
 			EMP.EMP_EMAIL AS EEE,
 			EMP.EMP_JOBCODE AS EEJ,
 			DEPT.DEPT_NAME AS EMD
-			FROM PAYROLL, EMP, DEPT
-			WHERE PAYROLL.EMP_NO = EMP.EMP_NO AND DEPT.EMP_NO = EMP.EMP_NO
+			FROM PAYROLL_PAYSLIP, EMP, DEPT
+			WHERE PAYROLL_PAYSLIP.EMP_NO = EMP.EMP_NO AND DEPT.EMP_NO = EMP.EMP_NO
+			ORDER BY PPD DESC
 		</select>
 		
 		<select id="searchPayslip" resultType="payrollDto">
@@ -418,31 +325,34 @@
 			HEALTH_INSURANCE +
 			NATIONAL_PENSION) AS fourMajorInsurances
 			
-			FROM PAYROLL
+			FROM PAYROLL_PAYSLIP
 			WHERE EMP_NO = #{empNo}
-			AND PAYROLL_DATE LIKE #{month}
+			AND PAYROLL_DATE LIKE '#{month}-%'
 		</select>
 		
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		<!-- Input 사원 한명의 Payroll 조회 -->
-		<select id="searchOneByEmpPayroll">
+
+
+
+
+
+
+
+
+		<!-- 모든 사원 조회 -->
+		<select id="selectAllEmpPayroll" resultType="inputDto">
 			SELECT
-				PAYROLL.EMP_NO AS empNo,
+				EMP.EMP_NO AS empNo,
 				PAYROLL_NO,
 				BASIC_SALARY,
 				OVERTIME_ALLOWANCE,
 				HOLIDAY_ALLOWANCE,
 				ANNUAL_LEAVE_ALLOWANCE,
-				MEAL_EXPENSES,
-				TRANSPORTATION_EXPENSES,
+				PAYROLL.MEAL_EXPENSES AS MEAL_EXPENSES,
+				PAYROLL.TRANSPORTATION_EXPENSES AS TRANSPORTATION_EXPENSES,
 				BONUS,
 				SPECIAL_ALLOWANCE,
 				EMPLOYMENT_INSURANCE,
@@ -450,16 +360,16 @@
 				NATIONAL_PENSION,
 				TAX,
 				LOCAL_INCOME_TAX,
-				PAYROLL_BANK,
-				PAYROLL_ACCOUNT,
+				PAYROLL.PAYROLL_BANK AS PAYROLL_BANK,
+				PAYROLL.PAYROLL_ACCOUNT AS PAYROLL_ACCOUNT,
 				PAYROLL_DATE,
 				
 				(BASIC_SALARY +
 				OVERTIME_ALLOWANCE +
 				HOLIDAY_ALLOWANCE +
 				ANNUAL_LEAVE_ALLOWANCE +
-				MEAL_EXPENSES +
-				TRANSPORTATION_EXPENSES +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
 				BONUS +
 				SPECIAL_ALLOWANCE) AS totalSalary ,
 				
@@ -467,8 +377,8 @@
 				OVERTIME_ALLOWANCE +
 				HOLIDAY_ALLOWANCE +
 				ANNUAL_LEAVE_ALLOWANCE +
-				MEAL_EXPENSES +
-				TRANSPORTATION_EXPENSES +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
 				BONUS +
 				SPECIAL_ALLOWANCE) -
 				(EMPLOYMENT_INSURANCE +
@@ -501,12 +411,124 @@
 				
 			FROM EMP, DEPT, PAYROLL, SALARY
 			WHERE EMP.EMP_NO = DEPT.EMP_NO AND EMP.EMP_NO = PAYROLL.EMP_NO AND EMP.EMP_NO = SALARY.EMP_NO
-			AND PAYROLL.EMP_NO = #{empNo}
+		</select>
+		
+		<!-- Input 사원 한명의 Payroll 조회 -->
+		<select id="selectOneByEmpPayroll" resultType="inputDto">
+			SELECT
+				PAYROLL.EMP_NO AS empNo,
+				PAYROLL_NO,
+				BASIC_SALARY,
+				OVERTIME_ALLOWANCE,
+				HOLIDAY_ALLOWANCE,
+				(SALARY.REGULAR_HOURLY_WAGE * 0<!-- 미사용연차 -->) AS ANNUAL_LEAVE_ALLOWANCE,
+				(SALARY.MEAL_EXPENSES * 20<!-- 근무일수 -->) AS MEAL_EXPENSES,
+				(SALARY.TRANSPORTATION_EXPENSES * 20<!-- 근무일수 -->) AS TRANSPORTATION_EXPENSES,
+				BONUS,
+				SPECIAL_ALLOWANCE,
+				
+				(BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) * 0.008 AS EMPLOYMENT_INSURANCE,
+				(BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) * 0.03495 AS HEALTH_INSURANCE,
+				(BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) * 0.045 AS NATIONAL_PENSION,
+				
+				(BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) * 0.01 AS TAX,
+				((BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) * 0.01) * 0.1 AS LOCAL_INCOME_TAX,
+				
+				PAYROLL.PAYROLL_BANK AS PAYROLL_BANK,
+				PAYROLL.PAYROLL_ACCOUNT AS PAYROLL_ACCOUNT,
+				PAYROLL_DATE,
+				
+				(BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) AS totalSalary ,
+				
+				((BASIC_SALARY +
+				OVERTIME_ALLOWANCE +
+				HOLIDAY_ALLOWANCE +
+				ANNUAL_LEAVE_ALLOWANCE +
+				PAYROLL.MEAL_EXPENSES +
+				PAYROLL.TRANSPORTATION_EXPENSES +
+				BONUS +
+				SPECIAL_ALLOWANCE) -
+				(EMPLOYMENT_INSURANCE +
+				HEALTH_INSURANCE +
+				NATIONAL_PENSION +
+				TAX +
+				LOCAL_INCOME_TAX)) AS netSalary ,
+				
+				(EMPLOYMENT_INSURANCE +
+				HEALTH_INSURANCE +
+				NATIONAL_PENSION +
+				TAX +
+				LOCAL_INCOME_TAX) AS ehntl ,
+				
+				(EMPLOYMENT_INSURANCE +
+				HEALTH_INSURANCE +
+				NATIONAL_PENSION) AS fourMajorInsurances ,
+				
+				EMP_NAME,
+				EMP_JOBCODE,
+				DEPT_NAME,
+				
+				SALARY.REGULAR_HOURLY_WAGE AS REGULAR_HOURLY_WAGE_S,
+				(SALARY.REGULAR_HOURLY_WAGE * 8 * 20<!-- 근무시간 -->) * 1.2 AS BASIC_SALARY_S,
+				(SALARY.REGULAR_HOURLY_WAGE * 0<!-- 추가근무시간 -->) * 1.5 AS OVERTIME_ALLOWANCE_S,
+				(SALARY.REGULAR_HOURLY_WAGE * 0<!-- 휴일근무시간 -->) * 1.5 AS HOLIDAY_ALLOWANCE_S,
+				SALARY.LONG_SERVICE_DAY AS LONG_SERVICE_DAY_S,
+				SALARY.LONG_SERVICE_ALLOWANCE AS LONG_SERVICE_ALLOWANCE_S,
+				SALARY.MEAL_EXPENSES AS MEAL_EXPENSES_S,
+				SALARY.TRANSPORTATION_EXPENSES AS TRANSPORTATION_EXPENSES_S,
+				SALARY.PAYROLL_BANK AS PAYROLL_BANK_S,
+				SALARY.PAYROLL_ACCOUNT AS PAYROLL_ACCOUNT_S
+				
+			FROM EMP, DEPT, PAYROLL, SALARY
+			WHERE EMP.EMP_NO = DEPT.EMP_NO AND EMP.EMP_NO = PAYROLL.EMP_NO AND EMP.EMP_NO = SALARY.EMP_NO
+			AND PAYROLL.PAYROLL_NO = #{payrollNo}
 		</select>
 		
 		<!-- Payroll 추가 -->
 		<insert id="insertPayroll">
-			INSERT INTO PAYROLL (
+			INSERT INTO PAYROLL_PAYSLIP (
 				EMP_NO,
 				PAYROLL_NO,
 				BASIC_SALARY,
@@ -530,21 +552,21 @@
 			(
 				  #{empNo}
 				, PAYROLL_NO_SEQ.NEXTVAL
-				<!--, #{basicSalaryS} * 20  -->
+				, #{basicSalary}
 				, #{overtimeAllowance}
 				, #{holidayAllowance}
 				, #{annualLeaveAllowance}
-				<!--, (SELECT MEAL_EXPENSES FROM SALARY WHERE EMP_NO = #{empNo}) * 20  -->
-				<!--, SALARY.TRANSPORTATION_EXPENSES * 20  -->
+				, #{mealExpenses}
+				, #{transportationExpenses}
 				, #{bonus}
 				, #{specialAllowance}
-				, #{employmentInsurance}<!-- ((#{basicSalaryS} * 20)+(#{overtimeAllowance}) * 0.8 -->
-				, #{healthInsurance}<!--  -->
-				, #{nationalPension}<!--  -->
+				, #{employmentInsurance}
+				, #{healthInsurance}
+				, #{nationalPension}
 				, #{tax}
-				, #{localIncomeTax}<!--  -->
-				<!--, SALARY.PAYROLL_BANK -->
-				<!--, SALARY.PAYROLL_ACCOUNT -->
+				, #{localIncomeTax}
+				, #{payrollBank}
+				, #{payrollAccount}
 				, SYSDATE
 			)
 		</insert>

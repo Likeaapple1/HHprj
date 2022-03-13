@@ -9,6 +9,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="ko">
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <style>
     .tb_salary1 {
       font-size: 10pt;
@@ -338,14 +340,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div></td>
     <td><div class="right">
     	<input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/detail2/${data.noticeNo}">
-	  　<input class="btn btn-secondary" type="submit" value="삭제" formaction="<%=request.getContextPath()%>/notice/delete">
+	  　<button onclick="del();" class="btn btn-secondary" type="submit" formaction="<%=request.getContextPath()%>/notice/delete">삭제</button>
     </div>
 
   </tr>
 </table>
 </form>
 
+<script type="text/javascript">
 
+function del(){
+	
+	return confirm("진짜 작성?");
+	
+	}
+	
+</script>
 
 
 

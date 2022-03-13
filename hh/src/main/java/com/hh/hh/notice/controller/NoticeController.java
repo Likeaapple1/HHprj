@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hh.hh.notice.entity.NoticeDto;
+import com.hh.hh.notice.entity.PageVo;
 import com.hh.hh.notice.service.NoticeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -49,26 +50,48 @@ public class NoticeController {
 		if(result > 0) {
 			return "redirect:/notice/list"; 
 		}else {
-			return "notice/error"; //컨트롤러 만들기
+			return "notice/error";
 		}
 	}
 	
 	//게시글 목록 조회
-	@GetMapping("/list")
-	public ModelAndView list(ModelAndView mv) {
+//	@GetMapping("/list")
+//	public ModelAndView list(ModelAndView mv) {
+//		
+//		// DB에서 가져오기
+//		List<NoticeDto> list = service.selectList();
+//		
+//		// model
+//		mv.addObject("list", list);
+//		// view
+//		mv.setViewName("notice/list");
+//		
+//		// view 선택
+//		return mv;
+//	}
+	
+	
+	
+	
+	@GetMapping(value = {"/list/{page}", "/list"})
+	public String list(Model model, @PathVariable(required = false) String page) throws Exception {
+		if(page == null) {
+			return "redirect:list/1";
+		}
 		
-		// DB에서 가져오기
-		List<NoticeDto> list = service.selectList();
+		int cntPerPage = 10;
+		int pageBtnCnt = 5;
+		int totalRow = service.getNoticeCnt();
+		PageVo vo = new PageVo(page, cntPerPage, pageBtnCnt, totalRow);
 		
-		
-		// model
-		mv.addObject("list", list);
-		// view
-		mv.setViewName("notice/list");
-		
-		// view 선택
-		return mv;
+		List<NoticeDto> list = service.getNoticeList(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("page", vo);
+		return "notice/list";
 	}
+	
+	
+	
 	
 	//상세 페이지 조회
 	@GetMapping("/detail/{t}")
@@ -108,7 +131,7 @@ public class NoticeController {
 		}
 	}
 	
-	//상세페이지 에서 삭제
+	//상세페이지에서 삭제
 	@PostMapping("/delete")
 	public String delete(NoticeDto dto) {
 
@@ -123,6 +146,7 @@ public class NoticeController {
 		}
 	}
 	
+	// 목록에서 체크박스로 삭제
 	@PostMapping("deleteCheckbox")
 	@ResponseBody
 	public String deleteCheckbox(String noList) throws Exception {
@@ -132,7 +156,7 @@ public class NoticeController {
 		
 		int result = service.deleteCheckbox(noList);
 		
-		log.warn("건드린 row 갯수 : {}" , result);
+		log.warn("건드린 row 개수 : {}" , result);
 		if(result == noList.length()/2) {
 			return "redirect:/notice/list";
 		}else {

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hh.hh.notice.entity.NoticeDto;
+import com.hh.hh.notice.entity.PageVo;
 
 @Repository
 public class NoticeRepositoryImpl implements NoticeRepository {
@@ -20,10 +21,10 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 		return result;
 	}
 
-	@Override
-	public List<NoticeDto> selectList() {
-		return ss.selectList("notice.selectAll");
-	}
+//	@Override
+//	public List<NoticeDto> selectList() {
+//		return ss.selectList("notice.selectAll");
+//	}
 
 	@Override
 	public int edit(NoticeDto dto) {
@@ -38,6 +39,16 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	@Override
 	public int deleteCheckbox(String[] delArr) throws Exception {
 		return ss.delete("notice.deleteCheckbox" , delArr);
+	}
+	
+	@Override
+	public List<NoticeDto> getNoticeList(PageVo vo) throws Exception {
+		return ss.selectList("notice.getNoticeList", vo);
+	}
+
+	@Override
+	public int getNoticeCnt() throws Exception {
+		return ss.selectOne("notice.getNoticeCnt");
 	}
 
 }

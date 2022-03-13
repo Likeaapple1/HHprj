@@ -9,6 +9,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="ko">
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <style>
     .center {
       margin: auto;
@@ -341,7 +343,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					<tr>
 						<td><input type="checkbox" class="checkbox-del" value="${b.noticeNo}"></td>
 						<td>${b.noticeNo}</td>
-						<td><b><a style="font-size: 12pt; color: black; text-decoration: none;" href="detail/${b.noticeNo}">${b.title}</a></b></td>
+						<td><b><a style="font-size: 12pt; color: black; text-decoration: none;" href="http://localhost:9999/hh/notice/detail/${b.noticeNo}">${b.title}</a></b></td>
 						<td>${b.writer}</td>
 						<td>${b.enrollDate}</td>
 					</tr>
@@ -353,7 +355,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        <!-- 페이지 start -->
+<table>
+<tr>
+<td>
+		<!-- 페이지 start -->
 		<br><br>
 		<c:if test="${page.startPage != 1}"> <a href="${page.startPage - 1}">이전</a> </c:if>
 		<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
@@ -363,6 +368,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		</c:forEach>
 		<c:if test="${page.endPage < page.lastPage }"> <a href="${page.endPage + 1}">다음</a> </c:if>
 		<!-- 페이지 end -->
+</td>
+</tr>
+</table>
 
 
 
@@ -406,83 +414,72 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		
 		//삭제하기 버튼 눌렀을 때
 		function del(){
-			//삭제할 번호들 가져오기
-			let checkBoxList = $(".checkbox-del");
 			
-			let result = "";
-			
-			for(let i = 0 ; i < checkBoxList.length; ++i){
-				if(checkBoxList[i].checked == true){
-					console.log(checkBoxList[i].value);
-					result += checkBoxList[i].value + ",";
-				}
-			}
-			
-			//가져온 번호들을 ,,, 하나의 문자열로 합치기
-			/* let result = "";
-			let delArr = document.getElementsByClassName('checkbox-del');
-			
-			for(let i = 0 ; i < delArr.length; ++i){
-				let t = delArr[i];
-				if(t.checked){
-					//console.log(t.parentNode.parentNode.children[1].innerText);
-					console.log(t.value);
-					result += t.value +',';
-				}
-			} */
-			
-			
-			// 삭제 요청 보내기 (삭제할 번호들 전달해주면서)
+			var alert = function(msg, type) {
+		        swal({
+		            title : '',
+		            text : msg,
+		            type : type,
+		            timer : 1500,
+		            customClass : 'sweet-size',
+		            showConfirmButton : false
+		        });
+		    }
 
-			$.ajax({
-				url : "<%=request.getContextPath()%>/notice/deleteCheckbox" ,
-				data : { "noList" : result} ,
-				type : 'post' ,
-				success : function(data){
-					console.log(data);
-				},
-				error : function(e){
-					console.log(e);
-				}
-			});
-			
-			window.location.reload(); //새로고침
-		}
-		
-		
-		
-		<%-- //삭제하기 버튼 눌렀을 때
-		function del(){
-			//삭제할 번호들 가져오기
-			//가져온 번호들을 ,,, 하나의 문자열로 합치기
-			let result = "";
-			let delArr = document.getElementsByClassName('checkbox-del');
-			
-			for(let i = 0 ; i < delArr.length; ++i){
-				let t = delArr[i];
-				if(t.checked){
-					//console.log(t.parentNode.parentNode.children[1].innerText);
-					console.log(t.value);
-					result += t.value +',';
-				}
+		    var confirm = function(msg, title, resvNum) {
+		        swal({
+		            title : title,
+		            text : msg,
+		            /* type : "error", */
+		            showCancelButton : true,
+		            confirmButtonClass : "btn-danger",
+		            confirmButtonText : "예",
+		            cancelButtonText : "아니오",
+		            closeOnConfirm : false,
+		            closeOnCancel : true
+		        }, function(isConfirm) {
+		            if (isConfirm) {
+		               /*  swal('', '승인되었습니다.', "success"); */
+		               
+		            	//삭제할 번호들 가져오기
+						let checkBoxList = $(".checkbox-del");
+						
+						let result = "";
+						
+						for(let i = 0 ; i < checkBoxList.length; ++i){
+							if(checkBoxList[i].checked == true){
+								console.log(checkBoxList[i].value);
+								result += checkBoxList[i].value + ",";
+							}
+						}
+						
+					
+
+						$.ajax({
+							url : "<%=request.getContextPath()%>/notice/deleteCheckbox" ,
+							data : { "noList" : result} ,
+							type : 'post' ,
+							success : function(data){
+								console.log(data);
+							},
+							error : function(e){
+								console.log(e);
+							}
+						});
+						
+						window.location.reload(); //새로고침
+						window.location.reload(); //새로고침
+		            }else{
+		                /* swal('', '취소되었습니다.', "failed"); */
+		            }
+
+		        });
+		    }
+
+		        confirm('', '삭제하시겠습니까?');
+
 			}
-			
-			
-			// 삭제 요청 보내기 (삭제할 번호들 전달해주면서)
-			$.ajax({
-				url : "<%=request.getContextPath()%>/notice/delete",
-				data : {"str" : result},
-				type : 'post' ,
-				success : function(data){
-					console.log(data);
-				},
-				error : function(e){
-					console.log(e);
-				}
-			});
-			
-			window.location.reload();
-		}  --%>
+
 		
 	</script>
 

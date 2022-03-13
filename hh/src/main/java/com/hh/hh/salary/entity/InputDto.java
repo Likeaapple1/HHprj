@@ -32,6 +32,16 @@ public class InputDto {
 	private String deptName;
 	private String empName;
 	private String empJobcode;
-	private int ehntl; //공제합계
+	private int ehntl; //공제총액
+	private int regularHourlyWageS;
+	private int longServiceDayS;
+	private int longServiceAllowanceS;
+	private int mealExpensesS;
+	private int transportationExpensesS;
+	private String payrollBankS;
+	private String payrollAccountS;
+	private int basicSalaryS;
+	private int overtimeAllowanceS;
+	private int holidayAllowanceS;
 
 }

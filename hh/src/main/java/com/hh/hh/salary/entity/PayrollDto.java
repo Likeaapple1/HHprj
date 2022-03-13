@@ -33,6 +33,6 @@ public class PayrollDto {
 	private String empName;
 	private String empJobcode;
 	private Date month;
-	private int ehntl; //공제합계
+	private int ehntl; //공제총액
 
 }
