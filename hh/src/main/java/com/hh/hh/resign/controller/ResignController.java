@@ -1,29 +1,46 @@
 package com.hh.hh.resign.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.hh.hh.resign.entity.ResignDto;
+import com.hh.hh.resign.service.ResignService;
 
 @Controller
 @RequestMapping("resign")
 public class ResignController {
+	
+	@Autowired
+	private ResignService service;
 
 	//사원조회1조회
-	@GetMapping("resignhistory")
-	public String historyList()  {
+	@GetMapping("/history")
+	public String history(Model model) throws Exception{
 		
-		return "resign/resignhistory";
+		List<ResignDto> list=service.getResignList();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		
+		return "resign/history";
 	}
 	
-	@GetMapping("resigninput")
-	public String  resignInput() {
-		return "resign/resigninput";
+	
+	@GetMapping("input")
+	public String  input() {
+		return "resign/input";
 	}
 	
-	@GetMapping("resignreceipt")
-	public String  resignReceipt() {
-		return "resign/resignreceipt";
+	
+	@GetMapping("receipt")
+	public String  receipt() {
+		return "resign/recept";
 	}
+	
 
 	@GetMapping("totalresign")
 	public String  totalResign() {
