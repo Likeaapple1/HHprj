@@ -18,5 +18,45 @@ public class ApprDaoImpl implements ApprDao{
 	public List<ApprDto> getOrgList() throws Exception {
 		return ss.selectList("appr.getOrgList");
 	}
+
+	@Override
+	public ApprDto getPerson(ApprDto dto) {
+		return ss.selectOne("appr.getPerson", dto);
+	}
 	
+	@Override
+	public ApprDto getPerson1(ApprDto dto) {
+		return ss.selectOne("appr.getPerson1", dto);
+	}
+
+	@Override
+	public ApprDto getPerson2(ApprDto dto) {
+		return ss.selectOne("appr.getPerson2", dto);
+	}
+
+	@Override
+	public ApprDto getPerson3(ApprDto dto) {
+		return ss.selectOne("appr.getPerson3", dto);
+	}
+
+	@Override
+	public ApprDto getPerson4(ApprDto dto) {
+		return ss.selectOne("appr.getPerson4", dto);
+	}
+
+	@Override
+	public ApprDto getPerson5(ApprDto dto) {
+		return ss.selectOne("appr.getPerson5", dto);
+	}
+
+	@Override
+	public ApprDto getPerson6(ApprDto dto) {
+		return ss.selectOne("appr.getPerson6", dto);
+	}
+
+	@Override
+	public ApprDto getPerson7(ApprDto dto) {
+		return ss.selectOne("appr.getPerson7", dto);
+	}
+
 }
