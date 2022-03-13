@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd(E)");
+%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="ko">
@@ -375,19 +381,19 @@
                                     <tbody>
                                         <tr>
                                             <td class="td1">기안자</td>
-                                            <td class="td2">이훈희</td>
+                                            <td class="td2">${loginUser.empName}</td>
                                         </tr>
                                         <tr>
                                             <td class="td1">소속</td>
                                             <td class="td2">HH그룹</td>
                                         </tr>
                                         <tr>
-                                            <td class="td1">기안일</td>
-                                            <td class="td2">2022-02-27(일)</td>
+                                            <td class="td1">부서</td>
+                                            <td class="td2">${loginUser.managerDept}</td>
                                         </tr>
                                         <tr>
-                                            <td class="td1">문서번호</td>
-                                            <td class="td2"></td>
+                                            <td class="td1">기안일</td>
+                                            <td class="td2"><%=sf.format(nowTime) %></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -397,17 +403,65 @@
 						</tr>
                     </tbody>
                 </table>
+                <div class="form_table3">
+                    <div class="form_table3_tr_td1">
+                        결재
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person1.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person1.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person2.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person2.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person3.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person3.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td1" style="border-left: 0;">
+                        합의
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person4.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person4.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person5.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person5.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person6.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person6.empName}</div>
+                    </div>
+                    <div class="form_table3_tr_td2">
+                        <div class="form_table3_tr_td2_header">${person7.empjobCode}</div>
+                        <div class="form_table3_tr_td2_body"></div>
+                        <div class="form_table3_tr_td2_footer">${person7.empName}</div>
+                    </div>
+                </div>
                 <table class="form_table2">
                     <tbody>
                         <tr class="form_table2_tr1">
                             <td class="form_table2_tr1_td1">시행일자</td>
                             <td class="form_table2_tr1_td2"><input type="text" class="ipt_hasDatepicker" id="datepicker" readonly></td>
-                            <td class="form_table2_tr1_td1"></td>
+                            <td class="form_table2_tr1_td1">협조부서</td>
                             <td class="form_table2_tr1_td3"><input type="text"></td>
                         </tr>
                         <tr class="form_table2_tr2">
                             <td class="form_table2_tr2_td1">합의</td>
-                            <td class="form_table2_tr2_td2"><input type="text"></td>
+                            <td class="form_table2_tr2_td2"><input type="text" readonly></td>
                         </tr>
                         <tr class="form_table2_tr2">
                             <td class="form_table2_tr2_td1">제목</td>
@@ -447,7 +501,8 @@
     <div class="background">
         <div class="window">
             <div class="popup">
-                <p class="appr_form_text3" style="border-bottom: 3px solid #dcdcdc; padding-bottom: 5px;">결재자지정</p>
+                <p class="appr_form_text3" style="border-bottom: 3px solid #dcdcdc; padding-bottom: 5px;">
+지정</p>
                 <a id="go_popup_close_icon" class="btn_layer_x" style data-bypass title="닫기">
                     <span id="close"></span>
                 </a>
@@ -608,11 +663,15 @@
                         <div>
                             <table border="1" style="margin:auto;">
                                 <tbody class="parent1">
-                                    <tr>
+                                	<tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td class="listedName">3</td>
-                                        <td>4</td>
+                                        <td class="apprType_btn_group m0 p0">
+                                        	<input type="button" class="apprType_btn1" value="결재">
+                                        	<input type="button" class="apprType_btn2" value="합의">
+                                            <input type="hidden" name="apprType" value="결재">
+                                        </td>
                                         <td>
                                             <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">
                                                 <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
@@ -626,7 +685,8 @@
                 </div>
                 <div class="apprviewer">
                     <div class="apprviewer_top">
-                        <p class="appr_form_text1">열람자</p>
+                        <p class="appr_form_text1">합의자</p> 
+                        						<!-- 열람자 -->
                     </div>
                     <div class="apprviewer_bottom">
                         <table border="1" style="margin:auto;">
@@ -647,17 +707,6 @@
                         <div>
                             <table border="1" style="margin:auto;">
                                 <tbody class="parent2">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>
-                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">
-                                                <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
-                                            </span>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>	
                         </div>
@@ -699,14 +748,34 @@
                         <input type="text" placeholder="결재선 이름" style="margin-left: 10px;">
                     </div>
                     <div class="apprline_footer_right" style="float: right;">
-                        <a href="#" class="apprline_btn1">결재선 저장</a>
-                        <a href="#" class="apprline_btn2">결재선 불러오기</a>
+                        <button type="submit" class="apprline_btn1">결재선 저장</button>
+                        <button class="apprline_btn2">결재선 불러오기</button>
                         <a href="#" class="apprline_btn3">닫기</a>
                         <a href="#" class="apprline_btn4">확인</a>
                     </div>
                 </div>
             </div>
         <div>
+            <form action="" method="post" id="selectForm1">
+                <input type="hidden" name="empName">
+                <input type="hidden" name="empName1">
+                <input type="hidden" name="empName2">
+                <input type="hidden" name="empName3">
+                <input type="hidden" name="empName4">
+                <input type="hidden" name="empName5">
+                <input type="hidden" name="empName6">
+                <input type="hidden" name="empName7">
+            </form>
+            <form action="" method="post" id="insertForm1">
+                <input type="hidden" name="empName0">
+                <input type="hidden" name="empName10">
+                <input type="hidden" name="empName20">
+                <input type="hidden" name="empName30">
+                <input type="hidden" name="empName40">
+                <input type="hidden" name="empName50">
+                <input type="hidden" name="empName60">
+                <input type="hidden" name="empName70">
+            </form>
     <div>
 <!-- 결재자지정 팝업창 -->
 <!-- Control Sidebar -->
@@ -765,9 +834,9 @@
 <!-- datepicker -->
 <script>
     $("#datepicker").datepicker({
-    language: 'ko',
-    timepicker: true,
-    timeFormat: "hh:ii AA"
+    language: 'ko'
+    /* ,timepicker: true, */
+    /* timeFormat: "hh:ii AA" */
 });
 </script>
 
@@ -782,8 +851,66 @@
 	document.querySelector("#show").addEventListener('click', show);
 	document.querySelector("#close").addEventListener('click', close);
 	document.querySelector(".apprline_btn3").addEventListener('click', close);
+	document.querySelector(".apprline_btn4").addEventListener('click', close);
+    $("#show").click(function(){
+        document.getElementsByClassName('apprType_btn1').focus();
+    })
+    /* 결재자지정 - 확인버튼 */
+    $(".apprline_btn4").click(function(){
+        var name = $(".listedName").eq(0).text();
+        var name1 = $(".listedName").eq(1).text();
+        var name2 = $(".listedName").eq(2).text();
+        var name3 = $(".listedName").eq(3).text();
+        var name4 = $(".listedName1").eq(0).text();
+        var name5 = $(".listedName1").eq(1).text();
+        var name6 = $(".listedName1").eq(2).text();
+        var name7 = $(".listedName1").eq(3).text();
+        $('input[name=empName]').attr('value', name);
+        $('input[name=empName1]').attr('value', name1);
+        $('input[name=empName2]').attr('value', name2);
+        $('input[name=empName3]').attr('value', name3);
+        $('input[name=empName4]').attr('value', name4);
+        $('input[name=empName5]').attr('value', name5);
+        $('input[name=empName6]').attr('value', name6);
+        $('input[name=empName7]').attr('value', name7);
+        $('#selectForm1').submit();
+    })
 </script>
-
+<!-- 결재선 저장 버튼 -->
+<script type="text/javascript">
+	$(".apprline_btn1").click(function(){
+	    var name = $(".listedName").eq(0).text();
+	    var name1 = $(".listedName").eq(1).text();
+	    var name2 = $(".listedName").eq(2).text();
+	    var name3 = $(".listedName").eq(3).text();
+	    var name4 = $(".listedName1").eq(0).text();
+	    var name5 = $(".listedName1").eq(1).text();
+	    var name6 = $(".listedName1").eq(2).text();
+	    var name7 = $(".listedName1").eq(3).text();
+	    $('input[name=empName0]').attr('value', name);
+	    $('input[name=empName10]').attr('value', name1);
+	    $('input[name=empName20]').attr('value', name2);
+	    $('input[name=empName30]').attr('value', name3);
+	    $('input[name=empName40]').attr('value', name4);
+	    $('input[name=empName50]').attr('value', name5);
+	    $('input[name=empName60]').attr('value', name6);
+	    $('input[name=empName70]').attr('value', name7);
+	    $('#insertForm1').submit();
+	})
+</script>
+<script>
+    
+    $(".apprType_btn1").click(function(){
+        var apprType = $(this).val();
+        $('input[name=apprType').attr('value', apprType);
+        console.log($('input[name=apprType').val());
+    })
+    $(".apprType_btn2").click(function(){
+        var apprType = $(this).val();
+        $('input[name=apprType').attr('value', apprType);
+        console.log($('input[name=apprType').val());
+    })
+</script>
 <!-- 조직도 토글 이벤트 -->
 <script>
     $('#main_menu > li > ins').click(function(){
@@ -837,7 +964,11 @@ $(userInfoList).each(function(idx, element){
             innerHtml += '<td>' + t.nextSibling.nextSibling.innerText +'</td>';
             innerHtml += '<td>' + t.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
             innerHtml += '<td class="listedName">' + t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
-            innerHtml += '<td>4</td>';
+            innerHtml += '<td class="apprType_btn_group m0 p0">';
+            innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
+            innerHtml += '<input type="button" class="apprType_btn2" value="합의" disabled> ';
+            innerHtml += '<input type="hidden" name="apprType" value="결재">';
+            innerHtml += '</td>';
             innerHtml += '<td>';
             innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
             innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
@@ -854,8 +985,12 @@ $(userInfoList).each(function(idx, element){
             innerHtml += '<tr>';
             innerHtml += '<td>' + t.nextSibling.nextSibling.innerText +'</td>';
             innerHtml += '<td>' + t.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
-            innerHtml += '<td>' + t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
-            innerHtml += '<td>4</td>';
+            innerHtml += '<td class="listedName1">' + t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText +'</td>';
+            innerHtml += '<td class="apprType_btn_group m0 p0">';
+            innerHtml += '<input type="button" class="apprType_btn1" value="열람" disabled> ';
+            innerHtml += '<input type="button" class="apprType_btn2" value="참조" disabled> ';
+            innerHtml += '<input type="hidden" name="apprType" value="결재">';
+            innerHtml += '</td>';
             innerHtml += '<td>';
             innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
             innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';

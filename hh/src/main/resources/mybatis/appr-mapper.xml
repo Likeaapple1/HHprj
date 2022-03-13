@@ -8,4 +8,52 @@
 		SELECT * 
 		FROM EMP
 	</select>
+	
+	<select id="getPerson" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName}
+	</select>
+	
+	<select id="getPerson1" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName1}
+	</select>
+	
+	<select id="getPerson2" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName2}
+	</select>
+	
+	<select id="getPerson3" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName3}
+	</select>
+	
+	<select id="getPerson4" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName4}
+	</select>
+	
+	<select id="getPerson5" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName5}
+	</select>
+	
+	<select id="getPerson6" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName6}
+	</select>
+	
+	<select id="getPerson7" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{empName7}
+	</select>
 </mapper>
