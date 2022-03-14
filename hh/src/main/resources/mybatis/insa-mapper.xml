@@ -4,11 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="emp">
+  <!-- 회원목록  -->
 	<select id="getEmp" parameterType="empDto" resultType="empDto">
 		SELECT *
 		FROM EMP
 	</select>
 	
+<!-- 회원등록 -->
 	<insert id="insertEmp" parameterType="empDto">
 		INSERT INTO EMP
 		(
@@ -49,7 +51,16 @@
 			,#{empphotoName}
 		)
 	</insert>
-	
+
+<!-- 회원정보 상세조회 -->
+	<!-- <select id="viewEmp" resultType="empDto">
+	SELECT
+		
+	</select>
+ -->
+
+
+
 	<select id="getgetEmp" parameterType="empDto" resultType="empDto">
 		SELECT *
 		FROM EMP E

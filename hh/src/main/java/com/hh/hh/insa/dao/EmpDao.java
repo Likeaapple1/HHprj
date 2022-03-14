@@ -11,5 +11,7 @@ public interface EmpDao {
 	int join(EmpDto empdto, HttpServletRequest req)throws Exception;
 
 	List<EmpDto> getOrjList()throws Exception;
+
+//	EmpDto viewEmp(String empNo);
 	
 }

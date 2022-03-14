@@ -33,6 +33,9 @@
 			 		주민등록번호 <input type="text" name="empBirth" class="form-control"  value = "${empBirth}">
 			 	</div>
 			 	<div class="form-group">
+			 		사원번호 <input type="text" name="empNo" class="form-control"  value = "${empNo}">
+			 	</div>
+			 	<div class="form-group">
 			 		비밀번호 <input type="password" name="empPassword" class="form-control"  required value = "${empPassword}">
 			 	</div>
 			 	<div class="form-group">
