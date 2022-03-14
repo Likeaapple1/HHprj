@@ -9,6 +9,7 @@ import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
+import com.hh.hh.salary.entity.searchVo;
 import com.hh.hh.salary.repository.SalaryRepository;
 
 @Service
@@ -71,5 +72,16 @@ public class SalaryServiceImpl implements SalaryService {
 	public List<InputDto> selectPayrollList() {
 		return dao.selectPayrollList();
 	}
+
+	@Override
+	public int settingInput(InputDto dto) {
+		return dao.settingInput(dto);
+	}
+
+	@Override
+	public List<InputDto> searchEmpList(searchVo vo) throws Exception {
+		return dao.searchEmpList(vo);
+	}
+
 
 }

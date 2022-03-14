@@ -5,6 +5,7 @@ import java.util.List;
 import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
+import com.hh.hh.salary.entity.searchVo;
 
 public interface SalaryRepository {
 	
@@ -29,5 +30,9 @@ public interface SalaryRepository {
 	List<InputDto> selectEmpList();
 	
 	List<InputDto> selectPayrollList();
+	
+	int settingInput(InputDto dto);
+
+	List<InputDto> searchEmpList(searchVo vo) throws Exception;
 	
 }

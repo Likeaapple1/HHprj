@@ -23,6 +23,7 @@ import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
+import com.hh.hh.salary.entity.searchVo;
 import com.hh.hh.salary.service.SalaryService;
 
 @Controller
@@ -59,8 +60,8 @@ public class SalaryController {
 	public ModelAndView payslip(ModelAndView mv, HttpSession session) {
 
 		MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
-		long empNo = loginUser.getEmpNo();
-		List<PayrollDto> list = service.selectListOne(empNo);
+		long empNo = loginUser.getEmpNo();	
+		List<PayrollDto> list = service.selectListOne(empNo);		
 
 		// model
 		mv.addObject("list", list);
@@ -84,8 +85,7 @@ public class SalaryController {
 	// 급여명세서 월별검색
 	@PostMapping("/payslip")
 	public String payslip(PayrollDto dto) throws NullPointerException {
-		System.out.println("=====================출력" + dto);
-
+		
 		int result = service.searchPayslip(dto);
 
 		if (result > 0) {
@@ -152,23 +152,34 @@ public class SalaryController {
 
 	
 	
-	
+
 	
 		//급상여입력 payroll 등록
-		@PostMapping("/input/{temp}")
-		public String input(InputDto dto, @PathVariable String temp) {
+		@PostMapping(value = {"/input", "/input/{temp}"})
+		public String input(InputDto dto, @PathVariable String temp, HttpServletRequest req, Model model, searchVo vo) throws Exception {
 			
 			System.out.println("=== 출력" + temp);
 			
+			List<InputDto> list = service.searchEmpList(vo);
+			
+			// model
+			model.addAttribute("list", list);
+			
 			int result = 0;
+			int result2 = 0;
 			try {
 				result = service.enrollPayroll(dto);
+				result2 = service.settingInput(dto);
 			}catch(Exception e) {
 				return "salary/error";
 			}
-			
+
 			if(result > 0) {
-				return "redirect:/salary/input"; 
+				if(result2 > 0) {					
+					return "redirect:/salary/input"; 
+				} else {
+					return "salary/error";
+				}
 			}else {
 				return "salary/error";
 			}

@@ -307,7 +307,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <form method="post">
           <div class="month left">
-            <input name="month" class="mon radius" type="month" value="2022-03">　<input type="submit" class="btn btn-primary" value="조회"><br><br><br>
+            <input name="payrollDate" class="mon radius" type="month" value="2022-03">　<input type="submit" class="btn btn-primary" value="조회"><br><br><br>
           </div>
           
 <c:forEach items="${list}" var="p">
@@ -323,16 +323,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <br><br>
           <table class="center" border="1">
             <tr>
-              <th>소　속</th>
-              <th>성　명</th>
+              <th>소속</th>
+              <th>성명</th>
               <th>입사일</th>
-              <th>직　급</th>
+              <th>직급</th>
             </tr>
             <tr>
-              <td>${data.deptName}</td>
-              <td>${data.empName}</td>
-              <td>　</td>
-              <td>${data.empJobcode}</td>
+              <td>　${data.deptName}　</td>
+              <td>　${data.empName}　</td>
+              <td>　${data.empenrollDate}　</td>
+              <td>　${data.jobName}　</td>
             </tr>
           </table>
 <br><br>
@@ -344,9 +344,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <th>실 수령액</th>
             </tr>
             <tr>
-              <td>${data.totalSalary}</td>
-              <td>${data.ehntl}</td>
-              <td>${data.netSalary}</td>
+              <td>　${data.totalSalary}　</td>
+              <td>　${data.ehntl}　</td>
+              <td>　${data.netSalary}　</td>
             </tr>
           </table>
 <br><br>

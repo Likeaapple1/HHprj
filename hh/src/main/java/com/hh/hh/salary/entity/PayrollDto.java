@@ -32,7 +32,8 @@ public class PayrollDto {
 	private String deptName;
 	private String empName;
 	private String empJobcode;
-	private Date month;
 	private int ehntl; //공제총액
+	private String jobName;
+	private String empenrollDate;
 
 }

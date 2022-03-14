@@ -341,7 +341,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<form method="post">
+<form method="post" id="form">
 <!-- 현재 로그인된 empNo의 값 -> mapper -->
 <input hidden type="text" value="${loginUser.empNo}" name="empNo">
 
@@ -373,11 +373,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="right">
               <br><br>
-              <input type="submit" value="저장" class="btn btn-primary" formaction="<%=request.getContextPath()%>/salary/setting">　
-              <a href="#" class="btn btn-secondary">취소</a>
+              <input onclick="set();" type="button" value="저장" class="btn btn-primary">　
+              <a onclick="cancel();" class="btn btn-secondary">취소</a>
               <br><br><br>
             </div>
 </form>
+
+<script type="text/javascript">
+
+ 	function cancel() {
+		var cancelClick = confirm("취소하시겠습니까?");
+		if(cancelClick) {
+			return window.location.href='setting';
+		} else {
+			return false;
+		}
+	}
+	
+ 	function set() {
+		var setClick = confirm("저장하시겠습니까?");
+		if(setClick) {
+			alert("저장되었습니다.");
+			return form.submit();
+		} else {
+			return false;
+		}
+	}
+ 	
+ 	
+
+</script>
 
           </div>
           <!-- /.col-md-6 -->
@@ -423,5 +448,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="${path}/resources/css/salary/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${path}/resources/css/salary/dist/js/adminlte.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </body>
 </html>

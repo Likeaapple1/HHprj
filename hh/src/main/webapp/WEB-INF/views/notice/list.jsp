@@ -312,7 +312,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <tr>
             <td>
               <div class="month left">
-                <input class="mon radius" type="date" value="2022-03-25">　<b>~</b>　<input class="mon radius" type="date" value="2022-03-25">　
+                <input class="mon radius" type="date" value="2022-03-17">　<b>~</b>　<input class="mon radius" type="date" value="2022-03-17">　
               <input type="text" class="mon radius">
               <input type="submit" class="btn btn-primary" value="검색">
                 <br><br>

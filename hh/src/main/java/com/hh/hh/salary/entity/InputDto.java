@@ -43,5 +43,6 @@ public class InputDto {
 	private int basicSalaryS;
 	private int overtimeAllowanceS;
 	private int holidayAllowanceS;
+	private String jobName;
 
 }

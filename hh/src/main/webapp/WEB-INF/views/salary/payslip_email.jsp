@@ -361,9 +361,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div>
                   <div class="right">
                     <br>
-                    <a href="#" class="btn btn-primary">이메일 발송</a>
+                    <a onclick="email();" class="btn btn-primary">이메일 발송</a>
                     <br><br>
                   </div>
+
+<script type="text/javascript">
+
+	function email() {
+		var emailClick = confirm("이메일을 발송하시겠습니까?");
+		if(emailClick) {
+			alert("이메일이 발송되었습니다.");
+		} else {
+			
+		}
+	}
+
+</script>
 
           <!-- /.col-md-6 -->
           <!-- <div class="col-lg-6">
