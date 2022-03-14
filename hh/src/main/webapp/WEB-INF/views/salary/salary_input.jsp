@@ -323,19 +323,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row center">
 
 
+<form method="post">
           <div class="month left">
-            <input class="mon radius" type="month" value="2022-03">　
-            <select name="emp" class="mon radius">
-              <option value="emp1" label="사번" selected></option>
-              <option value="emp2" label="성명"></option>
-              <option value="emp3" label="직급"></option>
-              <option value="emp4" label="부서"></option>
+            <!-- <input class="mon radius" type="month" value="2022-03">　 -->
+            <select name="searchType" class="mon radius">
+              <option value="empNo" label="사번" selected></option>
+              <option value="empName" label="성명"></option>
+              <option value="jobName" label="직급"></option>
+              <option value="deptName" label="부서"></option>
           </select>
-          <input type="text" class="mon radius">
-          <a href="#" class="btn btn-primary">조회</a>
+          <input name="searchValue" type="text" class="mon radius">
+          <button type="submit" class="btn btn-primary">조회</button>
             <br><br>
           </div>
-
+</form>
           <div class="col-lg-6 div1">
 
             
@@ -364,7 +365,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<tr>
 					<td>${e.empNo}</td>
 					<td><b><a href="http://localhost:9999/hh/salary/input/${e.payrollNo}" style="color: black; text-decoration: none;">${e.empName}</a></b></td>
-					<td>${e.empJobcode}</td>
+					<td>${e.jobName}</td>
 					<td>${e.deptName}</td>
 				</tr>
 			</c:forEach>
@@ -372,7 +373,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<%-- <tr>
 					<td>${data.empNo}</td>
 					<td><b><a href="<%=request.getContextPath()%>/salary/input" style="color: black; text-decoration: none;">${data.empName}</a></b></td>
-					<td>${data.empJobcode}</td>
+					<td>${data.jobName}</td>
 					<td>${data.deptName}</td>
 				</tr> --%>
 
@@ -396,7 +397,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<form method="post">
+<form method="post" id="form">
 
 								<table border="1" class="table table-bordered tb_salary1 tb_sal">
 									<tr>
@@ -491,13 +492,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 								<div class="right">
   <br><br>
-  <input type="submit" class="btn btn-primary" value="입력">
-  　<a href="<%=request.getContextPath()%>/salary/input" class="btn btn-secondary">취소</a>
+  <input onclick="set();" type="button" class="btn btn-primary" value="입력">
+  　<a onclick="cancel();" class="btn btn-secondary">취소</a>
   <br><br><br>
 </div>
 
 
 </form>
+
+
+<script type="text/javascript">
+
+	function cancel() {
+		var cancelClick = confirm("취소하시겠습니까?");
+		if(cancelClick) {
+			return window.location.href='http://localhost:9999/hh/salary/input';
+		} else {
+			return false;
+		}
+	}
+	
+		function set() {
+		var setClick = confirm("입력하시겠습니까?");
+		if(setClick) {
+			alert("입력되었습니다.");
+			return form.submit();
+		} else {
+			return false;
+		}
+	}
+
+</script>
 
               </div>
             </div>

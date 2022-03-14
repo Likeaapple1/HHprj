@@ -351,7 +351,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 function del(){
 	
-	return confirm("진짜 작성?");
+	var delClick = confirm("삭제하시겠습니까?");
+	
+	if(delClick) {
+		alert("삭제되었습니다.");
+	} else {
+		return false;
+	}
 	
 	}
 	

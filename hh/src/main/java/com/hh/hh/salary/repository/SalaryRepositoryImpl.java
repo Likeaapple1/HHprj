@@ -10,6 +10,7 @@ import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
+import com.hh.hh.salary.entity.searchVo;
 
 @Repository
 public class SalaryRepositoryImpl implements SalaryRepository {
@@ -72,6 +73,16 @@ public class SalaryRepositoryImpl implements SalaryRepository {
 	@Override
 	public List<InputDto> selectPayrollList() {
 		return ss.selectList("salary.selectOneByEmpPayroll");
+	}
+	
+	@Override
+	public int settingInput(InputDto dto) {
+		return ss.update("salary.settingInput", dto);
+	}
+
+	@Override
+	public List<InputDto> searchEmpList(searchVo vo) throws Exception {
+		return ss.selectList("salary.searchEmpList", vo);
 	}
 
 }

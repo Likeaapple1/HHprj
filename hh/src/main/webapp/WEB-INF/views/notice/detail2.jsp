@@ -352,11 +352,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="center">
   <br>
   <input class="btn btn-primary" type="submit" value="수정" formaction="<%=request.getContextPath()%>/notice/edit">
-  　<a href="<%=request.getContextPath()%>/notice/list" class="btn btn-secondary">취소</a><br><br>
+  　<a onclick="cancel();" class="btn btn-secondary">취소</a><br><br>
 </div>
 
 </form>
 
+<script type="text/javascript">
+
+	function cancel() {
+		var cancelClick = confirm("취소하시겠습니까?");
+		if(cancelClick) {
+			return window.location.href='http://localhost:9999/hh/notice/list';
+		} else {
+			return false;
+		}
+	}
+
+</script>
 
 
 
