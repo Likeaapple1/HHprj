@@ -27,6 +27,8 @@
 <link rel="stylesheet" href="${path}/resources/css/appr/dist/css/appr_form.css">
 <!-- smarteditor2 -->
 <script type="text/javascript" src="${path}/resources/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<!-- swal -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -663,7 +665,7 @@
                         <div>
                             <table border="1" style="margin:auto;">
                                 <tbody class="parent1">
-                                	<tr>
+                                	<%-- <tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td class="listedName">3</td>
@@ -677,7 +679,7 @@
                                                 <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
                                             </span>
                                         </td>
-                                    </tr>
+                                    </tr> --%>
                                 </tbody>
                             </table>	
                         </div>
@@ -726,29 +728,33 @@
                                     <th>삭제</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <%-- <c:forEach items="${list}" var="n">
-                                    <tr>
-                                        <td>${n.no}</td>
-                                        <td>${n.apprLineTitle}</td>
-                                        <td>${n.apprLine}</td>
-                                        <td>
-                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
-                                                <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </c:forEach> --%>
-                            </tbody>	
-                        </table>	
+                        </table>
+                        <div>
+                            <table border="1" style="margin:auto;">
+                                <tbody class="parent3">
+	                                <%-- <c:forEach items="${lineList}" var="l">
+	                                    <tr>
+	                                        <td>${l.lineNo}</td>
+	                                        <td>${l.lineName}</td>
+	                                        <td>${l.apprUser1} ${l.apprUser2} ${l.apprUser3} ${l.apprUser4}</td>
+	                                        <td>
+	                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
+	                                                <span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>
+	                                            </span>
+	                                        </td>
+	                                    </tr>
+	                                </c:forEach> --%>
+                                </tbody>
+                            </table>	
+                        </div>
                     </div>
                 </div>
                 <div class="apprline_footer">
                     <div class="apprline_footer_left">
-                        <input type="text" placeholder="결재선 이름" style="margin-left: 10px;">
+                        <input type="text" class="apprline_name" name="apprline_name" placeholder="결재선 이름" style="margin-left: 10px;">
                     </div>
                     <div class="apprline_footer_right" style="float: right;">
-                        <button type="submit" class="apprline_btn1">결재선 저장</button>
+                        <button class="apprline_btn1">결재선 저장</button>
                         <button class="apprline_btn2">결재선 불러오기</button>
                         <a href="#" class="apprline_btn3">닫기</a>
                         <a href="#" class="apprline_btn4">확인</a>
@@ -766,15 +772,19 @@
                 <input type="hidden" name="empName6">
                 <input type="hidden" name="empName7">
             </form>
-            <form action="" method="post" id="insertForm1">
-                <input type="hidden" name="empName0">
-                <input type="hidden" name="empName10">
-                <input type="hidden" name="empName20">
-                <input type="hidden" name="empName30">
-                <input type="hidden" name="empName40">
-                <input type="hidden" name="empName50">
-                <input type="hidden" name="empName60">
-                <input type="hidden" name="empName70">
+            <form action="appr_gian" method="post" id="insertForm1">
+                <input type="hidden" name="apprUser1">
+                <input type="hidden" name="apprUser2">
+                <input type="hidden" name="apprUser3">
+                <input type="hidden" name="apprUser4">
+                <input type="hidden" name="apprViewer1">
+                <input type="hidden" name="apprViewer2">
+                <input type="hidden" name="apprViewer3">
+                <input type="hidden" name="apprViewer4">
+                <input type="hidden" name="lineName">
+            </form>
+            <form action="" method="post" id="deleteLine">
+                <input type="hidden" name="lineNo">
             </form>
     <div>
 <!-- 결재자지정 팝업창 -->
@@ -852,9 +862,9 @@
 	document.querySelector("#close").addEventListener('click', close);
 	document.querySelector(".apprline_btn3").addEventListener('click', close);
 	document.querySelector(".apprline_btn4").addEventListener('click', close);
-    $("#show").click(function(){
+    /* $("#show").click(function(){
         document.getElementsByClassName('apprType_btn1').focus();
-    })
+    }) */
     /* 결재자지정 - 확인버튼 */
     $(".apprline_btn4").click(function(){
         var name = $(".listedName").eq(0).text();
@@ -879,6 +889,15 @@
 <!-- 결재선 저장 버튼 -->
 <script type="text/javascript">
 	$(".apprline_btn1").click(function(){
+		if($(".listedName").eq(0).text() == "" || $(".listedName").eq(0).text().length < 0){ 
+			swal("결재자를 최소 1명 이상 등록해주세요 !");
+			return false;
+		}
+		if($(".apprline_name").val() == "" || $(".apprline_name").val().length < 0){ 
+			swal("결재선이름을 입력해주세요 !");
+			$(".apprline_name").focus();
+			return false;
+		}
 	    var name = $(".listedName").eq(0).text();
 	    var name1 = $(".listedName").eq(1).text();
 	    var name2 = $(".listedName").eq(2).text();
@@ -887,15 +906,40 @@
 	    var name5 = $(".listedName1").eq(1).text();
 	    var name6 = $(".listedName1").eq(2).text();
 	    var name7 = $(".listedName1").eq(3).text();
-	    $('input[name=empName0]').attr('value', name);
-	    $('input[name=empName10]').attr('value', name1);
-	    $('input[name=empName20]').attr('value', name2);
-	    $('input[name=empName30]').attr('value', name3);
-	    $('input[name=empName40]').attr('value', name4);
-	    $('input[name=empName50]').attr('value', name5);
-	    $('input[name=empName60]').attr('value', name6);
-	    $('input[name=empName70]').attr('value', name7);
-	    $('#insertForm1').submit();
+	    var apprline = $(".apprline_name").val();
+	    $('input[name=apprUser1]').attr('value', name);
+	    $('input[name=apprUser2]').attr('value', name1);
+	    $('input[name=apprUser3]').attr('value', name2);
+	    $('input[name=apprUser4]').attr('value', name3);
+	    $('input[name=apprViewer1]').attr('value', name4);
+	    $('input[name=apprViewer2]').attr('value', name5);
+	    $('input[name=apprViewer3]').attr('value', name6);
+	    $('input[name=apprViewer4]').attr('value', name7);
+	    $('input[name=lineName]').attr('value', apprline);
+	    /* $('#insertForm1').submit(); */
+	    $.post( "", $( "#insertForm1" ).serialize() );
+	    swal("결재선 저장을 완료했습니다 !");
+	    $(".apprline_name").val('');
+	})
+</script>
+<!-- 결재선 불러오기 버튼 -->
+<script type="text/javascript">
+	$(".apprline_btn2").click(function(){
+		var innerHtml = "";
+        innerHtml += '<c:forEach items="${lineList}" var="l">';
+        innerHtml += '<tr>';
+        innerHtml += '<td>${l.lineNo}</td>';
+        innerHtml += '<td>${l.lineName}</td>';
+        innerHtml += '<td>${l.apprUser1} ${l.apprUser2} ${l.apprUser3} ${l.apprUser4}</td>';
+        innerHtml += '<td>';
+        innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" name="lineDel" title="삭제">';
+        innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+        innerHtml += '</span>';
+        innerHtml += '</td>';
+        innerHtml += '</tr>';
+        innerHtml += '</c:forEach>';
+        $('.parent3 *').remove();
+        $('.parent3:last').append(innerHtml);
 	})
 </script>
 <script>
@@ -947,9 +991,6 @@ $(userInfoList).each(function(idx, element){
     $(element).on('click' , function(event){
         let t = event.currentTarget;
         var name = t.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerText;
-        // console.log(t.nextSibling.nextSibling);
-        // console.log(t.nextSibling.nextSibling.nextSibling.innerText);
-        // console.log(t.nextSibling.nextSibling.nextSibling.nextSibling.innerText);
         // on, one, unbind, off
         const addButton1 = document.querySelector('.add_action1');
         const addButton2 = document.querySelector('.add_action2');
@@ -976,7 +1017,6 @@ $(userInfoList).each(function(idx, element){
             innerHtml += '</td>';
             innerHtml += '</tr>';
             $('.parent1:last').append(innerHtml);
-            // return false;
 	    })
         addButton2.addEventListener('click', () => {
             $(element).off('click');
@@ -998,7 +1038,6 @@ $(userInfoList).each(function(idx, element){
             innerHtml += '</td>';
             innerHtml += '</tr>';
             $('.parent2:last').append(innerHtml);
-            // return false;
 	    })
     })
 });
@@ -1011,6 +1050,14 @@ $(userInfoList).each(function(idx, element){
         var trHtml = $(this).parent().parent();
         trHtml.remove(); //tr 태그 삭제
     })
+</script>
+<!-- 결재선 삭제 버튼 -->
+<script type="text/javascript">
+	$(document).on("click","span[name=lineDel]",function(){
+	    var lineNo = $(this).parent().prev().prev().prev().text();
+	    $('input[name=lineNo]').attr('value', lineNo);
+        $.post( "", $( "#deleteLine" ).serialize() );
+	})
 </script>
 <!-- 조직도 토글 - 전체삭제버튼 -->
 <script>
