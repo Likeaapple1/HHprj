@@ -20,4 +20,6 @@ public class MemberDto {
 	private String empMod;
 	private String empphotoRoute;
 	private String empphotoName;
+    private char managerYn;
+    private String managerDept;
 }

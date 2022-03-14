@@ -9,6 +9,12 @@
 		FROM EMP
 	</select>
 	
+	<select id="getLineList" resultType="com.hh.hh.appr.entity.ApprLineDto">
+		SELECT * 
+		FROM APPR_LINE
+		WHERE EMP_NO = #{empNo}
+	</select>
+	
 	<select id="getPerson" resultType="apprVo">
 		SELECT *
 		FROM EMP
@@ -56,4 +62,39 @@
 		FROM EMP
 		WHERE EMP_NAME = #{empName7}
 	</select>
+	
+	<insert id="insertLine" parameterType="com.hh.hh.appr.entity.ApprLineDto">
+		INSERT INTO APPR_LINE 
+		(
+			LINE_NO,
+		    EMP_NO,
+		    LINE_NAME,
+		    APPR_USER1,
+		    APPR_USER2,
+		    APPR_USER3,
+		    APPR_USER4,
+		    APPR_VIEWER1,
+		    APPR_VIEWER2,
+		    APPR_VIEWER3,
+		    APPR_VIEWER4
+		)
+		VALUES
+		(
+			LINE_NO_SEQ.NEXTVAL
+		  , #{empNo}
+		  ,	#{lineName}
+		  , #{apprUser1}
+		  , #{apprUser2}
+		  , #{apprUser3}
+		  , #{apprUser4}
+		  , #{apprViewer1}
+		  , #{apprViewer2}
+		  , #{apprViewer3}
+		  , #{apprViewer4}
+		)
+	</insert>
+	
+	<delete id="deleteLine">
+		DELETE FROM APPR_LINE WHERE LINE_NO = ${lineNo}
+	</delete>
 </mapper>

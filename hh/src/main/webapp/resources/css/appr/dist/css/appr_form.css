@@ -925,12 +925,29 @@ span.btn_bdr {line-height: 0;}
     background-color: #dcdcdc;
     padding: 10px;
 }
+.my_apprline_bottom {
+	height: 100%;
+}
 .my_apprline_bottom table{
     width: 100%;
     border-left: 0;
     border-right: 0;
     border-top: 0;
     text-align: center;
+}
+.my_apprline_bottom table td:nth-child(1), .my_apprline_bottom table th:nth-child(1) {
+    width: 50px;
+}
+.my_apprline_bottom table td:nth-child(2), .my_apprline_bottom table th:nth-child(2) {
+    width: 330px;
+}
+.my_apprline_bottom table td:nth-child(3), .my_apprline_bottom table th:nth-child(3) {
+    width: 330px;
+}
+.my_apprline_bottom div {
+    height: 66%;
+    scroll-behavior: auto;
+    overflow-y: scroll;
 }
 
 /* 팝업창 - footer */

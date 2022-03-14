@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hh.hh.appr.entity.ApprDto;
+import com.hh.hh.appr.entity.ApprLineDto;
 
 @Repository
 public class ApprDaoImpl implements ApprDao{
@@ -19,6 +20,11 @@ public class ApprDaoImpl implements ApprDao{
 		return ss.selectList("appr.getOrgList");
 	}
 
+	@Override
+	public List<ApprLineDto> getLineList(ApprLineDto linedto) throws Exception {
+		return ss.selectList("appr.getLineList", linedto);
+	}
+	
 	@Override
 	public ApprDto getPerson(ApprDto dto) {
 		return ss.selectOne("appr.getPerson", dto);
@@ -57,6 +63,16 @@ public class ApprDaoImpl implements ApprDao{
 	@Override
 	public ApprDto getPerson7(ApprDto dto) {
 		return ss.selectOne("appr.getPerson7", dto);
+	}
+
+	@Override
+	public int insertLine(ApprLineDto linedto) throws Exception {
+		return ss.insert("appr.insertLine", linedto);
+	}
+
+	@Override
+	public int deleteLine(ApprLineDto linedto) throws Exception {
+		return ss.delete("appr.deleteLine", linedto);
 	}
 
 }
