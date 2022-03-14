@@ -1223,20 +1223,20 @@ form {
               
               <tr>
                 <th>부서(*)</th>
-                <td><select id="dpt_sq" name="dpt_sq"
+                <td><select id="dpt_sq" name="deptNo"
                   class="form-control">
-                    <c:forEach items="${selectDpt_Div_Tb}" var="map">
-                      <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
+                    <c:forEach items="${selectDEPT}" var="map">
+                      <option value="${map.DEPT_NO}">${map.DEPT_NAME}</option>
                     </c:forEach>
                 </select></td>
               </tr>
               
               <tr>
                 <th>직급(*)</th>
-                <td><select id="rnk_sq" name="rnk_sq"
+                <td><select id="rnk_sq" name="jobNo"
                   class="form-control">
-                    <c:forEach items="${selectRnk_Tb}" var="map">
-                      <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
+                    <c:forEach items="${selectJOB}" var="map">
+                      <option value="${map.JOB_NO}">${map.JOB_NAME}</option>
                     </c:forEach>
                 </select></td>
               </tr>
@@ -1611,28 +1611,13 @@ form {
                       </thead>
                       <tbody>
                           <tr>
-                            <td><input type="radio" class="radio"
-                              value="${map.EMP_NO}"></td>
-                            <td>101</td>
-                            <td>720814</td>
-                            <td><img src="${map.EMP_PHOTO_ROUTE}" class="profileImg"/></td>
-                            <td>유재석</td>
-                            <td>마케팅</td>
-                            <td>부장</td>
-                            <td>91년 05월 05일</td>
-                            <td>010-1972-0814</td>
-                            <td>youbujang@muhan.com</td>
-                            <td>070-1234-5678</td>
-                   
-                            
-                          </tr>
 							<c:forEach items = "${list}" var = "emp">
                           <tr>
                             <td><input type="radio"></td>
                             <td>${emp.empNo}</td>
                             <td>${emp.empBirth}</td>
-                            <td><img alt="" th:src="@{|/upload${emp.empphotoName}|}"/></td>
-                            <td>${emp.empName}</td>
+                            <td><img alt="프로필사진" th:src="@{|/upload${emp.empphotoName}|}"/></td>
+                            <td><a href="#” class="nav-link">${emp.empName}</td>
                             <td>${emp.empDeptno}</td>
                             <td>${emp.empJobno}</td>
                             <td>${emp.empenrollDate}</td>

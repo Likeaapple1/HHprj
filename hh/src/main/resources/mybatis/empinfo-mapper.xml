@@ -8,4 +8,56 @@
 		SELECT *
 		FROM INJUK
 	</select>
+	
+	<insert id="insertEmpinfo" parameterType="empinfoDto">
+		INSERT INTO EMP
+		(
+			 EMP_NO
+		    ,EMP_NAME
+		    ,EMP_ENGNAME
+		    ,EMP_CHNNAME
+		    ,EMP_PHOTO_ROUTE
+		    ,EMP_PHOTO_NAME
+		    ,EMP_BIRTH
+		    ,EMP_GENDER
+		    ,EMP_MARRY
+		    ,EMP_WEDANNI
+		    ,EMP_NATIVE
+		    ,EMP_NATION
+		    ,EMP_OFFICE_PHONE
+		    ,EMP_HOUSE_PHONE
+		    ,EMP_PHONE
+		    .EMP_OFFICEEMAIL
+		    ,EMP_ADD
+		    ,EMP_DT_ADD
+		    ,EMP_ENG_ADD
+		    ,EMP_WORKCLASSIFY
+		    ,EMP_ENROLLDATE
+		    ,EMP_RESIGNDATE
+		    ,EMP_MOD  
+		)
+		VALUES
+		(
+			 #{empNo}
+			,#{empName}
+			,#{empengName}
+			,#{empchnName}
+			,#{empphotoRoute}
+			,#{empphotoName}
+			
+			
+			
+			,#{empBirth}
+			,#{empDeptno}
+			,#{empJobno}
+			,#{empPhone}
+			,#{empAdd}
+			,#{empdtAdd}
+			,#{empofficePhone}
+			,#{empEmail}
+			,#{empenrollDate}
+			,#{empresignDate}
+			,#{empMod}
+		)
+	</insert>
   </mapper>

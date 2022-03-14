@@ -49,8 +49,13 @@ public class EmpController {
 			return "redirect:/insa/home";
 		}	
 	
-	}
+//	@RequestMapping("/insa/injuk")
+//	public String empdtInfo(String empNo, Model model) {
+//		model.addAttribute("dto", EmpService.viewEmp(empNo));
+//		logger.info("클릭한 사원명 : " + empNo);
+//		return "insa/insa_injuk";
+//	}
 
-	
+	}	
 }
 

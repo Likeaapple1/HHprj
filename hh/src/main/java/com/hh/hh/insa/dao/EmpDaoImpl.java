@@ -26,5 +26,10 @@ public class EmpDaoImpl implements EmpDao{
 		return ss.selectList("emp.getEmp");
 	}
 
+//	@Override
+//	public EmpDto viewEmp(String empNo) {
+//		return ss.selectOne("emp.viewEmp", empNo);
+//	}
+
 	
 }

@@ -1,19 +1,47 @@
 package com.hh.hh.empinfo.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.hh.hh.empinfo.entity.EmpinfoDto;
+import com.hh.hh.empinfo.service.EmpinfoService;
 
 @Controller
 @RequestMapping("/emp")
 public class EmpinfoController {
+	
+	
+	@Autowired
+	private EmpinfoService service;
+	
+	@Autowired
+	private SqlSession ss;
+	
 
 	// 상세 인적사항 페이지 이동
 		@GetMapping("/injuk")
-		public String injuk() {
-
+		public String empdtinfo() {
+			
 			return "insa/insa_injuk";
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// 상세 가족사항 페이지 이동
 		@GetMapping("/family")

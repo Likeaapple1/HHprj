@@ -421,21 +421,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <img src="../../../../../../../../../Desktop/KH정보교육원/11250B434F1B8ACC02.jpeg" class="youbujangpic">
                           </td>
                           <td class="a">사원번호</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b"><input name="empNo" value="${emp.empNo}" readonly="readonly"></td>
                           <td class="a">성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b"><input name="empName" value="${emp.empName}" readonly="readonly"></td>
                         </tr>
       
                         <tr>
                           <td class="a">영문성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b"><input name="empengName" value="${injuk.empengName}" readonly="readonly"></td>
                           <td class="a">한자성명</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b"><input name="empchnName" value="${injuk.empchnName}" readonly="readonly"></td>
                         </tr>
       
                         <tr>
                           <td class="a">주민등록번호</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b"><input name="empBirth" value="${injuk.empBirth}" readonly="readonly"></td>
                           <td class="a">성별</td>
                           <td class="b"><input type="text" class="blank1"></td>
                         </tr>

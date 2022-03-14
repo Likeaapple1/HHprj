@@ -362,13 +362,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <ul class="easyui-tree">
                   <li><span>부서명</span>
                       <ul>
-                          <c:forEach items="${selectDpt_Div_Tb}" var="dptmap">
-                              <li data-options="state:'closed'"><span>${dptmap.DPT_NM}</span>
+                          <c:forEach items="${selectDEPT}" var="dptmap">
+                              <li data-options="state:'closed'"><span>${dptmap.DEPT_NAME}</span>
                                   <ul>
                                       <c:forEach items="${officerList}" var="stfmap">
-                                          <c:if test="${dptmap.DPT_NM eq stfmap.DPT_NM}">
-                                              <li>[${stfmap.DPT_NM}/${stfmap.RNK_NM}]
-                                                  ${stfmap.STF_NM}</li>
+                                          <c:if test="${dptmap.DEPT_NAME eq stfmap.DEPT_NAME}">
+                                              <li>[${stfmap.DEPT_NAME}/${stfmap.JOB_NAME}]
+                                                  ${stfmap.EMP_NAME}</li>
                                           </c:if>
                                       </c:forEach>
                                   </ul></li>
