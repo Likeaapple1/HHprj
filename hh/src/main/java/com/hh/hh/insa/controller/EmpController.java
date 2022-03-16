@@ -1,5 +1,6 @@
 package com.hh.hh.insa.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hh.hh.insa.entity.EmpDto;
 //import com.hh.hh.insa.service.EmpService;
@@ -42,6 +44,14 @@ public class EmpController {
 
 	@PostMapping("/home")
 	public String enrollEmp(EmpDto empdto, HttpServletRequest req)throws Exception {
+		
+		//file upload
+		MultipartFile profile = empdto.getProfileFile();
+		String path = req.getServletContext().getRealPath("/resources/static/upload/");
+		File target = new File(path, empdto.getEmpNo()+"_profile.png");
+		profile.transferTo(target);
+		
+		
 		int result = service.join(empdto, req);
 		if(result>0) {
 			return "redirect:/insa/home";

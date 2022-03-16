@@ -12,6 +12,8 @@ public interface EmpDao {
 
 	List<EmpDto> getOrjList()throws Exception;
 
+	int getEmpNo()throws Exception;
+
 //	EmpDto viewEmp(String empNo);
 	
 }

@@ -10,6 +10,8 @@
 		FROM EMP
 	</select>
 	
+	
+	
 <!-- 회원등록 -->
 	<insert id="insertEmp" parameterType="empDto">
 		INSERT INTO EMP
@@ -18,8 +20,8 @@
 		    ,EMP_NAME
 		    ,EMP_PASSWORD
 		    ,EMP_BIRTH
-		    ,EMP_DEPTNO
-		    ,EMP_JOBNO
+		    ,EMP_DEPTNAME
+		    ,EMP_JOBNAME
 		    ,EMP_PHONE
 		    ,EMP_ADD
 		    ,EMP_DT_ADD
@@ -30,6 +32,9 @@
 		    ,EMP_MOD  
 		    ,EMP_PHOTO_ROUTE
 		    ,EMP_PHOTO_NAME
+		    ,EMP_RESIGNYN
+		    ,MANAGER_YN
+		    ,MANAGER_DEPT
 		)
 		VALUES
 		(
@@ -37,18 +42,21 @@
 			,#{empName}
 			,#{empPassword}
 			,#{empBirth}
-			,#{empDeptno}
-			,#{empJobno}
+			,#{empDeptname}
+			,#{empJobname}
 			,#{empPhone}
 			,#{empAdd}
-			,#{empdtAdd}
-			,#{empofficePhone}
+			,#{empDtAdd}
+			,#{empOfficePhone}
 			,#{empEmail}
-			,#{empenrollDate}
-			,#{empresignDate}
-			,#{empMod}
-			,#{empphotoRoute}
-			,#{empphotoName}
+			,#{empEnrolldate}
+			,null
+			,null
+			,#{empPhotoRoute}
+			,#{empPhotoName}
+			,null
+			,null
+			,null
 		)
 	</insert>
 
@@ -61,12 +69,12 @@
 
 
 
-	<select id="getgetEmp" parameterType="empDto" resultType="empDto">
+	<!-- <select id="getgetEmp" parameterType="empDto" resultType="empDto">
 		SELECT *
 		FROM EMP E
 		JOIN EMP_PROFILE P
 		ON E.EMP_NO = P.EMP_NO
 		WHERE EMP_NO = #{empNo}
-	</select>
+	</select> -->
 	  
 </mapper>

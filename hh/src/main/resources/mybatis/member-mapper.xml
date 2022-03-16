@@ -4,41 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-	<select id="getMember" parameterType="memberDto" resultType="memberDto">
-		SELECT *
-		FROM EMP
-		WHERE EMP_NO = #{empNo}
-	</select>
-	
-	<insert id="insertMember" parameterType="memberDto">
-		INSERT INTO EMP
-		(
-			 EMP_NO
-		    ,EMP_PASSWORD
-		    ,EMP_NAME
-		    ,EMP_BIRTH
-		    ,EMP_EMAIL
-		    ,EMP_ADDRESS
-		    ,EMP_PHONE
-		    ,EMP_DEPTNO
-		    ,EMP_JOBCODE 
-		    ,MANAGER_YN
-		    ,MANAGER_DEPT
-		)
-		VALUES
-		(
-			 #{empNo}
-			,#{empPassword}
-			,#{empName}
-			,#{empBirth}
-			,#{empEmail}
-			,#{empAddress}
-			,#{empPhone}
-			,#{empDeptno}
-			,#{empJobcode}
-			,#{managerYn}
-			,{managerDept}
-		)
-	</insert>
-	  
+    <select id="getMember" parameterType="memberDto" resultType="memberDto">
+        SELECT *
+        FROM EMP
+        WHERE EMP_NO = #{empNo}
+    </select>
+    
+    <insert id="insertMember" parameterType="memberDto">
+        INSERT INTO EMP
+        (
+             EMP_NO
+            ,EMP_NAME
+            ,EMP_PASSWORD
+            ,EMP_BIRTH
+            ,EMP_EMAIL
+            ,EMP_ADD
+            ,EMP_PHONE
+            ,EMP_DEPTNAME
+            ,EMP_JOBNAME
+            ,MANAGER_YN
+            ,MANAGER_DEPT
+        )
+        VALUES
+        (
+             #{empNo}
+            ,#{empName}
+            ,#{empPassword}
+            ,#{empBirth}
+            ,#{empEmail}
+            ,#{empAdd}
+            ,#{empPhone}
+            ,#{empDeptname}
+            ,#{empJobname}
+            ,#{managerYn}
+            ,#{managerDept}
+        )
+    </insert>
+      
 </mapper>

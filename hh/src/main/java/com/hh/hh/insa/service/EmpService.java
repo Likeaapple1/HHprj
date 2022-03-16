@@ -12,6 +12,8 @@ public interface EmpService {
 
 	List<EmpDto> getOrgList()throws Exception;
 
+	int getEmpNo()throws Exception;
+
 //	static Object viewEmp(String empNo) {
 //		return null;
 	}
