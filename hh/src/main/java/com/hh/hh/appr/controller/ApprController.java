@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hh.hh.appr.entity.ApprDto;
 import com.hh.hh.appr.entity.ApprLineDto;
+import com.hh.hh.appr.entity.ApprovalDto;
 import com.hh.hh.appr.service.ApprService;
 import com.hh.hh.member.entity.MemberDto;
 
@@ -31,8 +32,21 @@ public class ApprController {
 	public String home() {
 		return "appr/home";
 	}
+	@PostMapping("home")
+	public String home(ApprovalDto apprdto, HttpServletRequest request) throws Exception {
+		MemberDto loginUser = (MemberDto) request.getSession().getAttribute("loginUser");
+		apprdto.setEmpNo(loginUser.getEmpNo());
+		int apprResult = service.insertApproval(apprdto, request);
+		return "appr/home";
+	}
 	
 	// 전자결재 양식 홈 보여주기
+	@GetMapping("appr_detail")
+	public String appr_detail() {
+		return "appr/appr_detail";
+	}
+	
+	// 전자결재 상세조회 보여주기
 	@GetMapping("appr_form")
 	public String appr_form() {
 		return "appr/appr_form";
@@ -89,7 +103,7 @@ public class ApprController {
 //		return "appr/appr_gian";
 	}
 	@PostMapping("appr_gian")
-	public String appr_gian1(Model model, ApprDto dto, ApprLineDto linedto, HttpSession session, HttpServletRequest request) throws Exception{
+	public String appr_gian1(Model model, ApprDto dto, ApprLineDto linedto, ApprovalDto apprdto, HttpSession session, HttpServletRequest request) throws Exception{
 			
 			//조직도 리스트 조회
 			List<ApprDto> list = service.getOrgList();
@@ -101,26 +115,26 @@ public class ApprController {
 			linedto.setEmpNo(loginUser.getEmpNo()); 
 			List<ApprLineDto> lineList = service.getLineList(linedto);
 			model.addAttribute("lineList", lineList);
-			System.out.println(linedto);
+//			System.out.println(dto);
 //			System.out.println(list);
 			//부서, 사인, 이름 조회
 			if(dto.getEmpName() != null) {
-			ApprDto person = service.getPerson(dto);
-			ApprDto person1 = service.getPerson1(dto);
-			ApprDto person2 = service.getPerson2(dto);
-			ApprDto person3 = service.getPerson3(dto);
-			ApprDto person4 = service.getPerson4(dto);
-			ApprDto person5 = service.getPerson5(dto);
-			ApprDto person6 = service.getPerson6(dto);
-			ApprDto person7 = service.getPerson7(dto);
-			session.setAttribute("person", person);
-			session.setAttribute("person1", person1);
-			session.setAttribute("person2", person2);
-			session.setAttribute("person3", person3);
-			session.setAttribute("person4", person4);
-			session.setAttribute("person5", person5);
-			session.setAttribute("person6", person6);
-			session.setAttribute("person7", person7);
+				ApprDto person = service.getPerson(dto);
+				ApprDto person1 = service.getPerson1(dto);
+				ApprDto person2 = service.getPerson2(dto);
+				ApprDto person3 = service.getPerson3(dto);
+				ApprDto person4 = service.getPerson4(dto);
+				ApprDto person5 = service.getPerson5(dto);
+				ApprDto person6 = service.getPerson6(dto);
+				ApprDto person7 = service.getPerson7(dto);
+				session.setAttribute("person", person);
+				session.setAttribute("person1", person1);
+				session.setAttribute("person2", person2);
+				session.setAttribute("person3", person3);
+				session.setAttribute("person4", person4);
+				session.setAttribute("person5", person5);
+				session.setAttribute("person6", person6);
+				session.setAttribute("person7", person7);
 			}else if(linedto.getApprUser1() != null){
 				//결재선 저장
 //				MemberDto loginUser = (MemberDto)request.getSession().getAttribute("loginUser");
@@ -128,6 +142,38 @@ public class ApprController {
 				int result = service.insertLine(linedto,request);
 			}else if(linedto.getLineNo() != 0) {
 				int delResult = service.deleteLine(linedto);
+			}else if(dto.getUser1() != null) {
+				ApprDto user1 = service.getUser1(dto);
+				session.setAttribute("user1", user1);
+				if(dto.getUser2() != null && !dto.getUser2().equals("")) {
+					ApprDto user2 = service.getUser2(dto);
+					session.setAttribute("user2", user2);
+				}
+				if(dto.getUser3() != null && !dto.getUser3().equals("")) {
+					ApprDto user3 = service.getUser3(dto);
+					session.setAttribute("user3", user3);
+				}
+				if(dto.getUser4() != null && !dto.getUser4().equals("")) {
+					ApprDto user4 = service.getUser4(dto);
+					session.setAttribute("user4", user4);
+				}
+				if(dto.getViewer1() != null && dto.getViewer1() != "") {
+					ApprDto viewer1 = service.getViewer1(dto);
+					session.setAttribute("viewer1", viewer1);
+				}
+				if(dto.getViewer2() != null && dto.getViewer2() != "") {
+					ApprDto viewer2 = service.getViewer2(dto);
+					session.setAttribute("viewer2", viewer2);
+				}
+				if(dto.getViewer3() != null && dto.getViewer3() != "") {
+					ApprDto viewer3 = service.getViewer3(dto);
+					session.setAttribute("viewer3", viewer3);
+				}
+				if(dto.getViewer4() != null && dto.getViewer4() != "") {
+					ApprDto viewer4 = service.getViewer4(dto);
+					session.setAttribute("viewer4", viewer4);
+				}
+				
 			}else {
 				return "appr/appr_gian";
 			}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hh.hh.appr.entity.ApprDto;
 import com.hh.hh.appr.entity.ApprLineDto;
+import com.hh.hh.appr.entity.ApprovalDto;
 
 public interface ApprDao {
 
@@ -21,5 +22,16 @@ public interface ApprDao {
 
 	int insertLine(ApprLineDto linedto) throws Exception;
 	int deleteLine(ApprLineDto linedto) throws Exception;
+	
+	ApprDto getUser1(ApprDto dto) throws Exception;
+	ApprDto getUser2(ApprDto dto) throws Exception;
+	ApprDto getUser3(ApprDto dto) throws Exception;
+	ApprDto getUser4(ApprDto dto) throws Exception;
+	ApprDto getViewer1(ApprDto dto) throws Exception;
+	ApprDto getViewer2(ApprDto dto) throws Exception;
+	ApprDto getViewer3(ApprDto dto) throws Exception;
+	ApprDto getViewer4(ApprDto dto) throws Exception;
+	
+	int insertApproval(ApprovalDto apprdto) throws Exception;
 
 }
