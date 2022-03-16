@@ -52,32 +52,21 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
+	public AttendanceDto weekendWork(AttendanceDto attendanceDto) throws Exception {
+		int result = attendancedao.weekendWork(attendanceDto);
+		AttendanceDto attendancedto = null;
+		if(result > 0) {
+		}
+		return attendancedto;
+	}
+	
+	@Override
 	public int tardy(AttendanceDto attendanceDto, HttpServletRequest req) throws Exception {
 		long att_no = attendancedao.getAttendanceSeq();
 		attendanceDto.setAttNo(att_no);
 		int result = attendancedao.tardyWork(attendanceDto);
 		return result;
 
-	}
-
-	@Override
-	public AttendanceDto workover(AttendanceDto attendanceDto) throws Exception {
-		int result = attendancedao.getWorkOver(attendanceDto);
-		AttendanceDto attendancedto = null;
-		if(result > 0) {
-			attendancedto = attendancedao.infoWork(attendanceDto);
-		}
-		return attendancedto;
-	}
-
-	@Override
-	public AttendanceDto worknight(AttendanceDto attendanceDto) throws Exception {
-		int result = attendancedao.getWorkNight(attendanceDto);
-		AttendanceDto attendancedto = null;
-		if(result > 0) {
-			attendancedto = attendancedao.infoWork(attendanceDto);
-		}
-		return attendancedto;
 	}
 
 	@Override
@@ -107,11 +96,13 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public int weekendWork(AttendanceDto attendanceDto, HttpServletRequest req) throws Exception {
-		return attendancedao.weekendWork(attendanceDto);
+	public List<AttendanceDto> getworkChartList(long empNo) throws Exception {
+		return attendancedao.getworkChartList(empNo);
 	}
 
-
-
+	@Override
+	public List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception {
+		return attendancedao.getAttEmpAllList(map);
+	}
 
 }

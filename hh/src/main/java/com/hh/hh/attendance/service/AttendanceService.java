@@ -19,11 +19,9 @@ public interface AttendanceService {
 
 	AttendanceDto workout(AttendanceDto attendanceDto) throws Exception;
 
+	AttendanceDto weekendWork(AttendanceDto attendanceDto) throws Exception;
+
 	int tardy(AttendanceDto attendanceDto, HttpServletRequest req) throws Exception;
-
-	AttendanceDto workover(AttendanceDto attendanceDto) throws Exception;
-
-	AttendanceDto worknight(AttendanceDto attendanceDto) throws Exception;
 
 	List<AttendanceDto> getAttList(Map<String, Object> map) throws Exception;
 
@@ -33,5 +31,7 @@ public interface AttendanceService {
 
 	int getAttCnt() throws Exception;
 
-	int weekendWork(AttendanceDto attendanceDto, HttpServletRequest req) throws Exception;
+	List<AttendanceDto> getworkChartList(long empNo) throws Exception;
+
+	List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception;
 }

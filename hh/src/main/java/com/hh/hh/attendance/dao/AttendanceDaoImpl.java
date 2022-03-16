@@ -28,8 +28,8 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	}
 	
 	@Override
-	public int weekendWork(AttendanceDto attendancedto) throws Exception {
-		return sqlsession.insert("attendance.inserWeekentWork", attendancedto);
+	public int weekendWork(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.update("attendance.updateWeekentWork", attendanceDto);
 	}
 	
 	// 출근 정보 가져오기
@@ -54,16 +54,6 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	}
 
 	@Override
-	public int getWorkOver(AttendanceDto attendanceDto) throws Exception {
-		return sqlsession.update("attendance.updateWorkOver",attendanceDto);
-	}
-
-	@Override
-	public int getWorkNight(AttendanceDto attendanceDto) throws Exception {
-		return sqlsession.update("attendance.updateWorkNight",attendanceDto);
-	}
-
-	@Override
 	public List<AttendanceDto> getAttList(Map<String, Object> map) throws Exception {
 		return sqlsession.selectList("attendance.selectAttList",map);
 	}
@@ -81,6 +71,16 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	@Override
 	public int getAttCnt() throws Exception {
 		return sqlsession.selectOne("attendance.getAttCnt");
+	}
+
+	@Override
+	public List<AttendanceDto> getworkChartList(long empNo) throws Exception {
+		return sqlsession.selectList("attendance.getworkChartList", empNo);
+	}
+
+	@Override
+	public List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception {
+		return sqlsession.selectList("attendance.getAttEmpAllList",map);
 	}
 	
 	
