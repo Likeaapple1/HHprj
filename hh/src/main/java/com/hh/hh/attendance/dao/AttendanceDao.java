@@ -19,11 +19,9 @@ public interface AttendanceDao {
 
 	int getWorkOut(AttendanceDto attendanceDto) throws Exception;
 
+	int weekendWork(AttendanceDto attendanceDto) throws Exception;
+
 	int tardyWork(AttendanceDto attendanceDto) throws Exception;
-
-	int getWorkOver(AttendanceDto attendanceDto) throws Exception;
-
-	int getWorkNight(AttendanceDto attendanceDto) throws Exception;
 
 	List<AttendanceDto> getAttList(Map<String, Object> map) throws Exception;
 
@@ -33,5 +31,7 @@ public interface AttendanceDao {
 
 	int getAttCnt() throws Exception;
 
-	int weekendWork(AttendanceDto attendancedto) throws Exception;
+	List<AttendanceDto> getworkChartList(long empNo) throws Exception;
+
+	List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception;
 }

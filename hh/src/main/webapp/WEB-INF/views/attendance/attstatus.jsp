@@ -38,7 +38,7 @@
         <table class="table table-borderless">
 			 <tbody>
 			   <tr>
-				  <td><input type = "text" id = "att_no" value = "att_no"></td>
+				  <td><input type = "hidden" id = "att_no" value = "att_no"></td>
 			   </tr>
 			   <tr>
 			      <th>업무 일자</th>
@@ -91,27 +91,26 @@
     <form action="attstatus" method="get">
         <select name="type">
         	<option value="근무상태">-- 근 무 --</option>
-            <option value="정상근무">정상근무</option>
+            <option value="정상근무">정상 근무</option>
             <option value="지각">지각</option>
-            <option value="초과근무">초과근무</option>
-            <option value="야간근무">야간근무</option>
+            <option value="초과근무">초과 근무</option>
+            <option value="야간근무">야간 근무</option>
+            <option value="휴일근무">휴일 근무</option>
         </select>
         <input type="submit" value="검색">
         <input type="submit" formaction="${root}/attendance/All" value ="전체조회">
     </form>
- 
-    
 	<table class="table">
 	 <thead>
 	   <tr>
+	   	  <th style = "display:none">근태 번호</th>
 	      <th>업무 일자</th>
-	      <th>근무상태</th>
-	      <th>업무시작</th>
-	      <th>업무종료</th>
-	      <th>총근무시간</th>
-	      <th>근무시간 상세</th>
-	      <th>수정사유</th>
-	      <th>결재여부</th>
+	      <th>근무 상태</th>
+	      <th>업무 시작</th>
+	      <th>업무 종료</th>
+	      <th>총 근무 시간</th>
+	      <th>수정 사유</th>
+	      <th>결재 여부</th>
 	   </tr>
 	 </thead>
 	 <tbody>
@@ -124,54 +123,13 @@
 		      <td>${l.end}</td>
 		      <td>${l.total}</td>
 		      <td>${l.attContent}</td>
-		      <td>${l.attContent}</td>
 		      <td>${l.attContentYn}</td>
 		   </tr>
 	   </c:forEach>
 	 </tbody> 
 	</table>
-	<!-- 페이징 작업 -->
-        <!-- 페이지 start -->
-		<br><br>
-		<c:if test="${l.startPage != 1}"> <a href="${l.startPage - 1}">이전</a> </c:if>
-		<c:forEach var="i" begin="${l.startPage}" end="${l.endPage}">
-			<c:if test="${l.currentPage != i and i <= l.lastPage}"><a href="${i}">${i}</a> &nbsp;</c:if>
-			<c:if test="${l.currentPage == i and i <= l.lastPage}">${i} &nbsp;</c:if>
-		</c:forEach>
-		<c:if test="${l.endPage < l.lastPage }"> <a href="${l.endPage + 1}">다음</a> </c:if>
-        <!-- 페이지 end -->
 	<br>
-	<iframe src="${root}/attendance/attstatus/updatecontent" width="100%" height="50%">
-	<h1>변경 이력</h1>
-		<table class="table">
-		 <thead>
-		   <tr>
-		      <th>업무 일자</th>
-		      <th>근무상태</th>
-		      <th>업무시작</th>
-		      <th>업무종료</th>
-		      <th>총근무시간</th>
-		      <th>근무시간 상세</th>
-		      <th>수정사유</th>
-		      <th>결재여부</th>
-		   </tr>
-		 </thead>
-		 <tbody>
-		 <c:forEach items="${list}" var = "l">
-			   <tr onclick = "AttInfo(this)" data-toggle="modal" href="#myModal">
-			   	  <td style = "display:none">${l.attNo}</td>
-			      <td data-test=${l.toDay}>${l.toDay}</td>
-			      <td>${l.workForm}</td>
-				  <td>${l.start}</td>
-			      <td>${l.end}</td>
-			      <td>${l.total}</td>
-			      <td>${l.attWorkdate}</td>
-			      <td>${l.attContent}</td>
-			      <td>${l.attContentYn}</td>
-			   </tr>
-		   </c:forEach>
-		 </tbody> 
-		</table>
+	<iframe src="${root}/attendance/updateContent" scrolling="no" width="100%" height="50%">
 	</iframe>
 </body>
 <script type="text/javascript">
@@ -187,14 +145,12 @@
 		document.getElementById("att_end_date").innerHTML = row_td[4].innerHTML;
 		document.getElementById("att_total").innerHTML = row_td[5].innerHTML;
 		document.getElementById("att_content").innerHTML = row_td[6].innerHTML;
-		document.getElementById("att_content_yn").value = row_td[7].innerHTML;
-		
+		document.getElementById("att_content_yn").innerHTML = row_td[7].innerHTML;
 		modal.style.display = "block";
 	} 
 	
 	function modalclose(){
 		window.location.reload();
-		//self.close();
 	}
 	
 	$(document).ready(function(){

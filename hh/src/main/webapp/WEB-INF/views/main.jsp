@@ -217,21 +217,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                <a href="${path}/attendance/home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>근태관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
+                <a href="${path}/attendance/attstatus" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>출퇴근 현황</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                <a href="${path}/attendance/admin/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>야근/외근</p>
+                  <p>전사 출퇴근 현황</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/attendance/admin/setatt" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>출퇴근 변경 사항</p>
                 </a>
               </li>
             </ul>
@@ -267,32 +273,16 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/appr/home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    전자 결재 홈
+                    전자 결재
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    진행 중인 결재
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>완료된 결재</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
+              </ul>
+			<li class="nav-item"> <!-- 급여 -->
             <a href="#" class="nav-link">
               <p>
                 급여
@@ -301,69 +291,75 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<%=request.getContextPath()%>/salary/payroll" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    급여관리
+                    급여이체현황
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/salary/payslip" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    급여 지급 현황
+                    급여명세서
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
+                <a href="<%=request.getContextPath()%>/salary/setting" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>근로 소득 지급 명세서</p>
+                  <p>급여설정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                <a href="${path}/salary/input" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>급여 이체 및 이메일 발송</p>
+                  <p>급상여입력</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/email" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서 이메일 발송
+                  </p>
                 </a>
               </li>
             </ul>
-          </li>
+          </li> 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+                     <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <p>
-                퇴직
-                <i class="fas fa-angle-left right"></i>
+                퇴직 업무
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/resign/resignhistory" class="nav-link">
+                 <!-- <a href="#" class="nav-link active"></a>-->
                   <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    퇴직금 산정
-                  </p>
+                  <p>퇴직금 산정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/resign/resigninput" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    퇴직금 급여 입력
-                  </p>
+                  <p>퇴직급여 입력</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
+                <a href="${path}/resign/resignreceipt"" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직 소득 원천 징수</p>
+                  <p>퇴직소득원천징수</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                <a href="${path}/resign/totalresign" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직금 추계액 관리</p>
+                  <p>퇴직금 추계액관리</p>
                 </a>
               </li>
             </ul>
@@ -377,7 +373,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/insa/home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     인사기록카드
@@ -385,7 +381,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/insa/organization” " class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     부서 조직도
@@ -393,15 +389,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
+                <a href="${path}/insa/certificate”" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>증명서 발급</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>경조비 신청</p>
                 </a>
               </li>
             </ul>
@@ -529,7 +519,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-hover">
+<table class="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col"><input type="checkbox"></th>
@@ -539,35 +529,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
+                    <c:forEach items="${list}" var="b">
+                        <tr>
+                            <th scope="row"><input type="checkbox" class="checkbox-del" value="${b.noticeNo}"></th>
+                            <td>${b.noticeNo}</td>
+                            <td><b><a href="http://localhost:9999/hh/notice/detail/${b.noticeNo}">${b.title}</a></b></td>
+                            <td>${b.writer}</td>
+                        </tr>
+                    </c:forEach>
+                
                   </tbody>
                 </table>
               </div>

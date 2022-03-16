@@ -30,7 +30,7 @@
   	<select id="selectInfoWork" parameterType="attendanceDto" resultType="attendanceDto">
   		SELECT * FROM
   		ATTENDANCE
-  		WHERE EMP_NO = #{empNo} and ATT_STR_DATE = SYSDATE
+  		WHERE EMP_NO = #{empNo} and ATT_STR_DATE = SYSDATE 
   	</select>
   	
   	<select id="selectWorkList" parameterType="long" resultType="attendanceDto">
@@ -44,17 +44,24 @@
 		UPDATE ATTENDANCE
 				SET ATT_END_DATE = SYSDATE,
 		<choose>
-			<when test="attNsStart &lt; attNsEnd or (attNsStartEnd &lt; attNsEnd and attNsStartEndfinal &gt; attNsEnd)">
-				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y', ATT_WORKDATE = {attWorkdate}
+			<when test="attNsStart &lt; attNsEnd || (attNsStartEnd &lt; attNsEnd and attNsStartEndfinal &gt; attNsEnd)">
+				 WORK_FORM ='야간근무', ATT_NS_YN = 'Y', ATT_WORKING_DATE = #{attWorkingDate}
 			</when>
 			<when test="ovDateStrat &lt; attNsEnd || attNsStart &lt; attNsEnd ">
-				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y', ATT_WORKDATE = {attWorkdate}, OV_DATE = ''
+				 WORK_FORM ='초과근무', OV_DATE_YN = 'Y', ATT_WORKING_DATE = #{attWorkingDate}
 			</when>
 			<otherwise>
-				 WORK_FORM ='정상근무', ATT_NS_YN = 'N', ATT_WORKDATE = {attWorkdate}
+				 WORK_FORM ='정상근무', ATT_NS_YN = 'N', ATT_WORKING_DATE = #{attWorkingDate}
 			</otherwise>
 		</choose>
 				WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})						
+  	</update>
+  	
+  	<!-- 휴일 폼 업데이트 -->
+  	<update id="updateWeekentWork" parameterType="attendanceDto">
+		UPDATE ATTENDANCE
+				SET HW_END_DATE = SYSDATE, ATT_END_DATE = SYSDATE, WORK_FORM ='휴일근무', HW_YN = 'Y', ATT_WORKING_DATE = #{attWorkingDate}
+		WHERE ATT_STR_DATE = (SELECT MAX(ATT_STR_DATE) FROM ATTENDANCE WHERE EMP_NO = #{empNo})						
   	</update>
   	
   	 <insert id="tardyWork" parameterType="attendanceDto">
@@ -96,19 +103,35 @@
     <select id="selectAttAllList" resultType="attendanceDto">
         SELECT * FROM ATTENDANCE
          <if test=" type != null">          
-            WHERE EMP_NO = #{empNo}                  
+            WHERE EMP_NO = #{empNo}          
           </if> 
-     </select>
-     
-    <update id="updateContent" parameterType="attendanceDto">
+    </select>
+  	
+  	<select id="getAttEmpAllList" resultType="attendanceDto">
+          SELECT * FROM ATTENDANCE
+          <if test=" type != null and value != null and v! = ''">
+          	<choose>
+          		<when test="type eq 'deptname'"></when>
+          	</choose>          
+            WHERE WORK_FORM LIKE #{type}                  
+          </if>
+      </select>
+  	
+  	<update id="updateContent" parameterType="attendanceDto">
 		UPDATE ATTENDANCE
-			SET ATT_CONTENT = #{attContent}
-		WHERE ATT_NO = #{attNo}	AND ATT_CONTENT_YN = "N"
+			SET ATT_CONTENT = #{attContent}, ATT_CONTENT_YN ='대기'
+		WHERE ATT_NO = #{attNo}
   	</update>
   	
   	<select id="getAttCnt" resultType="int">
 		SELECT COUNT(ATT_NO)
 		FROM ATTENDANCE
-		WHERE ATT_CONTENT_YN ='N'
+		WHERE ATT_CONTENT_YN ='대기'
+	</select>
+	
+	<select id="getworkChartList" parameterType="long" resultType="attendanceDto">
+		SELECT ATT_WORKING_DATE
+		FROM ATTENDANCE
+		WHERE EMP_NO = #{empNo}
 	</select>
 </mapper>

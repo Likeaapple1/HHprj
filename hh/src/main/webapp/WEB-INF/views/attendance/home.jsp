@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -41,13 +42,13 @@
 		<c:choose>
 			<c:when	test="${attUser.attDate eq null}">
 				<form action = "" method="post">
-					<span>출근 등록을 해주세요</span>
+					<span><b>${loginUser.empName}님</b> 출근 등록을 해주세요</span>
 					<input type="submit" formaction="${root}/attendance/home" value = "출&nbsp;근">
 				</form>
 			</c:when>
 			<c:when	test="${attUser.attDate != null}">
 				<form action = "" method="post">
-					<span>퇴근 등록을 해주세요</span>
+					<span><b>${loginUser.empName}님</b> 퇴근 등록을 해주세요</span>
 					<input type = "submit" formaction="${root}/attendance/workout" value ="퇴&nbsp;근">
 				</form>
 			</c:when>
@@ -55,71 +56,11 @@
 		</td>
 	</tr>
 </table>	
-  <!-- Modal -->
 
-  <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+<!-- <!-- 차트 그리기 -->
+<!-- <div style = "width:500px; height:1000px;" id = "myBarChart"> -->
 
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">근태 상세</h4> <!-- 사용자 지정 부분② : 타이틀 -->
-          <button type="button" class="close" data-dismiss="modal">×</button>
-        </div>        
-        <div class="modal-body">
-        <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
-        <form action = "" method = "post">
-        <table class="table table-borderless">
-			 <thead>
-			   <tr>
-			      <th>일시</th>
-				  <td><input type = "date" id = "currentDate"></td>
-			   </tr>
-			 </thead>
-			 <tbody>
-			   <tr>
-			      <th>상태</th>
-			      <td>
-					<select name="stance">
-					    <option value="working">업무</option>
-					    <option value="workout">업무종료</option>
-					    <option value="outsidework">외근</option>
-					    <option value="businesstrip">출장</option>
-					</select>
-				  </td>
-			   </tr>
-			   <tr>
-			      <th>내용</th>
-			      <td><input type = "text" name = "content"></td>
-			   </tr>
-			   <tr>
-				  <th>수정/삭제 사유</th>
-			      <td><input type = "text" name = "reason"></td>
-			   </tr>
-			 </tbody> 
-			</table>
-			</form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">수정</button>
-		  <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-<br/><br/>
-
-<!-- 아래에서 data-toggle과 data-target 속성에서 data-toggle에는 modal 값을 data-target속성에는 모달 창 전체를 
-
-감싸는 div의 id 이름을 지정하면 된다. -->
-
-&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myModal">모달 창 열기</button>
-
-&nbsp;&nbsp;<a data-toggle="modal" href="#myModal">모달 창 열기</a>
-
+<!-- </div> -->
 <div id='calendar' style = "height: 1000px; width:1000px;"></div>
 </body>
 <script>
@@ -136,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
 		},
 		
-
 		editable : true,
 		nowIndicator: true, // 현재 시간 마크
 		displayEventTime: false,
@@ -173,17 +113,94 @@ document.addEventListener('DOMContentLoaded', function() {
                <%}
               }%>
          ],  eventClick: function(info) {
-        	    alert('Event: ' + info.event.title);
-        	    alert('View: ' + info.view.type);
-
-        	    info.el.style.borderColor = 'red';
+        	    alert("근무 형태 : " + info.event.title);
         	  }
         });
         calendar.render();
       });
-      
-      document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
-      
      </script>
      
+     <!-- 차트 그리기 -->
+     <script type="text/javascript">
+  // Set new default font family and font color to mimic Bootstrap's default styling
+     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+     Chart.defaults.global.defaultFontColor = '#292b2c';
+
+
+     var myLineChart = {
+       labels : [],
+       dataSets : [],
+       render : function() {
+         new Chart($("#myBarChart"), {
+           type: 'bar',
+           data: {
+             labels: myLineChart.labels,
+             datasets: [{
+               label: "매출액",
+               lineTension: 0.3,
+               backgroundColor: "rgba(2,117,216,0.2)",
+               borderColor: "rgba(2,117,216,1)",
+               pointRadius: 5,
+               pointBackgroundColor: "rgba(2,117,216,1)",
+               pointBorderColor: "rgba(255,255,255,0.8)",
+               pointHoverRadius: 5,
+               pointHoverBackgroundColor: "rgba(2,117,216,1)",
+               pointHitRadius: 50,
+               pointBorderWidth: 2,
+               data: myLineChart.dataSets,
+             }],
+           },
+           options: {
+             responsive : true,
+             scales: {
+               xAxes: [{
+                 time: {
+                   unit: 'day'
+                 },
+                 gridLines: {
+                   display: false
+                 },
+                 ticks: {
+                   maxTicksLimit: 7
+                 }
+               }],
+               yAxes: [{
+                 gridLines: {
+                   color: "rgba(0, 0, 0, .125)",
+                 }
+               }],
+             },
+             legend: {
+               display: false
+             }
+           }
+         });
+       },
+       showData : function(){
+         labels = [];
+         dataSets= [];
+         $.ajax({
+           type : 'GET',
+           url : '${root}/attendance/home',
+           contentType: 'application/json',
+           //dataType 정의
+           dataType: 'json',
+           //요청결과가 성공일 경우
+           success : function(data) {
+             //console.log(data);
+             $.each(data, function(index,obj){
+               myLineChart.labels.push(obj.date);
+               myLineChart.dataSets.push(obj.sales);
+             });
+             myLineChart.render();
+           },
+           //요청결과가 실패일 경우
+           error : function(xhr, status, error){
+           }
+         });
+       }
+     };
+
+     myLineChart.showData();
+     </script>
 </html>
