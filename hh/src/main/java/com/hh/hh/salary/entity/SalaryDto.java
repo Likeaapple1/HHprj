@@ -6,11 +6,11 @@ import lombok.Data;
 public class SalaryDto {
 
 	private int empNo;
-	private int regularHourlyWage;
+	private String regularHourlyWage;
 	private int longServiceDay;
-	private int longServiceAllowance;
-	private int mealExpenses;
-	private int transportationExpenses;
+	private String longServiceAllowance;
+	private String mealExpenses;
+	private String transportationExpenses;
 	private String payrollBank;
 	private String payrollAccount;
 

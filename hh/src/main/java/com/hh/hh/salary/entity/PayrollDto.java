@@ -9,30 +9,30 @@ public class PayrollDto {
 
 	private int empNo;
 	private int payrollNo;
-	private int basicSalary;
-	private int overtimeAllowance;
-	private int holidayAllowance;
-	private int longServiceAllowance;
-	private int annualLeaveAllowance;
-	private int mealExpenses;
-	private int transportationExpenses;
-	private int bonus;
-	private int specialAllowance;
-	private int totalSalary;
-	private int employmentInsurance;
-	private int healthInsurance;
-	private int nationalPension;
-	private int fourMajorInsurances;
-	private int tax;
-	private int localIncomeTax;
-	private int netSalary;
+	private String basicSalary;
+	private String overtimeAllowance;
+	private String holidayAllowance;
+	private String longServiceAllowance;
+	private String annualLeaveAllowance;
+	private String mealExpenses;
+	private String transportationExpenses;
+	private String bonus;
+	private String specialAllowance;
+	private String totalSalary;
+	private String employmentInsurance;
+	private String healthInsurance;
+	private String nationalPension;
+	private String fourMajorInsurances;
+	private String tax;
+	private String localIncomeTax;
+	private String netSalary;
 	private String payrollBank;
 	private String payrollAccount;
 	private Date payrollDate;
 	private String deptName;
 	private String empName;
 	private String empJobcode;
-	private int ehntl; //공제총액
+	private String ehntl; //공제총액
 	private String jobName;
 	private String empenrollDate;
 

@@ -210,12 +210,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
+<!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+      <span class="brand-text font-weight-light">Hi Hello</span>
     </a>
 
     <!-- Sidebar -->
@@ -223,10 +223,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <!-- <img src="#" class="img-circle elevation-2" alt="User Image"> -->
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">${loginUser.empName}</a>
         </div>
       </div>
 
@@ -246,38 +246,238 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-              with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+               with font-awesome or any other icon font library -->
+
+          
+          <li class="nav-item">
+            <a href="<%=request.getContextPath()%>/notice/list" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
+                공지사항
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/gallery.html" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                캘린더
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/kanban.html" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                쪽지
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                근태
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>근태관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="pages/mailbox/compose.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>출퇴근 현황</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>야근/외근</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                연차
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/examples/invoice.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>연차관리</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/profile.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>연차신청현황</p>
+                </a>
+              </li>>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                전자 결재
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    전자 결재 홈
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    진행 중인 결재
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/lockscreen.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>완료된 결재</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"> <!-- 급여 -->
+            <a href="#" class="nav-link">
+              <p>
+                급여
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/payroll" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여이체현황
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/payslip" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/setting" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>급여설정</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/input" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>급상여입력</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/email" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서 이메일 발송
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li> <!-- 급여 -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                퇴직
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    퇴직금 산정
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    퇴직금 급여 입력
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/lockscreen.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직 소득 원천 징수</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직금 추계액 관리</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                인사관리
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    인사기록카드
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    부서 조직도
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/lockscreen.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>증명서 발급</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>경조비 신청</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -319,7 +519,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- <div class="col-lg-6"> -->
 
             <div class="month left">
-              <input class="mon radius" type="month" value="2022-03">　<b>~</b>　<input class="mon radius" type="month" value="2022-03">　<a href="#" class="btn btn-primary">조회</a><br><br>
+              <input class="mon radius" type="month">　<b>~</b>　<input class="mon radius" type="month">　<a href="#" class="btn btn-primary">조회</a><br><br>
             </div>
 
 <div class="scroll">
@@ -331,7 +531,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <th>기본급</th>
                   <th>잔업수당</th>
                   <th>특근수당</th>
-                  <th>근속수당</th>
+                  <!-- <th>근속수당</th> -->
                   <!-- <th>직책수당</th> -->
                   <th>연차수당</th>
                   <th>중식비</th>
@@ -352,11 +552,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			
 			<c:forEach items="${list}" var="p">
 				<tr>
-					<td><a style="color: black;" href="payslip/${p.payrollNo}">${p.payrollDate}</a></td>
+					<td><a style="color: black;" href="payslip2/${p.payrollNo}">${p.payrollDate}</a></td>
 					<td>${p.basicSalary}</td>
 					<td>${p.overtimeAllowance}</td>
 					<td>${p.holidayAllowance}</td>
-					<td>${p.longServiceAllowance}</td>
+					<%-- <td>${p.longServiceAllowance}</td> --%>
 					<%-- <td>${p.positionAllowance}</td> --%>
 					<td>${p.annualLeaveAllowance}</td>
 					<td>${p.mealExpenses}</td>
@@ -404,25 +604,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
   <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+  
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="${path}/resources/css/salary/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="${path}/resources/css/salary/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/60d2b52e19.js" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="${path}/resources/css/insa/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="${path}/resources/css/insa/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="${path}/resources/css/salary/dist/js/adminlte.min.js"></script>
+<script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
 </body>
 </html>

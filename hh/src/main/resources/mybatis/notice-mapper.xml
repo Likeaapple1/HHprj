@@ -74,4 +74,26 @@
 		FROM NOTICE
 	</select>
 	
+	<select id="searchNoticeList" resultType="notice">
+			SELECT *
+			FROM NOTICE
+			WHERE 
+				  <choose>
+		            <when test="searchType eq 'title'">
+		                TITLE like '%${searchValue}%'
+		            </when>
+		            <when test="searchType eq 'content'">
+		                CONTENT like '%${searchValue}%'
+		            </when>
+		            <when test="searchType eq 'writer'">
+		                WRITER like '%${searchValue}%'
+		            </when>
+		            <otherwise>
+		                TITLE = 'XXXewjfhdjfhkfjdada' 
+		                CONTENT = 'XXXsgsdffewfsdfdd'
+		            </otherwise>
+		       	 </choose>
+        
+		</select>
+	
 </mapper>
