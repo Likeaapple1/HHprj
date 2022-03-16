@@ -31,19 +31,34 @@ public class ResignController {
 	
 	
 	@GetMapping("input")
-	public String  input() {
+	public String  input(Model model) throws Exception {
+		
+		List<ResignDto> list=service.getResignList();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		
 		return "resign/input";
 	}
 	
 	
 	@GetMapping("receipt")
-	public String  receipt() {
+	public String  receipt(Model model) throws Exception {
+		
+		List<ResignDto> list=service.getResignList();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		
 		return "resign/recept";
 	}
 	
 
 	@GetMapping("totalresign")
-	public String  totalResign() {
+	public String  totalResign(Model model) throws Exception {
+		
+		List<ResignDto> list=service.getTotalResignList();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		
 		return "resign/totalresign";
 	}
 	
