@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hh.hh.notice.entity.NoticeDto;
 import com.hh.hh.notice.entity.PageVo;
+import com.hh.hh.notice.entity.SearchVo;
 
 @Repository
 public class NoticeRepositoryImpl implements NoticeRepository {
@@ -21,10 +22,10 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 		return result;
 	}
 
-//	@Override
-//	public List<NoticeDto> selectList() {
-//		return ss.selectList("notice.selectAll");
-//	}
+	@Override
+	public List<NoticeDto> selectList() {
+		return ss.selectList("notice.selectAll");
+	}
 
 	@Override
 	public int edit(NoticeDto dto) {
@@ -49,6 +50,19 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	@Override
 	public int getNoticeCnt() throws Exception {
 		return ss.selectOne("notice.getNoticeCnt");
+	}
+
+	@Override
+	public List<NoticeDto> searchNoticeList(SearchVo vo) {
+		
+		try {
+			List<NoticeDto> x = ss.selectList("notice.searchNoticeList", vo);
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return ss.selectList("notice.searchNoticeList", vo);
 	}
 
 }

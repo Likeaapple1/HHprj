@@ -1,3 +1,5 @@
+<%@page import="com.hh.hh.salary.entity.PayrollDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,52 +9,40 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="ko">
+<html lang="en">
 <head>
   <style>
-    .tb_salary1 {
-      font-size: 10pt;
-    }
-    .month {
-      width: 300px;
-    }
     .center {
+      margin: auto;
       text-align: center;
+    }
+    .t1 {
+      border-top: 2px solid;
+      border-left: 2px solid;
+      border-right: 2px solid;
+      border-bottom: 2px solid;
+    }
+    .th2{
+      width: 150px;
     }
     .left {
       text-align: left;
+      border: 1px ;
     }
-    .right {
-      text-align: right;
+    table {
+      width: 800px;
     }
     .mon {
       height: 35px;
     }
-    td, th {
-      height: 30px;
-    }
-    table {
-      margin: auto;
-      width: 1000px !important;
-    }
-    .file {
-      width: 210px !important;
-    }
-    textarea {
-      font-size: 10pt !important;
-      text-align: center;
-    }
     .radius {
 	  border-radius: 5px !important;
+	  border: 1px solid lightgray;
     }
   </style>
-  
-  <!-- smarteditor2 -->
-<script type="text/javascript" src="${path}/resources/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>공지사항</title>
+  <title>급여명세서</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -62,12 +52,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="${path}/resources/css/salary/dist/css/adminlte.min.css">
 
   <!-- 부트스트랩 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -249,7 +239,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-     
+         
           <li class="nav-item">
             <a href="<%=request.getContextPath()%>/notice/list" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -493,11 +483,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-
-          <h1><b>공지사항</b></h1>
-          <br><br>
-          <hr>
-
           <div class="col-sm-6">
 
           </div><!-- /.col -->
@@ -510,73 +495,154 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
+
+
+
     <div class="content">
       <div class="container-fluid">
-        <div class="row center">
+        <div class="row">
           <!-- <div class="col-lg-6"> -->
+
+        <div class="center">
+        
+<form action="/hh/salary/payslip/search" method="post">
+          <div class="month left">
+            <input name="month" class="mon radius" type="month">
+            <input hidden name="empNo" type="text" value="${loginUser.empNo}">
+            　<input type="submit" class="btn btn-primary" value="조회"><br><br><br>
+          </div>
+</form>          
 
 <form method="post">
 
-<table>
-  
-  <tr>
-    <td><input name="title" class="form-control radius" type="text" placeholder="제목">
-    <!-- 현재 로그인된 empName의 값 -> mapper -->
-	<input hidden type="text" value="${loginUser.empName}" name="writer">
-    </td>
-  </tr>
+<c:forEach items="${Userlist}" var="p">          
+          <h4>
+          <b>
+            급 여 지 급 명 세 서<br><br>
+          </b>
+        </h4>
+        <h5><b><u>${p.payrollDate}</u></b></h5>
+<br><br>
+          <table class="center" border="1">
+            <tr>
+              <th>소속</th>
+              <th>성명</th>
+              <th>입사일</th>
+              <th>직급</th>
+            </tr>
+            <tr>
+              <td>　${p.deptName}　</td>
+              <td>　${p.empName}　</td>
+              <td>　${p.empenrollDate}　</td>
+              <td>　${p.jobName}　</td>
+            </tr>
+          </table>
+<br><br>
+<p class="left"><b>1. 실 지급액</b></p>
+          <table class="center t1" border="1">
+            <tr>
+              <th>지급 합계</th>
+              <th>공제 합계</th>
+              <th>실 수령액</th>
+            </tr>
+            <tr>
+              <td>　${p.totalSalary}　</td>
+              <td>　${p.ehntl}　</td>
+              <td>　${p.netSalary}　</td>
+            </tr>
+          </table>
+<br><br>
+          <p class="left"><b>2. 지급 내역</b></p>
+          <table class="center" border="1">
+            <tr>
+              <th colspan="2">지급항목</th>
+              <th colspan="2">공제항목</th>
+            </tr>
+            <tr>
+              <th class="th2">기본급</th>
+              <td>${p.basicSalary}</td>
+              <th class="th2">소득세</th>
+              <td>${p.tax}</td>
+            </tr>
+            <tr>
+              <th class="th2">잔업수당</th>
+              <td>${p.overtimeAllowance}</td>
+              <th class="th2">지방 소득세</th>
+              <td>${p.localIncomeTax}</td>
+            </tr>
+            <tr>
+              <th class="th2">특근수당</th>
+              <td>${p.holidayAllowance}</td>
+              <th class="th2">고용보험</th>
+              <td>${p.employmentInsurance}</td>
+            </tr>
+            <tr>
+              <%-- <th class="th2">근속수당</th>
+              <td>${p.longServiceAllowance}</td> --%>
+              <th class="th2">연차수당</th>
+              <td>${p.annualLeaveAllowance}</td>
+              <th class="th2">건강보험</th>
+              <td>${p.healthInsurance}</td>
+            </tr>
+            <tr>
+			  <th class="th2">중식비</th>
+              <td>${p.mealExpenses}</td>
+              <th class="th2">국민연금</th>
+              <td>${p.nationalPension}</td>
+            </tr>
+            <tr>
+              <th class="th2">교통비(유류비)</th>
+              <td>${p.transportationExpenses}</td>
+              <th class="th2"></th>
+              <td>　</td>
+            </tr>
+            <tr>
+              <th class="th2">상여금</th>
+              <td>${p.bonus}</td>
+              <th class="th2"></th>
+              <td>　</td>
+            </tr>
+            <tr>
+              <th class="th2">특별수당</th>
+              <td>${p.specialAllowance}</td>
+              <th class="th2"></th>
+              <td>　</td>
+            </tr>
+            <tr>
+              <th class="th2"></th>
+              <td>　</td>
+              <th class="th2"></th>
+              <td>　</td>
+            </tr>
+            <tr>
+              <th class="th2"></th>
+              <td>　</td>
+              <th class="th2"></th>
+              <td>　</td>
+            </tr>
+            <tr>
+              <th class="th2"></th>
+              <td>　</td>
+              <th class="th2"></th>
+              <td>　</td>
+            </tr>
 
-  <tr>
-    <td>
-                                  <!-- <div id="smarteditor">
-                                    <textarea name="content" id="editorTxt" 
-                                              rows="20" cols="50" 
-                                              placeholder="내용을 입력해주세요"
-                                              style="width: 100%"></textarea>
-                                  </div> -->
+          </table>
 
-    <textarea name="content" class="form-control radius" cols="50" rows="20" style="resize: none;"></textarea>
-    
-    <!-- <input type="text" name="writer" placeholder="작성자"> -->
-    </td>
-  </tr>
+<br><br>
+          ${p.payrollDate}
+<br><br>
+          <!-- <h5><b>㈜○○○ 대표이사 ○○○</b></h5> -->
+<br><br><br><br><br>
 
-  <tr>
-    <td>
-      <div class="mb-3">
-      <!-- <input class="form-control form-control-sm file" id="formFileSm" type="file"> -->
+</c:forEach>
+
+          
+        </div>
       </div>
-    </td>
-  </tr>
-
-</table>
-
-<div class="center">
-  <br>
-  <input type="submit" class="btn btn-primary" value="등록">
-  　<a onclick="cancel();" class="btn btn-secondary">취소</a><br><br>
-</div>
-
-</form>
 
 
-
-
-<script type="text/javascript">
-	
-	function cancel() {
-		var cancelClick = confirm("취소하시겠습니까?");
-		if(cancelClick) {
-			return window.location.href='list';
-		} else {
-			return false;
-		}
-	}
-	
-</script>
           </div>
-
-          <br>
           <!-- /.col-md-6 -->
           <!-- <div class="col-lg-6">
 
@@ -591,7 +657,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  <!-- 폼 -->
+</form>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -604,6 +671,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   
 </div>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -618,32 +686,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="${path}/resources/css/insa/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${path}/resources/css/insa/dist/js/adminlte.min.js"></script>
-
-<!-- smarteditor2 -->
-<script>
-    let oEditors = []
-
-    smartEditor = function() {
-      console.log("Naver SmartEditor")
-      nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "editorTxt",
-        sSkinURI: "${path}/resources/static/smarteditor/SmartEditor2Skin.html",
-        fCreator: "createSEditor2"
-      })
-    }
-
-    $(document).ready(function() {
-      smartEditor()
-    })
-</script>
-
-<script>
-    $("#datepicker").datepicker({
-    language: 'ko',
-    timepicker: true,
-    timeFormat: "hh:ii AA"
-});
-</script>
 </body>
 </html>

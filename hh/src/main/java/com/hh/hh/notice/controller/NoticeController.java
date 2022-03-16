@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hh.hh.notice.entity.NoticeDto;
 import com.hh.hh.notice.entity.PageVo;
+import com.hh.hh.notice.entity.SearchVo;
 import com.hh.hh.notice.service.NoticeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,21 +55,6 @@ public class NoticeController {
 		}
 	}
 	
-	//게시글 목록 조회
-//	@GetMapping("/list")
-//	public ModelAndView list(ModelAndView mv) {
-//		
-//		// DB에서 가져오기
-//		List<NoticeDto> list = service.selectList();
-//		
-//		// model
-//		mv.addObject("list", list);
-//		// view
-//		mv.setViewName("notice/list");
-//		
-//		// view 선택
-//		return mv;
-//	}
 	
 	
 	
@@ -87,6 +73,17 @@ public class NoticeController {
 		List<NoticeDto> list = service.getNoticeList(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("page", vo);
+		return "notice/list";
+	}
+	
+	@PostMapping("/list/search")
+	public String search(SearchVo vo, Model model) throws Exception {
+		
+		List<NoticeDto> list = service.searchNoticeList(vo);
+		
+		// model
+		model.addAttribute("list", list);
+		
 		return "notice/list";
 	}
 	

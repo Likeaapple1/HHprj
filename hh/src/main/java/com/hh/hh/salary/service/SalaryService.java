@@ -6,7 +6,7 @@ import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
-import com.hh.hh.salary.entity.searchVo;
+import com.hh.hh.salary.entity.SearchVo;
 
 public interface SalaryService {
 	
@@ -34,6 +34,8 @@ public interface SalaryService {
 
 	int settingInput(InputDto dto);
 
-	List<InputDto> searchEmpList(searchVo vo) throws Exception;
+	List<InputDto> searchEmpList(SearchVo vo) throws Exception;
+
+	List<PayrollDto> searchPayslipList(SearchVo vo) throws Exception;
 
 }

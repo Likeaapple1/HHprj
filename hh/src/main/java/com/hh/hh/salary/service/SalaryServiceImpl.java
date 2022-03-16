@@ -9,7 +9,7 @@ import com.hh.hh.member.entity.MemberDto;
 import com.hh.hh.salary.entity.InputDto;
 import com.hh.hh.salary.entity.PayrollDto;
 import com.hh.hh.salary.entity.SalaryDto;
-import com.hh.hh.salary.entity.searchVo;
+import com.hh.hh.salary.entity.SearchVo;
 import com.hh.hh.salary.repository.SalaryRepository;
 
 @Service
@@ -79,8 +79,19 @@ public class SalaryServiceImpl implements SalaryService {
 	}
 
 	@Override
-	public List<InputDto> searchEmpList(searchVo vo) throws Exception {
+	public List<InputDto> searchEmpList(SearchVo vo) throws Exception {
 		return dao.searchEmpList(vo);
+	}
+
+	@Override
+	public List<PayrollDto> searchPayslipList(SearchVo vo) throws Exception {
+		//2022-03 -> 22/03
+		String month = vo.getMonth();
+		month = month.substring(2); //2022-03 -> 22-03
+		month = month.replace('-', '/'); //22-03 -> 22/03
+		System.out.println("month :::" + month);
+		vo.setMonth(month);
+		return dao.searchPayslipList(vo);
 	}
 
 
