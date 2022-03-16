@@ -27,6 +27,11 @@ public class EmpServiceImpl implements EmpService{
 	public List<EmpDto> getOrgList() throws Exception {
 		return dao.getOrjList();
 	}
+
+	@Override
+	public int getEmpNo() throws Exception {
+		return dao.getEmpNo();
+	}
 	
 //	@Override
 //	public EmpDto viewEmp(String empNo) {

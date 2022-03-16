@@ -921,8 +921,8 @@ form {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				var str = "[" + data.zonecode + "] " + data.address
-				$("#stf_cm_add").val(str);
-				$("#stf_cm_add_up").val(str);
+				$("#empAdd").val(str);
+				$("#empAdd_up").val(str);
 			}
 		}).open();
 	}
@@ -1175,7 +1175,7 @@ form {
               <tr>
                 <th class="text-center"><img id="imgView" class="profileImg"
                   src="/resources/img/user.png"> <input type="file"
-                  id="file" name="file" class="form-control"></th>
+                  id="file" name="profileFile" class="form-control"></th>
                 <td>
                   <h5>이미지는 가로 96px, 세로 128px를 준수 해주시기 바랍니다.</h5>
                   <h5>(*)이 작성된 칸은 필수항목 입니다.</h5>
@@ -1193,7 +1193,7 @@ form {
                 <td>
                   <div id="stf_pw1_Div">
                     <input type="password" name="empPassword" class="form-control"
-                      placeholder="비밀번호"> <span id="stf_pw1_Span"></span>
+                      placeholder="비밀번호"> 
                   </div>
                 </td>
               </tr>
@@ -1204,7 +1204,7 @@ form {
                   <div class="col-sm-9 col-md-10 leftNoPadding">
                     <div id="stf_sq_Div">
                       <input type="text" name="empNo" class="form-control"
-                        placeholder="사원번호"> <span id="stf_sq_Span"></span>
+                        placeholder="사원번호"> 
                     </div>
                   </div>
                   <button type="button" id="stfNumSearchBtn"
@@ -1215,7 +1215,7 @@ form {
 
 			 <tr>
                 <th>생년월일(*)</th>
-                <td><input type="text" id="stf_ent1" name="empBirth"
+                <td><input type="text" id="empBirth" name="empBirth"
                   class="form-control" placeholder="YYYYMMDD"></td>
               </tr>
               
@@ -1223,21 +1223,18 @@ form {
               
               <tr>
                 <th>부서(*)</th>
-                <td><select id="dpt_sq" name="deptNo"
+                <td><select id="empDeptname" name="empDeptname"
                   class="form-control">
-                    <c:forEach items="${selectDEPT}" var="map">
-                      <option value="${map.DEPT_NO}">${map.DEPT_NAME}</option>
-                    </c:forEach>
+                    <option value="인사팀">인사팀</option>
                 </select></td>
               </tr>
               
               <tr>
                 <th>직급(*)</th>
-                <td><select id="rnk_sq" name="jobNo"
+                <td><select id="empJobname" name="empJobname"
                   class="form-control">
-                    <c:forEach items="${selectJOB}" var="map">
-                      <option value="${map.JOB_NO}">${map.JOB_NAME}</option>
-                    </c:forEach>
+                  <option value="팀장">팀장</option>
+                    
                 </select></td>
               </tr>
               
@@ -1245,7 +1242,7 @@ form {
                 <th>주소(*)</th>
                 <td>
                   <div class="col-sm-9 col-md-10 leftNoPadding">
-                    <input type="text" id="stf_cm_add" name="empAdd"
+                    <input type="text" id="empAdd" name="empAdd"
                       class="form-control" placeholder="주소" readonly="readonly">
                   </div>
                   <button type="button"
@@ -1256,13 +1253,13 @@ form {
               
               <tr>
                 <th>상세주소(*)</th>
-                <td><input type="text" id="stf_dt_add" name="empdtAdd"
+                <td><input type="text" id="empDtAdd" name="empDtAdd"
                   class="form-control" placeholder="상세주소"></td>
               </tr>
               
               <tr>
                 <th>이메일(*)</th>
-                <td><input type="email" id="stf_eml" name="empEmail"
+                <td><input type="email" id="empEmail" name="empEmail"
                   class="form-control" placeholder="이메일"></td>
               </tr>
 
@@ -1270,7 +1267,7 @@ form {
                 <th>휴대폰(*)</th>
                 <td>
                   <div class="col-sm-2 col-md-2 leftNoPadding rightNoPadding">
-                    <select id="phoneNum1" class="form-control">
+                    <select id="phoneNum1" class="form-control" name="empPhone1">
                       <option value="010">010</option>
                       <option value="011">011</option>
                       <option value="016">016</option>
@@ -1284,15 +1281,16 @@ form {
                     <h5>-</h5>
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
-                    <input type="text" id="phoneNum2" class="form-control telNumMax" />
+                    <input type="text" id="phoneNum2" name="empPhone2" class="form-control telNumMax" />
                   </div>
                   <div
                     class="col-sm-1 col-md-1 text-center leftNoPadding rightNoPadding">
                     <h5>-</h5>
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
-                    <input type="text" id="phoneNum3" class="form-control telNumMax" />
-                  </div> <input type="hidden" id="stf_ph" name="empPhone"
+                    <input type="text" id="phoneNum3" name="empPhone3" class="form-control telNumMax" />
+                    
+                  </div> <input type="hidden" id="empPhone" name="empPhone"
                   class="form-control">
                 </td>
               </tr>
@@ -1317,14 +1315,14 @@ form {
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
                     <input type="text" id="telNum3" class="form-control telNumMax" />
-                  </div> <input type="hidden" id="stf_bs_ph" name="empofficePhone"
+                  </div> <input type="hidden" id="empOfficePhone" name="empOfficePhone"
                   class="form-control">
                 </td>
               </tr>
               
               <tr>
                 <th>입사일(*)</th>
-                <td><input type="date" id="stf_ent" name="empenrollDate"
+                <td><input type="date" id="stf_ent" name="empEnrolldate"
                   class="form-control" placeholder="입사일"></td>
               </tr>
             </tbody>
@@ -1374,7 +1372,7 @@ form {
               </tr>
                <tr>
                 <th>이름(*)</th>
-                <td><input type="text" id="stf_nm" name="stf_nm"
+                <td><input type="text" id="empName" name="empName"
                   class="form-control" placeholder="이름"></td>
               </tr>
               
@@ -1382,7 +1380,7 @@ form {
                 <th>비밀번호(*)</th>
                 <td>
                   <div id="stf_pw1_Div">
-                    <input type="password" id="stf_pw1" class="form-control"
+                    <input type="password" id="empPassword" class="form-control"
                       placeholder="비밀번호"> <span id="stf_pw1_Span"></span>
                   </div>
                 </td>
@@ -1393,7 +1391,7 @@ form {
                 <td>
                   <div class="col-sm-9 col-md-10 leftNoPadding">
                     <div id="stf_sq_Div">
-                      <input type="text" id="stf_sq1" class="form-control"
+                      <input type="text" id="empNo" class="form-control"
                         placeholder="사원번호"> <span id="stf_sq_Span"></span>
                     </div>
                   </div>
@@ -1405,14 +1403,14 @@ form {
               
               <tr>
                 <th>생년월일(*)</th>
-                <td><input type="text" id="stf_ent" name="emp_birth"
+                <td><input type="text" id="empBirth" name="empBirth"
                   class="form-control" placeholder="YYYYMMDD"></td>
               </tr>
 
               <!-- 부서, 직급은 DEPT, JOB 테이블에서 컬럼 추가 -->
               <tr>
                 <th>부서(*)</th>
-                <td><select id="dpt_sq" name="dpt_sq"
+                <td><select id="empDeptname" name="empDeptname"
                   class="form-control">
                     <c:forEach items="${selectDpt_Div_Tb}" var="map">
                       <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
@@ -1421,7 +1419,7 @@ form {
               </tr>
               <tr>
                 <th>직급(*)</th>
-                <td><select id="rnk_sq" name="rnk_sq"
+                <td><select id="empJobname" name="empJobname"
                   class="form-control">
                     <c:forEach items="${selectRnk_Tb}" var="map">
                       <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
@@ -1433,7 +1431,7 @@ form {
                 <td>
 
                   <div class="col-sm-9 col-md-10 leftNoPadding">
-                    <input type="text" id="stf_cm_add" name="stf_cm_add"
+                    <input type="text" id="empAdd" name="empAdd"
                       class="form-control" placeholder="주소" readonly="readonly">
                   </div>
                   <button type="button"
@@ -1443,12 +1441,12 @@ form {
               </tr>
               <tr>
                 <th>상세주소(*)</th>
-                <td><input type="text" id="stf_dt_add" name="stf_dt_add"
+                <td><input type="text" id="empDtAdd" name="empDtAdd"
                   class="form-control" placeholder="상세주소"></td>
               </tr>
               <tr>
                 <th>이메일(*)</th>
-                <td><input type="email" id="stf_eml" name="stf_eml"
+                <td><input type="email" id="empEmail" name="empEmail"
                   class="form-control" placeholder="이메일"></td>
               </tr>
 
@@ -1479,7 +1477,7 @@ form {
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
                     <input type="text" id="phoneNum3" class="form-control telNumMax" />
-                  </div> <input type="hidden" id="stf_ph" name="stf_ph"
+                  </div> <input type="hidden" id="empPhone" name="empPhone"
                   class="form-control">
                 </td>
               </tr>
@@ -1503,13 +1501,13 @@ form {
                   </div>
                   <div class="col-sm-4 col-md-4 leftNoPadding rightNoPadding">
                     <input type="text" id="telNum3" class="form-control telNumMax" />
-                  </div> <input type="hidden" id="stf_bs_ph" name="stf_bs_ph"
+                  </div> <input type="hidden" id="empOfficePhone" name="empOfficePhone"
                   class="form-control">
                 </td>
               </tr>
               <tr>
                 <th>입사일(*)</th>
-                <td><input type="date" id="stf_ent" name="stf_ent"
+                <td><input type="date" id="empEnrolldate" name="empEnrolldate"
                   class="form-control" placeholder="입사일"></td>
               </tr>
             </tbody>
@@ -1605,6 +1603,7 @@ form {
                           <th>핸드폰</th>
                           <th>회사이메일</th>
                           <th>내선번호</th>
+                          <th>주소</th>
                         
         
                         </tr>	
@@ -1613,17 +1612,18 @@ form {
                           <tr>
 							<c:forEach items = "${list}" var = "emp">
                           <tr>
-                            <td><input type="radio"></td>
+                            <td><input type="checkbox"></td>
                             <td>${emp.empNo}</td>
                             <td>${emp.empBirth}</td>
-                            <td><img alt="프로필사진" th:src="@{|/upload${emp.empphotoName}|}"/></td>
-                            <td><a href="#” class="nav-link">${emp.empName}</td>
-                            <td>${emp.empDeptno}</td>
-                            <td>${emp.empJobno}</td>
-                            <td>${emp.empenrollDate}</td>
+                            <td><img alt="프로필사진" style="width:100px; height:100px;" src="/hh/resources/static/upload/${emp.empNo}_profile.png"/></td>  <%-- ${emp.empPhotoRoute} --%>
+                            <td><a href="http://localhost:9999/hh/emp/injuk/${emp.empNo}">${emp.empName}</a></td>                       
+                            <td>${emp.empDeptname}</td>
+                            <td>${emp.empJobname}</td>
+                            <td>${emp.empEnrolldate}</td>
                             <td>${emp.empPhone}</td>
                             <td>${emp.empEmail}</td>
-                            <td>${emp.empofficePhone}</td>
+                            <td>${emp.empOfficePhone}</td>
+                            <td>${emp.empAdd} ${emp.empDtAdd}</td>
                          
                           </tr>
 							</c:forEach>
@@ -1663,6 +1663,18 @@ $(document).on("click","button[name=abc]",function(){
 	alert("123");
 })
 </script>
+<script>
+$("#phoneNum3").blur(function(){
+	let phoneNumAll = $("#phoneNum1").val() +  $("#phoneNum2").val() + $("#phoneNum3").val()
+	$("#empPhone").val(phoneNumAll);
+});
+</script>
+<script>
+$("#telNum3").blur(function(){
+	let telNumAll = $("#telNum1").val() +  $("#telNum2").val() + $("#telNum3").val()
+	$("#empOfficePhone").val(telNumAll);
+});
+</script>
 <!-- jQuery -->
 <script src="${path}/resources/css/insa/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -1672,4 +1684,5 @@ $(document).on("click","button[name=abc]",function(){
 
 </body>
 </html>
+
 
