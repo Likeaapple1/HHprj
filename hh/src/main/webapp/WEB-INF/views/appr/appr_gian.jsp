@@ -370,120 +370,145 @@
         
         <div class="appr_form_right">
             <div class="appr_form_right_L">
-                <h5 class="appr_form_text3">
-                    기안서
-                </h5>
-                <sub class="appr_form_text4">일반적인 업무 기안을 진행하기 위해 작성하는 양식입니다.</sub>
-                <hr>
-                <table class="form_table1">
-                    <tbody>
-                        <tr class="form_table1_tr1">
-                            <td class="form_table1_tr1_td1">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="td1">기안자</td>
-                                            <td class="td2">${loginUser.empName}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="td1">소속</td>
-                                            <td class="td2">HH그룹</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="td1">부서</td>
-                                            <td class="td2">${loginUser.managerDept}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="td1">기안일</td>
-                                            <td class="td2"><%=sf.format(nowTime) %></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-							<td class="form_table1_tr1_td1">
-							</td>
-						</tr>
-                    </tbody>
-                </table>
-                <div class="form_table3">
-                    <div class="form_table3_tr_td1">
-                        결재
+                <form action="home" method="post" id="reqApprForm">
+                    <h5 class="appr_form_text3">
+                        <input type="hidden" name="formName" value="기안서">
+                        기안서
+                    </h5>
+                    <sub class="appr_form_text4">일반적인 업무 기안을 진행하기 위해 작성하는 양식입니다.</sub>
+                    <hr>
+                    <table class="form_table1">
+                        <tbody>
+                            <tr class="form_table1_tr1">
+                                <td class="form_table1_tr1_td1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="td1">기안자</td>
+                                                <td class="td2"><input type="text" value="${loginUser.empName}" style="border: 0;" readonly></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td1">소속</td>
+                                                <td class="td2"><input type="text" value="HH그룹" style="border: 0;" readonly></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td1">부서</td>
+                                                <td class="td2"><input type="text" value="${loginUser.managerDept}" style="border: 0;" readonly></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td1">기안일</td>
+                                                <td class="td2"><input type="text" value="<%=sf.format(nowTime) %>"  name="docDate" style="border: 0;" readonly></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class="form_table1_tr1_td2">
+                                    <div class="button_gp">
+                                        <a id="act_draft" class="btn_tool" data-role="button">
+                                            <span class="ic_toolbar approval"></span>
+                                            <span class="reqAppr appr_form_text1">결재요청</span>
+                                        </a>
+                                        <a id="act_temp_save" class="btn_tool" data-role="button">
+                                            <span class="ic_toolbar save"></span>
+                                            <span class="reqAppr">임시저장</span>
+                                        </a>
+                                        <a id="act_document_preview" class="btn_tool" data-role="button">
+                                            <span class="ic_toolbar preview"></span>
+                                            <span class="reqAppr">미리보기</span>
+                                        </a>
+                                        <a href="./appr_form" id="act_cancel_draft" class="btn_tool" data-role="button">
+                                            <span class="ic_toolbar cancel"></span>
+                                            <span class="reqAppr">취소</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form_table3">
+                        <div class="form_table3_tr_td1">
+                            결재
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person.empName}</div>
+                            <input type="hidden" name="apprNo1" value="${person.empNo}">
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person1.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person1.empName}</div>
+                            <input type="hidden" name="apprNo2" value="${person1.empNo}">
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person2.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person2.empName}</div>
+                            <input type="hidden" name="apprNo3" value="${person2.empNo}">
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person3.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person3.empName}</div>
+                            <input type="hidden" name="apprNo4" value="${person3.empNo}">
+                        </div>
+                        <div class="form_table3_tr_td1" style="border-left: 0;">
+                            합의
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person4.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person4.empName}</div>
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person5.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person5.empName}</div>
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person6.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person6.empName}</div>
+                        </div>
+                        <div class="form_table3_tr_td2">
+                            <div class="form_table3_tr_td2_header">${person7.empjobCode}</div>
+                            <div class="form_table3_tr_td2_body"></div>
+                            <div class="form_table3_tr_td2_footer">${person7.empName}</div>
+                        </div>
                     </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person1.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person1.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person2.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person2.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person3.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person3.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td1" style="border-left: 0;">
-                        합의
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person4.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person4.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person5.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person5.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person6.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person6.empName}</div>
-                    </div>
-                    <div class="form_table3_tr_td2">
-                        <div class="form_table3_tr_td2_header">${person7.empjobCode}</div>
-                        <div class="form_table3_tr_td2_body"></div>
-                        <div class="form_table3_tr_td2_footer">${person7.empName}</div>
-                    </div>
-                </div>
-                <table class="form_table2">
-                    <tbody>
-                        <tr class="form_table2_tr1">
-                            <td class="form_table2_tr1_td1">시행일자</td>
-                            <td class="form_table2_tr1_td2"><input type="text" class="ipt_hasDatepicker" id="datepicker" readonly></td>
-                            <td class="form_table2_tr1_td1">협조부서</td>
-                            <td class="form_table2_tr1_td3"><input type="text"></td>
-                        </tr>
-                        <tr class="form_table2_tr2">
-                            <td class="form_table2_tr2_td1">합의</td>
-                            <td class="form_table2_tr2_td2"><input type="text" readonly></td>
-                        </tr>
-                        <tr class="form_table2_tr2">
-                            <td class="form_table2_tr2_td1">제목</td>
-                            <td class="form_table2_tr2_td2"><input type="text"></td>
-                        </tr>
-                        <tr class="form_table2_tr3">
-                            <td class="form_table2_tr3_td" colspan="4">
-                                 <form action="insertStudentInfoForm" method="post">
-							      <div id="smarteditor">
-							        <textarea name="editorTxt" id="editorTxt" 
-							                  rows="17" cols="10" 
-							                  placeholder="내용을 입력해주세요"
-							                  style="width: 100%"></textarea>
-							      </div>
-							      <input type="button" />
-							    </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="form_table2">
+                        <tbody>
+                            <tr class="form_table2_tr1">
+                                <td class="form_table2_tr1_td1">시행일자</td>
+                                <td class="form_table2_tr1_td2"><input type="text" name="EffDate" class="ipt_hasDatepicker" id="datepicker" readonly></td>
+                                <td class="form_table2_tr1_td1">협조부서</td>
+                                <td class="form_table2_tr1_td3"><input type="text"></td>
+                            </tr>
+                            <tr class="form_table2_tr2">
+                                <td class="form_table2_tr2_td1">합의</td>
+                                <td class="form_table2_tr2_td2"><input type="text" readonly></td>
+                            </tr>
+                            <tr class="form_table2_tr2">
+                                <td class="form_table2_tr2_td1">제목</td>
+                                <td class="form_table2_tr2_td2"><input type="text" name="docName" class="docName"></td>
+                            </tr>
+                            <tr class="form_table2_tr3">
+                                <td class="form_table2_tr3_td" colspan="4">
+                                    <!-- <form action="insertStudentInfoForm" method="post"> -->
+                                    <div id="smarteditor">
+                                        <textarea name="docContent" id="editorTxt" 
+                                                rows="17" cols="10" 
+                                                placeholder="내용을 입력해주세요"
+                                                style="width: 100%"></textarea>
+                                    </div>
+                                    <!-- <input type="button" />
+                                    </form> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
             </div>
             <div class="appr_form_right_R">
                 <h5 class="appr_form_text3">
@@ -735,7 +760,19 @@
 	                                <%-- <c:forEach items="${lineList}" var="l">
 	                                    <tr>
 	                                        <td>${l.lineNo}</td>
-	                                        <td>${l.lineName}</td>
+	                                        <td>
+	                                        	<a href="#" class="inMember">${l.lineName}</a>
+	                                        	<form action="" method="post" class="inMember2">
+		                                        	<input type="hidden" name="user1" value="${l.apprUser1}">
+									                <input type="hidden" name="user2" value="${l.apprUser2}">
+									                <input type="hidden" name="user3" value="${l.apprUser3}">
+									                <input type="hidden" name="user4" value="${l.apprUser4}">
+									                <input type="hidden" name="viewer1" value="${l.apprViewer1}">
+									                <input type="hidden" name="viewer2" value="${l.apprViewer2}">
+									                <input type="hidden" name="viewer3" value="${l.apprViewer3}">
+									                <input type="hidden" name="viewer4" value="${l.apprViewer4}">
+								                </form>
+	                                        </td>
 	                                        <td>${l.apprUser1} ${l.apprUser2} ${l.apprUser3} ${l.apprUser4}</td>
 	                                        <td>
 	                                            <span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제">
@@ -827,11 +864,12 @@
     let oEditors = []
 
     smartEditor = function() {
-        // console.log("Naver SmartEditor")
         nhn.husky.EZCreator.createInIFrame({
         oAppRef: oEditors,
         elPlaceHolder: "editorTxt",
         sSkinURI: "${path}/resources/static/smarteditor/SmartEditor2Skin.html",
+        fOnAppLoad : function(){ //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용 
+        oEditors.getById["editorTxt"].exec("PASTE_HTML", ["내용을 입력해주세요 !!"]); },
         fCreator: "createSEditor2"
         })
     }
@@ -886,6 +924,29 @@
         $('#selectForm1').submit();
     })
 </script>
+<!-- 결재요청 버튼 -->
+<script>
+    $("#act_draft").click(function(){
+    	if($(".form_table3_tr_td2_header").text() == "" || $(".form_table3_tr_td2_header").text().length < 0){
+    		swal("결재자를 최소 1명 이상 등록해주세요 !");
+    		return false;
+    	}
+    	if($(".ipt_hasDatepicker").val() == "" || $(".ipt_hasDatepicker").val() < 0){
+    		swal("시행일자를 입력해주세요 !");
+    		return false;
+    	}
+    	if($(".docName").val() == "" || $(".docName").val() < 0){
+    		swal("제목을 입력해주세요 !");
+    		return false;
+    	}
+    	
+
+        swal("결재 요청 완료", "", "success").then((value) => {
+        	oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", []);
+	        $('#reqApprForm').submit();
+        });
+    })
+</script>
 <!-- 결재선 저장 버튼 -->
 <script type="text/javascript">
 	$(".apprline_btn1").click(function(){
@@ -929,7 +990,19 @@
         innerHtml += '<c:forEach items="${lineList}" var="l">';
         innerHtml += '<tr>';
         innerHtml += '<td>${l.lineNo}</td>';
-        innerHtml += '<td>${l.lineName}</td>';
+        innerHtml += '<td>';
+        innerHtml += '<a href="#" class="inMember">${l.lineName}</a>';
+        innerHtml += '<form action="" method="post" id="inMember">';
+        innerHtml += '<input type="hidden" name="user1" value="${l.apprUser1}">';
+        innerHtml += '<input type="hidden" name="user2" value="${l.apprUser2}">';
+        innerHtml += '<input type="hidden" name="user3" value="${l.apprUser3}">';
+        innerHtml += '<input type="hidden" name="user4" value="${l.apprUser4}">';
+        innerHtml += '<input type="hidden" name="viewer1" value="${l.apprViewer1}">';
+        innerHtml += '<input type="hidden" name="viewer2" value="${l.apprViewer2}">';
+        innerHtml += '<input type="hidden" name="viewer3" value="${l.apprViewer3}">';
+        innerHtml += '<input type="hidden" name="viewer4" value="${l.apprViewer4}">';
+        innerHtml += '</form>';
+        innerHtml += '</td>';
         innerHtml += '<td>${l.apprUser1} ${l.apprUser2} ${l.apprUser3} ${l.apprUser4}</td>';
         innerHtml += '<td>';
         innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" name="lineDel" title="삭제">';
@@ -941,6 +1014,81 @@
         $('.parent3 *').remove();
         $('.parent3:last').append(innerHtml);
 	})
+</script>
+<script>
+    $(document).on('click', '.inMember', function(){
+    	var aaa = $(this).next();
+    	/* console.log(aaa) */
+        /* $('#inMember').submit(); */
+        $.post( "", $(aaa).serialize() );
+        
+        var innerHtml = "";
+        innerHtml += '<tr>';
+        innerHtml += '<td>${user1.managerDept}</td>';
+        innerHtml += '<td>${user1.empjobCode}</td>';
+        innerHtml += '<td class="listedName">${user1.empName}</td>';
+        innerHtml += '<td class="apprType_btn_group m0 p0">';
+        innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
+        innerHtml += '<input type="button" class="apprType_btn2" value="합의" disabled> ';
+        innerHtml += '<input type="hidden" name="apprType" value="결재">';
+        innerHtml += '</td>';
+        innerHtml += '<td>';
+        innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
+        innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+        innerHtml += '</span>';
+        innerHtml += '</td>';
+        innerHtml += '</tr>';
+        
+        innerHtml += '<tr>';
+        innerHtml += '<td>${user2.managerDept}</td>';
+        innerHtml += '<td>${user2.empjobCode}</td>';
+        innerHtml += '<td class="listedName">${user2.empName}</td>';
+        innerHtml += '<td class="apprType_btn_group m0 p0">';
+        innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
+        innerHtml += '<input type="button" class="apprType_btn2" value="합의" disabled> ';
+        innerHtml += '<input type="hidden" name="apprType" value="결재">';
+        innerHtml += '</td>';
+        innerHtml += '<td>';
+        innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
+        innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+        innerHtml += '</span>';
+        innerHtml += '</td>';
+        innerHtml += '</tr>';
+        
+        innerHtml += '<tr>';
+        innerHtml += '<td>${user3.managerDept}</td>';
+        innerHtml += '<td>${user3.empjobCode}</td>';
+        innerHtml += '<td class="listedName">${user3.empName}</td>';
+        innerHtml += '<td class="apprType_btn_group m0 p0">';
+        innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
+        innerHtml += '<input type="button" class="apprType_btn2" value="합의" disabled> ';
+        innerHtml += '<input type="hidden" name="apprType" value="결재">';
+        innerHtml += '</td>';
+        innerHtml += '<td>';
+        innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
+        innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+        innerHtml += '</span>';
+        innerHtml += '</td>';
+        innerHtml += '</tr>';
+        
+        innerHtml += '<tr>';
+        innerHtml += '<td>${user4.managerDept}</td>';
+        innerHtml += '<td>${user4.empjobCode}</td>';
+        innerHtml += '<td class="listedName">${user4.empName}</td>';
+        innerHtml += '<td class="apprType_btn_group m0 p0">';
+        innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
+        innerHtml += '<input type="button" class="apprType_btn2" value="합의" disabled> ';
+        innerHtml += '<input type="hidden" name="apprType" value="결재">';
+        innerHtml += '</td>';
+        innerHtml += '<td>';
+        innerHtml += '<span id="allActivityDelete" class="btn_bdr delete_activity" title="삭제" name="del">';
+        innerHtml += '<span class="ic_classic ic_basket"><img src="${path}/resources/css/appr/dist/img/basket.png" width="15px" height="15px"></span>';
+        innerHtml += '</span>';
+        innerHtml += '</td>';
+        innerHtml += '</tr>';
+    	$('.parent1 *').remove();
+        $('.parent1:last').append(innerHtml);
+    })
 </script>
 <script>
     
@@ -1057,6 +1205,7 @@ $(userInfoList).each(function(idx, element){
 	    var lineNo = $(this).parent().prev().prev().prev().text();
 	    $('input[name=lineNo]').attr('value', lineNo);
         $.post( "", $( "#deleteLine" ).serialize() );
+        swal("결재선 삭제를 완료했습니다 !");
 	})
 </script>
 <!-- 조직도 토글 - 전체삭제버튼 -->

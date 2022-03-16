@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hh.hh.appr.entity.ApprDto;
 import com.hh.hh.appr.entity.ApprLineDto;
+import com.hh.hh.appr.entity.ApprovalDto;
 
 @Repository
 public class ApprDaoImpl implements ApprDao{
@@ -73,6 +74,51 @@ public class ApprDaoImpl implements ApprDao{
 	@Override
 	public int deleteLine(ApprLineDto linedto) throws Exception {
 		return ss.delete("appr.deleteLine", linedto);
+	}
+
+	@Override
+	public ApprDto getUser1(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getUser1", dto);
+	}
+
+	@Override
+	public ApprDto getUser2(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getUser2", dto);
+	}
+
+	@Override
+	public ApprDto getUser3(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getUser3", dto);
+	}
+
+	@Override
+	public ApprDto getUser4(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getUser4", dto);
+	}
+
+	@Override
+	public ApprDto getViewer1(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getViewer1", dto);
+	}
+
+	@Override
+	public ApprDto getViewer2(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getViewer2", dto);
+	}
+
+	@Override
+	public ApprDto getViewer3(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getViewer3", dto);
+	}
+
+	@Override
+	public ApprDto getViewer4(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getViewer4", dto);
+	}
+
+	@Override
+	public int insertApproval(ApprovalDto apprdto) throws Exception {
+		return ss.insert("appr.insertApproval", apprdto);
 	}
 
 }

@@ -275,18 +275,68 @@
     width: 75%;
 }
 .form_table1_tr1_td2 {
-    /* background-color: white; */
-    padding: 0px !important;
     border: currentColor;
     border-image: none;
-    text-align: right;
     color: black;
     font-size: 12px;
     font-weight: normal;
     vertical-align: top;
     width: 60%;
     height: 120px;
+    padding: 0px;
+    float: right;
+    /* background-color: red; */
 }
+.button_gp {
+	position: relative;
+    min-height: 38px;
+    padding: 0 0 8px 0;
+    left: 200px;
+    width: 400px;
+}
+/* 결재버튼 */
+.ic_toolbar.approval {
+    background-position: -300px -200px;
+}
+.ic_toolbar.save {
+    background-position: -50px -200px;
+}
+.ic_toolbar.preview {
+    background-position: -100px -200px;
+}
+.ic_toolbar.cancel {
+    background-position: 0 -150px;
+}
+.ic_toolbar {
+    display: inline-block;
+    background: url(../img/ic_toolbar.png) no-repeat 0 0;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.btn_tool {
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    padding: 3px 8px;
+}
+.reqAppr {
+    display: inline-block;
+    width: 60px;
+    padding: 2px 5px;
+    font-size: 13px;
+}
+.btn_tool:hover{
+    background-color: #dcdcdc;
+}
+.btn_tool1:hover{
+    background-color: #dcdcdc;
+}
+/* 결재버튼 */
 .sign_type1_inline .sign_member_wrap .sign_member .sign_rank {
     height: 26px;
 }
@@ -538,7 +588,7 @@
     border-style: none solid;
     border-color: currentColor black black;
     padding: 5px;
-    height: 450px;
+    height: 400px;
     text-align: left;
     color: rgb(0, 0, 0);
     font-size: 14px;

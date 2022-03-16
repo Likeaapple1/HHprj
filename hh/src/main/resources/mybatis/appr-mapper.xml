@@ -20,47 +20,81 @@
 		FROM EMP
 		WHERE EMP_NAME = #{empName}
 	</select>
-	
 	<select id="getPerson1" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName1}
 	</select>
-	
 	<select id="getPerson2" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName2}
 	</select>
-	
 	<select id="getPerson3" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName3}
 	</select>
-	
 	<select id="getPerson4" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName4}
 	</select>
-	
 	<select id="getPerson5" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName5}
 	</select>
-	
 	<select id="getPerson6" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName6}
 	</select>
-	
 	<select id="getPerson7" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{empName7}
+	</select>
+	
+	<select id="getUser1" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{user1}
+	</select>
+	<select id="getUser2" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{user2}
+	</select>
+	<select id="getUser3" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{user3}
+	</select>
+	<select id="getUser4" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{user4}
+	</select>
+	<select id="getViewer1" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{viewer1}
+	</select>
+	<select id="getViewer2" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{viewer2}
+	</select>
+	<select id="getViewer3" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{viewer3}
+	</select>
+	<select id="getViewer4" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NAME = #{viewer4}
 	</select>
 	
 	<insert id="insertLine" parameterType="com.hh.hh.appr.entity.ApprLineDto">
@@ -91,6 +125,35 @@
 		  , #{apprViewer2}
 		  , #{apprViewer3}
 		  , #{apprViewer4}
+		)
+	</insert>
+	
+	<insert id="insertApproval">
+		INSERT INTO APPROVAL 
+		(
+			DOC_NO,
+		    EMP_NO,
+			FORM_NAME,
+			DOC_NAME,
+			DOC_CONTENT,
+			EFF_DATE,
+			APPR_NO1,
+			APPR_NO2,
+			APPR_NO3,
+			APPR_NO4
+		)
+		VALUES
+		(
+			SEQ_APNO.NEXTVAL,
+		    #{empNo},
+			#{formName},
+			#{docName},
+			#{docContent},
+			#{EffDate},
+			#{apprNo1},
+			#{apprNo2},
+			#{apprNo3},
+			#{apprNo4}
 		)
 	</insert>
 	

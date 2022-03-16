@@ -15,6 +15,14 @@ public class ApprDto {
 	private String empName5;
 	private String empName6;
 	private String empName7;
+	private String user1;
+	private String user2;
+	private String user3;
+	private String user4;
+	private String viewer1;
+	private String viewer2;
+	private String viewer3;
+	private String viewer4;
 	private String empemail;
 	private String empaddress;
 	private String empphone;
