@@ -41,6 +41,12 @@ public class ApprController {
 	}
 	
 	// 전자결재 양식 홈 보여주기
+	@GetMapping("appr_detail")
+	public String appr_detail() {
+		return "appr/appr_detail";
+	}
+	
+	// 전자결재 상세조회 보여주기
 	@GetMapping("appr_form")
 	public String appr_form() {
 		return "appr/appr_form";
