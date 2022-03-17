@@ -19,7 +19,7 @@ public class ResignController {
 	private ResignService service;
 
 	//사원조회1조회
-	@GetMapping("/history")
+	@GetMapping(value= {"/history"})
 	public String history(Model model) throws Exception{
 		
 		List<ResignDto> list=service.getResignList();
@@ -30,7 +30,9 @@ public class ResignController {
 	}
 	
 	
-	@GetMapping("input")
+	
+	
+	@GetMapping("/input")
 	public String  input(Model model) throws Exception {
 		
 		List<ResignDto> list=service.getResignList();
@@ -41,14 +43,14 @@ public class ResignController {
 	}
 	
 	
-	@GetMapping("receipt")
+	@GetMapping("/receipt")
 	public String  receipt(Model model) throws Exception {
 		
 		List<ResignDto> list=service.getResignList();
 		System.out.println(list);
 		model.addAttribute("list",list);
 		
-		return "resign/recept";
+		return "resign/receipt";
 	}
 	
 

@@ -4,24 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="resign">
+
+
+
 	<select id="getResignList" resultType="resignDto">
-	SELECT E.EMP_NO AS RE_NO,
-	SELECT E.EMP_NO AS RE_NO,
+	SELECT
+		E.EMP_NO AS RE_NO,
         E.EMP_NAME AS RE_NAME,
-        E.EMP_DEPTNO AS RE_DEPT,
-        E.EMP_JOBCODE AS RE_RANK,
-        E.EMP_ADDRESS AS RE_ADDRESS,
-        R.HIRE_DATE AS RE_HIRE_DATE,
-        R.RESIGN_DATE AS RE_RESIGN_DATE,
+        E.DEPT_NAME AS RE_DEPT,
+        E.JOB_NAME AS RE_RANK,
+        E.EMP_ADD AS RE_ADDRESS,
+        E.EMP_ENROLLDATE AS RE_HIRE_DATE,
+        E.EMP_RESIGNDATE AS RE_RESIGN_DATE,
         S.LONG_SERVICE_ALLOWANCE AS RE_LONG_SERVICE_ALLOWANCE,
         S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
         S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
         S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
         S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
-        TRUNC((R.RESIGN_DATE-R.HIRE_DATE)+1) AS RE_TOTAL_WORK,
-        TRUNC(MONTHS_BETWEEN(R.RESIGN_DATE,R.HIRE_DATE)) AS RE_TOTAL_MONTHS,
-        TRUNC(MONTHS_BETWEEN(R.RESIGN_DATE,R.HIRE_DATE)/12) AS RE_TOTAL_YEARS,
-        --일평균
+        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
+        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
+  
             TRUNC((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -35,7 +38,7 @@
             P.NATIONAL_PENSION +
             P.TAX +
             P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
-          --퇴직금  
+      
             TRUNC(((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -48,34 +51,104 @@
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90)* (R.TOTAL_WORK/365)) AS RE_RESIGN_PAY
-        
-                    
-FROM EMP E , RESIGN R ,SALARY S,PAYROLL P
-WHERE E.RESIGN_YN='Y' AND E.EMP_NO=R.EMP_NO AND E.EMP_NO=S.EMP_NO
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY                  
+FROM EMP E ,SALARY S,PAYROLL P
+WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
 
 	</select>
+	
+	<select id="searchEmpList" parameterType="inputDto" resultType="resignDto">
+		
+		SELECT
+		E.EMP_NO AS RE_NO,
+        E.EMP_NAME AS RE_NAME,
+        E.DEPT_NAME AS RE_DEPT,
+        E.JOB_NAME AS RE_RANK,
+        E.EMP_ADD AS RE_ADDRESS,
+        E.EMP_ENROLLDATE AS RE_HIRE_DATE,
+        E.EMP_RESIGNDATE AS RE_RESIGN_DATE,
+        S.LONG_SERVICE_ALLOWANCE AS RE_LONG_SERVICE_ALLOWANCE,
+        S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
+        S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
+        S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
+        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
+        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
+        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
+  
+            TRUNC((((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE) -
+            (P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
+      
+            TRUNC(((((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE) -
+            (P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY                  
+FROM EMP E ,SALARY S,PAYROLL P
+WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
+		AND
+		  <choose>
+		            <when test="searchType == 'empNo'">
+		                EMP.EMP_NO = #{searchValue}
+		            </when>
+		            <when test="searchType eq 'empName'">
+		            <!-- <bind name="vvv" value="'%' + searchValue + '%'"/> -->
+		                EMP.EMP_NAME like '%${searchValue}%'
+		            </when>
+		            <when test="searchType eq 'jobName'">
+		                JOB.JOB_NAME = #{searchValue}
+		            </when>
+		            <when test="searchType eq 'deptName'">
+		                DEPT.DEPT_NAME like '%${searchValue}%'
+		            </when>
+		            <otherwise>
+		                EMP.EMP_NO = 'XXX' 
+		                AND EMP.EMP_NAME = 'XXX'
+		            </otherwise>
+		       	 </choose>
+	</select>
+	
+	
 	
 	<select id="getTotalResignList" resultType="resignDto">
 
 
-
 SELECT E.EMP_NO AS RE_NO,
         E.EMP_NAME AS RE_NAME,
-        E.EMP_DEPTNO AS RE_DEPT,
-        E.EMP_JOBCODE AS RE_RANK,
-        E.EMP_ADDRESS AS RE_ADDRESS,
-        R.HIRE_DATE AS RE_HIRE_DATE,
-        R.RESIGN_DATE AS RE_RESIGN_DATE,
+        E.DEPT_NAME AS RE_DEPT,
+        E.JOB_NAME AS RE_RANK,
+        E.EMP_ADD AS RE_ADDRESS,
+        E.EMP_ENROLLDATE AS RE_HIRE_DATE,
+        E.EMP_RESIGNDATE AS RE_RESIGN_DATE,
         S.LONG_SERVICE_ALLOWANCE AS RE_LONG_SERVICE_ALLOWANCE,
         S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
         S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
         S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
         S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
-        TRUNC((R.RESIGN_DATE-R.HIRE_DATE)+1) AS RE_TOTAL_WORK,
-        TRUNC(MONTHS_BETWEEN(R.RESIGN_DATE,R.HIRE_DATE)) AS RE_TOTAL_MONTHS,
-        TRUNC(MONTHS_BETWEEN(R.RESIGN_DATE,R.HIRE_DATE)/12) AS RE_TOTAL_YEARS,
-        --일평균
+        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
+        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
+        
+           
             TRUNC((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -89,7 +162,41 @@ SELECT E.EMP_NO AS RE_NO,
             P.NATIONAL_PENSION +
             P.TAX +
             P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
-          --퇴직금  
+            
+            
+            (P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE) -
+            (P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX) AS RE_BASIC_PAY,
+            
+            
+            TRUNC(((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE) -
+            (P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX))*3) AS RE_MONTHS_PAYS,
+            
+            
+            P.BONUS*12 AS RE_YEAR_BONUS,
+                                        
+              
             TRUNC(((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -102,11 +209,10 @@ SELECT E.EMP_NO AS RE_NO,
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90)* (R.TOTAL_WORK/365)) AS RE_RESIGN_PAY
-        
-                    
-FROM EMP E , RESIGN R ,SALARY S,PAYROLL P
-WHERE E.RESIGN_YN='N' AND E.EMP_NO=R.EMP_NO AND E.EMP_NO=S.EMP_NO AND E.EMP_NO=P.EMP_NO
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY 
+                       
+FROM EMP E ,SALARY S,PAYROLL P
+WHERE E.EMP_RESIGNYN='N' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
 
 	</select>
 

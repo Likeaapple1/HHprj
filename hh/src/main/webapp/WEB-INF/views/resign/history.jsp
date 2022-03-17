@@ -400,25 +400,25 @@
                     <td bgcolor="eeeee">
                       입사일</td>
                     <td>
-                      asdasdasd
+                      2018/10/10
                     </td>
                     <td bgcolor="eeeee">
                       퇴직일
                     </td>
                     <td>
-                      asdasdasd
+                      2022/03/17
                     </td>
                     <td bgcolor="eeeee">
                       퇴직금 지급일
                     </td>
                     <td>
-                      asdasdasd
+                      2022/03/17
                     </td>
                     <td bgcolor="eeeee">
                       근속일수
                     </td>
                     <td>
-                      asdasdasd
+						5732 일
                     </td>
                   </tr>
                   <tr>
@@ -426,13 +426,13 @@
                       퇴직 기준일
                     </td>
                     <td colspan="3">
-                      퇴직 기준일
+                      2022/03/17
                     </td>
                     <td bgcolor="eeeee">
                       퇴직소즉세 근속기간
                     </td>
                     <td colspan="3">
-                      퇴직 기준일
+                      2022/03/17
                     </td>
                   </tr>
                 </table>
@@ -459,7 +459,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
+                    <td>2022/03/17</td>
                     <td>2</td>
                     <td>3</td>
                     <td>4</td>

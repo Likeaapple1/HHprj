@@ -331,35 +331,40 @@
                   <tbody>
                     <c:forEach items="${list}" var="n">
                     <tr>
-                      <td>${n.no}</td>
-                      <td>${n.userName}</td>
-                      <td>${n.userRank}</td>
-                      <td>${n.userDept}</td>
-                      <td>${n.hireDate}</td>
-                      <td>${n.totalDate}</td>
-                      <td>${n.monthsPay}</td>
-                      <td>${n.yearBonus}</td>
-                      <td>${n.bonus}</td>
-                      <td>${n.workDays}</td>
-                      <td>${n.resignPay}</td>
+                      <td>${n.reNo}</td>
+                      <td>${n.reName}</td>
+                      <td>${n.reRank}</td>
+                      <td>${n.reDept}</td>
+                      <td>${n.reHireDate}</td>
+                      <td>${n.reResignDate}</td>
+                      <td>${n.reMonthsPays}</td>
+                      <td>${n.reYearBonus}</td>
+                      <td>${n.reBasicPay}</td>
+                      <td>${n.reTotalWork}</td>
+                      <td>${n.reResignPay}</td>
                     </tr>
+                    <c:set var="sum" value="${sum+n.reMonthsPays}"></c:set>
+                    <c:set var="sam" value="${sum+n.reYearBonus}"></c:set>
+                    <c:set var="sim" value="${sum+n.reBasicPay}"></c:set>
+                    <c:set var="sem" value="${sum+n.reResignPay}"></c:set>
                     </c:forEach> 
                     </tbody>
                     <tr></tr>
                   <tfoot>
-                    <tr>
+                  <tr>
                       <td>합계</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td>${s.monthsTotalpay}</td>
-                        <td>${s.yearTotalBonus}</td>
-                        <td>${s.bonusTotal}</td>
-                        <td>${s.resignTotalPay}</td>
+                        <td><c:out value="${sum}"></c:out>원</td>
+                        <td><c:out value="${sam}"></c:out>원</td>
+                        <td> <c:out value="${sim}"></c:out>원</td>
+                        <td> </td>
+                        <td><c:out value="${sem}"></c:out> 원</td>
                       </tr>
+                    
                   </tfoot>
                 </table>
               </div>

@@ -14,6 +14,17 @@ public class ResignDto {
 	private String reHireDate;
 	private String reResignDate;
 	private String reTotalWork;
+	private String reTotalMonths;
+	private String reBasicPay;
+	private String reOneAvrPay;
+	private String reMonthsPays;
+	private String reYearBonus;
+	private String reResignPay;
+	private String reLongServiceAllowance;
+	private String reLongServiceDay;
+	private String reMealExpenses;
+	private String reRegularHourlyWage;
+	private String reTransportationExpenses;
 	
 	
 	
