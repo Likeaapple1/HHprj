@@ -33,7 +33,7 @@
       </li>
       <!-- Home 버튼 -->
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="home.html" class="nav-link">Home</a>
+        <a href="${path}/appr/home" class="nav-link">Home</a>
       </li>
       <!-- Contact 버튼 -->
       <li class="nav-item d-none d-sm-inline-block">
@@ -186,7 +186,7 @@
 
       <!-- 결재 작성하기 버튼 -->
       <div class="appr">
-        <a href="./appr_form.html">
+        <a href="${path}/appr/appr_form">
           <!-- <div class="appr_1">결재 작성하기</div> -->
           <button type="button" class="btn btn-block btn-primary" style="margin-left: 10px;">결재 작성하기</button>
         </a>
@@ -251,7 +251,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./reception" class="nav-link">
+                  <a href="${path}/appr/reception" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>수신결재</p>
                   </a>
@@ -299,12 +299,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">전자결재 Home</h1>
+            <h1 class="m-0">전자결재</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./home.html">Home</a></li>
-              <li class="breadcrumb-item active">전자결재 Home</li>
+              <li class="breadcrumb-item"><a href="${path}/appr/home">Home</a></li>
+              <li class="breadcrumb-item active">전자결재</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -315,194 +315,52 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <h5 class="m-0" style="font-weight: bold;">자주쓰는 결재 &nbsp;
-          <span class="text_1">사용자가 가장 많이 사용한 결재양식입니다. 양식 선택 시 결재 작성화면으로 이동됩니다.</span>
-        </h5>
-        <div class="appr_often">
-        	<a href="./appr_gian.html">
-	            <div class="appr_often_div">
-	              <img src="${path}/resources/css/appr/dist/img/file_img1.png">
-	              <p>기안서</p>
-	            </div>
-          	</a>
-          <!-- 추가하기 버튼 -->
-          <a href="#">
-            <div class="appr_often_add">
-              <img src="${path}/resources/css/appr/dist/img/plus.png">
-              <p>추가하기</p>
-            </div>
-          </a>
-        </div> 
-        <!-- appr_often -->
+      	<div class="detail_btn">
+	        <div class="button_gp1">
+	           <a id="act_draft" class="btn_tool" data-role="button">
+	               <span class="ic_toolbar approval"></span>
+	               <span class="reqAppr appr_form_text1">결재</span>
+	           </a>
+	           <a id="act_return" class="btn_tool" data-role="button">
+	               <span class="ic_toolbar return"></span>
+	               <span class="reqAppr">반려</span>
+	           </a>
+	           <a id="act_hold" class="btn_tool" data-role="button">
+	               <span class="ic_toolbar delay"></span>
+	               <span class="reqAppr">보류</span>
+	           </a>
+	           <a id="act_edit" class="btn_tool" data-role="button">
+	               <span class="ic_toolbar modify"></span>
+	               <span class="reqAppr">문서 수정</span>
+	           </a>
+	           <a id="act_edit_apprflow" class="btn_tool" data-role="button">
+	                <span class="ic_toolbar info"></span>
+	                <span class="reqAppr">결재 정보</span>
+            	</a>
+            	<a id="sendMail" class="btn_tool" data-role="button">
+                    <span class="ic_toolbar mail"></span>
+                    <span class="reqAppr">메일발송</span>
+                </a>
+	       </div>
+	       <div class="button_gp2">
+	       		<a href="${path}/appr/reception" id="act_list" class="btn_tool" data-role="button">
+		            <span class="ic_toolbar list" title="목록"></span>
+		            <span class="reqAppr">목록</span>
+		 		</a>
+		 		<a id="act_doc_print" class="btn_tool btn_print" data-role="button">
+		            <span class="ic_toolbar print"></span>
+		            <span class="reqAppr">인쇄</span>
+        		</a>
+	       </div>
+         <hr>
+       </div>
         <div class="appr_content">
-          <div class="appr_content1">
-				<div class="appr_content1_div">
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">휴가 가고싶어요</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;기안서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">관두겠습니다!</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;퇴직신청서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">출장다녀오겠습니다.</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출장신청서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">과자샀습니다</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지출결의서(기본)</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">죄송합니다</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시말서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-				</div>
-          </div>
-          <div class="appr_content2">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header" style="padding-top: 15px;">
-                    <h5 class="appr_form_text3">
-                      기안 진행 문서
-                    </h5>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                      <thead>
-                        <tr>
-                          <th>기안일</th>
-                          <th>결재양식</th>
-                          <th>제목</th>
-                          <th>첨부</th>
-                          <th style="width: 10%;">결재상태</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>2022-03-04</td>
-                          <td>기안서</td>
-                          <td>휴가 가고싶어요</td>
-                          <td><span class="tag tag-warning"></span></td>
-                          <td><span class="state read">진행중</span></td>
-                        </tr>
-                        <tr>
-                          <td>2022-03-04</td>
-                          <td>퇴직신청서</td>
-                          <td>관두겠습니다!</td>
-                          <td><span class="tag tag-primary"></span></td>
-                          <td><span class="state read">진행중</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
+          <div>
+            <form action="">
+              <div class="detail_header">
+                기안서
               </div>
-            </div>
-            <!-- /.row -->
-          </div>
-          <div class="appr_content3">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header" style="padding-top: 15px;">
-                    <h5 class="appr_form_text3">
-                      완료 문서
-                    </h5>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                      <thead>
-                        <tr>
-                          <th>기안일</th>
-                          <th>결재양식</th>
-                          <th>제목</th>
-                          <th>첨부</th>
-                          <th>문서번호</th>
-                          <th style="width: 10%;">결재상태</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>2022-03-04</td>
-                          <td>기안서</td>
-                          <td>결재승인해주세요</td>
-                          <td><span class="tag tag-warning"></span></td>
-                          <td>HH그룹-2022-00001</td>
-                          <td><span class="state finish">완료</span></td>
-                        </tr>
-                        <tr>
-                          <td>2022-03-04</td>
-                          <td>기안서</td>
-                          <td>노트북 구매</td>
-                          <td><span class="tag tag-primary"></span></td>
-                          <td>HH그룹-2022-00002</td>
-                          <td><span class="state finish">완료</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-              </div>
-            </div>
-            <!-- /.row -->
+            </form>
           </div>
         </div>
         <!-- appr_content -->
@@ -520,7 +378,7 @@
   <!-- /.control-sidebar -->
 
 </div>
-<!-- ./wrapper -->
+<!-- /wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 

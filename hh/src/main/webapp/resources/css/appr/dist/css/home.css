@@ -179,6 +179,98 @@ span.state.temp {
     background-color: #F6B3B3;
     border: 1px solid #F6B3B3;
 }
+.recp_tr {
+    cursor: pointer;
+}
+.detail_btn {
+    border: currentColor;
+    border-image: none;
+    color: black;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
+    width: 80%;
+    height: 120px;
+    padding: 0px;
+}
+.button_gp1 {
+	position: relative;
+    min-height: 38px;
+    padding: 0 0 8px 0;
+    width: 500px;
+    text-align: left;
+    display: inline-block;
+}
+.button_gp2 {
+	position: relative;
+    min-height: 38px;
+    padding: 0 0 8px 0;
+    width: 300px;
+    float: right;
+    text-align: right;
+    display: inline-block;
+}
+/* 결재버튼 */
+.ic_toolbar.approval {
+    background-position: -300px -200px;
+}
+.ic_toolbar.save {
+    background-position: -50px -200px;
+}
+.ic_toolbar.preview {
+    background-position: -100px -200px;
+}
+.ic_toolbar.cancel {
+    background-position: 0 -150px;
+}
+.ic_toolbar.return {
+    background-position: -200px -50px;
+}
+.ic_toolbar.delay {
+    background-position: -250px -300px;
+}
+.ic_toolbar.modify {
+    background-position: -300px -200px;
+}
+.ic_toolbar.info {
+    background-position: -150px -250px;
+}
+.ic_toolbar.mail {
+    background-position: -50px 0;
+}
+.ic_toolbar.list {
+    background-position: -300px -150px;
+}
+.ic_toolbar {
+    display: inline-block;
+    background: url(../img/ic_toolbar.png) no-repeat 0 0;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.btn_tool {
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 30px;
+    padding: 4px 8px;
+}
+.reqAppr {
+    padding: 8px 0px 0px 5px;
+    vertical-align: bottom;
+    line-height: 16px;
+    color: black;
+}
+.btn_tool:hover{
+    background-color: #dcdcdc;
+}
+.btn_tool1:hover{
+    background-color: #dcdcdc;
+}
+.detail_header {
+}
 .appr_content3 {
     margin-top: 20px;
     height: 30%;

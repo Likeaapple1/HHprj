@@ -420,7 +420,7 @@
                       </thead>
                       <tbody class="recp1_tbody">
                       	<c:forEach items="${recList}" var="re">
-                      		<tr>
+                      		<tr class="recp_tr" onClick ="location.href='http://127.0.0.1:9999/hh/appr/appr_detail/${re.docNo}'">
 		                        <td>${re.docNo}</td>
 		                        <td>${re.docDate}</td>
 		                        <td>${re.formName}</td>
@@ -430,15 +430,6 @@
 		                        <td><span class="state temp">접수대기</span></td>
                         	</tr>
 	                  	</c:forEach>
-                        <tr>
-                          <td>2</td>
-                          <td>2022-03-04</td>
-                          <td>퇴직신청서</td>
-                          <td>관두겠습니다!</td>
-                          <td><span class="tag tag-primary"></span></td>
-                          <td>멋쟁이</td>
-                          <td><span class="state temp">접수대기</span></td>
-                        </tr>
                         <tr>
                           <td>3</td>
                           <td>2022-03-04</td>
