@@ -26,7 +26,6 @@ public class ResignDaoImpl implements ResignDao {
 	public List<ResignDto> getTotalResignList() {
 		return ss.selectList("resign.getTotalResignList");
 		
-
 	}
 
 }
