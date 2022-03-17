@@ -341,7 +341,7 @@
                       </thead>
                       <tbody class="recp1_tbody">
                       	<c:forEach items="${recList}" var="re">
-                      		<tr>
+                      		<tr class="recp_tr" onClick ="location.href='http://127.0.0.1:9999/hh/appr/appr_detail/${re.docNo}'">
 		                        <td>${re.docNo}</td>
 		                        <td>${re.docDate}</td>
 		                        <td>${re.formName}</td>
