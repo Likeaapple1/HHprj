@@ -82,6 +82,11 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	public List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception {
 		return sqlsession.selectList("attendance.getAttEmpAllList",map);
 	}
+
+	@Override
+	public List<AttendanceDto> getAttEmpEpAllList(Map<String, Object> map) throws Exception {
+		return sqlsession.selectList("attendance.getAttEmpEpAllList",map);
+	}
 	
 	
 }

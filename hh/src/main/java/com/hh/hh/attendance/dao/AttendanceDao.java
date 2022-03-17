@@ -34,4 +34,6 @@ public interface AttendanceDao {
 	List<AttendanceDto> getworkChartList(long empNo) throws Exception;
 
 	List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception;
+
+	List<AttendanceDto> getAttEmpEpAllList(Map<String, Object> map) throws Exception;
 }

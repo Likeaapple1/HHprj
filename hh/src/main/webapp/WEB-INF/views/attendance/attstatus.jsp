@@ -7,9 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 
  <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,7 +20,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 모달 -->
 <!-- 모달 -->
   <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
     <div class="modal-dialog">
@@ -128,8 +125,8 @@
 	   </c:forEach>
 	 </tbody> 
 	</table>
-	<br>
-	<iframe src="${root}/attendance/updateContent" scrolling="no" width="100%" height="50%">
+	<br><br><br>
+	<iframe src="${root}/attendance/updateContent" width="100%" height="700px%">
 	</iframe>
 </body>
 <script type="text/javascript">
