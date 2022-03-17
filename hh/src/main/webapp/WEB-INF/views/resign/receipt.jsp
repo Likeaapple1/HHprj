@@ -226,19 +226,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="${pageContext.request.contextPath}/resign/resignhistory" class="nav-link">
+                <a href="${pageContext.request.contextPath}/resign/history" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>퇴직금 산정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${pageContext.request.contextPath}/resign/resigninput" class="nav-link">
+                <a href="${pageContext.request.contextPath}/resign/input" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>퇴직급여 입력</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${pageContext.request.contextPath}/resign/resignreceipt" class="nav-link active">
+                <a href="${pageContext.request.contextPath}/resign/receipt" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>퇴직소득원천징수</p>
                 </a>

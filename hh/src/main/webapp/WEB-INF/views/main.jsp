@@ -336,7 +336,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="${path}/history" class="nav-link">
+                <a href="${path}/resign/history" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     퇴직 업무
@@ -344,7 +344,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${path}/receipt"  class="nav-link">
+                <a href="${path}/resign/input"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     퇴직급여 입력
@@ -352,13 +352,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${path}/receipt" class="nav-link">
+                <a href="${path}/resign/receipt" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>퇴직소득원천징수</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${path}/totalresign" class="nav-link">
+                <a href="${path}/resign/totalresign" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>퇴직추계액관리</p>
                 </a>
