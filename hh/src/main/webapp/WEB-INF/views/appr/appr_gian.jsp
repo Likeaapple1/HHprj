@@ -260,7 +260,7 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="./reception" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>수신결재</p>
                 </a>
@@ -393,7 +393,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="td1">부서</td>
-                                                <td class="td2"><input type="text" value="${loginUser.managerDept}" style="border: 0;" readonly></td>
+                                                <td class="td2"><input type="text" value="${loginUser.deptName}" style="border: 0;" readonly></td>
                                             </tr>
                                             <tr>
                                                 <td class="td1">기안일</td>
@@ -430,25 +430,25 @@
                             결재
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person.empName}</div>
                             <input type="hidden" name="apprNo1" value="${person.empNo}">
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person1.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person1.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person1.empName}</div>
                             <input type="hidden" name="apprNo2" value="${person1.empNo}">
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person2.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person2.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person2.empName}</div>
                             <input type="hidden" name="apprNo3" value="${person2.empNo}">
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person3.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person3.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person3.empName}</div>
                             <input type="hidden" name="apprNo4" value="${person3.empNo}">
@@ -457,22 +457,22 @@
                             합의
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person4.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person4.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person4.empName}</div>
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person5.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person5.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person5.empName}</div>
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person6.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person6.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person6.empName}</div>
                         </div>
                         <div class="form_table3_tr_td2">
-                            <div class="form_table3_tr_td2_header">${person7.empjobCode}</div>
+                            <div class="form_table3_tr_td2_header">${person7.jobName}</div>
                             <div class="form_table3_tr_td2_body"></div>
                             <div class="form_table3_tr_td2_footer">${person7.empName}</div>
                         </div>
@@ -600,9 +600,9 @@
 		                                            	<ins class="jstree-icon_1">&nbsp;</ins>
 			                                            <a title rel="MEMBER" id="MEMBER_2" href="#" class="ui-draggable1">
 			                                                <ins class="jstree-icon_3"></ins>
-			                                                <span class="userInfo">${n.empName} ${n.empjobCode}</span>
-                                                            <span style="display: none;">${n.managerDept}</span>
-                                                            <span style="display: none;">${n.empjobCode}</span>
+			                                                <span class="userInfo">${n.empName} ${n.jobName}</span>
+                                                            <span style="display: none;">${n.deptName}</span>
+                                                            <span style="display: none;">${n.jobName}</span>
                                                             <span style="display: none;">${n.empName}</span>
 			                                            </a>
 	                                                </li>
@@ -1024,8 +1024,8 @@
         
         var innerHtml = "";
         innerHtml += '<tr>';
-        innerHtml += '<td>${user1.managerDept}</td>';
-        innerHtml += '<td>${user1.empjobCode}</td>';
+        innerHtml += '<td>${user1.deptName}</td>';
+        innerHtml += '<td>${user1.jobName}</td>';
         innerHtml += '<td class="listedName">${user1.empName}</td>';
         innerHtml += '<td class="apprType_btn_group m0 p0">';
         innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
@@ -1040,8 +1040,8 @@
         innerHtml += '</tr>';
         
         innerHtml += '<tr>';
-        innerHtml += '<td>${user2.managerDept}</td>';
-        innerHtml += '<td>${user2.empjobCode}</td>';
+        innerHtml += '<td>${user2.deptName}</td>';
+        innerHtml += '<td>${user2.jobName}</td>';
         innerHtml += '<td class="listedName">${user2.empName}</td>';
         innerHtml += '<td class="apprType_btn_group m0 p0">';
         innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
@@ -1056,8 +1056,8 @@
         innerHtml += '</tr>';
         
         innerHtml += '<tr>';
-        innerHtml += '<td>${user3.managerDept}</td>';
-        innerHtml += '<td>${user3.empjobCode}</td>';
+        innerHtml += '<td>${user3.deptName}</td>';
+        innerHtml += '<td>${user3.jobName}</td>';
         innerHtml += '<td class="listedName">${user3.empName}</td>';
         innerHtml += '<td class="apprType_btn_group m0 p0">';
         innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';
@@ -1072,8 +1072,8 @@
         innerHtml += '</tr>';
         
         innerHtml += '<tr>';
-        innerHtml += '<td>${user4.managerDept}</td>';
-        innerHtml += '<td>${user4.empjobCode}</td>';
+        innerHtml += '<td>${user4.deptName}</td>';
+        innerHtml += '<td>${user4.jobName}</td>';
         innerHtml += '<td class="listedName">${user4.empName}</td>';
         innerHtml += '<td class="apprType_btn_group m0 p0">';
         innerHtml += '<input type="button" class="apprType_btn1" value="결재" disabled> ';

@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>전자결재 홈</title>
+  <title>결재 수신 문서함</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -299,12 +299,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">전자결재 Home</h1>
+            <h1 class="m-0">수신 문서함</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="./home.html">Home</a></li>
-              <li class="breadcrumb-item active">전자결재 Home</li>
+              <li class="breadcrumb-item active">수신 문서함</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -315,86 +315,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <h5 class="m-0" style="font-weight: bold;">자주쓰는 결재 &nbsp;
-          <span class="text_1">사용자가 가장 많이 사용한 결재양식입니다. 양식 선택 시 결재 작성화면으로 이동됩니다.</span>
-        </h5>
-        <div class="appr_often">
-        	<a href="./appr_gian.html">
-	            <div class="appr_often_div">
-	              <img src="${path}/resources/css/appr/dist/img/file_img1.png">
-	              <p>기안서</p>
-	            </div>
-          	</a>
-          <!-- 추가하기 버튼 -->
-          <a href="#">
-            <div class="appr_often_add">
-              <img src="${path}/resources/css/appr/dist/img/plus.png">
-              <p>추가하기</p>
-            </div>
-          </a>
-        </div> 
-        <!-- appr_often -->
         <div class="appr_content">
-          <div class="appr_content1">
-				<div class="appr_content1_div">
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">휴가 가고싶어요</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;기안서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">관두겠습니다!</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;퇴직신청서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">출장다녀오겠습니다.</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출장신청서</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-					<div>
-						<div class="appr_content1_header">
-							<span class="state read">진행중</span>
-							<p class="appr_form_text3 mb0">과자샀습니다</p>
-							<p class="appr_form_text2 mb0">기안자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이훈희</p>
-							<p class="appr_form_text2 mb0">기안일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-03-04</p>
-							<p class="appr_form_text2 mb0">결재양식 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지출결의서(기본)</p>
-						</div>
-						<a href="#">
-							<div class="appr_content1_footer">
-								<p class="appr_form_text5">결재하기</p>
-							</div>							
-						</a>
-					</div>
-				</div>
-          </div>
           <div class="appr_content2">
             <div class="row">
               <div class="col-12">
@@ -448,51 +369,14 @@
                           <td>이훈희</td>
                           <td><span class="state temp">접수대기</span></td>
                         </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-              </div>
-            </div>
-            <!-- /.row -->
-          </div>
-          <div class="appr_content3">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header" style="padding-top: 15px;">
-                    <h5 class="appr_form_text3">
-                      기안 진행 문서
-                    </h5>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                      <thead>
                         <tr>
-                          <th>기안일</th>
-                          <th>결재양식</th>
-                          <th>제목</th>
-                          <th>첨부</th>
-                          <th style="width: 10%;">결재상태</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
+                          <td>4</td>
                           <td>2022-03-04</td>
-                          <td>기안서</td>
-                          <td>휴가 가고싶어요</td>
-                          <td><span class="tag tag-warning"></span></td>
-                          <td><span class="state read">진행중</span></td>
-                        </tr>
-                        <tr>
-                          <td>2022-03-04</td>
-                          <td>퇴직신청서</td>
-                          <td>관두겠습니다!</td>
+                          <td>시말서</td>
+                          <td>죄송합니다</td>
                           <td><span class="tag tag-primary"></span></td>
-                          <td><span class="state read">진행중</span></td>
+                          <td>이훈희</td>
+                          <td><span class="state temp">접수대기</span></td>
                         </tr>
                       </tbody>
                     </table>
@@ -504,7 +388,7 @@
             </div>
             <!-- /.row -->
           </div>
-          <div class="appr_content4">
+          <!-- <div class="appr_content3">
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -513,7 +397,7 @@
                       완료 문서
                     </h5>
                   </div>
-                  <!-- /.card-header -->
+                  /.card-header
                   <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                       <thead>
@@ -533,7 +417,7 @@
                           <td>결재승인해주세요</td>
                           <td><span class="tag tag-warning"></span></td>
                           <td>HH그룹-2022-00001</td>
-                          <td><span class="state finish">완료</span></td>
+                          <td><span class="state read">진행중</span></td>
                         </tr>
                         <tr>
                           <td>2022-03-04</td>
@@ -546,13 +430,13 @@
                       </tbody>
                     </table>
                   </div>
-                  <!-- /.card-body -->
+                  /.card-body
                 </div>
-                <!-- /.card -->
+                /.card
               </div>
             </div>
-            <!-- /.row -->
-          </div>
+            /.row
+          </div> -->
         </div>
         <!-- appr_content -->
       </div>

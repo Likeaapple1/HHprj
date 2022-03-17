@@ -7,6 +7,8 @@ public class ApprovalDto {
 	
 	private long docNo;
 	private long empNo;
+	private long loginNo;
+	private String empName;
 	private String formName;
 	private String docName;
 	private String docContent;

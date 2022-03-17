@@ -123,6 +123,11 @@ public class ApprServiceImpl implements ApprService{
 		return dao.insertApproval(apprdto);
 	}
 
+	@Override
+	public List<ApprovalDto> getRecList(ApprovalDto appr) throws Exception {
+		return dao.getRecList(appr);
+	}
+
 	
 
 	

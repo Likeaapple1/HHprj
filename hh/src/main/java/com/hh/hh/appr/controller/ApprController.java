@@ -29,7 +29,15 @@ public class ApprController {
 	
     // 전자결재 홈 보여주기
 	@GetMapping("home")
-	public String home() {
+	public String home(ApprovalDto appr, Model model, HttpServletRequest request) throws Exception {
+		//기안 대기 문서 리스트 조회
+		MemberDto loginUser = (MemberDto) request.getSession().getAttribute("loginUser");
+		
+		appr.setLoginNo(loginUser.getEmpNo());
+		
+		List<ApprovalDto> recList = service.getRecList(appr);
+		model.addAttribute("recList", recList);
+		
 		return "appr/home";
 	}
 	@PostMapping("home")
@@ -44,6 +52,26 @@ public class ApprController {
 	@GetMapping("appr_detail")
 	public String appr_detail() {
 		return "appr/appr_detail";
+	}
+	
+	// 전자결재 수신 문서함 보여주기
+	@GetMapping("reception")
+	public String reception(ApprovalDto appr, Model model, HttpServletRequest request) throws Exception {
+		//수신대기함 리스트 조회
+		MemberDto loginUser = (MemberDto) request.getSession().getAttribute("loginUser");
+		
+		appr.setLoginNo(loginUser.getEmpNo());
+		
+		List<ApprovalDto> recList = service.getRecList(appr);
+		model.addAttribute("recList", recList);
+
+		return "appr/reception";
+	}
+	
+	@PostMapping("reception")
+	public String reception() throws Exception {
+		
+		return "appr/reception";
 	}
 	
 	// 전자결재 상세조회 보여주기

@@ -26,8 +26,8 @@ public class ApprDto {
 	private String empemail;
 	private String empaddress;
 	private String empphone;
-	private String empdeptNo;
-	private String empjobCode;
+	private String deptName;
+	private String jobName;
 	private char managerYn;
 	private String managerDept;
 }

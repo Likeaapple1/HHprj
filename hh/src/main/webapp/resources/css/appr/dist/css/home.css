@@ -148,6 +148,37 @@ span.state.finish {
 .appr_content2 {
     height: 30%;
 }
+.recp1>table>tbody{
+    max-height: 500px;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+}
+.card-body table td:nth-child(1), .card-body table th:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+.card-body table td:nth-child(2), .card-body table th:nth-child(2) {
+    width: 50px;
+}
+.card-body table td:nth-child(3), .card-body table th:nth-child(3) {
+    width: 200px;
+}
+.card-body table td:nth-child(4), .card-body table th:nth-child(4) {
+    width: 800px;
+}
+.card-body table td:nth-child(5), .card-body table th:nth-child(5) {
+    width: 100px;
+}
+.card-body table td:nth-child(6), .card-body table th:nth-child(6) {
+    width: 150px;
+}
+.card-body table td:nth-child(7), .card-body table th:nth-child(7) {
+    width: 50px;
+}
+span.state.temp {
+    background-color: #F6B3B3;
+    border: 1px solid #F6B3B3;
+}
 .appr_content3 {
     margin-top: 20px;
     height: 30%;

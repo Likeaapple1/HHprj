@@ -15,6 +15,18 @@
 		WHERE EMP_NO = #{empNo}
 	</select>
 	
+	<select id="getRecList" resultType="com.hh.hh.appr.entity.ApprovalDto">
+		SELECT * 
+		FROM APPROVAL AP
+		JOIN EMP E
+		ON AP.EMP_NO = E.EMP_NO
+		WHERE (APPR_NO1 = #{loginNo}
+		  OR  APPR_NO2 = #{loginNo}
+		  OR  APPR_NO3 = #{loginNo}
+		  OR  APPR_NO4 = #{loginNo})
+		  AND STATUS = '대기'
+	</select>
+	
 	<select id="getPerson" resultType="apprVo">
 		SELECT *
 		FROM EMP

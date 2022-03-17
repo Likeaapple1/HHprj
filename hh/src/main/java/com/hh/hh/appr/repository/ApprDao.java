@@ -10,6 +10,7 @@ public interface ApprDao {
 
 	List<ApprDto> getOrgList() throws Exception;
 	List<ApprLineDto> getLineList(ApprLineDto linedto) throws Exception;
+	List<ApprovalDto> getRecList(ApprovalDto appr) throws Exception;
 
 	ApprDto getPerson(ApprDto dto);
 	ApprDto getPerson1(ApprDto dto);
@@ -33,5 +34,6 @@ public interface ApprDao {
 	ApprDto getViewer4(ApprDto dto) throws Exception;
 	
 	int insertApproval(ApprovalDto apprdto) throws Exception;
+	
 
 }

@@ -12,6 +12,7 @@ public interface ApprService {
 
 	List<ApprDto> getOrgList() throws Exception;
 	List<ApprLineDto> getLineList(ApprLineDto linedto) throws Exception;
+	List<ApprovalDto> getRecList(ApprovalDto appr) throws Exception;
 
 	ApprDto getPerson(ApprDto dto) throws Exception;
 	ApprDto getPerson1(ApprDto dto) throws Exception;
@@ -35,5 +36,7 @@ public interface ApprService {
 	ApprDto getViewer4(ApprDto dto) throws Exception;
 	
 	int insertApproval(ApprovalDto apprdto, HttpServletRequest request) throws Exception;
+	
+	
 
 }

@@ -251,7 +251,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="./reception" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>수신결재</p>
                   </a>

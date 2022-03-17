@@ -121,4 +121,9 @@ public class ApprDaoImpl implements ApprDao{
 		return ss.insert("appr.insertApproval", apprdto);
 	}
 
+	@Override
+	public List<ApprovalDto> getRecList(ApprovalDto appr) throws Exception {
+		return ss.selectList("appr.getRecList", appr);
+	}
+
 }
