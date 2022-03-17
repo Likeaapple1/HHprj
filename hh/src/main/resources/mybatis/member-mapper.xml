@@ -20,8 +20,8 @@
             ,EMP_EMAIL
             ,EMP_ADD
             ,EMP_PHONE
-            ,EMP_DEPTNAME
-            ,EMP_JOBNAME
+            ,DEPT_NAME
+            ,JOB_NAME
             ,MANAGER_YN
             ,MANAGER_DEPT
         )
@@ -34,8 +34,8 @@
             ,#{empEmail}
             ,#{empAdd}
             ,#{empPhone}
-            ,#{empDeptname}
-            ,#{empJobname}
+            ,#{deptName}
+            ,#{jobName}
             ,#{managerYn}
             ,#{managerDept}
         )

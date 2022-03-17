@@ -12,8 +12,8 @@ public class EmpDto {
 	private String empName;
 	private String empPassword;
 	private String empBirth;
-	private String empDeptname;
-	private String empJobname;
+	private String deptName;
+	private String jobName;
 	private String empPhone;
 	private String empAdd;
 	private String empDtAdd;

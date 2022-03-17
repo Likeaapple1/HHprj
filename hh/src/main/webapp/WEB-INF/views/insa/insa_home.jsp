@@ -17,7 +17,8 @@
     .div1 {
       overflow-y: scroll;
       min-height: 0px;
-      max-height: 330px;
+      max-height: 1000px;
+      scroll-behavior: auto;
     }
     td, th {
       height: 30px;
@@ -1075,7 +1076,7 @@ form {
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="${path}/resources/css/appr/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
@@ -1084,7 +1085,7 @@ form {
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${path}/resources/css/appr/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
@@ -1107,38 +1108,220 @@ form {
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-              with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+               with font-awesome or any other icon font library -->
+
+          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-item">
+            <a href="pages/calendar.html" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
+                공지 사항
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/gallery.html" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                캘린더
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/kanban.html" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                쪽지
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                근태
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="${path}/attendance/home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>근태관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/attendance/attstatus" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>출퇴근 현황</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/attendance/admin/list" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>전사 출퇴근 현황</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/attendance/admin/setatt" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>출퇴근 변경 사항</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                연차
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/examples/invoice.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>연차관리</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/profile.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>연차신청현황</p>
+                </a>
+              </li>>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                전자 결재
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/appr/home" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    전자 결재
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              </ul>
+			<li class="nav-item"> <!-- 급여 -->
+            <a href="#" class="nav-link">
+              <p>
+                급여
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/payroll" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여이체현황
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/payslip" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<%=request.getContextPath()%>/salary/setting" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>급여설정</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/input" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>급상여입력</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/email" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서 이메일 발송
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li> 
+          <li class="nav-item">
+                     <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <p>
+                퇴직 업무
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/resign/resignhistory" class="nav-link">
+                 <!-- <a href="#" class="nav-link active"></a>-->
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직금 산정</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/resign/resigninput" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직급여 입력</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/resign/resignreceipt"" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직소득원천징수</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/resign/totalresign" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직금 추계액관리</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                인사관리
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/insa/home" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    인사기록카드
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/insa/organization” " class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    부서 조직도
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/insa/certificate”" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>증명서 발급</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -1223,17 +1406,27 @@ form {
               
               <tr>
                 <th>부서(*)</th>
-                <td><select id="empDeptname" name="empDeptname"
+                <td><select id="deptName" name="deptName"
                   class="form-control">
                     <option value="인사팀">인사팀</option>
+                    <option value="재무팀">재무팀</option>
+                    <option value="행정팀">행정팀</option>
+                    <option value="개발팀">개발팀</option>
+                    <option value="영업팀">영업팀</option>
                 </select></td>
               </tr>
               
               <tr>
                 <th>직급(*)</th>
-                <td><select id="empJobname" name="empJobname"
+                <td><select id="jobName" name="jobName"
                   class="form-control">
                   <option value="팀장">팀장</option>
+                  <option value="차장">차장</option>
+                  <option value="과장">과장</option>
+                  <option value="대리">대리</option>
+                  <option value="사원">사원</option>
+                  <option value="인턴">인턴</option>
+                  
                     
                 </select></td>
               </tr>
@@ -1410,7 +1603,7 @@ form {
               <!-- 부서, 직급은 DEPT, JOB 테이블에서 컬럼 추가 -->
               <tr>
                 <th>부서(*)</th>
-                <td><select id="empDeptname" name="empDeptname"
+                <td><select id="deptName" name="deptName"
                   class="form-control">
                     <c:forEach items="${selectDpt_Div_Tb}" var="map">
                       <option value="${map.DPT_SQ}">${map.DPT_NM}</option>
@@ -1419,7 +1612,7 @@ form {
               </tr>
               <tr>
                 <th>직급(*)</th>
-                <td><select id="empJobname" name="empJobname"
+                <td><select id="jobName" name="jobName"
                   class="form-control">
                     <c:forEach items="${selectRnk_Tb}" var="map">
                       <option value="${map.RNK_SQ}">${map.RNK_NM}</option>
@@ -1617,8 +1810,8 @@ form {
                             <td>${emp.empBirth}</td>
                             <td><img alt="프로필사진" style="width:100px; height:100px;" src="/hh/resources/static/upload/${emp.empNo}_profile.png"/></td>  <%-- ${emp.empPhotoRoute} --%>
                             <td><a href="http://localhost:9999/hh/emp/injuk/${emp.empNo}">${emp.empName}</a></td>                       
-                            <td>${emp.empDeptname}</td>
-                            <td>${emp.empJobname}</td>
+                            <td>${emp.deptName}</td>
+                            <td>${emp.jobName}</td>
                             <td>${emp.empEnrolldate}</td>
                             <td>${emp.empPhone}</td>
                             <td>${emp.empEmail}</td>
@@ -1658,11 +1851,11 @@ form {
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<script>
+<!-- <script>
 $(document).on("click","button[name=abc]",function(){
 	alert("123");
 })
-</script>
+</script> -->
 <script>
 $("#phoneNum3").blur(function(){
 	let phoneNumAll = $("#phoneNum1").val() +  $("#phoneNum2").val() + $("#phoneNum3").val()
