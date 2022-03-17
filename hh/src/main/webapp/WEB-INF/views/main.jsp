@@ -352,6 +352,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="${path}/receipt" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직소득원천징수</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="${path}/totalresign" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>퇴직추계액관리</p>

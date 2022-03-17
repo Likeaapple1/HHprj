@@ -2,11 +2,14 @@ package com.hh.hh.resign.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hh.hh.resign.entity.ResignDto;
 import com.hh.hh.resign.service.ResignService;
@@ -18,15 +21,21 @@ public class ResignController {
 	@Autowired
 	private ResignService service;
 
+	@Autowired
+	private SqlSession ss;
 	//사원조회1조회
-	@GetMapping(value= {"/history"})
-	public String history(Model model) throws Exception{
+	@GetMapping(value= {"/history","/history/{p}"})
+	public ModelAndView history(ModelAndView mv,@PathVariable(required = false) String p, Model model) throws Exception{
 		
 		List<ResignDto> list=service.getResignList();
-		System.out.println(list);
-		model.addAttribute("list",list);
+		mv.addObject("list", list);
+		mv.setViewName("resign/history");
 		
-		return "resign/history";
+		ResignDto data= ss.selectOne("resign.selectOneEmp",p);
+		System.out.println(data);
+		model.addAttribute("data",data);
+		
+		return mv;
 	}
 	
 	

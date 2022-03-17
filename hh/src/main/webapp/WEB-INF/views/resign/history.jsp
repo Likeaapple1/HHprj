@@ -359,9 +359,9 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${list}" var="n">
-                           <tr style="cursor: pointer"  onclick="clickOutput();" class="listCheckTest">
-                       	     <td class="searchNoKey">${n.reNo}</td>
-		                     <td>${n.reName}</td>
+                           <tr>
+                       	     <td>${n.reNo}</td>
+                       	     <td><b><a href="http://localhost:9999/hh/resign/history/${n.reNo}" style="color: black; text-decoration: none;">${n.reName}</a></b></td>
 		                     <td>${n.reRank}</td>
 		                   <td>${n.reDept}</td>
                           </tr>
@@ -400,25 +400,25 @@
                     <td bgcolor="eeeee">
                       입사일</td>
                     <td>
-                      2018/10/10
+                      ${data.reHireDate}
                     </td>
                     <td bgcolor="eeeee">
                       퇴직일
                     </td>
                     <td>
-                      2022/03/17
+                       ${data.reResignDate}
                     </td>
                     <td bgcolor="eeeee">
                       퇴직금 지급일
                     </td>
                     <td>
-                      2022/03/17
+                       ${data.reResignDate}
                     </td>
                     <td bgcolor="eeeee">
                       근속일수
                     </td>
                     <td>
-						5732 일
+						${data.reTotalWork}
                     </td>
                   </tr>
                   <tr>
@@ -426,13 +426,13 @@
                       퇴직 기준일
                     </td>
                     <td colspan="3">
-                      2022/03/17
+                       ${data.reResignDate}
                     </td>
                     <td bgcolor="eeeee">
                       퇴직소즉세 근속기간
                     </td>
                     <td colspan="3">
-                      2022/03/17
+                       ${data.reResignDate}
                     </td>
                   </tr>
                 </table>
@@ -459,10 +459,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>2022/03/17</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
+                    <td> ${data.reResignDate}</td>
+                    <td> ${data.reTotalWork}</td>
+                    <td> ${data.reBasicPay}</td>
+                    <td> ${data.reYearBonus}</td>
                   </tr>
                 </tbody>
                   
@@ -482,9 +482,9 @@
                 <table class="table table-bordered">
                   <tr>
                     <td bgcolor="eeeee">연자수당</td>
-                    <td></td>
+                    <td>${data.reYearBonus}</td>
                     <td bgcolor="eeeee">상여금</td>
-                    <td></td>
+                    <td>${data.reYearBonus}</td>
                   </tr>
                 </table>
 
@@ -502,11 +502,11 @@
                 <table class="table table-bordered">
                   <tr>
                     <td bgcolor="eeeee">일평균</td>
-                    <td></td>
+                    <td>${data.reOneAvrPay}</td>
                     <td bgcolor="eeeee">일통상임금</td>
-                    <td></td>
+                    <td>${data.reOneAvrPay}</td>
                     <td bgcolor="eeeee">퇴직금</td>
-                    <td></td>
+                    <td>${data.reResignPay}</td>
                   </tr>
                   <tr>
                     <td bgcolor="eeeee">퇴직소득세</td>
