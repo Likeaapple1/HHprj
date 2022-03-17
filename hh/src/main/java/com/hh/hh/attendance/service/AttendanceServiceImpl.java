@@ -105,4 +105,9 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendancedao.getAttEmpAllList(map);
 	}
 
+	@Override
+	public List<AttendanceDto> getAttEmpEpAllList(Map<String, Object> map) throws Exception {
+		return attendancedao.getAttEmpEpAllList(map);
+	}
+
 }

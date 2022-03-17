@@ -185,7 +185,7 @@
 
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="${path}/notice/list" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 공지 사항
@@ -291,7 +291,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<%=request.getContextPath()%>/salary/payroll" class="nav-link">
+                <a href="${path}/salary/payroll" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     급여이체현황
@@ -307,7 +307,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<%=request.getContextPath()%>/salary/setting" class="nav-link">
+                <a href="${path}/salary/setting" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>급여설정</p>
                 </a>
@@ -327,39 +327,34 @@
                 </a>
               </li>
             </ul>
-          </li> 
-          <li class="nav-item">
-                     <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <li class="nav-item">
+            <a href="#" class="nav-link">
               <p>
-                퇴직 업무
-                <i class="right fas fa-angle-left"></i>
+                퇴직금
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="${path}/resign/resignhistory" class="nav-link">
-                 <!-- <a href="#" class="nav-link active"></a>-->
+                <a href="${path}/history" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직금 산정</p>
+                  <p>
+                    퇴직 업무
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${path}/resign/resigninput" class="nav-link">
+                <a href="${path}/receipt"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직급여 입력</p>
+                  <p>
+                    퇴직급여 입력
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="${path}/resign/resignreceipt"" class="nav-link">
+                <a href="${path}/totalresign" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직소득원천징수</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="${path}/resign/totalresign" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>퇴직금 추계액관리</p>
+                  <p>퇴직추계액관리</p>
                 </a>
               </li>
             </ul>

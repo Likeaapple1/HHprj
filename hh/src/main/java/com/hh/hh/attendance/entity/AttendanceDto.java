@@ -1,6 +1,7 @@
 package com.hh.hh.attendance.entity;
 
 import java.sql.Time;
+
 import java.util.Date;
 
 import lombok.Data;
@@ -39,6 +40,7 @@ public class AttendanceDto {
 	private String attContentReason;
 	private Date attWorkingDate;
 	private Date attHwEndDate;
-	private String type;
-	private String keyword;
+	private String deptName;
+	private String jobName;
+	private String empName;
 }

@@ -101,21 +101,43 @@
       </select>
   	
     <select id="selectAttAllList" resultType="attendanceDto">
-        SELECT * FROM ATTENDANCE
-         <if test=" type != null">          
-            WHERE EMP_NO = #{empNo}          
-          </if> 
+        SELECT * FROM ATTENDANCE    
+            <if test=" type != null">          
+            WHERE EMP_NO = #{empNo}    
+            </if>      
     </select>
   	
   	<select id="getAttEmpAllList" resultType="attendanceDto">
-          SELECT * FROM ATTENDANCE
-          <if test=" type != null and value != null and v! = ''">
+        SELECT  E.EMP_NO, E.EMP_NAME, E.DEPT_NAME, E.JOB_NAME, 
+        		A.ATT_NO, A.WORK_FORM, A.ATT_STR_DATE, A.ATT_END_DATE,
+        		A.ATT_WORK_DATE, A.ATT_CONTENT, A.ATT_CONTENT_YN,
+        		A.ATT_CONTENT_REASON
+        FROM EMP E, ATTENDANCE A
+          <if test=" type != null and value != null">
           	<choose>
-          		<when test="type eq 'deptname'"></when>
-          	</choose>          
-            WHERE WORK_FORM LIKE #{type}                  
+          		<when test="type eq 'DEPT_NAME'">
+          			<bind name="dept" value=" '%' + v + '%' "/>
+          				WHERE E.EMP_NO = A.EMP_NO AND ${type} LIKE = #{dept}
+          		</when>
+          		<when test="type eq 'EMP_NAME'">
+          			<bind name="emp" value=" '%' + v + '%' "/>
+          				WHERE E.EMP_NO = A.EMP_NO AND ${type} LIKE = #{emp}
+          		</when>
+         		<when test="type eq 'JOB_NAME'">
+          			<bind name="jon" value=" '%' + v + '%' "/>
+          				WHERE E.EMP_NO = A.EMP_NO AND ${type} LIKE = #{job}
+          		</when>
+          		<otherwise>
+						WHERE E.EMP_NO = A.EMP_NO AND
+          		</otherwise>
+          	</choose>                           
           </if>
-      </select>
+    </select>
+  	
+  	<select id="getAttEmpEpAllList" resultType="attendanceDto">
+        SELECT * FROM ATTENDANCE        
+        WHERE EMP_NO = #{empNo} AND (ATT_CONTENT_YN = '승인' OR ATT_CONTENT_YN = '반려')          
+    </select>
   	
   	<update id="updateContent" parameterType="attendanceDto">
 		UPDATE ATTENDANCE
