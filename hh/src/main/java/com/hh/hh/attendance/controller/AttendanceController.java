@@ -1,6 +1,7 @@
 package com.hh.hh.attendance.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -138,7 +139,7 @@ public class AttendanceController {
 	      Date currentTime = new Date();
 
 	      // format 설정하기
-	      SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+	      SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 	      
 	      // 퇴근버튼에 현재 시간 format 넣어주기
 	       Date workBtnEnd = sdf.parse(sdf.format(currentTime));
@@ -165,8 +166,6 @@ public class AttendanceController {
 	      
 	      // 정상출근, 초과근무, 야근 시간 넣어주기
 		  Calendar work = Calendar.getInstance();
-		  Calendar overWork = Calendar.getInstance();
-		  Calendar nightWork = Calendar.getInstance();
 	      
 	      // 주말 출근 처리
 	      Date date = new Date();
@@ -200,72 +199,105 @@ public class AttendanceController {
 		          System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
 		          attendanceDto.setAttWorkDate(new Date(cEnd.getTimeInMillis()));
 		          AttendanceDto adto = attendanceservice.workout(attendanceDto); 
+		          System.out.println(attendanceDto.getAttNsEnd());
+		          System.out.println(workBtnEnd);
 			  }
 		      session.removeAttribute("attUser");
 		      return "redirect:/attendance/home";
 	   }
    }
    
+ 
    // 근태 현황 조회
-	   @GetMapping("/attstatus")
-	   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
-		   // 세션 가져오기
-		   MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
-		   // 근태 검색
-		   Map<String, Object> map = new HashMap<>();
-		   map.put("type", type);
-		   // System.out.println(type);
-		   map.put("empNo", loginUser.getEmpNo());
+   @PostMapping("/attstatus")
+   public String attstatus(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
+       Date date = new Date();
+       SimpleDateFormat sdfToday = new SimpleDateFormat("MM월 dd일"); 
+       SimpleDateFormat sdfWork = new SimpleDateFormat("HH:mm");
+       GregorianCalendar gcal = new GregorianCalendar();
+       SimpleDateFormat sdfWorkTotal = new SimpleDateFormat("dd일'T'HH:mm");
+       
+      // 세션 가져오기
+      MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
+      List<AttendanceDto> list = new ArrayList<AttendanceDto>();
+      // 근태 검색
+      Map<String, Object> map = new HashMap<String, Object>();
+      if(type == null || type.equals("근무상태")) {
+         map.put("empNo", loginUser.getEmpNo());
+         list = attendanceservice.getAttAllList(map);
+             for(AttendanceDto li : list) {
+                // 문자열 형식으로 변환한다
+                String today = sdfToday.format(li.getAttStrDate());
+                String start = sdfWork.format(li.getAttStrDate());
+                String end = sdfWork.format(li.getAttEndDate());
+                String startIn = sdfWorkTotal.format(li.getAttStrDate());
+                String startOut = sdfWorkTotal.format(li.getAttEndDate());
+                long no = li.getAttNo();
+                
+                // 총근무시간 구하기
+                Date startWork = sdfWorkTotal.parse(startIn);
+                Date endWork = sdfWorkTotal.parse(startOut);
+                
+                Calendar cWork = Calendar.getInstance();
+                Calendar cEnd = Calendar.getInstance();
+                
+                cWork.setTime(startWork);
+                cEnd.setTime(endWork);
+                cEnd.add(Calendar.HOUR_OF_DAY, -cWork.get(Calendar.HOUR_OF_DAY));
+                System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+                
+                // 데이터 타입으로 변환해서 넣어주기
+                li.setAttNo(no);
+                li.setToDay(today);
+                li.setStart(start);
+                li.setEnd(end);
+                li.setTotal(new Date(cEnd.getTimeInMillis()));
+             }
+      }
+      map.put("empNo", loginUser.getEmpNo());
+      map.put("type", type);
 
-		   // 근태 현황 조회하는 쿼리 날리기
-		   List<AttendanceDto> list = attendanceservice.getAttList(map);
-		   if(list != null) {
-			   SimpleDateFormat sdfToday = new SimpleDateFormat("MM월 dd일"); 
-			   SimpleDateFormat sdfWork = new SimpleDateFormat("HH:mm");
-			   GregorianCalendar gcal = new GregorianCalendar();
-			   SimpleDateFormat sdfWorkTotal = new SimpleDateFormat("dd일'T'HH:mm");
-		       	for(AttendanceDto li : list) {
-		       		System.out.println(li);
-		       		Date date = new Date();
-		             // 문자열 형식으로 변환한다
-		             String today = sdfToday.format(li.getAttStrDate());
-		             String start = sdfWork.format(li.getAttStrDate());
-		             String end = sdfWork.format(li.getAttEndDate());
-		             String startIn = sdfWorkTotal.format(li.getAttStrDate());
-		             String startOut = sdfWorkTotal.format(li.getAttEndDate());
-		             long no = li.getAttNo();
-		             
-		             // 총근무시간 구하기
-		             Date startWork = sdfWorkTotal.parse(startIn);
-		             Date endWork = sdfWorkTotal.parse(startOut);
-		             
-		             Calendar cWork = Calendar.getInstance();
-		             Calendar cEnd = Calendar.getInstance();
-		             
-		             cWork.setTime(startWork);
-		             cEnd.setTime(endWork);
-		             cEnd.add(Calendar.HOUR_OF_DAY, -cWork.get(Calendar.HOUR_OF_DAY));
-		             System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
-		             
-		             // 데이터 타입으로 변환해서 넣어주기
-		             li.setAttNo(no);
-		             li.setToDay(today);
-		             li.setStart(start);
-		             li.setEnd(end);
-		             li.setTotal(new Date(cEnd.getTimeInMillis()));
-		          }
-		          model.addAttribute("list", list);
-		          
-		       }
-		   return "attendance/attstatus";
-	   }
+      // 근태 현황 조회하는 쿼리 날리기
+      list = attendanceservice.getAttList(map);
+      if(list != null) {
+             for(AttendanceDto li : list) {
+                // 문자열 형식으로 변환한다
+                String today = sdfToday.format(li.getAttStrDate());
+                String start = sdfWork.format(li.getAttStrDate());
+                String end = sdfWork.format(li.getAttEndDate());
+                String startIn = sdfWorkTotal.format(li.getAttStrDate());
+                String startOut = sdfWorkTotal.format(li.getAttEndDate());
+                long no = li.getAttNo();
+                
+                // 총근무시간 구하기
+                Date startWork = sdfWorkTotal.parse(startIn);
+                Date endWork = sdfWorkTotal.parse(startOut);
+                
+                Calendar cWork = Calendar.getInstance();
+                Calendar cEnd = Calendar.getInstance();
+                
+                cWork.setTime(startWork);
+                cEnd.setTime(endWork);
+                cEnd.add(Calendar.HOUR_OF_DAY, -cWork.get(Calendar.HOUR_OF_DAY));
+                System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+                
+                // 데이터 타입으로 변환해서 넣어주기
+                li.setAttNo(no);
+                li.setToDay(today);
+                li.setStart(start);
+                li.setEnd(end);
+                li.setTotal(new Date(cEnd.getTimeInMillis()));
+             }
+          }
+      model.addAttribute("list", list);
+      return "attendance/attstatus";
+   }
 	   
 
 	// 근태현황 전체 조회
 	   @GetMapping("All")
 	   public String All(AttendanceDto attendanceDto, HttpSession session, Model model, String type) throws Exception {
            MemberDto loginUser = (MemberDto) session.getAttribute("loginUser");
-           
            // 전체 데이터 검색
            Map<String, Object> map = new HashMap<>();
            map.put("type", type);
@@ -339,7 +371,6 @@ public class AttendanceController {
 		   // 근태 검색
 		   Map<String, Object> map = new HashMap<>();
 		   map.put("empNo", loginUser.getEmpNo());
-
 		   // 전체 근태 조회하는 쿼리 날리기
 		   List<AttendanceDto> list = attendanceservice.getAttEmpEpAllList(map);
 		   if(list != null) {
@@ -387,7 +418,7 @@ public class AttendanceController {
 	   // 관리자만 들어갈 수 있는 메뉴
 	   @GetMapping("admin/list")
 	   public String list(MemberDto memberDto, AttendanceDto attendanceDto, HttpSession session, Model model, String type, String value) throws Exception {
-		   // 근태 검색
+		   // type별 근태 검색
 		   Map<String, Object> map = new HashMap<>();
 		   map.put("type", type);
 		   map.put("v", value);
@@ -411,6 +442,7 @@ public class AttendanceController {
 		             String dept = li.getDeptName();
 		             String job = li.getJobName();
 		             String name = li.getEmpName();
+		             String reason = li.getAttContentReason();
 		             
 		             long no = li.getAttNo();
 		             
@@ -432,7 +464,6 @@ public class AttendanceController {
 		             li.setStart(start);
 		             li.setEnd(end);
 		             li.setTotal(new Date(cEnd.getTimeInMillis()));
-		             li.setAttContentYn(contentYn);
 		             li.setDeptName(dept);
 		             li.setJobName(job);
 		             li.setEmpName(name);
@@ -442,8 +473,182 @@ public class AttendanceController {
 		   return "attendance/admin/list";
 	   }
 	   
+	   @GetMapping("adminAll")
+	   public String adminAll(MemberDto memberDto, AttendanceDto attendanceDto, HttpSession session, Model model, String value) throws Exception {
+		   Map<String, Object> map = new HashMap<>();
+		   map.put("v", value);
+
+		   // 전체 근태 조회하는 쿼리 날리기
+		   List<AttendanceDto> list = attendanceservice.getAttEmpAdminAllList(map);
+		   if(list != null) {
+			   SimpleDateFormat sdfToday = new SimpleDateFormat("MM월 dd일"); 
+			   SimpleDateFormat sdfWork = new SimpleDateFormat("HH:mm");
+			   GregorianCalendar gcal = new GregorianCalendar();
+			   SimpleDateFormat sdfWorkTotal = new SimpleDateFormat("dd일'T'HH:mm");
+		       	for(AttendanceDto li : list) {
+		       		Date date = new Date();
+		             // 문자열 형식으로 변환한다
+		             String today = sdfToday.format(li.getAttStrDate());
+		             String start = sdfWork.format(li.getAttStrDate());
+		             String end = sdfWork.format(li.getAttEndDate());
+		             String startIn = sdfWorkTotal.format(li.getAttStrDate());
+		             String startOut = sdfWorkTotal.format(li.getAttEndDate());
+		             String contentYn = li.getAttContentYn();
+		             String dept = li.getDeptName();
+		             String job = li.getJobName();
+		             String name = li.getEmpName();
+		             String reason = li.getAttContentReason();
+		             
+		             long no = li.getAttNo();
+		             
+		             // 총근무시간 구하기
+		             Date startWork = sdfWorkTotal.parse(startIn);
+		             Date endWork = sdfWorkTotal.parse(startOut);
+		             
+		             Calendar cWork = Calendar.getInstance();
+		             Calendar cEnd = Calendar.getInstance();
+		             
+		             cWork.setTime(startWork);
+		             cEnd.setTime(endWork);
+		             cEnd.add(Calendar.HOUR_OF_DAY, -cWork.get(Calendar.HOUR_OF_DAY));
+		             System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+		             
+		             // 데이터 타입으로 변환해서 넣어주기
+		             li.setAttNo(no);
+		             li.setToDay(today);
+		             li.setStart(start);
+		             li.setEnd(end);
+		             li.setTotal(new Date(cEnd.getTimeInMillis()));
+		             li.setDeptName(dept);
+		             li.setJobName(job);
+		             li.setEmpName(name);
+		          }
+		          model.addAttribute("list", list);
+		       }
+		   return "attendance/admin/list";
+	   }
+	  
+	   
+	   @PostMapping("attstatus/admin/list/adminUpdate")
+	   public String adminUpdate(AttendanceDto attendanceDto, String attno, String attcontent) throws Exception {
+		   long noValue = Integer.parseInt(attno);
+		   System.out.println(attno);
+		   System.out.println(attcontent);
+		   attendanceDto.setAttNo(noValue);
+		   attendanceDto.setAttContent(attcontent);
+		   
+		   // 수정 사유 쿼리 날리기
+		   int result = attendanceservice.updateContent(attendanceDto);
+		   
+		   if(result > 0) {
+			   return "redirect:/attendance/attstatus";
+		   } 
+		   return "attendance/attstatus";
+	   }
+	   
 	   @GetMapping("admin/setatt")
-	   public String setatt() {
+	   public String setatt(AttendanceDto attendanceDto, HttpSession session, Model model) throws Exception {
+		   List<AttendanceDto> list = attendanceservice.getAttSetAdminAllList(attendanceDto);
+	       Date date = new Date();
+	       SimpleDateFormat sdfToday = new SimpleDateFormat("MM월 dd일"); 
+	       SimpleDateFormat sdfWork = new SimpleDateFormat("HH:mm");
+	       GregorianCalendar gcal = new GregorianCalendar();
+	       SimpleDateFormat sdfWorkTotal = new SimpleDateFormat("dd일'T'HH:mm");   
+		   if(list != null) {
+		             for(AttendanceDto li : list) {
+		                // 문자열 형식으로 변환한다
+		                String today = sdfToday.format(li.getAttStrDate());
+		                String start = sdfWork.format(li.getAttStrDate());
+		                String end = sdfWork.format(li.getAttEndDate());
+		                String startIn = sdfWorkTotal.format(li.getAttStrDate());
+		                String startOut = sdfWorkTotal.format(li.getAttEndDate());
+		                long no = li.getAttNo();
+		                
+		                // 총근무시간 구하기
+		                Date startWork = sdfWorkTotal.parse(startIn);
+		                Date endWork = sdfWorkTotal.parse(startOut);
+		                
+		                Calendar cWork = Calendar.getInstance();
+		                Calendar cEnd = Calendar.getInstance();
+		                
+		                cWork.setTime(startWork);
+		                cEnd.setTime(endWork);
+		                cEnd.add(Calendar.HOUR_OF_DAY, -cWork.get(Calendar.HOUR_OF_DAY));
+		                System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+		                
+		                // 데이터 타입으로 변환해서 넣어주기
+		                li.setAttNo(no);
+		                li.setToDay(today);
+		                li.setStart(start);
+		                li.setEnd(end);
+		                li.setTotal(new Date(cEnd.getTimeInMillis()));
+		             }
+		          }
+		      model.addAttribute("list", list);
 		   return "attendance/admin/setatt";
+	   }
+	   
+	   @GetMapping("setupdateContent")
+	   public String setupdateContent(AttendanceDto attendanceDto, HttpSession session, Model model) throws Exception {
+		   List<AttendanceDto> list = attendanceservice.getAttSetAdminUpdateAllList(attendanceDto);
+	       Date date = new Date();
+	       SimpleDateFormat sdfToday = new SimpleDateFormat("MM월 dd일"); 
+	       SimpleDateFormat sdfWork = new SimpleDateFormat("HH:mm");
+	       GregorianCalendar gcal = new GregorianCalendar();
+	       SimpleDateFormat sdfWorkTotal = new SimpleDateFormat("dd일'T'HH:mm");   
+		   if(list != null) {
+		             for(AttendanceDto li : list) {
+		                // 문자열 형식으로 변환한다
+		                String today = sdfToday.format(li.getAttStrDate());
+		                String start = sdfWork.format(li.getAttStrDate());
+		                String end = sdfWork.format(li.getAttEndDate());
+		                String startIn = sdfWorkTotal.format(li.getAttStrDate());
+		                String startOut = sdfWorkTotal.format(li.getAttEndDate());
+		                long no = li.getAttNo();
+		                String reason = li.getAttContentReason();
+		                
+		                // 총근무시간 구하기
+		                Date startWork = sdfWorkTotal.parse(startIn);
+		                Date endWork = sdfWorkTotal.parse(startOut);
+		                
+		                Calendar cWork = Calendar.getInstance();
+		                Calendar cEnd = Calendar.getInstance();
+		                
+		                cWork.setTime(startWork);
+		                cEnd.setTime(endWork);
+		                cEnd.add(Calendar.HOUR_OF_DAY, -cWork.get(Calendar.HOUR_OF_DAY));
+		                System.out.println("총근무시간 ::"+ new Date(cEnd.getTimeInMillis()));
+		                
+		                // 데이터 타입으로 변환해서 넣어주기
+		                li.setAttNo(no);
+		                li.setToDay(today);
+		                li.setStart(start);
+		                li.setEnd(end);
+		                li.setTotal(new Date(cEnd.getTimeInMillis()));
+		                li.setAttContentReason(reason);
+		                System.out.println(reason);
+		             }
+		          }
+		      model.addAttribute("list", list);
+		   return "attendance/setupdateContent";
+	   }
+	   
+	   @PostMapping("attstatus/adminupdate")
+	   public String adminupdate(AttendanceDto attendanceDto, String attno, String attreason, String attselect) throws Exception {
+		   long noValue = Integer.parseInt(attno);
+		   System.out.println(attno);
+		   System.out.println(attreason);
+		   System.out.println(attselect);
+		   attendanceDto.setAttNo(noValue);
+		   attendanceDto.setAttContentReason(attreason);
+		   attendanceDto.setAttContentYn(attselect);
+		   
+		   // 수정 사유 쿼리 날리기
+		   int result = attendanceservice.updateAdminContent(attendanceDto);
+		   
+		   if(result > 0) {
+			   return "redirect:/attendance/admin/setatt";
+		   } 
+		   return "attendance/attstatus";
 	   }
 }

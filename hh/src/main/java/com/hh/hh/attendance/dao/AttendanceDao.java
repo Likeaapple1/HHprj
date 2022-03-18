@@ -36,4 +36,12 @@ public interface AttendanceDao {
 	List<AttendanceDto> getAttEmpAllList(Map<String, Object> map) throws Exception;
 
 	List<AttendanceDto> getAttEmpEpAllList(Map<String, Object> map) throws Exception;
+
+	List<AttendanceDto> getAttEmpAdminAllList(Map<String, Object> map) throws Exception;
+
+	List<AttendanceDto> getAttSetAdminAllList(AttendanceDto attendanceDto) throws Exception;
+
+	List<AttendanceDto> getAttSetAdminUpdateAllList(AttendanceDto attendanceDto) throws Exception;
+
+	int updateAdminContent(AttendanceDto attendanceDto) throws Exception;
 }

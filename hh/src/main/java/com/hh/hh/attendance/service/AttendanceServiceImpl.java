@@ -14,8 +14,11 @@ import com.hh.hh.attendance.entity.AttendanceDto;
 import com.hh.hh.common.PageVo;
 import com.hh.hh.member.entity.MemberDto;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Transactional
+@Slf4j
 public class AttendanceServiceImpl implements AttendanceService {
 	
 	@Autowired
@@ -108,6 +111,32 @@ public class AttendanceServiceImpl implements AttendanceService {
 	@Override
 	public List<AttendanceDto> getAttEmpEpAllList(Map<String, Object> map) throws Exception {
 		return attendancedao.getAttEmpEpAllList(map);
+	}
+
+	@Override
+	public List<AttendanceDto> getAttEmpAdminAllList(Map<String, Object> map) throws Exception {
+		return attendancedao.getAttEmpAdminAllList(map);
+	}
+
+	@Override
+	public List<AttendanceDto> getAttSetAdminAllList(AttendanceDto attendanceDto) throws Exception {
+		return attendancedao.getAttSetAdminAllList(attendanceDto);
+	}
+
+	@Override
+	public List<AttendanceDto> getAttSetAdminUpdateAllList(AttendanceDto attendanceDto) throws Exception {
+		return attendancedao.getAttSetAdminUpdateAllList(attendanceDto);
+	}
+
+	@Override
+	public int updateAdminContent(AttendanceDto attendanceDto) throws Exception {
+		int result = attendancedao.updateAdminContent(attendanceDto);
+		if(result > 0) {
+			System.out.println("result 성공");
+			return result;
+		}
+		System.out.println("result 실패");
+		return result;
 	}
 
 }

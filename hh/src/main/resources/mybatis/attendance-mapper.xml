@@ -84,52 +84,38 @@
   			'Y'
   		)
   	</insert>
-  	
-  	<resultMap id="attMap" type="attendanceDto"> 
-  		<result column="today" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
-  		<result column="day" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
-  		<result column="start" property="attStrDate" jdbcType="NVARCHAR" javaType="String"/> 
-  		<result column="end" property="attEndDate" jdbcType="NVARCHAR" javaType="String"/> 
-   		<result column="total " property="attEndDate" jdbcType="NVARCHAR" javaType="String"/>  
-  	</resultMap>
 
-      <select id="selectAttList" resultType="attendanceDto">
-          SELECT * FROM ATTENDANCE
-          <if test=" type != null">          
-            WHERE EMP_NO = #{empNo} and WORK_FORM LIKE #{type}                  
-          </if>
-      </select>
+     <select id="selectAttList" resultType="attendanceDto" parameterType="hashmap">
+         SELECT * FROM ATTENDANCE        
+         WHERE EMP_NO = #{empNo} and WORK_FORM = #{type}                  
+     </select>
   	
-    <select id="selectAttAllList" resultType="attendanceDto">
-        SELECT * FROM ATTENDANCE    
-            <if test=" type != null">          
-            WHERE EMP_NO = #{empNo}    
-            </if>      
+    <select id="selectAttAllList" resultType="attendanceDto" parameterType="hashmap">
+        SELECT * FROM ATTENDANCE           
+        WHERE EMP_NO = #{empNo}        
     </select>
   	
-  	<select id="getAttEmpAllList" resultType="attendanceDto">
+  	<select id="getAttEmpAllList" resultType="attendanceDto" parameterType="hashmap">
         SELECT  E.EMP_NO, E.EMP_NAME, E.DEPT_NAME, E.JOB_NAME, 
         		A.ATT_NO, A.WORK_FORM, A.ATT_STR_DATE, A.ATT_END_DATE,
         		A.ATT_WORK_DATE, A.ATT_CONTENT, A.ATT_CONTENT_YN,
         		A.ATT_CONTENT_REASON
-        FROM EMP E, ATTENDANCE A
-          <if test=" type != null and value != null">
+        FROM EMP E FULL OUTER JOIN ATTENDANCE A
+        ON E.EMP_NO = A.EMP_NO
+          <if test=" type != null and v != null">
           	<choose>
           		<when test="type eq 'DEPT_NAME'">
           			<bind name="dept" value=" '%' + v + '%' "/>
-          				WHERE E.EMP_NO = A.EMP_NO AND ${type} LIKE = #{dept}
+          				WHERE E.${type} LIKE #{dept}
           		</when>
           		<when test="type eq 'EMP_NAME'">
           			<bind name="emp" value=" '%' + v + '%' "/>
-          				WHERE E.EMP_NO = A.EMP_NO AND ${type} LIKE = #{emp}
+          				WHERE E.${type} LIKE #{emp}
           		</when>
          		<when test="type eq 'JOB_NAME'">
-          			<bind name="jon" value=" '%' + v + '%' "/>
-          				WHERE E.EMP_NO = A.EMP_NO AND ${type} LIKE = #{job}
+          			<bind name="job" value=" '%' + v + '%' "/>
+          				WHERE E.${type} LIKE #{job}
           		</when>
-          		<otherwise>
-						WHERE E.EMP_NO = A.EMP_NO AND
-          		</otherwise>
           	</choose>                           
           </if>
     </select>
@@ -156,4 +142,34 @@
 		FROM ATTENDANCE
 		WHERE EMP_NO = #{empNo}
 	</select>
+
+	<select id="getAttEmpAdminAllList" resultType="attendanceDto" parameterType="hashmap">
+        SELECT * FROM ATTENDANCE                  
+    </select>
+    
+    <select id="getAttSetAdminAllList" resultType="attendanceDto">
+        SELECT  E.EMP_NO, E.EMP_NAME, E.DEPT_NAME, E.JOB_NAME, 
+        		A.ATT_NO, A.WORK_FORM, A.ATT_STR_DATE, A.ATT_END_DATE,
+        		A.ATT_WORK_DATE, A.ATT_CONTENT, A.ATT_CONTENT_YN,
+        		A.ATT_CONTENT_REASON
+        FROM EMP E FULL OUTER JOIN ATTENDANCE A
+        ON E.EMP_NO = A.EMP_NO  
+        WHERE ATT_CONTENT_YN = '대기'              
+    </select>
+    
+    <select id="getAttSetAdminUpdateAllList" resultType="attendanceDto">
+        SELECT  E.EMP_NO, E.EMP_NAME, E.DEPT_NAME, E.JOB_NAME, 
+        		A.ATT_NO, A.WORK_FORM, A.ATT_STR_DATE, A.ATT_END_DATE,
+        		A.ATT_WORK_DATE, A.ATT_CONTENT, A.ATT_CONTENT_YN,
+        		A.ATT_CONTENT_REASON
+        FROM EMP E FULL OUTER JOIN ATTENDANCE A
+        ON E.EMP_NO = A.EMP_NO  
+        WHERE ATT_CONTENT_YN = '승인' OR ATT_CONTENT_YN = '반려'           
+    </select>
+    
+     <update id="updateAdminContent" parameterType="attendanceDto">
+		UPDATE ATTENDANCE
+			SET ATT_CONTENT_REASON = #{attContentReason}, ATT_CONTENT_YN = #{attContentYn}
+		WHERE ATT_NO = #{attNo}
+  	</update>
 </mapper>
