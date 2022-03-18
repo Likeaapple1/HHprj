@@ -72,6 +72,7 @@
 			FROM PAYROLL_PAYSLIP, EMP
             WHERE PAYROLL_PAYSLIP.EMP_NO = EMP.EMP_NO
             AND PAYROLL_PAYSLIP.EMP_NO = #{empNo}
+            ORDER BY PAYROLL_PAYSLIP.PAYROLL_DATE DESC
 		</select>
 		
 		<select id="selectOneByPayroll" parameterType="string" resultType="payrollDto">
@@ -802,7 +803,7 @@
 			WHERE PAYROLL_PAYSLIP.EMP_NO = EMP.EMP_NO
 			
 			AND PAYROLL_PAYSLIP.EMP_NO = #{empNo}
-			AND PAYROLL_PAYSLIP.PAYROLL_DATE like '%${month}%'
+			AND PAYROLL_PAYSLIP.PAYROLL_DATE LIKE '%${month}%'
 		       	 
 		</select>
 	  
