@@ -18,10 +18,10 @@ SELECT  E.EMP_NO AS RE_NO,
         S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
         S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
         S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
-        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
-        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
+        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,      
+        TRUNC(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')+1) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD'),TO_DATE(E.EMP_ENROLLDATE,'YYMMDD'))) AS RE_TOTAL_MONTHS,
+        TRUNC((MONTHS_BETWEEN(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')  ,TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')))/12) AS RE_TOTAL_YEARS,
         --일평균
             TRUNC((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
@@ -30,14 +30,34 @@ SELECT  E.EMP_NO AS RE_NO,
             P.MEAL_EXPENSES +
             P.TRANSPORTATION_EXPENSES +
             P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
+            P.SPECIAL_ALLOWANCE)
+            -
             (P.EMPLOYMENT_INSURANCE +
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
+            P.LOCAL_INCOME_TAX)
+            )*3)/90)AS RE_ONE_AVR_PAY,
             
              --기본급여
+            TRUNC((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE
+            )-(
+            P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX
+            )) AS RE_BASIC_PAY,
+            
+              --3개월 임금
+            TRUNC((
             (P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -50,42 +70,31 @@ SELECT  E.EMP_NO AS RE_NO,
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX) AS RE_BASIC_PAY,
-            
-              --3개월 임금
-            TRUNC(((P.BASIC_SALARY +
-            P.OVERTIME_ALLOWANCE +
-            P.HOLIDAY_ALLOWANCE +
-            P.ANNUAL_LEAVE_ALLOWANCE +
-            P.MEAL_EXPENSES +
-            P.TRANSPORTATION_EXPENSES +
-            P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
-            (P.EMPLOYMENT_INSURANCE +
-            P.HEALTH_INSURANCE +
-            P.NATIONAL_PENSION +
-            P.TAX +
-                P.LOCAL_INCOME_TAX))*3) AS RE_MONTHS_PAYS,
+            P.LOCAL_INCOME_TAX)
+            )*3) AS RE_MONTHS_PAYS,
                 
                 --연간상여금
             P.BONUS*12 AS RE_YEAR_BONUS,
             
           --퇴직금  
-            TRUNC(((((P.BASIC_SALARY +
+            TRUNC((((
+            (P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
             P.ANNUAL_LEAVE_ALLOWANCE +
             P.MEAL_EXPENSES +
             P.TRANSPORTATION_EXPENSES +
             P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
+            P.SPECIAL_ALLOWANCE)
+            -
             (P.EMPLOYMENT_INSURANCE +
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY                  
-FROM EMP E ,SALARY S,PAYROLL P
-WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')+1)) AS RE_RESIGN_PAY 
+            
+FROM  EMP E,SALARY S,PAYROLL P
+WHERE  E.EMP_RESIGNYN='Y' AND E.EMP_NO=S.EMP_NO AND E.EMP_NO=P.EMP_NO
 AND E.EMP_NO=#{reNo}
 
 
@@ -104,11 +113,11 @@ AND E.EMP_NO=#{reNo}
         S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
         S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
         S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
-        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
-        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
-  
+        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,      
+        TRUNC(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')+1) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD'),TO_DATE(E.EMP_ENROLLDATE,'YYMMDD'))) AS RE_TOTAL_MONTHS,
+        TRUNC((MONTHS_BETWEEN(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')  ,TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')))/12) AS RE_TOTAL_YEARS,
+        --일평균
             TRUNC((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -116,14 +125,35 @@ AND E.EMP_NO=#{reNo}
             P.MEAL_EXPENSES +
             P.TRANSPORTATION_EXPENSES +
             P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
+            P.SPECIAL_ALLOWANCE)
+            -
             (P.EMPLOYMENT_INSURANCE +
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
-      
-            TRUNC(((((P.BASIC_SALARY +
+            P.LOCAL_INCOME_TAX)
+            )*3)/90)AS RE_ONE_AVR_PAY,
+            
+             --기본급여
+            TRUNC((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE
+            )-(
+            P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX
+            )) AS RE_BASIC_PAY,
+            
+              --3개월 임금
+            TRUNC((
+            (P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
             P.ANNUAL_LEAVE_ALLOWANCE +
@@ -135,9 +165,31 @@ AND E.EMP_NO=#{reNo}
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY                  
-FROM EMP E ,SALARY S,PAYROLL P
-WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
+            P.LOCAL_INCOME_TAX)
+            )*3) AS RE_MONTHS_PAYS,
+                
+                --연간상여금
+            P.BONUS*12 AS RE_YEAR_BONUS,
+            
+          --퇴직금  
+            TRUNC((((
+            (P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE)
+            -
+            (P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')+1)) AS RE_RESIGN_PAY 
+            
+FROM  EMP E,SALARY S,PAYROLL P
+WHERE  E.EMP_RESIGNYN='Y' AND E.EMP_NO=S.EMP_NO AND E.EMP_NO=P.EMP_NO
 
 	</select>
 	
@@ -155,11 +207,11 @@ WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
         S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
         S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
         S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
-        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
-        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
-  
+        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,      
+        TRUNC(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')+1) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD'),TO_DATE(E.EMP_ENROLLDATE,'YYMMDD'))) AS RE_TOTAL_MONTHS,
+        TRUNC((MONTHS_BETWEEN(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')  ,TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')))/12) AS RE_TOTAL_YEARS,
+        --일평균
             TRUNC((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -167,14 +219,35 @@ WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
             P.MEAL_EXPENSES +
             P.TRANSPORTATION_EXPENSES +
             P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
+            P.SPECIAL_ALLOWANCE)
+            -
             (P.EMPLOYMENT_INSURANCE +
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
-      
-            TRUNC(((((P.BASIC_SALARY +
+            P.LOCAL_INCOME_TAX)
+            )*3)/90)AS RE_ONE_AVR_PAY,
+            
+             --기본급여
+            TRUNC((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE
+            )-(
+            P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX
+            )) AS RE_BASIC_PAY,
+            
+              --3개월 임금
+            TRUNC((
+            (P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
             P.ANNUAL_LEAVE_ALLOWANCE +
@@ -186,9 +259,31 @@ WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY                  
-FROM EMP E ,SALARY S,PAYROLL P
-WHERE E.EMP_RESIGNYN='Y' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
+            P.LOCAL_INCOME_TAX)
+            )*3) AS RE_MONTHS_PAYS,
+                
+                --연간상여금
+            P.BONUS*12 AS RE_YEAR_BONUS,
+            
+          --퇴직금  
+            TRUNC((((
+            (P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE)
+            -
+            (P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC(TO_DATE(E.EMP_RESIGNDATE,'YYMMDD')-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')+1)) AS RE_RESIGN_PAY 
+            
+FROM  EMP E,SALARY S,PAYROLL P
+WHERE  E.EMP_RESIGNYN='Y' AND E.EMP_NO=S.EMP_NO AND E.EMP_NO=P.EMP_NO
 		AND
 		  <choose>
 		            <when test="searchType == 'empNo'">
@@ -223,16 +318,11 @@ SELECT E.EMP_NO AS RE_NO,
         E.EMP_ADD AS RE_ADDRESS,
         E.EMP_ENROLLDATE AS RE_HIRE_DATE,
         E.EMP_RESIGNDATE AS RE_RESIGN_DATE,
-        S.LONG_SERVICE_ALLOWANCE AS RE_LONG_SERVICE_ALLOWANCE,
-        S.LONG_SERVICE_DAY AS RE_LONG_SERVICE_DAY,
-        S.MEAL_EXPENSES AS RE_MEAL_EXPENSES,
-        S.REGULAR_HOURLY_WAGE AS RE_REGULAR_HOURLY_WAGE,
-        S.TRANSPORTATION_EXPENSES AS RE_TRANSPORTATION_EXPENSES,
-        TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1) AS RE_TOTAL_WORK,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)) AS RE_TOTAL_MONTHS,
-        TRUNC(MONTHS_BETWEEN(E.EMP_RESIGNDATE,E.EMP_ENROLLDATE)/12) AS RE_TOTAL_YEARS,
+        TRUNC(TRUNC(SYSDATE+1)-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')) AS RE_TOTAL_WORK,
+        TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE+1),TO_DATE(E.EMP_ENROLLDATE,'YYMMDD'))) AS RE_TOTAL_MONTHS,
+        TRUNC((MONTHS_BETWEEN(TRUNC(SYSDATE+1)  ,TO_DATE(E.EMP_ENROLLDATE,'YYMMDD')))/12) AS RE_TOTAL_YEARS,
         
-           
+        --일평균
             TRUNC((((P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -240,14 +330,34 @@ SELECT E.EMP_NO AS RE_NO,
             P.MEAL_EXPENSES +
             P.TRANSPORTATION_EXPENSES +
             P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
+            P.SPECIAL_ALLOWANCE)
+            -
             (P.EMPLOYMENT_INSURANCE +
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90 )AS RE_ONE_AVR_PAY,
+            P.LOCAL_INCOME_TAX)
+            )*3)/90)AS RE_ONE_AVR_PAY,
             
+             --기본급여
+            TRUNC((P.BASIC_SALARY +
+            P.OVERTIME_ALLOWANCE +
+            P.HOLIDAY_ALLOWANCE +
+            P.ANNUAL_LEAVE_ALLOWANCE +
+            P.MEAL_EXPENSES +
+            P.TRANSPORTATION_EXPENSES +
+            P.BONUS +
+            P.SPECIAL_ALLOWANCE
+            )-(
+            P.EMPLOYMENT_INSURANCE +
+            P.HEALTH_INSURANCE +
+            P.NATIONAL_PENSION +
+            P.TAX +
+            P.LOCAL_INCOME_TAX
+            )) AS RE_BASIC_PAY,
             
+              --3개월 임금
+            TRUNC((
             (P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
@@ -260,42 +370,29 @@ SELECT E.EMP_NO AS RE_NO,
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX) AS RE_BASIC_PAY,
-            
-            
-            TRUNC(((P.BASIC_SALARY +
-            P.OVERTIME_ALLOWANCE +
-            P.HOLIDAY_ALLOWANCE +
-            P.ANNUAL_LEAVE_ALLOWANCE +
-            P.MEAL_EXPENSES +
-            P.TRANSPORTATION_EXPENSES +
-            P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
-            (P.EMPLOYMENT_INSURANCE +
-            P.HEALTH_INSURANCE +
-            P.NATIONAL_PENSION +
-            P.TAX +
-            P.LOCAL_INCOME_TAX))*3) AS RE_MONTHS_PAYS,
-            
-            
+            P.LOCAL_INCOME_TAX)
+            )*3) AS RE_MONTHS_PAYS,
+                
+                --연간상여금
             P.BONUS*12 AS RE_YEAR_BONUS,
-                                        
-              
-            TRUNC(((((P.BASIC_SALARY +
+            
+          --퇴직금  
+            TRUNC((((
+            (P.BASIC_SALARY +
             P.OVERTIME_ALLOWANCE +
             P.HOLIDAY_ALLOWANCE +
             P.ANNUAL_LEAVE_ALLOWANCE +
             P.MEAL_EXPENSES +
             P.TRANSPORTATION_EXPENSES +
             P.BONUS +
-            P.SPECIAL_ALLOWANCE) -
+            P.SPECIAL_ALLOWANCE)
+            -
             (P.EMPLOYMENT_INSURANCE +
             P.HEALTH_INSURANCE +
             P.NATIONAL_PENSION +
             P.TAX +
-            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC((E.EMP_RESIGNDATE-E.EMP_ENROLLDATE)+1)) AS RE_RESIGN_PAY 
-                       
-FROM EMP E ,SALARY S,PAYROLL P
+            P.LOCAL_INCOME_TAX))*3)/90)*TRUNC(TRUNC(SYSDATE+1)-TO_DATE(E.EMP_ENROLLDATE,'YYMMDD'))) AS RE_RESIGN_PAY                      
+FROM EMP E ,PAYROLL P,SALARY S
 WHERE E.EMP_RESIGNYN='N' AND E.EMP_NO= S.EMP_NO AND E.EMP_NO=P.EMP_NO
 
 	</select>
