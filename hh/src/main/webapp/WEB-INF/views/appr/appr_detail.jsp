@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd(E)");
+%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="ko">
@@ -20,6 +26,10 @@
   <link rel="stylesheet" href="${path}/resources/css/appr/dist/css/adminlte.min.css">
   <!-- home css -->
   <link rel="stylesheet" href="${path}/resources/css/appr/dist/css/home.css">
+  <!-- smarteditor2 -->
+  <script type="text/javascript" src="${path}/resources/static/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+  <!-- swal -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -33,7 +43,7 @@
       </li>
       <!-- Home 버튼 -->
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="${path}/appr/home" class="nav-link">Home</a>
+        <a href="${path}/main" class="nav-link">Home</a>
       </li>
       <!-- Contact 버튼 -->
       <li class="nav-item d-none d-sm-inline-block">
@@ -168,7 +178,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="home.html" class="brand-link">
-      <img src="${path}/resources/css/appr/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="${path}/resources/img/svg/HiHellofavicon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">전자결재</span>
     </a>
 
@@ -177,10 +187,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="${path}/resources/css/appr/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/hh/resources/static/upload/${loginUser.empNo}_profile.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">이훈희</a>
+          <a href="#" class="d-block">${loginUser.empName}</a>
         </div>
       </div>
 
@@ -356,10 +366,115 @@
        </div>
         <div class="appr_content">
           <div>
-            <form action="">
+            <form action="" method="post" id="ApprForm">
               <div class="detail_header">
-                기안서
+                ${approval.formName}
               </div>
+              <div class="detail_body">
+                <div class="form_table3_tr_td1">
+                    결재
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${emp1.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${emp1.empName}</div>
+                    <input type="hidden" name="apprNo1" value="${person.empNo}">
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${emp2.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${emp2.empName}</div>
+                    <input type="hidden" name="apprNo2" value="${person1.empNo}">
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${emp3.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${emp3.empName}</div>
+                    <input type="hidden" name="apprNo3" value="${person2.empNo}">
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${emp4.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${emp4.empName}</div>
+                    <input type="hidden" name="apprNo4" value="${person3.empNo}">
+                </div>
+                <div class="form_table3_tr_td1" style="border-left: 0;">
+                    합의
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${person4.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${person4.empName}</div>
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${person5.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${person5.empName}</div>
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${person6.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${person6.empName}</div>
+                </div>
+                <div class="form_table3_tr_td2">
+                    <div class="form_table3_tr_td2_header">${person7.jobName}</div>
+                    <div class="form_table3_tr_td2_body"></div>
+                    <div class="form_table3_tr_td2_footer">${person7.empName}</div>
+                </div>
+              </div>
+              <table class="info_table">
+                <tbody>
+                    <tr>
+                        <td class="td1">기안자</td>
+                        <td class="td2"><input type="text" value="${emp.empName}" style="border: 0;" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">소속</td>
+                        <td class="td2"><input type="text" value="HH그룹" style="border: 0;" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">부서</td>
+                        <td class="td2"><input type="text" value="${emp.deptName}" style="border: 0;" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">기안일</td>
+                        <td class="td2"><input type="text" value="${approval.docDate}"  name="docDate" style="border: 0;" readonly></td>
+                    </tr>
+                </tbody>
+              </table>
+              <table class="info_table2">
+                <tbody>
+                    <tr class="form_table2_tr1">
+                        <td class="form_table2_tr1_td1">시행일자</td>
+                        <td class="form_table2_tr1_td2"><input type="text" value="${approval.effDate}" readonly></td>
+                        <td class="form_table2_tr1_td1">협조부서</td>
+                        <td class="form_table2_tr1_td3"><input type="text" readonly></td>
+                    </tr>
+                    <tr class="form_table2_tr2">
+                        <td class="form_table2_tr2_td1">합의</td>
+                        <td class="form_table2_tr2_td2" colspan="3"><input type="text" readonly></td>
+                    </tr>
+                    <tr class="form_table2_tr2">
+                        <td class="form_table2_tr2_td1">제목</td>
+                        <td class="form_table2_tr2_td2" colspan="3"><input type="text" name="docName" value="${approval.docName}" readonly></td>
+                    </tr>
+                    <tr class="form_table2_tr3">
+                        <td class="form_table2_tr3_td" colspan="4">
+                            <!-- <form action="insertStudentInfoForm" method="post"> -->
+                            <div id="smarteditor">
+                                <textarea name="docContent" id="editorTxt" 
+                                        rows="17" cols="10" 
+                                        placeholder="내용을 입력해주세요"
+                                        style="width: 100%" readonly>
+                                      ${approval.docContent}
+                                      </textarea>
+                            </div>
+                            <!-- <input type="button" />
+                            </form> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             </form>
           </div>
         </div>
@@ -382,6 +497,7 @@
 
 <!-- REQUIRED SCRIPTS -->
 
+
 <!-- jQuery -->
 <script src="${path}/resources/css/appr/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -398,10 +514,32 @@
 <!-- jQuery -->
 <script src="${path}/resources/css/appr/plugins/jquery/jquery.min.js"></script>
 
-
-<!-- Page specific script -->
+<!-- smarteditor2 -->
 <script>
+  let oEditors = []
 
+  smartEditor = function() {
+      nhn.husky.EZCreator.createInIFrame({
+      oAppRef: oEditors,
+      elPlaceHolder: "editorTxt",
+      sSkinURI: "${path}/resources/static/smarteditor/SmartEditor2Skin.html",
+      fOnAppLoad : function(){ //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용 
+      oEditors.getById["editorTxt"].exec("PASTE_HTML", [""]); },
+      fCreator: "createSEditor2"
+      })
+  }
+
+  $(document).ready(function() {
+      smartEditor()
+  })
+</script>
+<script>
+  $("#act_draft").click(function(){
+    swal("결재 완료", "", "success").then((value) => {
+        oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", []);
+        // $('#ApprForm').submit();
+      });
+  })
 </script>
 </body>
 </html>

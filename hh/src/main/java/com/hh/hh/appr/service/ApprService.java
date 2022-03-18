@@ -37,6 +37,10 @@ public interface ApprService {
 	
 	int insertApproval(ApprovalDto apprdto, HttpServletRequest request) throws Exception;
 	
+	ApprovalDto getApproval(String p) throws Exception;
+	
+	ApprDto getEmp(ApprDto dto) throws Exception;
+	
 	
 
 }

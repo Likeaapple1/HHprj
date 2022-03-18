@@ -84,7 +84,7 @@
     /* background-color: #c7c7c76c; */
 }
 
-.appr_content div {
+.appr_content>div {
     width: 100%;
 }
 
@@ -190,7 +190,7 @@ span.state.temp {
     font-weight: normal;
     vertical-align: top;
     width: 80%;
-    height: 120px;
+    height: 70px;
     padding: 0px;
 }
 .button_gp1 {
@@ -269,7 +269,234 @@ span.state.temp {
 .btn_tool1:hover{
     background-color: #dcdcdc;
 }
+
 .detail_header {
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    letter-spacing: 15px;
+}
+.detail_body {
+    width: 80%;
+    margin-top: 10px;
+    display: inline-block;
+    padding: 20px;
+}
+.form_table3_tr_td1 {
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border: 1px solid black;
+    border-image: none;
+    height: 140px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    display: flex; justify-content: center;
+    align-items: center;
+    width: 10%;
+    float: left;
+}
+.form_table3_tr_td2 {
+    border: 1px solid black;
+    border-image: none;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+    width: 10%;
+    border-left: 0;
+    height: 140px;
+    float: left;
+}
+.form_table3_tr_td2_header{
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border-image: none;
+    border-bottom: 1px solid black;
+    height: 24%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    display: flex; justify-content: center;
+    align-items: center;
+    width: 100%;
+    float: left;
+}
+.form_table3_tr_td2_body{
+    padding: 5px;
+    border-image: none;
+    border-bottom: 1px solid black;
+    height: 51%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: lighter;
+    display: flex; justify-content: center;
+    align-items: center;
+    width: 100%;
+    float: left;
+    background: #fff;
+}
+.form_table3_tr_td2_footer{
+    padding: 5px;
+    border-image: none;
+    text-align: center;
+    height: 24%;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: lighter;
+    display: flex; justify-content: center;
+    align-items: center;
+    width: 100%;
+    float: left;
+    background-color: #fff;
+    /* border-bottom: 1px solid black; */
+}
+.info_table {
+    /* border: 1px solid rgb(0, 0, 0); */
+    border-bottom: 1px solid black;
+    border-image: none;
+    font-family: arial, tahoma;
+    margin-top: 1px;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+.info_table tbody tr>.td1 {
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border: 1px solid black;
+    border-right: 0;
+    border-bottom: 0;
+    border-image: none;
+    height: 30px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 35%;
+}
+.info_table tbody tr>.td2 {
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border: 1px solid black;
+    border-bottom: 0;
+    border-image: none;
+    height: 30px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: middle;
+    width: 240px;
+}
+.info_table2 {
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.info_table2 input {
+    height: 100%;
+    border: 1px solid #BDBDBD;
+    width: 100%;
+}
+.form_table2_tr1_td1 {
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border: 1px solid black;
+    border-image: none;
+    height: 40px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    display: flex; justify-content: center;
+    align-items: center;
+    /* width: 15%; */
+    border-right: 0;
+    border-bottom: 0;
+}
+.form_table2_tr1_td2 {
+    background-color: rgb(225, 225, 225);
+    padding: 5px;
+    border: 1px solid black;
+    border-image: none;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+    /* width: 30%; */
+    height: 40px;
+    border-right: 0;
+    border-bottom: 0;
+}
+.form_table2_tr1_td3 {
+    background-color: rgb(225, 225, 225);
+    padding: 5px;
+    border: 1px solid black;
+    border-image: none;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+    /* width: 40%; */
+    height: 40px;
+    border-bottom: 0;
+}
+.form_table2_tr2_td1 {
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border: 1px solid black;
+    border-image: none;
+    height: 40px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+    display: flex; justify-content: center;
+    align-items: center;
+    /* width: 15%; */
+    border-right: 0;
+    border-bottom: 0;
+}
+.form_table2_tr2_td2 {
+    background-color: rgb(225, 225, 225);
+    padding: 5px;
+    border: 1px solid black;
+    border-image: none;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+    width: 300px;
+    height: 40px;
+    border-bottom: 0;
+}
+.form_table2 tbody tr td input:hover {
+    border: 1px solid rgb(65, 54, 224);
+    height: 100%;
+}
+.form_table2_tr3_td {
+    background-color: rgb(255, 255, 255);
+    border-width: medium 1px 1px;
+    border-style: none solid;
+    border-color: currentColor black black;
+    padding: 5px;
+    height: 400px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 .appr_content3 {
     margin-top: 20px;

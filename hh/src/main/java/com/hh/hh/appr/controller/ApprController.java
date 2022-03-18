@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -50,7 +51,26 @@ public class ApprController {
 	
 	// 전자결재 양식 홈 보여주기
 	@GetMapping(value = {"/appr_detail", "/appr_detail/{p}"})
-	public String appr_detail() {
+	public String appr_detail(@PathVariable(required = false) String p, HttpSession session, ApprDto dto) throws Exception {
+		ApprovalDto approval = service.getApproval(p);
+		session.setAttribute("approval", approval);
+		
+		dto.setUser1(approval.getApprNo1());
+		dto.setUser2(approval.getApprNo2());
+		dto.setUser3(approval.getApprNo3());
+		dto.setUser4(approval.getApprNo4());
+		dto.setEmpNo(approval.getEmpNo());
+		ApprDto emp = service.getEmp(dto);
+		ApprDto emp1 = service.getUser1(dto);
+		ApprDto emp2 = service.getUser2(dto);
+		ApprDto emp3 = service.getUser3(dto);
+		ApprDto emp4 = service.getUser4(dto);
+		session.setAttribute("emp", emp);
+		session.setAttribute("emp1", emp1);
+		session.setAttribute("emp2", emp2);
+		session.setAttribute("emp3", emp3);
+		session.setAttribute("emp4", emp4);
+		
 		return "appr/appr_detail";
 	}
 	
@@ -143,8 +163,7 @@ public class ApprController {
 			linedto.setEmpNo(loginUser.getEmpNo()); 
 			List<ApprLineDto> lineList = service.getLineList(linedto);
 			model.addAttribute("lineList", lineList);
-//			System.out.println(dto);
-//			System.out.println(list);
+			
 			//부서, 사인, 이름 조회
 			if(dto.getEmpName() != null) {
 				ApprDto person = service.getPerson(dto);

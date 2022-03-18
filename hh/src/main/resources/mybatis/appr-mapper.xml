@@ -72,21 +72,25 @@
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{user1}
+		   OR EMP_NO = #{user1}
 	</select>
 	<select id="getUser2" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{user2}
+		   OR EMP_NO = #{user2}
 	</select>
 	<select id="getUser3" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{user3}
+		   OR EMP_NO = #{user3}
 	</select>
 	<select id="getUser4" resultType="apprVo">
 		SELECT *
 		FROM EMP
 		WHERE EMP_NAME = #{user4}
+		   OR EMP_NO = #{user4}
 	</select>
 	<select id="getViewer1" resultType="apprVo">
 		SELECT *
@@ -172,4 +176,16 @@
 	<delete id="deleteLine">
 		DELETE FROM APPR_LINE WHERE LINE_NO = ${lineNo}
 	</delete>
+	
+	<select id="getApproval" resultType="com.hh.hh.appr.entity.ApprovalDto">
+		SELECT *
+		FROM APPROVAL
+		WHERE DOC_NO = #{p}
+	</select>
+	
+	<select id="getEmp" resultType="apprVo">
+		SELECT *
+		FROM EMP
+		WHERE EMP_NO = #{empNo}
+	</select>
 </mapper>
