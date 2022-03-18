@@ -281,8 +281,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img src="${path}/resources/img/svg/HiHellofavicon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Hi Hello</span>
     </a>
 
     <!-- Sidebar -->
@@ -290,10 +290,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/hh/resources/static/upload/${loginUser.empNo}_profile.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">${loginUser.empName}</a>
         </div>
       </div>
 
@@ -313,38 +313,221 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-              with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+               with font-awesome or any other icon font library -->
+
+          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-item">
+            <a href="${path}/notice/list" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
+                공지 사항
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/gallery.html" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                캘린더
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/kanban.html" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                쪽지
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                근태
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="${path}/attendance/home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>근태관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="${path}/attendance/attstatus" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>출퇴근 현황</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/attendance/admin/list" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>전사 출퇴근 현황</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/attendance/admin/setatt" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>출퇴근 변경 사항</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                연차
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/examples/invoice.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>연차관리</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/profile.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>연차신청현황</p>
+                </a>
+              </li>>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                전자 결재
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/appr/home" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    전자 결재
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+              </li>
+              </ul>
+			<li class="nav-item"> <!-- 급여 -->
+            <a href="#" class="nav-link">
+              <p>
+                급여
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/salary/payroll" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여이체현황
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/payslip" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/setting" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>급여설정</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/input" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>급상여입력</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/salary/email" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    급여명세서 이메일 발송
+                  </p>
+                </a>
+              </li>
+            </ul>
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                퇴직금
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/resign/history" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    퇴직 업무
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/resign/input"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    퇴직급여 입력
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/resign/receipt" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직소득원천징수</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/resign/totalresign" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>퇴직추계액관리</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                인사관리
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="${path}/insa/home" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    인사기록카드
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/insa/organization” " class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    부서 조직도
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="${path}/insa/certificate”" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>증명서 발급</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -418,40 +601,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <thead>
                         <tr>
                           <td rowspan="6">
-                            <img src="../../../../../../../../../Desktop/KH정보교육원/11250B434F1B8ACC02.jpeg" class="youbujangpic">
+                            <img src="/hh/resources/img/svg/뽀쇼니다.jpeg" style = "width:300px" class="">
                           </td>
                           <td class="a">사원번호</td>
-                          <td class="b"><input name="empNo" value="${emp.empNo}" readonly="readonly"></td>
+                          <td class="b">1</td>
                           <td class="a">성명</td>
-                          <td class="b"><input name="empName" value="${emp.empName}" readonly="readonly"></td>
+                          <td class="b">세희</td>
                         </tr>
       
                         <tr>
                           <td class="a">영문성명</td>
-                          <td class="b"><input name="empengName" value="${injuk.empengName}" readonly="readonly"></td>
+                          <td class="b">Sehee</td>
                           <td class="a">한자성명</td>
-                          <td class="b"><input name="empchnName" value="${injuk.empchnName}" readonly="readonly"></td>
+                          <td class="b">世喜</td>
                         </tr>
       
                         <tr>
                           <td class="a">주민등록번호</td>
-                          <td class="b"><input name="empBirth" value="${injuk.empBirth}" readonly="readonly"></td>
+                          <td class="b">980806-2******</td>
                           <td class="a">성별</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b">여</td>
                         </tr>
       
                         <tr>
                           <td class="a">결혼유무</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b">N</td>
                           <td class="a">결혼기념일</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b">N</td>
                         </tr>
       
                         <tr>
                           <td class="a">내외국인</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b">내국인</td>
                           <td class="a">국적</td>
-                          <td class="b"><input type="text" class="blank1"></td>
+                          <td class="b">대한민국</td>
                         </tr>
                     </table>
                     
@@ -460,48 +643,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <tbody>
                         <tr>
                           <td class="c">회사전화</td>
-                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="d">070-3456-7890</td>
                           <td class="c">자택전화</td>
-                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="d">032-345-6789</td>
                           <td class="c">핸드폰</td>
-                          <td class="d"><input type="text" class="blank2"></td>
+                          <td class="d">010-3456-7890</td>
                         </tr>
       
                         <tr>
                           <td>회사이메일</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="e" colspan="5">chaoffice@naver.com</td>
                         </tr>
       
                         <tr>
                           <td>외부이메일</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="e" colspan="5">chacha@naver.com</td>
                         </tr>
       
                         <tr>
                           <td rowspan="2">자택주소</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="e" colspan="5">경기도 부천시</td>
                         </tr>
   
                         <tr>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="e" colspan="5">902호</td>
                         </tr>
       
                         <tr>
                           <td>자택영문주소</td>
-                          <td class="e" colspan="5"><input type="text" class="blank3"></td>
+                          <td class="e" colspan="5">Bucheon-si, Gyeonggi-do, Republic of Korea</td>
                         </tr>
                         
                         <tr>
                           <td>재직구분</td>
-                          <td><select name="emp" class="mon">
-                            <option value="emp1" label="재직" selected></option>
-                            <option value="emp2" label="퇴직"></option>
-                            <option value="emp3" label="휴직"></option>
+                          <td>재</option>
                           </select></td>
                           <td>입사일자</td>
-                          <td><input class="mon" type="date" value="2022-03"></td>
+                          <td>2021-05-25</td>
                           <td>퇴사일자</td>
-                          <td><input class="mon" type="date" value="2022-03"></td>
+                          <td>N</td>
                         </tr>
   
                       </tbody>
