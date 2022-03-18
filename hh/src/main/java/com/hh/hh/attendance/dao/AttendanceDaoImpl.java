@@ -87,6 +87,26 @@ public class AttendanceDaoImpl implements AttendanceDao{
 	public List<AttendanceDto> getAttEmpEpAllList(Map<String, Object> map) throws Exception {
 		return sqlsession.selectList("attendance.getAttEmpEpAllList",map);
 	}
+
+	@Override
+	public List<AttendanceDto> getAttEmpAdminAllList(Map<String, Object> map) throws Exception {
+		return sqlsession.selectList("attendance.getAttEmpAdminAllList",map);
+	}
+
+	@Override
+	public List<AttendanceDto> getAttSetAdminAllList(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.selectList("attendance.getAttSetAdminAllList",attendanceDto);
+	}
+
+	@Override
+	public List<AttendanceDto> getAttSetAdminUpdateAllList(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.selectList("attendance.getAttSetAdminUpdateAllList",attendanceDto);
+	}
+
+	@Override
+	public int updateAdminContent(AttendanceDto attendanceDto) throws Exception {
+		return sqlsession.update("attendance.updateAdminContent",attendanceDto);
+	}
 	
 	
 }
