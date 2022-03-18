@@ -128,6 +128,16 @@ public class ApprServiceImpl implements ApprService{
 		return dao.getRecList(appr);
 	}
 
+	@Override
+	public ApprovalDto getApproval(String p) throws Exception {
+		return dao.getApproval(p);
+	}
+
+	@Override
+	public ApprDto getEmp(ApprDto dto) throws Exception {
+		return dao.getEmp(dto);
+	}
+
 	
 
 	

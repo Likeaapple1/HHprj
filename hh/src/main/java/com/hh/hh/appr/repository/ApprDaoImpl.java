@@ -126,4 +126,14 @@ public class ApprDaoImpl implements ApprDao{
 		return ss.selectList("appr.getRecList", appr);
 	}
 
+	@Override
+	public ApprovalDto getApproval(String p) throws Exception {
+		return ss.selectOne("appr.getApproval", p);
+	}
+
+	@Override
+	public ApprDto getEmp(ApprDto dto) throws Exception {
+		return ss.selectOne("appr.getEmp", dto);
+	}
+
 }

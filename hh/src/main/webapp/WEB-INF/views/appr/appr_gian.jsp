@@ -42,7 +42,7 @@
     </li>
     <!-- Home 버튼 -->
     <li class="nav-item d-none d-sm-inline-block">
-    <a href="home.html" class="nav-link">Home</a>
+    <a href="${path}/main" class="nav-link">Home</a>
     </li>
     <!-- Contact 버튼 -->
     <li class="nav-item d-none d-sm-inline-block">
@@ -177,7 +177,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 <!-- Brand Logo -->
 <a href="home.html" class="brand-link">
-    <img src="${path}/resources/css/appr/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="${path}/resources/img/svg/HiHellofavicon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">전자결재</span>
 </a>
 
@@ -186,10 +186,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
     <div class="image">
-        <img src="${path}/resources/css/appr/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="/hh/resources/static/upload/${loginUser.empNo}_profile.png" class="img-circle elevation-2" alt="User Image">
     </div>
     <div class="info">
-        <a href="#" class="d-block">이훈희</a>
+        <a href="#" class="d-block">${loginUser.empName}</a>
     </div>
     </div>
 
@@ -498,9 +498,10 @@
                                     <!-- <form action="insertStudentInfoForm" method="post"> -->
                                     <div id="smarteditor">
                                         <textarea name="docContent" id="editorTxt" 
-                                                rows="17" cols="10" 
-                                                placeholder="내용을 입력해주세요"
-                                                style="width: 100%"></textarea>
+                                            rows="17" cols="10" 
+                                            placeholder="내용을 입력해주세요"
+                                            style="width: 100%">
+                                        </textarea>
                                     </div>
                                     <!-- <input type="button" />
                                     </form> -->
@@ -1143,8 +1144,6 @@ $(userInfoList).each(function(idx, element){
         const addButton1 = document.querySelector('.add_action1');
         const addButton2 = document.querySelector('.add_action2');
         
-        // console.log(document.getElementsByClassName('listedName').innerText);
-
 	    addButton1.addEventListener('click', () => {
             $(element).off('click');
             

@@ -35,5 +35,9 @@ public interface ApprDao {
 	
 	int insertApproval(ApprovalDto apprdto) throws Exception;
 	
+	ApprovalDto getApproval(String p) throws Exception;
+	
+	ApprDto getEmp(ApprDto dto) throws Exception;
+	
 
 }
