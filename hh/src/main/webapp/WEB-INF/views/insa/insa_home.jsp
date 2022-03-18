@@ -1076,8 +1076,8 @@ form {
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="${path}/resources/css/appr/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img src="${path}/resources/img/svg/HiHellofavicon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Hi Hello</span>
     </a>
 
     <!-- Sidebar -->
@@ -1085,10 +1085,10 @@ form {
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="${path}/resources/css/appr/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/hh/resources/static/upload/${loginUser.empNo}_profile.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">${loginUser.empName}</a>
         </div>
       </div>
 
@@ -1809,7 +1809,7 @@ form {
                             <td>${emp.empNo}</td>
                             <td>${emp.empBirth}</td>
                             <td><img alt="프로필사진" style="width:100px; height:100px;" src="/hh/resources/static/upload/${emp.empNo}_profile.png"/></td>  <%-- ${emp.empPhotoRoute} --%>
-                            <td><a href="http://localhost:9999/hh/emp/injuk/${emp.empNo}">${emp.empName}</a></td>                       
+                            <td><a href="http://localhost:9999/hh/emp/injuk">${emp.empName}</a></td>                       
                             <td>${emp.deptName}</td>
                             <td>${emp.jobName}</td>
                             <td>${emp.empEnrolldate}</td>
