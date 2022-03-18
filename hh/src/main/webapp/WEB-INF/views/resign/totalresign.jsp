@@ -320,7 +320,6 @@
                     <th>직급</th>
                     <th>부서</th>
                     <th>입사일</th>
-                    <th>퇴직일</th>
                     <th>최근3개월 급여총액</th>
                     <th>년상여총액</th>
                     <th>기준급여</th>
@@ -336,7 +335,6 @@
                       <td>${n.reRank}</td>
                       <td>${n.reDept}</td>
                       <td>${n.reHireDate}</td>
-                      <td>${n.reResignDate}</td>
                       <td>${n.reMonthsPays}</td>
                       <td>${n.reYearBonus}</td>
                       <td>${n.reBasicPay}</td>
@@ -357,11 +355,10 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
                         <td><c:out value="${sum}"></c:out>원</td>
                         <td><c:out value="${sam}"></c:out>원</td>
-                        <td> <c:out value="${sim}"></c:out>원</td>
-                        <td> </td>
+                        <td><c:out value="${sim}"></c:out>원</td>
+                        <td></td>
                         <td><c:out value="${sem}"></c:out> 원</td>
                       </tr>
                     
